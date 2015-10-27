@@ -1,0 +1,5 @@
+---
+- name: Updates a server
+  apt: update_cache=yes
+- name: Upgrade a server
+  apt: upgrade=yes

@@ -1,0 +1,36 @@
+# Ruby
+/.bundle/
+/vendor/bundle
+
+# Rails
+/log
+/tmp
+/public/system
+/coverage/
+/.env
+/erd.pdf
+
+
+# npm
+/node_modules
+
+# bower
+/bower_components
+
+# OSX
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+
+# IntelliJ
+.idea/*
+*.iml
+
+# Vagrant
+/vagrant/.vagrant
+
+# Added by webpack-rails
+/public/webpack

@@ -1,0 +1,10 @@
+---
+- name: Build a Rails development environment
+  hosts: rails
+  become: yes
+  roles:
+    - apt-upgrade
+    - rbenv
+    - mysql
+    - nodejs
+    - env

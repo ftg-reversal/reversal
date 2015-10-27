@@ -1,0 +1,8 @@
+.live.uk-flex.uk-flex-wrap.uk-flex-wrap-space-around.uk-margin-bottom
+  - @lives.each do |live|
+    article.uk-width-medium-1-2.uk-width-small-1-1.uk-margin-bottom.uk-flex
+      .live-icon-wrapper.uk-width-1-4
+        a href="#{live.url}"
+          img.live-icon src="#{live.icon}"
+        p.live-time-ago = time_ago_in_words(live.start_time) + '前'
+      .live-title.uk-width-3-4 #{link_to live.title, live.url}

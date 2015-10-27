@@ -1,0 +1,7 @@
+---
+mysql_db:
+  - reversal
+  - test
+
+db_user: reversal
+db_pass: pw

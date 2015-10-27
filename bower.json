@@ -1,0 +1,16 @@
+{
+  "name": "ftg-reversal",
+  "description": "ftg-reversal main site",
+  "main": "",
+  "moduleType": [],
+  "homepage": "http://ftg-reversal.net/",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+  }
+}

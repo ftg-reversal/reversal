@@ -1,0 +1,34 @@
+{
+  "name": "ftg-reversal_videos",
+  "description": "ftg-reversal videos site",
+  "version": "0.0.1",
+  "devDependencies": {
+    "autoprefixer": "^6.3.1",
+    "bower-webpack-plugin": "^0.1.9",
+    "browser-sync": "^2.11.0",
+    "compass-mixins": "^0.12.7",
+    "css-loader": "^0.23.1",
+    "file-loader": "^0.8.5",
+    "import-glob-loader": "^1.1.0",
+    "imports-loader": "^0.6.5",
+    "jquery": "^2.2.0",
+    "lodash": "^4.0.0",
+    "node-bourbon": "^4.2.3",
+    "node-neat": "^1.7.2",
+    "node-sass": "^3.4.2",
+    "postcss-loader": "^0.8.0",
+    "precss": "^1.4.0",
+    "sanitize.css": "^3.0.0",
+    "sass-loader": "^3.1.2",
+    "stats-webpack-plugin": "^0.3.0",
+    "style-loader": "^0.13.0",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.12.10",
+    "webpack-dev-server": "^1.14.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ftg-reversal/video.git"
+  },
+  "license": "MIT"
+}

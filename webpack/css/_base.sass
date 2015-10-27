@@ -1,0 +1,45 @@
+html
+  font-size: $base-font-size
+
+body
+  background-color: $base-color
+  font-family: $base-font-family
+  color: $base-text
+  line-height: $base-line-height
+  min-height: 100vh
+
+.main
+  min-height: 96vh
+
+*
+  box-sizing: border-box
+
+h1, h2, h3, h4, h5, h6
+  +reset
+  font-family: $base-font-family
+  color: $base-text
+
+p
+  margin: 0 0 $small-spacing
+
+ul, li
+  +reset
+
+a
+  color: $action-color
+  text-decoration: none
+  transition: color $base-duration $base-timing
+
+  &:active, &:focus, &:hover
+    color: shade($action-color, 25%)
+
+hr
+  border-bottom: $base-border
+  border-left: 0
+  border-right: 0
+  border-top: 0
+  margin: $base-spacing 0
+
+img
+  margin: 0
+  max-width: 100%

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>タグ hoge‐ニコニコ動画</title>
+    <link>http://www.nicovideo.jp/tag/hoge?sort=f</link>
+    <description>タグ「hoge」が付けられた動画 (全 2 件)</description>
+
+    <atom:link rel="self" type="application/rss+xml" href="http://www.nicovideo.jp/tag/hoge?sort=f&amp;rss=2.0"/>
+    <item>
+      <title>Video1</title>
+      <link>http://www.nicovideo.jp/watch/video1</link>
+      <pubDate>Thu, 01 Jan 2015 00:00:00 +0900</pubDate>
+    </item>
+    <item>
+      <title>Video1</title>
+      <link>http://www.nicovideo.jp/watch/video1</link>
+      <pubDate>Thu, 01 Jan 2015 00:00:00 +0900</pubDate>
+    </item>
+  </channel>
+</rss>

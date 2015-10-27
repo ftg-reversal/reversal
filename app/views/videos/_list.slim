@@ -1,0 +1,12 @@
+.videos.uk-flex.uk-flex-wrap.uk-flex-wrap-space-around.uk-margin-bottom
+  - @videos.each do |video|
+    article.video-item.uk-width-medium-1-2.uk-width-small-1-1.uk-margin-bottom.uk-flex
+      .video-thumbnail-wrapper.uk-width-1-3
+        a href="#{video.url}"
+          img.video-thumbnail src="#{video.thumbnail}"
+        p.video-time-ago = time_ago_in_words(video.posted_at) + '前'
+      - if video.video_site == VideoSite::Nicovideo
+        .video-site-nico
+      - else video.video_site == VideoSite::Youtube
+        .video-site-youtube
+      h3.video-title.uk-width-2-3 #{link_to video.title, video.url}

@@ -1,0 +1,21 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  host: localhost
+
+development:
+  <<: *default
+  database: reversal
+  username: vagrant
+  password: pw
+
+test:
+  <<: *default
+  database: test
+
+production:
+  <<: *default
+  database: reversal
+  username: <%= ENV['RAILS_DATABASE_USER'] %>
+  password: <%= ENV['RAILS_DATABASE_PASSWORD'] %>

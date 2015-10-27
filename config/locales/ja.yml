@@ -1,0 +1,44 @@
+ja:
+  datetime:
+    distance_in_words:
+      half_a_minute: "30秒前後"
+      less_than_x_seconds:
+        one:   "1秒"
+        other: "%{count}秒"
+      x_seconds:
+        one:   "1秒"
+        other: "%{count}秒"
+      less_than_x_minutes:
+        one:   "1分"
+        other: "%{count}分"
+      x_minutes:
+        one:   "1分"
+        other: "%{count}分"
+      about_x_hours:
+        one:   "1時間"
+        other: "%{count}時間"
+      x_days:
+        one:   "1日"
+        other: "%{count}日"
+      about_x_months:
+        one:   "1ヶ月"
+        other: "%{count}ヶ月"
+      x_months:
+        one:   "1ヶ月"
+        other: "%{count}ヶ月"
+      almost_x_years:
+        one:   "1年弱"
+        other: "%{count}年弱"
+      about_x_years:
+        one:   "1年"
+        other: "%{count}年"
+      over_x_years:
+        one:   "1年以上"
+        other: "%{count}年以上"
+  views:
+    pagination:
+      first: "&laquo; 最初"
+      last: "最後&raquo;"
+      previous: "&lsaquo; 前"
+      next: "次 &rsaquo;"
+      truncate: "..."
