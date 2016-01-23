@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160114193248) do
+ActiveRecord::Schema.define(version: 20160123061244) do
 
   create_table "lives", force: :cascade do |t|
     t.string   "live_id",           limit: 255
@@ -26,6 +26,41 @@ ActiveRecord::Schema.define(version: 20160114193248) do
     t.integer  "icon_file_size",    limit: 4
     t.datetime "icon_updated_at"
   end
+
+  create_table "slack_channels", force: :cascade do |t|
+    t.string   "cid",         limit: 255
+    t.string   "name",        limit: 255
+    t.string   "topic",       limit: 255
+    t.boolean  "is_archived"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "slack_channels", ["cid"], name: "cid", unique: true, using: :btree
+
+  create_table "slack_messages", force: :cascade do |t|
+    t.string   "channel",    limit: 255
+    t.string   "user",       limit: 255
+    t.string   "type",       limit: 255
+    t.float    "ts",         limit: 24
+    t.string   "text",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "slack_messages", ["channel", "user", "ts"], name: "channel_user_ts_index", unique: true, using: :btree
+  add_index "slack_messages", ["channel"], name: "channel", using: :btree
+  add_index "slack_messages", ["ts"], name: "ts", using: :btree
+  add_index "slack_messages", ["user"], name: "user", using: :btree
+
+  create_table "slack_users", force: :cascade do |t|
+    t.string   "uid",        limit: 255
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "slack_users", ["uid"], name: "uid", unique: true, using: :btree
 
   create_table "video_site_search_conditions", force: :cascade do |t|
     t.string   "word",       limit: 255, default: "", null: false
