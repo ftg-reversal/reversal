@@ -16,4 +16,5 @@
 #
 
 class SlackChannel < ActiveRecord::Base
+  has_many :slack_message
 end

@@ -3,6 +3,7 @@ class CreateSlackUsers < ActiveRecord::Migration
     create_table :slack_users do |t|
       t.string :uid
       t.string :name
+      t.string :icon_url
 
       t.timestamps null: false
     end

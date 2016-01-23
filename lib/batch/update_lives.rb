@@ -3,7 +3,7 @@ module Batch
     class << self
       def exec
         lives = LiveApiRepository.find_nicovideo_live.select(&:validate)
-        lives.map { |live|live.save }
+        lives.map(&:save)
 
         Live.all.map do |live|
           live.destroy if live.start_time + 30.minutes < DateTime.now

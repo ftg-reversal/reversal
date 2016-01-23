@@ -39,23 +39,24 @@ ActiveRecord::Schema.define(version: 20160123061244) do
   add_index "slack_channels", ["cid"], name: "cid", unique: true, using: :btree
 
   create_table "slack_messages", force: :cascade do |t|
-    t.string   "channel",    limit: 255
-    t.string   "user",       limit: 255
-    t.string   "type",       limit: 255
-    t.float    "ts",         limit: 24
-    t.string   "text",       limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.integer  "slack_channel_id", limit: 4
+    t.integer  "slack_user_id",    limit: 4
+    t.decimal  "ts",                           precision: 16, scale: 6
+    t.string   "text",             limit: 255
+    t.datetime "created_at",                                            null: false
+    t.datetime "updated_at",                                            null: false
   end
 
-  add_index "slack_messages", ["channel", "user", "ts"], name: "channel_user_ts_index", unique: true, using: :btree
-  add_index "slack_messages", ["channel"], name: "channel", using: :btree
+  add_index "slack_messages", ["slack_channel_id", "slack_user_id", "ts"], name: "channel_user_ts_index", unique: true, using: :btree
+  add_index "slack_messages", ["slack_channel_id", "ts"], name: "channel_ts_index", using: :btree
+  add_index "slack_messages", ["slack_channel_id"], name: "slack_channel_id", using: :btree
+  add_index "slack_messages", ["slack_user_id"], name: "slack_user_id", using: :btree
   add_index "slack_messages", ["ts"], name: "ts", using: :btree
-  add_index "slack_messages", ["user"], name: "user", using: :btree
 
   create_table "slack_users", force: :cascade do |t|
     t.string   "uid",        limit: 255
     t.string   "name",       limit: 255
+    t.string   "icon_url",   limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
