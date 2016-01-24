@@ -10,7 +10,8 @@ module SlackInfrastructure
             channel_id: channel.cid,
             user_id: message['user'],
             text: message['text'],
-            ts: BigDecimal(message['ts'])
+            ts: BigDecimal(message['ts']),
+            attachments: message['attachments']
           }
         end
       end

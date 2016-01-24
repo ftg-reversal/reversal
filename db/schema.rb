@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160123061244) do
+ActiveRecord::Schema.define(version: 20160124093128) do
 
   create_table "lives", force: :cascade do |t|
     t.string   "live_id",           limit: 255
@@ -41,10 +41,11 @@ ActiveRecord::Schema.define(version: 20160123061244) do
   create_table "slack_messages", force: :cascade do |t|
     t.integer  "slack_channel_id", limit: 4
     t.integer  "slack_user_id",    limit: 4
-    t.decimal  "ts",                           precision: 16, scale: 6
-    t.string   "text",             limit: 255
-    t.datetime "created_at",                                            null: false
-    t.datetime "updated_at",                                            null: false
+    t.decimal  "ts",                             precision: 16, scale: 6
+    t.text     "text",             limit: 65535
+    t.datetime "created_at",                                              null: false
+    t.datetime "updated_at",                                              null: false
+    t.text     "attachments",      limit: 65535
   end
 
   add_index "slack_messages", ["slack_channel_id", "slack_user_id", "ts"], name: "channel_user_ts_index", unique: true, using: :btree

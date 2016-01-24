@@ -25,11 +25,13 @@ class SlackApiRepository
     # @return [Array<SlackMessage>]
     def find_all_messages_by_channel(channel)
       SlackInfrastructure::ChannelHistory.exec(channel).map do |hash|
-        SlackMessage.find_or_initialize_by(slack_channel_id: hash[:channel_id], slack_user_id: hash[:user_id]) do |message|
+        user = SlackUser.find_by(uid: hash[:user_id])
+        SlackMessage.find_or_initialize_by(slack_channel_id: channel.id, slack_user_id: user.id, ts: hash[:ts]) do |message|
           message.slack_channel = channel
-          message.slack_user = SlackUser.find_by(uid: hash[:user_id])
+          message.slack_user = user
           message.text = hash[:text]
           message.ts = hash[:ts]
+          message.attachments = hash[:attachments]
         end
       end
     end

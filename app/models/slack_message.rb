@@ -6,9 +6,10 @@
 #  slack_channel_id :integer
 #  slack_user_id    :integer
 #  ts               :decimal(16, 6)
-#  text             :string(255)
+#  text             :text(65535)
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
+#  attachments      :text(65535)
 #
 # Indexes
 #
@@ -22,4 +23,8 @@
 class SlackMessage < ActiveRecord::Base
   belongs_to :slack_channel
   belongs_to :slack_user
+
+  serialize :attachments
+
+  default_scope -> { order(ts: 'desc') }
 end
