@@ -11,7 +11,8 @@ module SlackInfrastructure
             user_id: message['user'],
             text: message['text'],
             ts: BigDecimal(message['ts']),
-            attachments: message['attachments']
+            attachments: message['attachments'],
+            file: message['file']
           }
         end
       end

@@ -10,6 +10,7 @@
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #  attachments      :text(65535)
+#  file             :text(65535)
 #
 # Indexes
 #
@@ -25,6 +26,7 @@ class SlackMessage < ActiveRecord::Base
   belongs_to :slack_user
 
   serialize :attachments
+  serialize :file
 
   default_scope -> { order(ts: 'desc') }
 end

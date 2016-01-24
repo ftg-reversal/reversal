@@ -32,6 +32,7 @@ class SlackApiRepository
           message.text = hash[:text]
           message.ts = hash[:ts]
           message.attachments = hash[:attachments]
+          message.file = hash[:file]
         end
       end
     end
