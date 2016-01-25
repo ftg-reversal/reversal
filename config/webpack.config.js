@@ -41,10 +41,8 @@ var config = {
       { test: /\.jpg$/, loader: "url?mimetype=image/jpg" },
       { test: /\.png$/, loader: "url?mimetype=image/png" },
 
-      { test: /\.(woff|woff2)$/, loader: 'url?limit=10000&minetype=application/font-woff' },
-      { test: /\.ttf$/, loader: 'url?limit=10000&minetype=application/octet-stream' },
-      { test: /\.(eot|otf)$/, loader: 'url?limit=10000&minetype=image/svg+xml' },
-      { test: /\.svg$/, loader: 'url?limit=10000&minetype=image/svg+xml' }
+      { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "url-loader?limit=10000&mimetype=application/font-woff" },
+      { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "file-loader" }
     ]
   },
   postcss: function () {
