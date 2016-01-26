@@ -1,0 +1,90 @@
+.slack-message
+  margin-top: 15px
+  font-size: 0.9rem
+
+  &:first-child
+   margin-top: 0
+
+  .slack-message-icon
+    float: left
+    display: block
+    width: 36px
+    height: 36px
+
+    img
+      display: block
+      width: 36px
+      height: 36px
+      background: white
+      border-radius: 2px
+
+  .slack-message-header,
+  .slack-message-body,
+  .slack-message-attachment
+    margin-left: 46px
+
+  .slack-message-header
+    overflow: hidden
+
+    & > *
+      display: block
+      float: left
+      margin-right: 0.75rem
+
+    .slack-message-header-name
+      height: 22px
+      line-height: 22px
+      font-size: 0.9rem
+      font-weight: bold
+      color: black
+
+    .slack-message-header-date
+      height: 22px
+      line-height: 22px
+      font-size: 0.8rem
+      color: gray
+
+  .slack-message-body
+    margin-top: 5px
+    line-height: 1.4
+    word-wrap: break-word
+
+    a
+      text-decoration: underline
+
+      &:hover
+        text-decoration:: none
+
+    i
+      color: #999
+
+    pre
+      background: $grey-300
+
+    code
+      padding: 5px
+      background: $grey-300
+      color: black
+      white-space: pre
+
+    pre code
+      padding: 0
+      white-space: pre-wrap
+
+    q, blockquote
+      font-style: normal
+
+    blockquote
+      font-size: 100%
+
+    img.emoji
+      width: 20px
+      height: 20px
+      overflow: hidden
+
+  .slack-message-attachment
+    margin-top: 5px
+    padding: 10px
+    background: rgba(white, 0.5)
+    line-height: 1.5
+    border-left: $grey-300 5px solid

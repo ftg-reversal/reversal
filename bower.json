@@ -12,5 +12,6 @@
     "tests"
   ],
   "devDependencies": {
+    "jquery-sticky": "sticky#~1.0.3"
   }
 }

@@ -1,0 +1,10 @@
+#history-menubar.uk-navbar.uk-position-z-index
+  a.uk-visible-small href='#history-menu'
+    i.uk-icon-navicon.uk-float-left
+    h3.history-menubar-title = channel_name
+#history-menu
+  ul
+    - @channels.each do |channel|
+      li class="#{active_link_to_class('/slack/show/' + channel.name, class_active: 'Selected')}"
+        a href="/slack/show/#{channel.name}"
+          = "##{channel.name}"

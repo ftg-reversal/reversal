@@ -31,10 +31,14 @@ class SlackApiRepository
           message.slack_user = user
           message.text = hash[:text]
           message.ts = hash[:ts]
-          message.attachments = hash[:attachments]
+          message.attachments = hash[:attachments] || []
           message.file = hash[:file]
         end
       end
+    end
+
+    def find_original_emoji_set
+      SlackInfrastructure::Emoji.exec
     end
   end
 end

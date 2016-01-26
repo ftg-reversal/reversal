@@ -23,6 +23,7 @@ gem 'draper'
 # Service
 gem 'twitter'
 gem 'slack-api'
+gem 'slack_markdown'
 gem 'nico_search_snapshot'
 gem 'yt'
 gem 'devise'

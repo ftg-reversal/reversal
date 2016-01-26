@@ -1,0 +1,24 @@
+.history-list.uk-panel.uk-panel-box.uk-margin-top
+  .history-list-header.uk-hidden-small
+    h3.history-list-title
+      = "##{@channel.name}"
+
+  hr.history-list-split.uk-hidden-small
+
+  ul.uk-list
+    - @history.each do |message|
+      li.slack-message
+        .slack-message-icon
+          img src=message.slack_user.icon_url
+        .slack-message-header
+          .slack-message-header-name
+            | #{message.slack_user.name}
+          .slack-message-header-date
+            = l(message.date)
+        .slack-message-body
+          = message.format_text
+        - if message.image
+          .slack-message-attachment.slack-message-attachment-image
+            img src=message.image['thumb_360'] alt=message.image['title']
+        - message.attachments.each do |attachment|
+          = render('/slack/attachment', attachment: attachment)

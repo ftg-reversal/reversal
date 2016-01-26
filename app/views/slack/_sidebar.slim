@@ -1,0 +1,11 @@
+.channel-list.uk-panel.uk-panel-box.uk-margin-top
+  .channel-list-header
+    h3.channel-list-header チャンネル一覧
+
+  hr.channel-list-split
+
+  ul.uk-nav
+    - @channels.each do |channel|
+      li class="#{active_link_to_class('/slack/show/' + channel.name, class_active: 'is-active')}"
+        a href="/slack/show/#{channel.name}"
+          = "##{channel.name}"
