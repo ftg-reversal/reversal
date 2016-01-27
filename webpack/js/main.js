@@ -1,4 +1,5 @@
 require('jquery');
+require('jquery-ujs');
 require('jquery-sticky');
 require('jquery.mmenu');
 

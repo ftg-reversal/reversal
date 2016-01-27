@@ -24,10 +24,13 @@ gem 'draper'
 gem 'twitter'
 gem 'slack-api'
 gem 'slack_markdown'
+gem 'omniauth'
+gem 'omniauth-slack'
 gem 'nico_search_snapshot'
 gem 'yt'
 gem 'devise'
 gem 'paperclip'
+gem 'gemoji'
 
 # Production Manage
 gem 'whenever', require: false

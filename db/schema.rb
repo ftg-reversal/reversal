@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160124114550) do
+ActiveRecord::Schema.define(version: 20160127140221) do
 
   create_table "lives", force: :cascade do |t|
     t.string   "live_id",           limit: 255
@@ -26,6 +26,15 @@ ActiveRecord::Schema.define(version: 20160124114550) do
     t.integer  "icon_file_size",    limit: 4
     t.datetime "icon_updated_at"
   end
+
+  create_table "reversal_users", force: :cascade do |t|
+    t.string   "slack_user_id", limit: 255
+    t.boolean  "is_admin"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "reversal_users", ["slack_user_id"], name: "slack_user_id", unique: true, using: :btree
 
   create_table "slack_channels", force: :cascade do |t|
     t.string   "cid",         limit: 255

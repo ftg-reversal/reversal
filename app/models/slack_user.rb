@@ -15,5 +15,6 @@
 #
 
 class SlackUser < ActiveRecord::Base
+  has_one :reversal_user
   has_many :slack_message
 end

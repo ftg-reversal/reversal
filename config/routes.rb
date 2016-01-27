@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   get '/slack', to: 'slack#index'
   get '/slack/show/:channel', to: 'slack#show'
 
+  get '/auth/:provider/callback', to: 'sessions#create'
+  resource :session, only: [:destroy]
+
   # get '@:name', to: 'slack#users', as: 'user'
   get 'image', to: 'proxies#show', as: 'image_proxy'
 end

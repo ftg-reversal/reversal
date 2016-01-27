@@ -1,4 +1,17 @@
-header.header
-  .uk-container.uk-container-center
-    a href='/'
-      h1.header-logo Reversal
+header
+  nav.header.uk-navbar
+    .uk-container.uk-container-center
+      a href='/'
+        h1.header-logo.uk-navbar-brand Reversal
+      .uk-navbar-flip
+        ul.header-user.uk-navbar-nav
+          - if @current_user
+            li
+              img.header-user-icon src=@current_user.slack_user.icon_url
+            li
+              a href=session_path data-method='delete'
+                | ログアウト
+          - else
+            li
+              a href='/auth/slack'
+                | ログイン
