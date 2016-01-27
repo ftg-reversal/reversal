@@ -3,17 +3,21 @@ module SlackInfrastructure
     class << self
       # @param channel [SlackChannel]
       # @return [Array<Hash>]
-      def exec(channel)
-        client = SlackInfrastructure::SlackClient.exec
-        client.channels_history({channel: channel.cid, count: 300})['messages'].map do |message|
-          {
-            channel_id: channel.cid,
-            user_id: message['user'],
-            text: message['text'],
-            ts: BigDecimal(message['ts']),
-            attachments: message['attachments'],
-            file: message['file']
-          }
+      def exec(channel, cache = true)
+        Rails.cache.delete("api_channel_history_#{channel.cid}") unless cache
+
+        Rails.cache.fetch("api_channel_history_#{channel.cid}", expires_in: 3.minutes) do
+          client = SlackInfrastructure::SlackClient.exec
+          client.channels_history({channel: channel.cid, count: 300})['messages'].map do |message|
+            {
+              channel_id: channel.cid,
+              user_id: message['user'],
+              text: message['text'],
+              ts: BigDecimal(message['ts']),
+              attachments: message['attachments'],
+              file: message['file']
+            }
+          end
         end
       end
     end

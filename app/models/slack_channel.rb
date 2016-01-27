@@ -16,5 +16,5 @@
 #
 
 class SlackChannel < ActiveRecord::Base
-  has_many :slack_message
+  has_many :slack_message, -> { order(ts: 'desc') }
 end

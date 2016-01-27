@@ -6,6 +6,7 @@ module Batch
         SlackApiRepository.find_all_users.select(&:validate).map(&:save)
         SlackChannel.all.map do |channel|
           SlackApiRepository.find_all_messages_by_channel(channel).select(&:validate).map(&:save)
+          SlackApiRepository.find_all_deleted_messages_by_channel(channel).map(&:destroy)
         end
       end
     end

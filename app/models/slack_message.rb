@@ -27,6 +27,4 @@ class SlackMessage < ActiveRecord::Base
 
   serialize :attachments
   serialize :file
-
-  default_scope -> { order(ts: 'desc') }
 end

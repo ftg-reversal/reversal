@@ -24,7 +24,7 @@ class SlackApiRepository
     # @param channel[SlackChannel]
     # @return [Array<SlackMessage>]
     def find_all_messages_by_channel(channel)
-      SlackInfrastructure::ChannelHistory.exec(channel).map do |hash|
+      SlackInfrastructure::ChannelHistory.exec(channel, cache: true).map do |hash|
         user = SlackUser.find_by(uid: hash[:user_id])
         SlackMessage.find_or_initialize_by(slack_channel_id: channel.id, slack_user_id: user.id, ts: hash[:ts]) do |message|
           message.slack_channel = channel
@@ -33,6 +33,20 @@ class SlackApiRepository
           message.ts = hash[:ts]
           message.attachments = hash[:attachments] || []
           message.file = hash[:file]
+        end
+      end
+    end
+
+    # @param channel[SlackChannel]
+    # @return [Array<SlackMessage>]
+    def find_all_deleted_messages_by_channel(channel)
+      api_messages = SlackInfrastructure::ChannelHistory.exec(channel, cahce: true)
+      oldest_api_message = api_messages.last
+      SlackMessage.where(slack_channel: channel).order(ts: 'desc').limit(300).select do |message|
+        oldest_api_message[:ts] < message.ts && api_messages.none? do |api_message|
+          api_message[:channel_id] == message.slack_channel.cid &&
+           api_message[:user_id] == message.slack_user.uid &&
+           api_message[:ts] == message.ts
         end
       end
     end
