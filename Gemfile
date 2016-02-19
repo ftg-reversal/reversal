@@ -13,6 +13,7 @@ gem 'foreman'
 
 # View
 gem 'slim-rails'
+gem 'active_model_serializers'
 gem 'kaminari'
 gem 'active_link_to'
 gem 'rails_autolink'
