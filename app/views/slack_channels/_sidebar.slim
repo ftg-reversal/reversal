@@ -6,6 +6,6 @@
 
   ul.uk-nav
     - @channels.each do |channel|
-      li class="#{active_link_to_class('/slack/show/' + channel.name, class_active: 'is-active')}"
-        a href="/slack/show/#{channel.name}"
+      li class="#{active_link_to_class(channel_path(channel.id), class_active: 'is-active')}"
+        a href=channel_path(channel.id)
           = "##{channel.name}"
