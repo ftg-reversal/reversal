@@ -5,12 +5,12 @@ class SessionsController < ApplicationController
 
     auth = request.env['omniauth.auth']
 
-    redirect_to '/' unless auth
-    redirect_to '/' unless auth['provider'] == 'slack'
-    redirect_to '/' unless auth['info']['team_id'] == ENV['SLACK_TEAM_ID']
+    redirect_to '/' and return unless auth
+    redirect_to '/' and return unless auth['provider'] == 'slack'
+    redirect_to '/' and return unless auth['info']['team_id'] == ENV['SLACK_TEAM_ID']
 
     slack_user = SlackUser.find_by(uid: auth['uid'])
-    redirect_to '/' unless slack_user
+    redirect_to '/' and return unless slack_user
 
     reversal_user = ReversalUser.find_or_initialize_by(slack_user_id: slack_user.id)
     reversal_user.is_admin = auth.extra.user_info['user']['is_admin']
