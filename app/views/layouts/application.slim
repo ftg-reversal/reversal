@@ -15,11 +15,15 @@ html
     .main
       = render partial: '/layouts/header'
       = render partial: '/layouts/navbar'
-      = yield
+      .uk-container.uk-container-center.uk-margin-top
+        = yield
 
     .footer.uk-margin-top.uk-margin-bottom.uk-text-center.uk-text-muted
       hr
       | FTG-Reversal
-      a href='https://twitter.com/dionore' target='_blank' &nbsp;@dionore
+      a href='https://twitter.com/dionore' target='_blank'
+        | &nbsp;@dionore
 
-    = javascript_include_tag *custom_webpack_asset_paths('index')
+    = javascript_include_tag *custom_webpack_asset_paths('bundle')
+    = javascript_include_tag *custom_webpack_asset_paths('style')
+    = yield(:javascript)

@@ -7,7 +7,7 @@ default: &default
 development:
   <<: *default
   database: reversal
-  username: vagrant
+  username: reversal
   password: pw
 
 test:

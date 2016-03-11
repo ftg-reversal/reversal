@@ -12,6 +12,6 @@ Rails.application.routes.draw do
     resources :channels, as: :channels, path: :channels, only: [:index, :show]
   end
 
-  get '@:name', to: 'slack_channels#users', as: 'user'
+  get '@:name', to: 'slack_channels#users', as: 'user', param: 'name'
   get 'image', to: 'proxies#show', as: 'image_proxy'
 end

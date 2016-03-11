@@ -1,7 +1,6 @@
-.uk-container.uk-container-center.uk-margin-top
-  .contents-type
-    .contents-type-text 動画一覧
-    - page_entries_info @videos
-  = render partial: '/videos/list'
+.contents-type
+  .contents-type-text 動画一覧
+  - page_entries_info @videos
+= render partial: '/videos/list'
 
-  = paginate @videos
+= paginate @videos

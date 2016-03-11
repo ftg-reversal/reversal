@@ -3,7 +3,7 @@ class ImageDownloadService
     # @param url [String]
     # @return [StringIO, Tempfile, File]
     def fetch_file(url)
-      open(url)
+      url.nil? ? dummy_thumbnail : open(url)
     rescue OpenURI::HTTPError
       dummy_thumbnail
     end

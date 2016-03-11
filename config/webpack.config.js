@@ -13,7 +13,8 @@ var production = process.env.TARGET === 'production';
 
 var config = {
   entry: {
-    'index': './webpack/index.js'
+    'bundle': './webpack/js/index.js',
+    'style': './webpack/css/index.sass'
   },
 
   output: {
@@ -32,6 +33,9 @@ var config = {
     ],
 
     loaders: [
+      { test: /\.js$/, exclude: /node_modules/, loader: 'babel' },
+      { test: /\.jade$/, loader: 'jade' },
+
       { test: /\.css$/, loader: 'style!css?sourceMap!postcss' },
       { test: /\.(sass|scss)$/, loader: 'style!css?sourceMap!postcss!sass?indentedSyntax=sass&sourceMap' +
         '&includePaths[]=' + encodeURIComponent(require('node-bourbon').includePaths) +
@@ -52,8 +56,7 @@ var config = {
   resolve: {
     root: [
       path.join(__dirname, '..', 'webpack'),
-      path.join(__dirname, '..', 'webpack', 'js', 'uikit'),
-      path.join(__dirname, 'bower_components'),
+      path.join(__dirname, '..', 'webpack', 'js', 'uikit')
     ]
   },
 
@@ -71,7 +74,8 @@ var config = {
       $:               'jquery',
       jQuery:          'jquery',
       jquery:          'jquery',
-      'window.jQuery': 'jquery'
+      'window.jQuery': 'jquery',
+      _:               'lodash'
     }),
     new BowerWebpackPlugin()
   ]
@@ -97,11 +101,7 @@ if (production) {
   };
   config.output.publicPath = '//localhost:' + devServerPort + '/webpack/';
   // Source maps
-  config.devtool = 'eval';
-  config.watchOptions = {
-    aggregateTimeout: 300,
-    poll: 1000
-  }
+  config.devtool = 'inline-source-map';
 }
 
 module.exports = config;

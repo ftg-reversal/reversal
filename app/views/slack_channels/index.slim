@@ -1,13 +1,12 @@
-.slack-menu.uk-clearfix
-  = render 'menu', channel_name: 'チャンネルを選択してください'
+#history-menubar.uk-navbar.uk-visible-small.uk-position-z-index
+  = render 'menu', channel_name: 'チャンネルを選択'
 .uk-grid.uk-grid-match data-uk-grid-match="{target: '.uk-panel'}"
   .uk-width-medium-1-4.uk-hidden-small
     = render 'sidebar'
   .history-column.uk-width-medium-3-4.uk-width-small-1-1
     .uk-panel.uk-panel-box.uk-margin-top
       p
-        | 本サイトのSlackのログを保存しています。
-        | 登録は以下からお願いします。
+        | text
       p
         a href='' FTG-Reversal Slack
 

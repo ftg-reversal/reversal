@@ -1,0 +1,5 @@
+.uk-container.uk-container-center
+  = render 'item', summary: @summary
+
+  - content_for :title do
+    == @summary.title

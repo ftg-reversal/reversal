@@ -12,6 +12,8 @@ Bundler.require(*Rails.groups)
 
 module Reversal
   class Application < Rails::Application
+    config.time_zone = 'Tokyo'
+
     config.active_record.raise_in_transactional_callbacks = true
     config.autoload_paths.push "#{Rails.root}/app/configes"
     config.autoload_paths.push "#{Rails.root}/app/infrastructures"

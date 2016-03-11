@@ -9,6 +9,9 @@ header
             li
               img.header-user-icon src=@current_user.slack_user.icon_url
             li
+              a href=new_summary_path
+                | まとめの作成
+            li
               a href=session_path data-method='delete'
                 | ログアウト
           - else

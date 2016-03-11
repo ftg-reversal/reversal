@@ -15,20 +15,14 @@
 #  cid  (cid) UNIQUE
 #
 
-class SlackChannelsController < ApplicationController
-  before_action :set_channels
-
-  def index
+module SlackChannelsHelper
+  def messages_json(summary)
+    summary.slack_messages.to_a.map { |message|
+      MessageApiSerializer.new(SlackMessageDecorator.new(message))
+    }.to_json(root: false)
   end
 
-  def show
-    @channel = SlackChannel.find(params[:id])
-    @history = @channel.slack_message.decorate
-  end
-
-  private
-
-  def set_channels
-    @channels = SlackChannel.all
+  def attachment_text_format(text)
+    SlackMessageDecorator.new(OpenStruct.new(text: text)).format_text
   end
 end

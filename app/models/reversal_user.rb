@@ -15,4 +15,8 @@
 
 class ReversalUser < ActiveRecord::Base
   belongs_to :slack_user
+
+  def to_param
+    slack_user.name
+  end
 end

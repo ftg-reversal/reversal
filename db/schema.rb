@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160127140221) do
+ActiveRecord::Schema.define(version: 20160222154439) do
 
   create_table "lives", force: :cascade do |t|
     t.string   "live_id",           limit: 255
@@ -64,6 +64,14 @@ ActiveRecord::Schema.define(version: 20160127140221) do
   add_index "slack_messages", ["slack_user_id"], name: "slack_user_id", using: :btree
   add_index "slack_messages", ["ts"], name: "ts", using: :btree
 
+  create_table "slack_messages_summaries", force: :cascade do |t|
+    t.integer "slack_message_id", limit: 4, null: false
+    t.integer "summary_id",       limit: 4, null: false
+  end
+
+  add_index "slack_messages_summaries", ["slack_message_id"], name: "index_slack_messages_summaries_on_slack_message_id", using: :btree
+  add_index "slack_messages_summaries", ["summary_id"], name: "index_slack_messages_summaries_on_summary_id", using: :btree
+
   create_table "slack_users", force: :cascade do |t|
     t.string   "uid",        limit: 255
     t.string   "name",       limit: 255
@@ -73,6 +81,18 @@ ActiveRecord::Schema.define(version: 20160127140221) do
   end
 
   add_index "slack_users", ["uid"], name: "uid", unique: true, using: :btree
+
+  create_table "summaries", force: :cascade do |t|
+    t.string   "title",            limit: 255,   null: false
+    t.text     "description",      limit: 65535, null: false
+    t.integer  "reversal_user_id", limit: 4,     null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.integer  "slack_channel_id", limit: 4,     null: false
+  end
+
+  add_index "summaries", ["reversal_user_id"], name: "index_summaries_on_reversal_user_id", using: :btree
+  add_index "summaries", ["slack_channel_id"], name: "index_summaries_on_slack_channel_id", using: :btree
 
   create_table "video_site_search_conditions", force: :cascade do |t|
     t.string   "word",       limit: 255, default: "", null: false
@@ -97,4 +117,8 @@ ActiveRecord::Schema.define(version: 20160127140221) do
 
   add_index "videos", ["url"], name: "url", unique: true, using: :btree
 
+  add_foreign_key "slack_messages_summaries", "slack_messages"
+  add_foreign_key "slack_messages_summaries", "summaries"
+  add_foreign_key "summaries", "reversal_users"
+  add_foreign_key "summaries", "slack_channels"
 end

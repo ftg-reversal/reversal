@@ -1,0 +1,9 @@
+.summary-list-item.uk-panel.uk-panel-box.uk-margin-top
+  .summary-list-item-header
+    a.summary-list-item-icon href=user_path(summary.reversal_user)
+      img src=summary.reversal_user.slack_user.icon_url title=summary.reversal_user.slack_user.name
+    h3.summary-list-item-title
+      a href=summary_path(summary)
+        = summary.title
+    .summary-list-item-description
+      = summary.description
