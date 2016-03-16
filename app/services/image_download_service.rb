@@ -12,19 +12,5 @@ class ImageDownloadService
     def dummy_thumbnail
       File.open(VideoConfig.dummy_thumbnail_filepath)
     end
-
-    private
-
-    # @param file [StringIO, Tempfile, File]
-    # @return [Boolean]
-    def remote_file?(file)
-      file.respond_to?(:status) && file.status.first.to_i == 200
-    end
-
-    # @param file [StringIO, Tempfile, File]
-    # @return [Boolean]
-    def local_file?(file)
-      file.is_a?(File)
-    end
   end
 end
