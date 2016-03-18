@@ -15,7 +15,8 @@ module Reversal
     config.time_zone = 'Tokyo'
 
     config.active_record.raise_in_transactional_callbacks = true
-    config.autoload_paths.push "#{Rails.root}/app/configes"
+    config.autoload_paths.push "#{Rails.root}/app/configs"
+    config.autoload_paths.push "#{Rails.root}/app/externals"
     config.autoload_paths.push "#{Rails.root}/app/infrastructures"
     config.autoload_paths.push "#{Rails.root}/app/repositories"
     config.autoload_paths.push "#{Rails.root}/app/services"

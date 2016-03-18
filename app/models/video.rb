@@ -33,7 +33,7 @@ class Video < ActiveRecord::Base
   validates_attachment_content_type :thumbnail, content_type: %r{/\Aimage\/.*\Z/}
 
   def fetch_thumbnail
-    self.thumbnail = ImageDownloadService.fetch_file(thumbnail_uri)
+    self.thumbnail = Domain::VideoImageDownloader.fetch_filb(thumbnail_uri)
     true
   end
 
