@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :summaries
 
   namespace :api, { format: 'json' } do
-    resources :channels, as: :channels, path: :channels, only: [:index, :show]
+    resources :channels, only: [:index, :show]
   end
 
   get '@:name', to: 'slack_channels#users', as: 'user', param: 'name'
