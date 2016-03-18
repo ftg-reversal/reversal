@@ -27,7 +27,7 @@ export default class SummaryEditor extends Vue {
       ready: function() {
         this.summaryID = $(this.$el).data("summary-id");
         this.title = $(this.$el).data("summary-title");
-        this.description = $(this.$el).data("summary-description");
+        this.description = $(this.$el).data("summary-description") ? $(this.$el).data("summary-description") : "";
 
         $(this.$el).data("messages").map((message) => {
           this.messages.push({
