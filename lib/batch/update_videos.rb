@@ -13,7 +13,7 @@ module Batch
       # @param [Video]
       # @return [Boolean]
       def save(video)
-        # VideoUpdateNotificatorService.tweet(video)
+        # VideoUpdateNotifier.tweet(video)
         video.save
       end
     end

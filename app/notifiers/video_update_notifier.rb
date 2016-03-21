@@ -1,4 +1,4 @@
-class VideoUpdateNotificatorService
+class VideoUpdateNotifier
   class << self
     # @param video [Video]
     def tweet(video)

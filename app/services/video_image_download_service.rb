@@ -1,4 +1,4 @@
-class ImageDownloadService
+class VideoImageDownloadService
   class << self
     # @param url [String]
     # @return [StringIO, Tempfile, File]
