@@ -6,7 +6,7 @@ module Api
     end
 
     def show
-      messages = SlackChannel.find_by(id: params[:id]).slack_message.limit(300).decorate
+      messages = SlackChannel.find(params[:id]).slack_message.limit(300).decorate
       render json: messages, each_serializer: MessageApiSerializer, root: nil
     end
   end
