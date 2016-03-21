@@ -26,7 +26,7 @@ class Live < ActiveRecord::Base
   before_save :fetch_icon
 
   def fetch_icon
-    self.icon = Domain::VideoImageDownloader.fetch_file(icon_url)
+    self.icon = ImageDownloadService.fetch_file(icon_url)
     true
   end
 end
