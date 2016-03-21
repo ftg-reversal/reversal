@@ -1,19 +1,18 @@
-.slack-message-attachment class="slack-message-attachment-#{attachment_item[:service_name] || 'other'}"
-  - case attachment_item['service_name']
+.slack-message-attachment class="slack-message-attachment-#{attachment['service_name'] || 'other'}"
+  - case attachment['service_name']
   - when nil
     .slack-message-attachment-name
-      a href=attachment_item['title_link']
-        = attachment_item['title']
+      a href=attachment['title_link']
+        = attachment['title']
     .slack-message-attachment-text
-      = attachment_text_format(attachment_item['text'])
+      = attachment_text_format(attachment['text'])
   - when 'twitter'
-    .slack-message-attachment-name
-      = attachment_item['author_name']
-      | &nbsp;
-      span.uk-text-small.uk-text-muted
-        = attachment_item['author_subname']
-    .slack-message-attachment-text
-      = attachment_text_format(attachment_item['text'])
+    blockquote.twitter-tweet
+      p
+        = attachment_text_format(attachment['text'])
+      | &mdash;
+      = " #{attachment['author_name']} (#{attachment['author_subname']}) "
+      a href=attachment['from_url']
   - else
     .slack-message-attachment-text
-      = attachment_item['text']
+      = attachment['text']
