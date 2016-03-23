@@ -1,0 +1,7 @@
+Host localhost
+  HostName localhost
+  StrictHostKeyChecking no
+  PasswordAuthentication no
+  IdentityFile "./.vagrant/machines/default/virtualbox/private_key"
+  IdentitiesOnly yes
+

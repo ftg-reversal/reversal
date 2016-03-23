@@ -17,11 +17,27 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     vb.customize ["modifyvm", :id, "--memory", "2048"]
   end
 
-  config.vm.provision 'ansible' do |ansible|
+  config.vm.provision :shell, inline: <<SCRIPT
+GALAXY=/usr/local/bin/ansible-galaxy
+echo '#!/usr/bin/env python2
+import sys
+import os
+
+args = sys.argv
+if args[1:] == ["--help"]:
+  args.insert(1, "info")
+
+os.execv("/usr/bin/ansible-galaxy", args)
+' | sudo tee $GALAXY
+sudo chmod 0755 $GALAXY
+SCRIPT
+
+  config.vm.provision :ansible_local do |ansible|
     ansible.limit = 'all'
     ansible.playbook = 'provision/development.yml'
     ansible.inventory_path = 'provision/hosts'
+    ansible.install = true
   end
 
-  config.vm.synced_folder '../', '/home/vagrant/rails' # , type: 'nfs' # , rsync__exclude: ['.bundle/', 'node_modules/', 'bower_components/']
+  config.vm.synced_folder '../', '/home/vagrant/rails'
 end
