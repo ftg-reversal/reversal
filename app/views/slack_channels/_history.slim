@@ -21,4 +21,4 @@
           .slack-message-attachment.slack-message-attachment-image
             img src=message.image['thumb_360'] alt=message.image['title']
         - message.attachments.each do |attachment|
-          = render('/slack_channels/attachment', attachment: attachment)
+          = render('/shared/attachment', attachment: attachment)

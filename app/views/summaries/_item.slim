@@ -36,7 +36,7 @@
             a href=message.permalink
               img src=message.image['thumb_360'] alt=message.image['title']
         - message.attachment_items.each do |attachment_item|
-          = render('/summaries/attachment', attachment: attachment_item)
+          = render('/shared/attachment', attachment: attachment_item)
 
     - if @current_user && (@current_user == summary.reversal_user || @current_user.admin?)
       ul.uk-subnav.uk-align-right.uk-margin-top
