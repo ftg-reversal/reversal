@@ -7,8 +7,10 @@ class ApplicationController < ActionController::Base
   def do_login
     if session['user_id']
       user = SlackUser.find_by(uid: session['user_id'])
-      @current_user = user.nil? ? nil : ReversalUser.joins(:slack_user).find(user.id)
+      @current_user = user.nil? ? nil : ReversalUser.joins(:slack_user).find_by(slack_user_id: user.id)
       session['user_id'] = nil unless @current_user
     end
+  rescue
+    session['user_id'] = nil
   end
 end

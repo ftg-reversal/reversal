@@ -3,7 +3,7 @@ class SlackApiRepository
     # @return [Array<SlackChannel>]
     def find_all_channels
       SlackInfrastructure::ChannelList.exec.map do |hash|
-        SlackChannel.find_or_initialize_by(cid: hash[:channel_id]) do |channel|
+        SlackChannel.find_or_initialize_by(cid: hash[:channel_id]).tap do |channel|
           channel.name = hash[:name]
           channel.topic = hash[:topic]
           channel.is_archived = hash[:is_archived]
@@ -14,7 +14,7 @@ class SlackApiRepository
     # @return [Array<SlackUser>]
     def find_all_users
       SlackInfrastructure::UserList.exec.map do |hash|
-        SlackUser.find_or_initialize_by(uid: hash[:user_id]) do |user|
+        SlackUser.find_or_initialize_by(uid: hash[:user_id]).tap do |user|
           user.name = hash[:name]
           user.icon_url = hash[:icon_url]
         end
@@ -26,7 +26,7 @@ class SlackApiRepository
     def find_all_messages_by_channel(channel)
       SlackInfrastructure::ChannelHistory.exec(channel, cache: true).map do |hash|
         user = SlackUser.find_by(uid: hash[:user_id])
-        SlackMessage.find_or_initialize_by(slack_channel_id: channel.id, slack_user_id: user.id, ts: hash[:ts]) do |message|
+        SlackMessage.find_or_initialize_by(slack_channel_id: channel.id, slack_user_id: user.id, ts: hash[:ts]).tap do |message|
           message.slack_channel = channel
           message.slack_user = user
           message.text = hash[:text]
