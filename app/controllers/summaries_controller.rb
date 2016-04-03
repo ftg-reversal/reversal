@@ -17,10 +17,15 @@
 #
 
 class SummariesController < ApplicationController
-  before_action :set_summary, only: [:show, :edit, :destroy]
+  before_action :set_summary, only: [:show, :edit, :update, :destroy]
+  before_action :do_check_login, only: [:new, :create, :update, :edit, :destroy]
+  before_action :ensure_permission, only: [:edit, :update, :destroy]
 
   def index
-    @summaries = Summary.order('id DESC').page(params[:page]).decorate
+    @summaries = Summary.order('updated_at DESC').page(params[:page]).decorate
+  end
+
+  def show
   end
 
   def new
@@ -36,23 +41,18 @@ class SummariesController < ApplicationController
     end
   end
 
-  def show
-  end
-
   def edit
   end
 
   def update
-    summary = Summary.find(params[:id])
-    if summary.update(summary_params)
-      render json: summary, root: nil
+    if @summary.update(summary_params)
+      render json: @summary.object, root: nil
     else
       raise 'error'
     end
   end
 
   def destroy
-    raise 'permission error' unless @summary.reversal_user == @current_user || @current_user.admin?
     @summary.destroy
     redirect_to root_path
   end
@@ -60,7 +60,7 @@ class SummariesController < ApplicationController
   private
 
   def set_summary
-    @summary = Summary.find(params[:id]).decorate
+    @summary = Summary.includes(slack_messages: [:slack_user, :slack_channel]).find(params[:id]).decorate
   end
 
   def summary_params
@@ -69,5 +69,9 @@ class SummariesController < ApplicationController
     n[:slack_channel] = SlackChannel.find(params[:slack_channel])
     n[:slack_messages] = n[:slack_messages].uniq.reject(&:empty?).map { |m| SlackMessage.find(m) }
     n
+  end
+
+  def ensure_permission
+    redirect_to '/' unless @summary.reversal_user == @current_user || @current_user.admin?
   end
 end
