@@ -1,5 +1,8 @@
-.uk-container.uk-container-center
+.uk-panel.uk-panel-box.uk-margin-top
+  = render 'shared/item_header', item: @summary
+  hr.summary-list-item-split
   = render 'item', summary: @summary
+  = render 'shared/item_authority', item: @summary, edit_path: edit_summary_path, delete_path: page_path(@summary)
 
-  - content_for :title do
-    == @summary.title
+- content_for :title do
+  = @summary.title

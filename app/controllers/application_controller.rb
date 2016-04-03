@@ -13,4 +13,8 @@ class ApplicationController < ActionController::Base
   rescue
     session['user_id'] = nil
   end
+
+  def do_check_login
+    redirect_to '/' unless @current_user
+  end
 end

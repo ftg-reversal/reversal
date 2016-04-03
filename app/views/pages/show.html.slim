@@ -1,0 +1,8 @@
+.uk-panel.uk-panel-box.uk-margin-top
+  = render 'shared/item_header', item: @page
+  hr.summary-list-item-split
+  == @page.description
+  = render 'shared/item_authority', item: @page, edit_path: edit_page_path, delete_path: page_path(@page)
+
+- content_for :title do
+  = @page.title

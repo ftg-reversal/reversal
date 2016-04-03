@@ -1,0 +1,9 @@
+.item-list-item.uk-panel.uk-panel-box.uk-margin-top
+  .item-list-item-header
+    a.item-list-item-icon href=user_path(item.reversal_user)
+      img src=item.reversal_user.slack_user.icon_url title=item.reversal_user.slack_user.name
+    h3.item-list-item-title
+      a href=path
+        = item.title
+    .item-list-item-description
+      == description

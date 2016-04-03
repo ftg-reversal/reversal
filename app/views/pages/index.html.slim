@@ -1,0 +1,5 @@
+.uk-container.uk-container-center
+  - @pages.each do |page|
+    - path = page.type == 'page' ? page_path(page) : summary_path(page)
+    = render 'shared/item_short', item: page, description: page.description.split.first , path: path
+  = paginate @pages

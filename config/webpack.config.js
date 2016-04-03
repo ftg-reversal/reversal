@@ -6,6 +6,7 @@ var StatsPlugin = require('stats-webpack-plugin');
 var BowerWebpackPlugin = require('bower-webpack-plugin');
 var autoprefixer = require('autoprefixer');
 var precss = require('precss');
+var ModernizrWebpackPlugin = require('modernizr-webpack-plugin');
 
 var devServerPort = 3808;
 
@@ -37,7 +38,8 @@ var config = {
       { test: /\.jade$/, loader: 'jade' },
 
       { test: /\.css$/, loader: 'style!css?sourceMap!postcss' },
-      { test: /\.(sass|scss)$/, loader: 'style!css?sourceMap!postcss!sass?indentedSyntax=sass&sourceMap' +
+      {
+        test: /\.(sass|scss)$/, loader: 'style!css?sourceMap!postcss!sass?indentedSyntax=sass&sourceMap' +
         '&includePaths[]=' + encodeURIComponent(require('node-bourbon').includePaths) +
         '!import-glob'
       },
@@ -77,7 +79,8 @@ var config = {
       'window.jQuery': 'jquery',
       _:               'lodash'
     }),
-    new BowerWebpackPlugin()
+    new BowerWebpackPlugin(),
+    new ModernizrWebpackPlugin()
   ]
 };
 

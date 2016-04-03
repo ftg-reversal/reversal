@@ -7,14 +7,20 @@ header
         ul.header-user.uk-navbar-nav
           - if @current_user
             li
+              .add-button-wrapper data-uk-dropdown="{mode: 'click'}"
+                i.add-button.fa.fa-plus
+                .header-menu.uk-dropdown.uk-dropdown-bottom
+                  ul.uk-nav.uk-nav-dropdown
+                    li
+                      a href=new_summary_path まとめの作成
+                    li
+                      a href=new_page_path ページの作成
+            li
               img.header-user-icon src=@current_user.slack_user.icon_url
             li
-              a href=new_summary_path
-                | まとめの作成
-            li
               a href=session_path data-method='delete'
-                | ログアウト
+                .logout ログアウト
           - else
             li
               a href='/auth/slack'
-                | ログイン
+                .login ログイン

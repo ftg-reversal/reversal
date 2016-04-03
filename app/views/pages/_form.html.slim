@@ -1,0 +1,17 @@
+= form_for @page, html: {class: 'uk-form uk-margin-top'} do |form|
+  - if @page.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@page.errors.count, "error")} prohibited this page from being saved:"
+      ul
+        - @page.errors.full_messages.each do |message|
+          li = message
+
+  .uk-form-row
+    label.uk-form-label タイトル
+    .uk-form-controls
+      = form.text_field :title
+  .uk-form-row
+    label.uk-form-label 内容
+    .uk-form-controls
+    = form.text_area :description, class: "ckeditor"
+  .actions.uk-button.uk-margin-top = form.submit '登録'

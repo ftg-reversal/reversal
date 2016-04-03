@@ -6,6 +6,7 @@ gem 'rails', '~> 4.2'
 
 # DB
 gem 'mysql2'
+gem 'active_record_union'
 
 # Webpack
 gem 'webpack-rails'
@@ -31,6 +32,7 @@ gem 'nico_search_snapshot'
 gem 'yt'
 gem 'devise'
 gem 'paperclip'
+gem 'ckeditor'
 gem 'gemoji'
 
 # Production Manage

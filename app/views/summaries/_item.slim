@@ -1,57 +1,26 @@
-.uk-panel.uk-panel-box.uk-margin-top
-  .summary-list-item-header
-    - if summary.reversal_user
-      a.summary-list-item-icon href=user_path(summary.reversal_user)
-        img src=summary.reversal_user.slack_user.icon_url title=summary.reversal_user.slack_user.name
-    h3.summary-list-item-title
-      a href=summary_path(summary)
-        = (summary.title && summary.title.size > 0 ? summary.title : 'no title')
-    .summary-list-item-owner
-      | by&nbsp;
-      a href=user_path(summary.reversal_user)
-        | #{summary.reversal_user.slack_user.name}
+- if summary.description.to_s.size > 0
+  .uk-panel.uk-panel-box.uk-panel-box-secondary.summary-description
+    = summary.description_html
 
-  hr.summary-list-item-split
-
-  - if summary.description.to_s.size > 0
-    .uk-panel.uk-panel-box.uk-panel-box-secondary.summary-description
-      = summary.description_html
-
-  ul.uk-list.uk-margin-top
-    - summary.messages.each do |message|
-      li.slack-message
-        a.slack-message-icon href=message.permalink target='_blank'
-          img src=message.slack_user.icon_url
-        .slack-message-header
-          .slack-message-header-name
-            | #{message.slack_user.name}
-          a.slack-message-header-date href=message.permalink target='_blank'
-            = l(message.created_at)
-          .slack-message-header-channel
-            | in ##{message.slack_channel.name}
-        .slack-message-body
-          = message.format_text
-        - if message.image
-          .slack-message-attachment.slack-message-attachment-image
-            a href=message.permalink
-              img src=message.image['thumb_360'] alt=message.image['title']
-        - message.attachment_items.each do |attachment_item|
-          = render('/shared/attachment', attachment: attachment_item)
-
-    - if @current_user && (@current_user == summary.reversal_user || @current_user.admin?)
-      ul.uk-subnav.uk-align-right.uk-margin-top
-        - if @current_user && @current_user == summary.reversal_user
-          li
-            a href=edit_summary_path(summary)
-              i.fa.fa-pencil
-              | &nbsp;編集
-          li
-            a href=summary_path(summary) data-method='delete' data-confirm='本当に削除してもよろしいですか？'
-              i.fa.fa-remove
-              | &nbsp;削除
-        - elsif @current_user && @current_user.admin?
-        li
-          a href=summary_path(summary) data-method='delete' data-confirm='管理者特権で削除してもよろしいですか？'
-            i.fa.fa-remove
-            | &nbsp;管理者削除
-br
+ul.uk-list.uk-margin-top
+  - summary.messages.each do |message|
+    li.slack-message
+      a.slack-message-icon href=message.permalink target='_blank'
+        img src=message.slack_user.icon_url
+      .slack-message-header
+        .slack-message-header-name
+          | #{message.slack_user.name}
+        a.slack-message-header-date href=message.permalink target='_blank'
+          = l(message.created_at)
+        .slack-message-header-channel
+          | in
+          a href=channel_path(message.slack_channel)
+            = " ##{message.slack_channel.name}"
+      .slack-message-body
+        = message.format_text
+      - if message.image
+        .slack-message-attachment.slack-message-attachment-image
+          a href=message.permalink
+            img src=message.image['thumb_360'] alt=message.image['title']
+      - message.attachment_items.each do |attachment_item|
+        = render('/shared/attachment', attachment: attachment_item)
