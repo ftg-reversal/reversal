@@ -1,6 +1,6 @@
 import Vue from "vue";
 
-Vue.use(require('vue-drag-and-drop'));
+Vue.use(require('./vue-drag-and-drop'));
 
 export default class SummaryEditor extends Vue {
   constructor() {

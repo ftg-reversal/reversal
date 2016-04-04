@@ -5,7 +5,7 @@
         .uk-panel-title(style='line-height: 40px')
           | プレビュー ({{ messages.length }} / 100)
         ul.uk-list.editor-main-list(style='height: 450px; overflow-y: scroll;')
-          li.slack-message(v-for='message in messages', @click="onClickMessage(this)", id="{{ $index }}", v-drag-and-drop, v-drop='handleDrop')
+          li.slack-message(v-for='message in messages', @click="onClickMessage(this)", id="{{ $index }}", v-drag-and-drop drop='handleDrop')
             .slack-message-icon
               img(:src='message.avatar_url')
             .slack-message-header
