@@ -16,6 +16,7 @@ test:
 
 production:
   <<: *default
+  host:     <%= ENV['RAILS_DATABASE_HOST'] %>
   database: reversal
   username: <%= ENV['RAILS_DATABASE_USER'] %>
   password: <%= ENV['RAILS_DATABASE_PASSWORD'] %>
