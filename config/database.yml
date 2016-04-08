@@ -2,16 +2,17 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: 5
-  host: localhost
 
 development:
   <<: *default
+  host: localhost
   database: reversal
   username: reversal
   password: pw
 
 test:
   <<: *default
+  host: localhost
   database: test
 
 production:
