@@ -1,7 +1,7 @@
 lock '3.4.0'
 
 set :application, 'ftg-reversal'
-set :repo_url, 'git@github-reversal:ftg-reversal/reversal.git'
+set :repo_url, 'git@github.com:ftg-reversal/reversal.git'
 
 ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
 
@@ -30,7 +30,7 @@ namespace :deploy do
     invoke 'unicorn:reload'
   end
 
-  before :starting, 'webpack:compile', 'deploy:webpack'
+  before :starting, 'deploy:webpack'
   after :publishing, :restart
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
