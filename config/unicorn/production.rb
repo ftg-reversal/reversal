@@ -1,5 +1,5 @@
-shared_path = "/home/reversal/apps/voting/shared/"
-current_path = "/home/reversal/apps/voting/current/"
+shared_path = "/home/ec2-user/apps/reversal/shared/"
+current_path = "/home/ec2-user/apps/reversal/current/"
 
 # ワーカーの数
 worker_processes 2
