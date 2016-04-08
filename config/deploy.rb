@@ -13,12 +13,16 @@ set :rbenv_roles, :all # default value
 
 set :use_sudo, false
 set :bundle_binstubs, nil
-set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/ckeditor_assets')
+set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/webpack', 'public/system', 'public/ckeditor_assets')
 set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
 
 namespace :deploy do
-  desc 'Upload webpack files'
+  desc 'Compile and Upload webpack files'
   task :webpack do
+    run_locally do
+      info 'Webpack Compile...'
+      execute 'rm public/webpack/* && env TARGET=production node_modules/.bin/webpack --config config/webpack.config.js'
+    end
     on roles(:app) do |host|
       upload!('public/webpack', "#{shared_path}/public/", recursive: true)
     end
