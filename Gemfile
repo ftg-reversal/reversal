@@ -5,7 +5,6 @@ ruby '2.3.0'
 gem 'rails', '~> 4.2'
 
 # DB
-gem 'mysql2'
 gem 'active_record_union'
 
 # Webpack
@@ -45,6 +44,7 @@ gem 'classy_enum'
 
 group :development, :test do
   gem 'thin'
+  gem 'mysql2'
   gem 'rack-reverse-proxy', require: 'rack/reverse_proxy'
   gem 'spring'
   gem 'spring-commands-rspec'
