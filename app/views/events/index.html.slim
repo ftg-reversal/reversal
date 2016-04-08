@@ -1,4 +1,4 @@
-h2.uk-h2 イベント一覧
+/ h2.uk-h2 イベント一覧
 .uk-container.uk-container-center
   - @events.each do |event|
     = render 'shared/item_short', item: event, description: event.description.split.first , path: event_path(event)
