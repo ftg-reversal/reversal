@@ -16,8 +16,6 @@ set :bundle_binstubs, nil
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/ckeditor_assets')
 set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
 
-after 'deploy:publishing', 'deploy:restart'
-
 namespace :deploy do
   desc 'Upload webpack files'
   task :webpack do
@@ -26,18 +24,11 @@ namespace :deploy do
     end
   end
 
+  desc 'Restart application'
   task :restart do
-    invoke 'unicorn:reload'
-  end
-
-  before :starting, 'deploy:webpack'
-  after :publishing, :restart
-  after :restart, :clear_cache do
-    on roles(:web), in: :groups, limit: 3, wait: 10 do
-      # Here we can do anything such as:
-      # within release_path do
-      #   execute :rake, 'cache:clear'
-      # end
-    end
+    invoke 'unicorn:restart'
   end
 end
+
+before 'deploy:starting', 'deploy:webpack'
+after 'deploy:publishing', 'deploy:restart'
