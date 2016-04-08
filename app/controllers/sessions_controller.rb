@@ -27,13 +27,13 @@ class SessionsController < ApplicationController
     ReversalUser.find_by(slack_user: slack_user) || ReversalUser.create_with_omniauth(auth, slack_user)
     session[:user_id] = slack_user.uid
     session[:token] = auth.credentials.token
-    redirect_to root_path
+    redirect_to request.env['omniauth.origin'] || root_path
   end
 
   def create_twitter(auth)
     twitter_user = TwitterUser.find_by_uid(auth['uid']) || TwitterUser.create_with_omniauth(auth)
     # TODO: UPDATE
     session[:twitter_user_id] = twitter_user.id
-    redirect_to root_path
+    redirect_to request.env['omniauth.origin'] || root_path
   end
 end
