@@ -2,6 +2,7 @@ doctype html
 html
   head
     meta name='viewport' content='width=device-width, initial-scale=1.0'
+    = javascript_include_tag *custom_webpack_asset_paths('style')
 
     title
       - if content_for?(:title)
@@ -25,5 +26,4 @@ html
         | &nbsp;@dionore
 
     = javascript_include_tag *custom_webpack_asset_paths('bundle')
-    = javascript_include_tag *custom_webpack_asset_paths('style')
     = yield(:javascript)

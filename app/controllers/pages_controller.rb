@@ -29,7 +29,6 @@ class PagesController < ApplicationController
   end
 
   def new
-    redirect_to '/' and return unless @current_user
     @page = Page.new
   end
 
@@ -38,7 +37,7 @@ class PagesController < ApplicationController
 
     respond_to do |format|
       if @page.save
-        format.html { redirect_to @page, notice: 'Page was successfully created.' }
+        format.html { redirect_to @page}
       else
         format.html { render action: 'new' }
       end
@@ -51,7 +50,7 @@ class PagesController < ApplicationController
   def update
     respond_to do |format|
       if @page.update(page_params)
-        format.html { redirect_to @page, notice: 'Page was successfully updated.' }
+        format.html { redirect_to @page}
       else
         format.html { render action: 'edit' }
       end
@@ -66,17 +65,14 @@ class PagesController < ApplicationController
   end
 
   private
-    def set_page
-      @page = Page.find(params[:id])
-    end
+
+  def set_page
+    @page = Page.find(params[:id])
+  end
 
   def page_params
     n = params.require(:page).permit(:title, :description)
     n[:reversal_user] = @current_user
     n
-  end
-
-  def ensure_permission
-    redirect_to '/' unless @page.reversal_user == @current_user
   end
 end

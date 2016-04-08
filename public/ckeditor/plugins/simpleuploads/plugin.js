@@ -364,7 +364,7 @@ https://bugzilla.mozilla.org/show_bug.cgi?id=454832
 			if (!config.filebrowserUploadUrl && !config.filebrowserImageUploadUrl) {
 				/*eslint-disable no-console */
 				if (window.console && console.log) {
-					console.log('The editor is missing the "config.filebrowserUploadUrl" entry to know the URL that will handle uploaded files.\r\n' +
+					console.log('The editor is missing the "config.filebrowserUploadUrl" entries to know the URL that will handle uploaded files.\r\n' +
 						'It should handle the posted file as shown in Example 3: http://docs.ckeditor.com/#!/guide/dev_file_browser_api-section-example-3 \r\n' +
 						'More info: http://alfonsoml.blogspot.com/2009/12/using-your-own-uploader-in-ckeditor.html');
 					console[ console.warn ? 'warn' : 'log' ]('The "SimpleUploads" plugin now is disabled.');
@@ -484,7 +484,7 @@ https://bugzilla.mozilla.org/show_bug.cgi?id=454832
 						}
 						if (!dialog.throbberCover)
 							return;
-							
+
 						if (dialog.throbbers.length > 0) {
 							this.centerVertical(dialog);
 							return;
@@ -566,7 +566,7 @@ https://bugzilla.mozilla.org/show_bug.cgi?id=454832
 				img.onload = function() {
 					var evData = CKEDITOR.tools.extend({}, data);
 					evData.image = img;
-			
+
 					var result = editor.fire('simpleuploads.localImageReady', evData);
 
 					// in v3 cancel() returns true and in v4 returns false
@@ -824,12 +824,12 @@ https://bugzilla.mozilla.org/show_bug.cgi?id=454832
 				Prevent drop outside of the editor if simpleuploads_allowDropOutside is not set
 			*/
 			var CKEDITORdragover = function(e) {
-				if (editor.config.simpleuploads_allowDropOutside) 
+				if (editor.config.simpleuploads_allowDropOutside)
 					return;
 
 				if (!hasFiles(e))
 					return;
-				
+
 				if (e.data.$.dataTransfer.dropEffect != 'copy') {
 					e.data.$.dataTransfer.dropEffect = 'none';
 					e.data.preventDefault();
@@ -1123,7 +1123,7 @@ https://bugzilla.mozilla.org/show_bug.cgi?id=454832
 			return imageRegexp.test( filename );
 		},
 
-		// Main entry point for callbacks
+		// Main entries point for callbacks
 		insertProcessedFile: function(editor, evData) {
 			evData.element = null;
 			evData.id = this.getTimeStampId(); // new id
@@ -1676,7 +1676,7 @@ https://bugzilla.mozilla.org/show_bug.cgi?id=454832
 						errorMessage = editor.lang.simpleuploads.errorPostFile;
 						errorMessage += ' ' + xhr.status;
 					}
-					
+
 					showMessage( editor, errorMessage.replace('%0', data.url) );
 				}
 				if (window.console)

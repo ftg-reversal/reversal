@@ -6,6 +6,7 @@
 /log
 /tmp
 /public/system
+/public/ckeditor_assets
 /coverage/
 /.env
 /erd.pdf

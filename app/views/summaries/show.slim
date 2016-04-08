@@ -1,6 +1,6 @@
 .uk-panel.uk-panel-box.uk-margin-top
   = render 'shared/item_header', item: @summary
-  hr.summary-list-item-split
+  hr
   = render 'item', summary: @summary
   = render 'shared/item_authority', item: @summary, edit_path: edit_summary_path, delete_path: page_path(@summary)
 

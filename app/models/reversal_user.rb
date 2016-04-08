@@ -16,6 +16,13 @@
 class ReversalUser < ActiveRecord::Base
   belongs_to :slack_user
 
+  def self.create_with_omniauth(auth, slack_user)
+    create! do |user|
+      user.slack_user = slack_user
+      user.is_admin = auth.extra.user_info['user']['is_admin']
+    end
+  end
+
   def to_param
     slack_user.name
   end

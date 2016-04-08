@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160326103110) do
+ActiveRecord::Schema.define(version: 20160404112619) do
+
+  create_table "charas", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "ckeditor_assets", force: :cascade do |t|
     t.string   "data_file_name",    limit: 255, null: false
@@ -28,6 +34,27 @@ ActiveRecord::Schema.define(version: 20160326103110) do
 
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable", using: :btree
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type", using: :btree
+
+  create_table "entries", force: :cascade do |t|
+    t.string   "name",             limit: 255
+    t.integer  "chara_id",         limit: 4
+    t.integer  "rank_id",          limit: 4
+    t.text     "comment",          limit: 65535
+    t.integer  "event_id",         limit: 4
+    t.integer  "reversal_user_id", limit: 4
+    t.integer  "twitter_user_id",  limit: 4
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.string   "title",            limit: 255
+    t.text     "description",      limit: 65535
+    t.datetime "datetime"
+    t.integer  "reversal_user_id", limit: 4
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
 
   create_table "lives", force: :cascade do |t|
     t.string   "live_id",           limit: 255
@@ -52,6 +79,12 @@ ActiveRecord::Schema.define(version: 20160326103110) do
   end
 
   add_index "pages", ["reversal_user_id"], name: "index_pages_on_reversal_user_id", using: :btree
+
+  create_table "ranks", force: :cascade do |t|
+    t.string   "rank",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "reversal_users", force: :cascade do |t|
     t.string   "slack_user_id", limit: 255
@@ -119,6 +152,15 @@ ActiveRecord::Schema.define(version: 20160326103110) do
 
   add_index "summaries", ["reversal_user_id"], name: "index_summaries_on_reversal_user_id", using: :btree
   add_index "summaries", ["slack_channel_id"], name: "index_summaries_on_slack_channel_id", using: :btree
+
+  create_table "twitter_users", force: :cascade do |t|
+    t.string   "uid",         limit: 255
+    t.string   "screen_name", limit: 255
+    t.string   "name",        limit: 255
+    t.string   "icon_url",    limit: 255
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
 
   create_table "video_site_search_conditions", force: :cascade do |t|
     t.string   "word",       limit: 255, default: "", null: false

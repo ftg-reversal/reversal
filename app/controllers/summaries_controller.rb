@@ -70,8 +70,4 @@ class SummariesController < ApplicationController
     n[:slack_messages] = n[:slack_messages].uniq.reject(&:empty?).map { |m| SlackMessage.find(m) }
     n
   end
-
-  def ensure_permission
-    redirect_to '/' unless @summary.reversal_user == @current_user || @current_user.admin?
-  end
 end

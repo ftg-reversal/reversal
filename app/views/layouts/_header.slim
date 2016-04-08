@@ -5,7 +5,15 @@ header
         h1.header-logo.uk-navbar-brand Reversal
       .uk-navbar-flip
         ul.header-user.uk-navbar-nav
-          - if @current_user
+          - if @twitter_user
+            li
+              img.twitter-login-icon src="/images/twitter.png"
+            li
+              img.header-user-icon src=@twitter_user.icon_url
+            li
+              a href=session_path data-method='delete'
+                .logout ログアウト
+          - elsif @current_user
             li
               .add-button-wrapper data-uk-dropdown="{mode: 'click'}"
                 i.add-button.fa.fa-plus
@@ -15,6 +23,8 @@ header
                       a href=new_summary_path まとめの作成
                     li
                       a href=new_page_path ページの作成
+                    li
+                      a href=new_event_path イベントの作成
             li
               img.header-user-icon src=@current_user.slack_user.icon_url
             li
@@ -22,5 +32,11 @@ header
                 .logout ログアウト
           - else
             li
-              a href='/auth/slack'
-                .login ログイン
+              .login data-uk-dropdown="{mode: 'click'}"
+                | ログイン
+                .header-menu.uk-dropdown.uk-dropdown-bottom
+                  ul.uk-nav.uk-nav-dropdown
+                    li
+                      a href='/auth/twitter' Twitterで仮ログイン
+                    li
+                      a href='/auth/slack' Slackでログイン
