@@ -16,4 +16,8 @@ Rails.application.configure do
     Bullet.console = true
     Bullet.add_footer = true
   end
+
+  donfig.after_initialize do
+
+  end
 end

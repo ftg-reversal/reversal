@@ -29,10 +29,11 @@ gem 'slack_markdown'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-slack'
+gem 'aws-sdk', '>= 2.0.0'
 gem 'nico_search_snapshot'
 gem 'yt'
 gem 'devise'
-gem 'paperclip'
+gem 'paperclip', :git => 'https://github.com/thoughtbot/paperclip.git'
 gem 'ckeditor'
 gem 'gemoji'
 
@@ -89,6 +90,9 @@ end
 
 group :production do
   gem 'unicorn'
+end
+
+group :deployment do
   gem 'capistrano'
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
