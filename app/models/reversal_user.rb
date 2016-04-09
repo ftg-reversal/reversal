@@ -14,6 +14,8 @@
 #
 
 class ReversalUser < ActiveRecord::Base
+  alias_attribute :admin?, :is_admin
+
   belongs_to :slack_user
 
   def self.create_with_omniauth(auth, slack_user)
