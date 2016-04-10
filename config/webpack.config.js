@@ -37,11 +37,10 @@ var config = {
       { test: /\.js$/, exclude: /node_modules/, loader: 'babel' },
       { test: /\.jade$/, loader: 'jade' },
 
-      { test: /\.css$/, loader: 'style!css?sourceMap!postcss' },
       {
-        test: /\.(sass|scss)$/, loader: 'style!css?sourceMap!postcss!sass?indentedSyntax=sass&sourceMap' +
-        '&includePaths[]=' + encodeURIComponent(require('node-bourbon').includePaths) +
-        '!import-glob'
+        test: /\.(css|sass|scss)$/, loader: "style!css?sourceMap!postcss!sass?indentedSyntax=sass&sourceMap" +
+        "&includePaths[]=" + encodeURIComponent(require('node-bourbon').includePaths) +
+        "!import-glob"
       },
 
       { test: /\.jpg$/, loader: "url?mimetype=image/jpg" },

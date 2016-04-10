@@ -15,10 +15,10 @@ header
                 .logout ログアウト
           - elsif @current_user
             li
-              .add-button-wrapper data-uk-dropdown="{mode: 'click'}"
+              .add-button-wrapper
                 i.add-button.fa.fa-plus
-                .header-menu.uk-dropdown.uk-dropdown-bottom
-                  ul.uk-nav.uk-nav-dropdown
+                .header-menu
+                  ul.uk-nav
                     / li
                     /   a href=new_summary_path まとめの作成
                     / li
@@ -32,10 +32,10 @@ header
                 .logout ログアウト
           - else
             li
-              .login data-uk-dropdown="{mode: 'click'}"
-                | ログイン
-                .header-menu.uk-dropdown.uk-dropdown-bottom
-                  ul.uk-nav.uk-nav-dropdown
+              .login
+                div ログイン
+                .login-menu
+                  ul.uk-nav
                     li
                       a href=auth_url('twitter') Twitterでログイン
                     / li
