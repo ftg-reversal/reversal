@@ -24,8 +24,7 @@ class EntriesController < ApplicationController
       @entry.save
       redirect_to event_entried_url(event_id: @entry.event.id)
     else
-      @errors = @entry.errors
-      render 'errors/entry_error'
+      redirect_to event_url(@entry.event), alert: @entry.errors.full_messages
     end
   end
 

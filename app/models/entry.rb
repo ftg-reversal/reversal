@@ -21,6 +21,13 @@ class Entry < ActiveRecord::Base
   belongs_to :reversal_user
   belongs_to :twitter_user
 
+  validates :name, presence: true
+  validates :chara, presence: true
+  validates :rank, presence: true
+  validates :event, presence: true
+  validates :twitter_user, presence: true
+
+
   def self.find_by_user(user)
     if user.class == ReversalUser
       find_by(reversal_user: user)

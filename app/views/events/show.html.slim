@@ -1,3 +1,8 @@
+- if flash[:alert]&.any?
+  - flash[:alert]&.each do |value|
+    .uk-alert.uk-alert-warning
+      = value
+
 .uk-panel.uk-panel-box.uk-margin-top
   = render 'shared/item_header', item: @event
   .uk-margin-top
