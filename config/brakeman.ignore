@@ -1,0 +1,42 @@
+{
+  "ignored_warnings": [
+    {
+      "warning_type": "Cross Site Scripting",
+      "warning_code": 2,
+      "fingerprint": "aa9ce9b177283b26c258630d13267f9faabd197a66d2a94ef3b4a4cadb102007",
+      "message": "Unescaped model attribute",
+      "file": "app/views/events/show.html.slim",
+      "line": 7,
+      "link": "http://brakemanscanner.org/docs/warning_types/cross_site_scripting",
+      "code": "Event.find(params[:id]).description",
+      "render_path": [{"type":"controller","class":"EventsController","method":"show","line":29,"file":"app/controllers/events_controller.rb"}],
+      "location": {
+        "type": "template",
+        "template": "events/show"
+      },
+      "user_input": null,
+      "confidence": "High",
+      "note": ""
+    },
+    {
+      "warning_type": "Cross Site Scripting",
+      "warning_code": 2,
+      "fingerprint": "b1b073938a8653d3eaea5a8d8f1154ea6c5de786e4c681e64ca6c9c26d27e8f2",
+      "message": "Unescaped model attribute",
+      "file": "app/views/pages/show.html.slim",
+      "line": 4,
+      "link": "http://brakemanscanner.org/docs/warning_types/cross_site_scripting",
+      "code": "Page.find(params[:id]).description",
+      "render_path": [{"type":"controller","class":"PagesController","method":"show","line":30,"file":"app/controllers/pages_controller.rb"}],
+      "location": {
+        "type": "template",
+        "template": "pages/show"
+      },
+      "user_input": null,
+      "confidence": "High",
+      "note": ""
+    }
+  ],
+  "updated": "2016-04-11 00:10:24 +0900",
+  "brakeman_version": "3.2.1"
+}

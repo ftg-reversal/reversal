@@ -49,7 +49,6 @@ group :development, :test do
   gem 'rack-reverse-proxy', require: 'rack/reverse_proxy'
   gem 'spring'
   gem 'spring-commands-rspec'
-  gem 'bullet'
   gem 'quiet_assets'
   gem 'dotenv-rails'
 
@@ -75,8 +74,10 @@ group :development, :test do
   gem 'view_source_map'
 
   # CI
-  gem 'rubocop'
-  gem 'rails_best_practices'
+  gem 'bullet'
+  gem 'rubocop', require: false
+  gem 'rails_best_practices', require: false
+  gem 'brakeman', require: false
 end
 
 group :test do
