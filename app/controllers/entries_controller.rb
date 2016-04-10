@@ -20,10 +20,12 @@ class EntriesController < ApplicationController
   def create
     @entry = Entry.new(entry_params)
 
-    respond_to do |format|
-      if @entry.save
-        format.html { redirect_to @entry.event}
-      end
+    if @entry.valid?
+      @entry.save
+      redirect_to event_entried_url(event_id: @entry.event.id)
+    else
+      @errors = @entry.errors
+      render 'errors/entry_error'
     end
   end
 

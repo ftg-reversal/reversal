@@ -1,0 +1,11 @@
+.uk-alert.uk-alert-success
+  | #{@event.title}にエントリーしました
+
+.uk-container.uk-margin-bottom.uk-text-center
+  p.uk-margin-bottom
+    | エントリーしたことをツイートする
+  div.uk-margin-bottom
+    a href="https://twitter.com/intent/tweet?button_hashtag=#{URI.encode(@event.title)}&text=#{"#{@event.title}にエントリーしました"}" class="twitter-hashtag-button" data-size="large" data-url="http://ftg-reversal.net/"
+      | Tweet
+  p
+    = link_to 'イベントページに戻る', event_path(@event)
