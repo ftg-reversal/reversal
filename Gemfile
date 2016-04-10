@@ -4,9 +4,12 @@ ruby '2.3.0'
 # rails
 gem 'rails', '~> 4.2'
 
+gem 'newrelic_rpm'
+
 # DB
 gem 'mysql2'
 gem 'active_record_union'
+
 
 # Webpack
 gem 'webpack-rails'
