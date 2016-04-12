@@ -1,4 +1,5 @@
 set :user, 'ec2-user'
+set :rails_env, 'production'
 set :deploy_to, "/home/#{fetch(:user)}/apps/reversal"
 set :deploy_via, :remote_cache
 set :use_sudo, false
