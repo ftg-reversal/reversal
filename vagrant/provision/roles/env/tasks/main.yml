@@ -24,6 +24,8 @@
     - libmysqld-dev
 
 - name: Install rails and bundler
+  become: yes
+  become_user: "{{ rbenv_user }}"
   gem: name={{ item }} executable=~/.rbenv/shims/gem user_install=False
   with_items:
     - bundler
