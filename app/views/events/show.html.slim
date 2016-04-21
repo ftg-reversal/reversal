@@ -32,12 +32,12 @@ table.entry-table.uk-table.uk-table-hover.uk-table-striped.uk-table-condensed
         td
           = entry.comment
 
-- if @user && !(@entries.map(&:user).include?(@user))
-  hr
-  = render 'entry', event: @event, entries: @entries, entry: @entry, user: @user
-- elsif @user
-  hr
-  = render 'cancel_entry', entry: @user_entry
+/ - if @user && !(@entries.map(&:user).include?(@user))
+/   hr
+/   = render 'entry', event: @event, entries: @entries, entry: @entry, user: @user
+/ - elsif @user
+/   hr
+/   = render 'cancel_entry', entry: @user_entry
 
 .widget-wrapper.uk-margin-top
   a.twitter-timeline href="https://twitter.com/hashtag/#{URI.encode(@event.title)}" data-widget-id="719154672523546625"
