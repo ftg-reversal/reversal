@@ -48,5 +48,5 @@ CKEDITOR.editorConfig = function( config )
     { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ], items: [ 'Bold', 'Italic', 'Underline'] },
     { name: 'insert', items: [ 'Image', 'Table', 'HorizontalRule', 'SpecialChar' ] }
   ];
-  config.extraPlugins = 'simpleuploads,embed,autoembed,justify,imageresponsive';
+  config.extraPlugins = 'simpleuploads,embed,autoembed,justify,imageresponsive,colorbutton';
 };
