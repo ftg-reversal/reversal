@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback', to: 'sessions#create'
   resource :session, only: [:destroy]
 
-  # resources :videos, only: [:index]
-  # resources :slack_channels, as: :channels, path: :channels, only: [:index, :show]
+  resources :videos, only: [:index]
+  resources :slack_channels, as: :channels, path: :channels, only: [:index, :show]
   resources :summaries
   resources :pages
   resources :events do

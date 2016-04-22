@@ -15,7 +15,8 @@ html
   body
     .main
       = render partial: '/layouts/header'
-      = render partial: '/layouts/navbar'
+      - if @current_user
+        = render partial: '/layouts/navbar'
       .uk-container.uk-container-center.uk-margin-top
         = yield
 
