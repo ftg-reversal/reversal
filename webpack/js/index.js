@@ -2,7 +2,6 @@ require("jquery");
 require("jquery-ujs");
 require("sticky-kit");
 
-require("uikit");
 require("font-awesome-webpack");
 
 window.CKEDITOR_BASEPATH = '/ckeditor/';
