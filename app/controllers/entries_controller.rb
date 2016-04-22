@@ -31,9 +31,7 @@ class EntriesController < ApplicationController
   def destroy
     event = @entry.event
     @entry.destroy
-    respond_to do |format|
-      format.html { redirect_to event }
-    end
+    redirect_to event
   end
 
   private

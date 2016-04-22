@@ -20,6 +20,7 @@ class PagesController < ApplicationController
   before_action :ensure_permission, only: [:edit, :update, :destroy]
 
   def index
+    # TODO: Modelに移す
     @pages = Page.select("'page' as type, id, title, description, updated_at, reversal_user_id")
                .union(Summary.select("'summary' as type, id, title, description, updated_at, reversal_user_id"))
                .includes(:reversal_user).order('updated_at DESC').page(params[:page])
@@ -35,12 +36,10 @@ class PagesController < ApplicationController
   def create
     @page = Page.new(page_params)
 
-    respond_to do |format|
-      if @page.save
-        format.html { redirect_to @page}
-      else
-        format.html { render action: 'new' }
-      end
+    if @page.save
+      redirect_to @page
+    else
+      render action: 'new'
     end
   end
 
@@ -48,20 +47,16 @@ class PagesController < ApplicationController
   end
 
   def update
-    respond_to do |format|
       if @page.update(page_params)
-        format.html { redirect_to @page}
+        redirect_to @page
       else
-        format.html { render action: 'edit' }
+        render action: 'edit'
       end
-    end
   end
 
   def destroy
     @page.destroy
-    respond_to do |format|
-      format.html { redirect_to pages_url }
-    end
+    redirect_to pages_url
   end
 
   private
