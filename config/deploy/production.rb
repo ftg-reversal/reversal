@@ -16,7 +16,6 @@ server 'ftg-reversal.net',
   user: fetch(:user),
   primary: true
 
-
 set :ssh_options, {
   keys: '~/.ssh/reversal.pem',
   forward_agent: true,
