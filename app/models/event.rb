@@ -14,4 +14,9 @@
 class Event < ActiveRecord::Base
   has_many :entry
   belongs_to :reversal_user
+
+  validates :title, presence: true
+  validates :description, presence: true
+  validates :datetime, presence: true
+  validates :reversal_user_id, presence: true
 end

@@ -16,4 +16,8 @@
 
 class Page < ActiveRecord::Base
   belongs_to :reversal_user
+
+  validates :title, presence: true
+  validates :description, presence: true
+  validates :reversal_user_id, presence: true
 end

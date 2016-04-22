@@ -1,5 +1,7 @@
 ja:
   attributes:
+    title: タイトル
+    description: 内容
     name: 名前
     chara: キャラ
     rank: 段位
