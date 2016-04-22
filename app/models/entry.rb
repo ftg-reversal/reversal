@@ -27,7 +27,6 @@ class Entry < ActiveRecord::Base
   validates :event, presence: true
   validates :twitter_user, presence: true
 
-
   def self.find_by_user(user)
     if user.class == ReversalUser
       find_by(reversal_user: user)
