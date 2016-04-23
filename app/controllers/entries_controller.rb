@@ -16,15 +16,17 @@
 
 class EntriesController < ApplicationController
   before_action :set_entry, only: [:destroy]
+  before_action :do_check_login_or_twitter_login, only: [:create, :destroy]
+  before_action :ensure_permission, only: [:destroy]
 
   def create
     @entry = Entry.new(entry_params)
+    event = @entry.event
 
-    if @entry.valid?
-      @entry.save
-      redirect_to event_entried_url(event_id: @entry.event.id)
+    if @entry.save
+      redirect_to event_entried_url(event_id: event.id)
     else
-      redirect_to event_url(@entry.event), alert: @entry.errors.full_messages
+      redirect_to event_url(event), alert: @entry.errors.full_messages
     end
   end
 
@@ -48,5 +50,15 @@ class EntriesController < ApplicationController
     n[:reversal_user] = @current_user if @current_user
     n[:twitter_user] = @twitter_user if @twitter_user
     n
+  end
+
+  def ensure_permission
+    if @current_user && @entry.reversal_user == @current_user
+      true
+    elsif @twitter_user == @entry.twitter_user
+      true
+    else
+      redirect_to '/'
+    end
   end
 end
