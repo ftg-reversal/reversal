@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160404112619) do
+ActiveRecord::Schema.define(version: 20160423133550) do
 
   create_table "charas", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -47,6 +47,10 @@ ActiveRecord::Schema.define(version: 20160404112619) do
     t.datetime "updated_at",                     null: false
   end
 
+  add_index "entries", ["event_id"], name: "fk_rails_20eb5df311", using: :btree
+  add_index "entries", ["reversal_user_id"], name: "fk_rails_6a9722b611", using: :btree
+  add_index "entries", ["twitter_user_id"], name: "fk_rails_8580cf0bd4", using: :btree
+
   create_table "events", force: :cascade do |t|
     t.string   "title",            limit: 255
     t.text     "description",      limit: 65535
@@ -55,6 +59,8 @@ ActiveRecord::Schema.define(version: 20160404112619) do
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
   end
+
+  add_index "events", ["reversal_user_id"], name: "fk_rails_337cdb79bb", using: :btree
 
   create_table "lives", force: :cascade do |t|
     t.string   "live_id",           limit: 255
@@ -87,10 +93,10 @@ ActiveRecord::Schema.define(version: 20160404112619) do
   end
 
   create_table "reversal_users", force: :cascade do |t|
-    t.string   "slack_user_id", limit: 255
+    t.integer  "slack_user_id", limit: 4
     t.boolean  "is_admin"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   add_index "reversal_users", ["slack_user_id"], name: "slack_user_id", unique: true, using: :btree
@@ -185,7 +191,14 @@ ActiveRecord::Schema.define(version: 20160404112619) do
 
   add_index "videos", ["url"], name: "url", unique: true, using: :btree
 
+  add_foreign_key "entries", "events"
+  add_foreign_key "entries", "reversal_users"
+  add_foreign_key "entries", "twitter_users"
+  add_foreign_key "events", "reversal_users"
   add_foreign_key "pages", "reversal_users"
+  add_foreign_key "reversal_users", "slack_users"
+  add_foreign_key "slack_messages", "slack_channels"
+  add_foreign_key "slack_messages", "slack_users"
   add_foreign_key "slack_messages_summaries", "slack_messages"
   add_foreign_key "slack_messages_summaries", "summaries"
   add_foreign_key "summaries", "reversal_users"

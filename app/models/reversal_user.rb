@@ -3,7 +3,7 @@
 # Table name: reversal_users
 #
 #  id            :integer          not null, primary key
-#  slack_user_id :string(255)
+#  slack_user_id :integer
 #  is_admin      :boolean
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null

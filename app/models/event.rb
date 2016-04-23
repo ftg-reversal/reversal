@@ -10,6 +10,10 @@
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #
+# Indexes
+#
+#  fk_rails_337cdb79bb  (reversal_user_id)
+#
 
 class Event < ActiveRecord::Base
   has_many :entry

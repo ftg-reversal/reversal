@@ -13,6 +13,12 @@
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #
+# Indexes
+#
+#  fk_rails_20eb5df311  (event_id)
+#  fk_rails_6a9722b611  (reversal_user_id)
+#  fk_rails_8580cf0bd4  (twitter_user_id)
+#
 
 class EntriesController < ApplicationController
   before_action :set_entry, only: [:destroy]
