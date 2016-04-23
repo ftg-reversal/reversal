@@ -73,4 +73,8 @@ class EventsController < ApplicationController
     n[:reversal_user] = @current_user
     n
   end
+
+  def ensure_permission
+    redirect_to '/' unless @event.reversal_user == @current_user || @current_user.admin?
+  end
 end

@@ -30,8 +30,4 @@ class ApplicationController < ActionController::Base
   def do_check_login_or_twitter_login
     redirect_to '/' unless @current_user || @twitter_user
   end
-
-  def ensure_permission
-    # redirect_to '/' unless @summary.reversal_user == @current_user || @current_user.admin?
-  end
 end

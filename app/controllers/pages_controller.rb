@@ -70,4 +70,8 @@ class PagesController < ApplicationController
     n[:reversal_user] = @current_user
     n
   end
+
+  def ensure_permission
+    redirect_to '/' unless @page.reversal_user == @current_user || @current_user.admin?
+  end
 end
