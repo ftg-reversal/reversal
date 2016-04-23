@@ -38,7 +38,7 @@ class EventsController < ApplicationController
     if @event.save
       redirect_to @event
     else
-      render action: 'new'
+      render 'new'
     end
   end
 
@@ -49,7 +49,7 @@ class EventsController < ApplicationController
     if @event.update(event_params)
       redirect_to @event
     else
-      render action: 'edit'
+      render 'edit'
     end
   end
 

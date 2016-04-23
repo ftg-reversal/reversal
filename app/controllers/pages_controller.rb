@@ -39,7 +39,7 @@ class PagesController < ApplicationController
     if @page.save
       redirect_to @page
     else
-      render action: 'new'
+      render 'new'
     end
   end
 
@@ -50,7 +50,7 @@ class PagesController < ApplicationController
       if @page.update(page_params)
         redirect_to @page
       else
-        render action: 'edit'
+        render 'edit'
       end
   end
 
