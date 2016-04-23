@@ -21,7 +21,7 @@ namespace :deploy do
   task :webpack do
     run_locally do
       info 'Webpack Compile...'
-      execute 'rm public/webpack/* || env TARGET=production node_modules/.bin/webpack --config config/webpack.config.js'
+      execute 'rm public/webpack/*; env TARGET=production node_modules/.bin/webpack --config config/webpack.config.js'
     end
     on roles(:app) do |host|
       upload!('public/webpack', "#{shared_path}/public/", recursive: true)
