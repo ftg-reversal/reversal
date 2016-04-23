@@ -3,7 +3,7 @@ a href='#history-menu'
   h3.history-menubar-title = channel_name
 #history-menu
   ul
-    - @channels.each do |channel|
+    - channels.each do |channel|
       li class="#{active_link_to_class('/slack/show/' + channel.name, class_active: 'Selected')}"
         a href=channel_path(channel.id)
           = "##{channel.name}"

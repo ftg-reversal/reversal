@@ -5,15 +5,15 @@ header
         h1.header-logo.uk-navbar-brand Reversal
       .uk-navbar-flip
         ul.header-user.uk-navbar-nav
-          - if @twitter_user
+          - if twitter_user
             li
               img.twitter-login-icon src="/images/twitter.png"
             li
-              img.header-user-icon src=@twitter_user.icon_url
+              img.header-user-icon src=twitter_user.icon_url
             li
               a href=session_path data-method='delete'
                 .logout ログアウト
-          - elsif @current_user
+          - elsif current_user
             li
               .add-button-wrapper
                 i.add-button.fa.fa-plus
@@ -26,7 +26,7 @@ header
                     li
                       a href=new_event_path イベントの作成
             li
-              img.header-user-icon src=@current_user.slack_user.icon_url
+              img.header-user-icon src=current_user.slack_user.icon_url
             li
               a href=session_path data-method='delete'
                 .logout ログアウト

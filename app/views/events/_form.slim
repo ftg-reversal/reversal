@@ -1,7 +1,7 @@
-= form_for @event, html: {class: 'uk-form uk-margin-top'} do |form|
-  - if @event.errors.any?
+= form_for event, html: {class: 'uk-form uk-margin-top'} do |form|
+  - if event.errors.any?
     ul
-      - @event.errors.full_messages.each do |message|
+      - event.errors.full_messages.each do |message|
         li = message
 
   .uk-form-row

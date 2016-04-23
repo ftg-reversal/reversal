@@ -1,6 +1,6 @@
 .contents-type
   .contents-type-text 動画一覧
   - page_entries_info @videos
-= render partial: '/videos/list'
+= render 'list', videos: @videos
 
 = paginate @videos

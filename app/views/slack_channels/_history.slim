@@ -1,12 +1,12 @@
 .history-list.uk-panel.uk-panel-box.uk-margin-top
   .history-list-header.uk-hidden-small
     h3.history-list-title
-      = "##{@channel.name}"
+      = "##{channel.name}"
 
   hr.history-list-split.uk-hidden-small
 
   ul.uk-list
-    - @history.each do |message|
+    - history.each do |message|
       li.slack-message
         .slack-message-icon
           img src=message.slack_user.icon_url
@@ -21,4 +21,4 @@
           .slack-message-attachment.slack-message-attachment-image
             img src=message.image['thumb_360'] alt=message.image['title']
         - message.attachments.each do |attachment|
-          = render('/shared/attachment', attachment: attachment)
+          = render 'shared/attachment', attachment: attachment

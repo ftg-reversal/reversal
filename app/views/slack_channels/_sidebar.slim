@@ -5,7 +5,7 @@
   hr.channel-list-split
 
   ul.uk-nav
-    - @channels.each do |channel|
+    - channels.each do |channel|
       li class="#{active_link_to_class(channel_path(channel.id), class_active: 'is-active')}"
         a href=channel_path(channel.id)
           = "##{channel.name}"

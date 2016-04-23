@@ -1,7 +1,7 @@
-= form_for @page, html: {class: 'uk-form uk-margin-top'} do |form|
-  - if @page.errors.any?
+= form_for page, html: {class: 'uk-form uk-margin-top'} do |form|
+  - if page.errors.any?
     ul
-      - @page.errors.full_messages.each do |message|
+      - page.errors.full_messages.each do |message|
         li = message
 
   .uk-form-row
