@@ -9,16 +9,12 @@ class SlackMessageDecorator < Draper::Decorator
   end
 
   def attachment_items
-    (object.attachments || []).map { |attachment|
-      SlackDecorator::AttachmentParser.exec(attachment)
-    }.compact
+    (object.attachments || []).map { |at| SlackDecorator::AttachmentParser.exec(at) }.compact
   end
 
   def image
     if object.file && object.file['mimetype'].include?('image')
       object['file']
-    else
-      nil
     end
   end
 
