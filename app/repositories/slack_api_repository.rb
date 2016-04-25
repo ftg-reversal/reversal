@@ -1,6 +1,5 @@
 class SlackApiRepository
   class << self
-    # @return [Array<SlackChannel>]
     def find_all_channels
       SlackInfrastructure::ChannelList.exec.map do |hash|
         SlackChannel.find_or_initialize_by(cid: hash[:channel_id]).tap do |channel|
@@ -11,7 +10,6 @@ class SlackApiRepository
       end
     end
 
-    # @return [Array<SlackUser>]
     def find_all_users
       SlackInfrastructure::UserList.exec.map do |hash|
         SlackUser.find_or_initialize_by(uid: hash[:user_id]).tap do |user|
@@ -21,12 +19,13 @@ class SlackApiRepository
       end
     end
 
-    # @param channel[SlackChannel]
-    # @return [Array<SlackMessage>]
+    # rubocop:disable all
     def find_all_messages_by_channel(channel)
       SlackInfrastructure::ChannelHistory.exec(channel, cache: true).map do |hash|
         user = SlackUser.find_by(uid: hash[:user_id])
-        SlackMessage.find_or_initialize_by(slack_channel_id: channel.id, slack_user_id: user.id, ts: hash[:ts]).tap do |message|
+        SlackMessage.find_or_initialize_by(slack_channel_id: channel.id,
+                                           slack_user_id: user.id,
+                                           ts: hash[:ts]).tap do |message|
           message.slack_channel = channel
           message.slack_user = user
           message.text = hash[:text]
@@ -37,9 +36,7 @@ class SlackApiRepository
       end
     end
 
-    # @param channel[SlackChannel]
-    # @return [Array<SlackMessage>]
-    def find_all_deleted_messages_by_channel(channel)
+    def find_all_deleted_messages(channel)
       api_messages = SlackInfrastructure::ChannelHistory.exec(channel, cahce: true)
       oldest_api_message = api_messages.last
       SlackMessage.where(slack_channel: channel).order(ts: 'desc').limit(300).select do |message|
@@ -50,6 +47,7 @@ class SlackApiRepository
         end
       end
     end
+    # rubocop:enable all
 
     def find_original_emoji_set
       SlackInfrastructure::Emoji.exec
