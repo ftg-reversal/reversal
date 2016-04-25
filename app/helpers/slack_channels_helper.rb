@@ -17,9 +17,7 @@
 
 module SlackChannelsHelper
   def messages_json(summary)
-    summary.slack_messages.to_a.map { |message|
-      MessageApiSerializer.new(SlackMessageDecorator.new(message))
-    }.to_json(root: false)
+    summary.slack_messages.to_a.map { |m| MessageApiSerializer.new(SlackMessageDecorator.new(m)) }.to_json(root: false)
   end
 
   def attachment_text_format(text)

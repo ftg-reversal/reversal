@@ -13,9 +13,7 @@ class SlackMessageDecorator < Draper::Decorator
   end
 
   def image
-    if object.file && object.file['mimetype'].include?('image')
-      object['file']
-    end
+    object['file'] if object.file && object.file['mimetype'].include?('image')
   end
 
   def date
