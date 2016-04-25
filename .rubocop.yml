@@ -27,3 +27,7 @@ ClassAndModuleChildren:
 # Perlスタイルの部分文字列の取得を許可
 Style/PerlBackrefs:
     Enabled: false
+
+# 複数行のラムダ式にアロー演算子を許可
+Style/Lambda:
+  Enabled: false
