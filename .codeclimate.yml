@@ -26,8 +26,11 @@ ratings:
 exclude_paths:
 - config/
 - db/
+- log/
 - node_modules/
+- bower_components/
 - spec/
 - vendor/
 - public/
 - webpack/js/twitter/
+- .idea

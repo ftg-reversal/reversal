@@ -10,7 +10,6 @@ gem 'newrelic_rpm'
 gem 'mysql2'
 gem 'active_record_union'
 
-
 # Webpack
 gem 'webpack-rails'
 gem 'foreman'
@@ -36,7 +35,7 @@ gem 'aws-sdk', '>= 2.0.0'
 gem 'nico_search_snapshot'
 gem 'yt'
 gem 'devise'
-gem 'paperclip', :git => 'https://github.com/thoughtbot/paperclip.git'
+gem 'paperclip', git: 'https://github.com/thoughtbot/paperclip.git'
 gem 'ckeditor'
 gem 'gemoji'
 
