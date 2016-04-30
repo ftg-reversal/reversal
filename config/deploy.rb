@@ -3,7 +3,7 @@ lock '3.4.0'
 set :application, 'ftg-reversal'
 set :repo_url, 'git@github.com:ftg-reversal/reversal.git'
 
-ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
+set :branch, fetch(:branch, 'master')
 
 set :rbenv_type, :user # :system or :user
 set :rbenv_ruby, '2.3.0'
