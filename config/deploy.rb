@@ -14,8 +14,9 @@ set :rbenv_roles, :all # default value
 set :use_sudo, false
 set :bundle_binstubs, nil
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/webpack', 'public/system', 'public/ckeditor_assets')
+
 set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
-set :whenever_role, -> { :batch }
+set :whenever_roles, -> { :batch }
 
 namespace :deploy do
   desc 'Compile and Upload webpack files'
