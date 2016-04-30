@@ -31,7 +31,7 @@ namespace :deploy do
 
   desc 'Restart application'
   task :restart do
-    invoke 'unicorn:legacy_restart'
+    invoke 'unicorn:restart'
   end
 end
 
