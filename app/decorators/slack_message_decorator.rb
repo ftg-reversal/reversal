@@ -4,6 +4,14 @@ class SlackMessageDecorator < Draper::Decorator
   def permalink
   end
 
+  def username
+    object.slack_user&.name || object.username
+  end
+
+  def icon
+    object.slack_user&.icon_url || EmojiRepository.find_by_name(object.icon['emoji'].gsub(/\:/, ''))
+  end
+
   def format_text
     self.class.processor.call(object.text, SlackDecorator::SlackContext.context)[:output].to_s.html_safe
   end

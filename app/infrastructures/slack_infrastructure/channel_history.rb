@@ -11,10 +11,12 @@ module SlackInfrastructure
             {
               channel_id: channel.cid,
               user_id: message['user'],
+              username: message['username'],
               text: message['text'],
               ts: BigDecimal(message['ts']),
               attachments: message['attachments'],
-              file: message['file']
+              file: message['file'],
+              icon: message['icons']
             }
           end
         end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160430170205) do
+ActiveRecord::Schema.define(version: 20160430194446) do
 
   create_table "charas", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -121,6 +121,8 @@ ActiveRecord::Schema.define(version: 20160430170205) do
     t.datetime "updated_at",                                              null: false
     t.text     "attachments",      limit: 65535
     t.text     "file",             limit: 65535
+    t.string   "username",         limit: 255
+    t.string   "icon",             limit: 255
   end
 
   add_index "slack_messages", ["slack_channel_id", "slack_user_id", "ts"], name: "channel_user_ts_index", unique: true, using: :btree

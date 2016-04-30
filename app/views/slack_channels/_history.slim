@@ -9,10 +9,10 @@
     - history.each do |message|
       li.slack-message
         .slack-message-icon
-          img src=message.slack_user.icon_url
+          img src=message.icon
         .slack-message-header
           .slack-message-header-name
-            | #{message.slack_user.name}
+            | #{message.username}
           .slack-message-header-date
             = l(message.date)
         .slack-message-body

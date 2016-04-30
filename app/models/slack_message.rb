@@ -11,6 +11,8 @@
 #  updated_at       :datetime         not null
 #  attachments      :text(65535)
 #  file             :text(65535)
+#  username         :string(255)
+#  icon             :string(255)
 #
 # Indexes
 #
@@ -27,4 +29,5 @@ class SlackMessage < ActiveRecord::Base
 
   serialize :attachments
   serialize :file
+  serialize :icon
 end

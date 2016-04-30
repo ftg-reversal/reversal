@@ -24,14 +24,16 @@ class SlackApiRepository
       SlackInfrastructure::ChannelHistory.exec(channel, cache: true).map do |hash|
         user = SlackUser.find_by(uid: hash[:user_id])
         SlackMessage.find_or_initialize_by(slack_channel_id: channel.id,
-                                           slack_user_id: user.id,
+                                           slack_user_id: user&.id,
                                            ts: hash[:ts]).tap do |message|
           message.slack_channel = channel
           message.slack_user = user
+          message.username = hash[:username]
           message.text = hash[:text]
           message.ts = hash[:ts]
           message.attachments = hash[:attachments] || []
           message.file = hash[:file]
+          message.icon = hash[:icon]
         end
       end
     end
@@ -42,16 +44,12 @@ class SlackApiRepository
       SlackMessage.where(slack_channel: channel).order(ts: 'desc').limit(300).select do |message|
         oldest_api_message[:ts] < message.ts && api_messages.none? do |api_message|
           api_message[:channel_id] == message.slack_channel.cid &&
-           api_message[:user_id] == message.slack_user.uid &&
+           api_message[:user_id] == message.slack_user&.uid &&
            api_message[:ts] == message.ts
         end
       end
     end
     # rubocop:enable all
-
-    def find_original_emoji_set
-      SlackInfrastructure::Emoji.exec
-    end
 
     def post_message(channel, text, username, icon_emoji: nil, icon_url: nil)
       SlackInfrastructure::PostMessage.exec(channel.name, text, username, icon_emoji: icon_emoji, icon_url: icon_url)
