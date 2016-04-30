@@ -52,5 +52,9 @@ class SlackApiRepository
     def find_original_emoji_set
       SlackInfrastructure::Emoji.exec
     end
+
+    def post_message(channel, text, username, icon_emoji: nil, icon_url: nil)
+      SlackInfrastructure::PostMessage.exec(channel.name, text, username, icon_emoji: icon_emoji, icon_url: icon_url)
+    end
   end
 end

@@ -14,9 +14,9 @@ Rails.application.routes.draw do
 
   resources :entries, only: [:create, :destroy]
 
-  # namespace :api, { format: 'json' } do
-  #   resources :channels, only: [:index, :show]
-  # end
+  namespace :api, { format: 'json' } do
+    resources :channels, only: [:index, :show]
+  end
 
   # get '@:name', to: 'slack_channels#users', as: 'user', param: 'name'
   # get 'image', to: 'proxies#show', as: 'image_proxy'

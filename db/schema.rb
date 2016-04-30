@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160423133550) do
+ActiveRecord::Schema.define(version: 20160430170205) do
 
   create_table "charas", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -159,6 +159,16 @@ ActiveRecord::Schema.define(version: 20160423133550) do
   add_index "summaries", ["reversal_user_id"], name: "index_summaries_on_reversal_user_id", using: :btree
   add_index "summaries", ["slack_channel_id"], name: "index_summaries_on_slack_channel_id", using: :btree
 
+  create_table "twitter2slack_conditions", force: :cascade do |t|
+    t.string   "text",             limit: 255,             null: false
+    t.integer  "slack_channel_id", limit: 4,               null: false
+    t.integer  "last_tweet",       limit: 8,   default: 0, null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+  end
+
+  add_index "twitter2slack_conditions", ["slack_channel_id"], name: "fk_rails_64fa99355b", using: :btree
+
   create_table "twitter_users", force: :cascade do |t|
     t.string   "uid",         limit: 255
     t.string   "screen_name", limit: 255
@@ -203,4 +213,5 @@ ActiveRecord::Schema.define(version: 20160423133550) do
   add_foreign_key "slack_messages_summaries", "summaries"
   add_foreign_key "summaries", "reversal_users"
   add_foreign_key "summaries", "slack_channels"
+  add_foreign_key "twitter2slack_conditions", "slack_channels"
 end
