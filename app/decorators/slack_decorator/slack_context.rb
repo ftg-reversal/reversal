@@ -11,7 +11,7 @@ module SlackDecorator
       end
 
       def emoji
-        @emoji ||= SlackApiReposilory.find_original_emoji_set
+        @emoji ||= SlackApiRepository.find_original_emoji_set
       end
 
       def on_slack_user_id
