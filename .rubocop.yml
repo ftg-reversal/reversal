@@ -1,12 +1,18 @@
 AllCops:
   Exclude:
+    - 'app/models/ckeditor/*'
     - 'bin/**/*'
+    - 'config/**/*'
     - 'db/**/*'
     - 'vendor/**/*'
     - 'lib/tasks/*'
+    - 'spec/**/*'
     - 'Guardfile'
     - 'vagrant/**/*'
     - 'node_modules/**/*'
+
+Rails:
+  Enabled: true
 
 # ファイル冒頭にコメント不要
 Style/Documentation:
@@ -30,4 +36,7 @@ Style/PerlBackrefs:
 
 # 複数行のラムダ式にアロー演算子を許可
 Style/Lambda:
+  Enabled: false
+
+Style/MultilineMethodCallIndentation:
   Enabled: false
