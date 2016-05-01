@@ -28,10 +28,11 @@ class EntriesController < ApplicationController
   before_action :ensure_permission, only: [:destroy]
 
   def create
-    @entry = Entry.new(entry_params)
+    parameter = EntryParameter.new(params[:entry], @current_user, @twitter_user)
+    @entry = Entry.create(parameter.to_h)
     event = @entry.event
 
-    if @entry.save
+    if @entry
       redirect_to event_entried_url(event_id: event.id)
     else
       redirect_to event_url(event), alert: @entry.errors.full_messages
@@ -48,16 +49,6 @@ class EntriesController < ApplicationController
 
   def set_entry
     @entry = Entry.find(params[:id])
-  end
-
-  def entry_params
-    n = params.require(:entry).permit(:name, :comment)
-    n[:chara] = Chara.find(params.require(:entry)[:chara])
-    n[:rank] = Rank.find(params.require(:entry)[:rank])
-    n[:event] = Event.find(params.require(:entry)[:event])
-    n[:reversal_user] = @current_user if @current_user
-    n[:twitter_user] = @twitter_user if @twitter_user
-    n
   end
 
   def ensure_permission

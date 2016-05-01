@@ -18,6 +18,7 @@ module Reversal
     config.autoload_paths.push "#{Rails.root}/app/configes"
     config.autoload_paths.push "#{Rails.root}/app/infrastructures"
     config.autoload_paths.push "#{Rails.root}/app/notifiers"
+    config.autoload_paths.push "#{Rails.root}/app/parameters"
     config.autoload_paths.push "#{Rails.root}/app/repositories"
     config.autoload_paths.push "#{Rails.root}/app/services"
     config.autoload_paths.push "#{Rails.root}/lib"

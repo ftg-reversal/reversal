@@ -38,9 +38,10 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(event_params)
+    parameter = EventParameter.new(params[:event], @current_user)
+    @event = Event.create(parameter.to_h)
 
-    if @event.save
+    if @event
       redirect_to @event
     else
       render 'new'
@@ -51,7 +52,9 @@ class EventsController < ApplicationController
   end
 
   def update
-    if @event.update(event_params)
+    parameter = EventParameter.new(params[:event], @current_user)
+
+    if @event.update(parameter.to_h)
       redirect_to @event
     else
       render 'edit'
@@ -71,12 +74,6 @@ class EventsController < ApplicationController
 
   def set_event
     @event = Event.find(params[:id])
-  end
-
-  def event_params
-    n = params.require(:event).permit(:title, :description, :datetime)
-    n[:reversal_user] = @current_user
-    n
   end
 
   def ensure_permission
