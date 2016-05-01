@@ -47,11 +47,11 @@ class PagesController < ApplicationController
   end
 
   def update
-      if @page.update(page_params)
-        redirect_to @page
-      else
-        render 'edit'
-      end
+    if @page.update(page_params)
+      redirect_to @page
+    else
+      render 'edit'
+    end
   end
 
   def destroy
