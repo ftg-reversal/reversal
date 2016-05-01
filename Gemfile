@@ -35,7 +35,7 @@ gem 'aws-sdk', '>= 2.0.0'
 gem 'nico_search_snapshot'
 gem 'yt'
 gem 'devise'
-gem 'paperclip', github: 'thoughtbot/paperclip'
+gem 'paperclip', git: 'https://github.com/thoughtbot/paperclip.git'
 gem 'ckeditor'
 gem 'gemoji'
 
@@ -66,7 +66,7 @@ group :development, :test do
   gem 'pry-coolline'
   gem 'awesome_print'
   gem 'hirb'
-  gem 'hirb-unicode-steakknife'
+  gem 'hirb-unicode-steakknife', require: 'hirb-unicode'
   gem 'better_errors'
   gem 'binding_of_caller'
 
@@ -77,7 +77,7 @@ group :development, :test do
 
   # CI
   gem 'bullet'
-  gem 'rubocop', require: false, github: 'bbatsov/rubocop'
+  gem 'rubocop', require: false, git: 'https://github.com/bbatsov/rubocop'
   gem 'rails_best_practices', require: false
   gem 'brakeman', require: false
 end
