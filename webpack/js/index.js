@@ -7,7 +7,7 @@ require("font-awesome-webpack");
 window.CKEDITOR_BASEPATH = '/ckeditor/';
 require("ckeditor");
 
-require("./twitter/widgets.js");
+require("./vendor/widgets.js");
 
 require("./views/header");
 require("./views/slack");

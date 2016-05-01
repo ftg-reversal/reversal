@@ -32,5 +32,5 @@ exclude_paths:
 - spec/
 - vendor/
 - public/
-- webpack/js/twitter/
+- webpack/js/vendor/
 - .idea
