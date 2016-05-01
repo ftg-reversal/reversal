@@ -31,7 +31,7 @@
     "node-bourbon": "^4.2.8",
     "node-neat": "^1.7.2",
     "node-sass": "^3.6.0",
-    "postcss-loader": "^0.8.2",
+    "postcss-loader": "^0.9.1",
     "precss": "^1.4.0",
     "sass-loader": "^3.2.0",
     "stats-webpack-plugin": "^0.3.1",
