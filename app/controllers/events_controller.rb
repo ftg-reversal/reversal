@@ -28,6 +28,7 @@ class EventsController < ApplicationController
     @entry = Entry.new
     @entries = Event.find(params[:id]).entry
                  .includes(:chara).includes(:rank).includes(:reversal_user).includes(:twitter_user)
+                 .map(&:decorate)
     @user = @current_user || @twitter_user
     @user_entry = Entry.find_by_user(@user)
   end

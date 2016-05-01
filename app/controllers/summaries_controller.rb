@@ -22,7 +22,7 @@ class SummariesController < ApplicationController
   before_action :ensure_permission, only: [:edit, :update, :destroy]
 
   def index
-    @summaries = Summary.order('updated_at DESC').page(params[:page]).decorate
+    @summaries = Summary.order('updated_at DESC').page(params[:page]).map(&:decorate)
   end
 
   def show
