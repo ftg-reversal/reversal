@@ -17,7 +17,8 @@
 #
 # Indexes
 #
-#  url  (url) UNIQUE
+#  index_videos_on_video_id  (video_id)
+#  url                       (url) UNIQUE
 #
 
 class Video < ActiveRecord::Base

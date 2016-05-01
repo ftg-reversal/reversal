@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160430194446) do
+ActiveRecord::Schema.define(version: 20160501071827) do
 
   create_table "charas", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -47,7 +47,9 @@ ActiveRecord::Schema.define(version: 20160430194446) do
     t.datetime "updated_at",                     null: false
   end
 
+  add_index "entries", ["chara_id"], name: "index_entries_on_chara_id", using: :btree
   add_index "entries", ["event_id"], name: "fk_rails_20eb5df311", using: :btree
+  add_index "entries", ["rank_id"], name: "index_entries_on_rank_id", using: :btree
   add_index "entries", ["reversal_user_id"], name: "fk_rails_6a9722b611", using: :btree
   add_index "entries", ["twitter_user_id"], name: "fk_rails_8580cf0bd4", using: :btree
 
@@ -75,6 +77,8 @@ ActiveRecord::Schema.define(version: 20160430194446) do
     t.integer  "icon_file_size",    limit: 4
     t.datetime "icon_updated_at"
   end
+
+  add_index "lives", ["live_id"], name: "index_lives_on_live_id", using: :btree
 
   create_table "pages", force: :cascade do |t|
     t.string   "title",            limit: 255,   null: false
@@ -202,6 +206,7 @@ ActiveRecord::Schema.define(version: 20160430194446) do
   end
 
   add_index "videos", ["url"], name: "url", unique: true, using: :btree
+  add_index "videos", ["video_id"], name: "index_videos_on_video_id", using: :btree
 
   add_foreign_key "entries", "events"
   add_foreign_key "entries", "reversal_users"

@@ -15,9 +15,11 @@
 #
 # Indexes
 #
-#  fk_rails_20eb5df311  (event_id)
-#  fk_rails_6a9722b611  (reversal_user_id)
-#  fk_rails_8580cf0bd4  (twitter_user_id)
+#  fk_rails_20eb5df311        (event_id)
+#  fk_rails_6a9722b611        (reversal_user_id)
+#  fk_rails_8580cf0bd4        (twitter_user_id)
+#  index_entries_on_chara_id  (chara_id)
+#  index_entries_on_rank_id   (rank_id)
 #
 
 class Entry < ActiveRecord::Base
@@ -31,7 +33,6 @@ class Entry < ActiveRecord::Base
   validates :chara, presence: true
   validates :rank, presence: true
   validates :event, presence: true
-  validates :twitter_user, presence: true
 
   def self.find_by_user(user)
     if user.class == ReversalUser

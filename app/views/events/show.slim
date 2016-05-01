@@ -26,18 +26,18 @@ table.entry-table.uk-table.uk-table-hover.uk-table-striped.uk-table-condensed
         td
           = entry.name
         td
-          = entry.chara.name
+          = entry.chara_name
         td
-          = entry.rank.rank
+          = entry.rank_name
         td
           = entry.comment
 
-/ - if @user && !(@entries.map(&:user).include?(@user))
-/   hr
-/   = render 'entry', event: @event, entries: @entries, entry: @entry, user: @user
-/ - elsif @user
-/   hr
-/   = render 'cancel_entry', entry: @user_entry
+- if @user && !(@entries.map(&:user).include?(@user))
+  hr
+  = render 'entry', event: @event, entries: @entries, entry: @entry, user: @user
+- elsif @user
+  hr
+  = render 'cancel_entry', entry: @user_entry
 
 - content_for :title do
   = @event.title

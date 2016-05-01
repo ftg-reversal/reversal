@@ -15,6 +15,10 @@
 #  icon_file_size    :integer
 #  icon_updated_at   :datetime
 #
+# Indexes
+#
+#  index_lives_on_live_id  (live_id)
+#
 
 class Live < ActiveRecord::Base
   validates :live_id, :url, presence: true, uniqueness: true
