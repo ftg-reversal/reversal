@@ -25,7 +25,7 @@ class SessionsController < ApplicationController
 
   def create_slack(auth)
     reversal_user = ReversalUser.find_or_create_with_omniauth(auth)
-    session[:user_id] = reversal_user.slack_user.uid
+    session[:user_id] = reversal_user.uid
     session[:token] = auth.credentials.token
     redirect_to redirect_path
   end

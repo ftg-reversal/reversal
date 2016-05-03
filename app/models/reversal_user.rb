@@ -18,6 +18,10 @@ class ReversalUser < ActiveRecord::Base
 
   belongs_to :slack_user
 
+  def uid
+    slack_user.uid
+  end
+
   class << self
     def find_or_create_with_omniauth(auth)
       SlackUser.update_from_slack_api_repository
