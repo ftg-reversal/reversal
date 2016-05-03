@@ -46,6 +46,8 @@ gem 'exception_notification'
 # Util
 gem 'classy_enum'
 
+# Server
+
 group :development, :test do
   gem 'thin'
   gem 'rack-reverse-proxy', require: 'rack/reverse_proxy'
@@ -93,6 +95,7 @@ end
 
 group :production do
   gem 'unicorn'
+  gem 'unicorn-worker-killer'
 end
 
 group :deployment do
