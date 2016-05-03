@@ -82,6 +82,7 @@ group :development, :test do
   gem 'rubocop', require: false, git: 'https://github.com/bbatsov/rubocop'
   gem 'rails_best_practices', require: false
   gem 'brakeman', require: false
+  gem 'slim_lint', require: false
 end
 
 group :test do
@@ -103,5 +104,5 @@ group :deployment do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
-  gem 'capistrano3-unicorn'
+  gem 'capistrano3-unicorn', git: 'https://github.com/tablexi/capistrano3-unicorn.git'
 end

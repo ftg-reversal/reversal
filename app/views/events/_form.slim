@@ -1,4 +1,4 @@
-= form_for event, html: {class: 'uk-form uk-margin-top'} do |form|
+= form_for event, html: { class: 'uk-form uk-margin-top' } do |form|
   - if event.errors.any?
     ul
       - event.errors.full_messages.each do |message|
@@ -15,5 +15,5 @@
   .uk-form-row
     label.uk-form-label 内容
     .uk-form-controls
-    = form.text_area :description, class: "ckeditor"
+    = form.text_area :description, class: 'ckeditor'
   .actions.uk-button.uk-margin-top = form.submit '登録'

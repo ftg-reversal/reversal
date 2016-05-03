@@ -3,7 +3,7 @@
     .item-icon
       img src=item.reversal_user.slack_user.icon_url title=item.reversal_user.slack_user.name
   h3.item-title
-    = (item.title && item.title.size > 0 ? item.title : 'no title')
+    = (item.title && !item.title.empty? ? item.title : 'no title')
   .item-owner
     | by&nbsp;
     / a href=user_path(item.reversal_user)

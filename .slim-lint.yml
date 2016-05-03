@@ -1,0 +1,2 @@
+exclude:
+  - 'app/views/kaminari/**/*.slim'

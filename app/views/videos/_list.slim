@@ -7,7 +7,7 @@
         p.video-time-ago = time_ago_in_words(video.posted_at) + '前'
       - if video.video_site == VideoSite::Nicovideo
         .video-site-nico
-      - else video.video_site == VideoSite::Youtube
+      - elsif video.video_site == VideoSite::Youtube
         .video-site-youtube
       h3.video-title.uk-width-2-3
         a href=video.url =video.title

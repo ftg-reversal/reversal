@@ -10,6 +10,13 @@ GIT
       unicode-display_width (~> 1.0, >= 1.0.1)
 
 GIT
+  remote: https://github.com/tablexi/capistrano3-unicorn.git
+  revision: 7ea712c013f4630f6d369e87701ee3013c4d7750
+  specs:
+    capistrano3-unicorn (0.2.1)
+      capistrano (~> 3.1, >= 3.1.0)
+
+GIT
   remote: https://github.com/thoughtbot/paperclip.git
   revision: 80904d394ad814c8fd7fbdb4978e2f1bb920422d
   specs:
@@ -118,8 +125,6 @@ GEM
     capistrano-rbenv (2.0.4)
       capistrano (~> 3.1)
       sshkit (~> 1.3)
-    capistrano3-unicorn (0.2.1)
-      capistrano (~> 3.1, >= 3.1.0)
     choice (0.2.0)
     chronic (0.10.2)
     ckeditor (4.1.6)
@@ -399,6 +404,11 @@ GEM
       activesupport (>= 3.1, < 5.0)
       railties (>= 3.1, < 5.0)
       slim (~> 3.0)
+    slim_lint (0.7.2)
+      rake (>= 10, < 12)
+      rubocop (>= 0.36.0)
+      slim (~> 3.0)
+      sysexits (~> 1.1)
     slop (3.6.0)
     spring (1.7.1)
     spring-commands-rspec (1.0.4)
@@ -414,6 +424,7 @@ GEM
     sshkit (1.10.0)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
+    sysexits (1.2.0)
     temple (0.7.6)
     terminal-table (1.5.2)
     thin (1.6.4)
@@ -485,7 +496,7 @@ DEPENDENCIES
   capistrano-bundler
   capistrano-rails
   capistrano-rbenv
-  capistrano3-unicorn
+  capistrano3-unicorn!
   ckeditor
   classy_enum
   coderay
@@ -525,6 +536,7 @@ DEPENDENCIES
   slack-api
   slack_markdown
   slim-rails
+  slim_lint
   spring
   spring-commands-rspec
   squasher

@@ -1,4 +1,4 @@
-- if summary.description.to_s.size > 0
+- if !summary.description.to_s.empty? > 0
   .uk-panel.uk-panel-box.uk-panel-box-secondary.summary-description
     = summary.description_html
 

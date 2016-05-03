@@ -1,7 +1,7 @@
 .uk-container.uk-container-center
   - if @summaries.present?
     - @summaries.each do |summary|
-      = render 'shared/item_short', item: summary, description: summary.description , path: summary_path(summary)
+      = render 'shared/item_short', item: summary, description: summary.description, path: summary_path(summary)
     = paginate @summaries
   - else
     .summary-list-item.uk-panel.uk-panel-box.uk-margin-top
