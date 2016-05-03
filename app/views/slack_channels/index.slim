@@ -1,9 +1,7 @@
-#history-menubar.uk-navbar.uk-visible-small.uk-position-z-index
-  = render 'menu', channel_name: 'チャンネルを選択', channels: @channels
 .uk-grid.uk-grid-match data-uk-grid-match="{target: '.uk-panel'}"
-  .uk-width-medium-1-4.uk-hidden-small
+  .uk-width-medium-1-4.uk-width-small-1-1
     = render 'sidebar', channels: @channels
-  .history-column.uk-width-medium-3-4.uk-width-small-1-1
+  .history-column.uk-width-medium-3-4.uk-hidden-small
     .uk-panel.uk-panel-box.uk-margin-top
       p
         | text
@@ -11,4 +9,4 @@
         a href='' FTG-Reversal Slack
 
 - content_for :title do
-  | Slack Log
+  | Slacker チャンネル一覧
