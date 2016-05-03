@@ -9,7 +9,7 @@ class SlackMessageDecorator < Draper::Decorator
   end
 
   def icon
-    object.slack_user&.icon_url || EmojiRepository.find_by_name(object.icon['emoji'].gsub(/\:/, ''))
+    object.slack_user&.icon_url || EmojiRepository.find_by_name(object.icon['emoji'].delete(':'))
   end
 
   def format_text
@@ -25,7 +25,7 @@ class SlackMessageDecorator < Draper::Decorator
   end
 
   def date
-    Time.at(object.ts)
+    Time.zone.at(object.ts)
   end
 
   class << self

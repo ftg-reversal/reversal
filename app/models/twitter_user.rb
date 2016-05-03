@@ -12,12 +12,20 @@
 #
 
 class TwitterUser < ActiveRecord::Base
-  def self.create_with_omniauth(auth)
-    create! do |user|
-      user.uid = auth['uid']
-      user.screen_name = auth['info']['nickname']
-      user.name = auth['info']['name']
-      user.icon_url = auth['info']['image']
+  class << self
+    def find_or_create_with_omniauth(auth)
+      find_by_uid(auth['uid']) || create_with_omniauth(auth)
+    end
+
+    private
+
+    def create_with_omniauth(auth)
+      create! do |user|
+        user.uid = auth['uid']
+        user.screen_name = auth['info']['nickname']
+        user.name = auth['info']['name']
+        user.icon_url = auth['info']['image']
+      end
     end
   end
 end

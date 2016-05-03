@@ -3,7 +3,7 @@ module Batch
     class << self
       def exec
         Twitter2slackCondition.all.map do |condition|
-          unsent_tweets = TwitterApiRepository.find_unsent_tweet(condition).sort { |a, b| a[:id] <=> b[:id] }
+          unsent_tweets = TwitterApiRepository.find_unsent_tweet(condition)
           unsent_tweets.map do |tweet|
             SlackApiRepository.post_message(condition.slack_channel, tweet[:url], 'twitter', icon_emoji: ':twitter:')
           end

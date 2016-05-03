@@ -40,8 +40,18 @@ Style/PerlBackrefs:
 Style/Lambda:
   Enabled: false
 
+# 複数行のメソッド呼び出しのインデントをチェックしない
 Style/MultilineMethodCallIndentation:
+  Enabled: false
+
+# 後置if/unlessに変換できるのをチェックしない
+Style/GuardClause:
+  Enabled: false
+
+# has_and_belongs_to_manyを許可
+Rails/HasAndBelongsToMany:
   Enabled: false
 
 Style/FrozenStringLiteralComment:
   Enabled: false
+

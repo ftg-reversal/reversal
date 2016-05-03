@@ -18,14 +18,20 @@ class ReversalUser < ActiveRecord::Base
 
   belongs_to :slack_user
 
-  def self.create_with_omniauth(auth, slack_user)
-    create! do |user|
-      user.slack_user = slack_user
-      user.is_admin = auth.extra.user_info['user']['is_admin']
+  class << self
+    def find_or_create_with_omniauth(auth)
+      SlackUser.update_from_slack_api_repository
+      slack_user = SlackUser.find_by(uid: auth['uid'])
+      find_by(slack_user: slack_user) || create_with_omniauth(auth, slack_user)
     end
-  end
 
-  def to_param
-    slack_user.name
+    private
+
+    def create_with_omniauth(auth, slack_user)
+      create! do |user|
+        user.slack_user = slack_user
+        user.is_admin = auth.extra.user_info['user']['is_admin']
+      end
+    end
   end
 end
