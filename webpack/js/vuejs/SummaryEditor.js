@@ -93,8 +93,8 @@ export default class SummaryEditor extends Vue {
               resp.map((message) => {
                 loadMessages.push({
                   id: message.id,
-                  avatar_url: message.slack_user.icon_url,
-                  username: message.slack_user.name,
+                  avatar_url: message.icon_url,
+                  username: message.username,
                   date: message.date,
                   ts: message.ts,
                   channel: message.channel,
