@@ -12,7 +12,7 @@ header
               img.header-user-icon src=twitter_user.icon_url
             li
               a href=session_path data-method='delete'
-                .logout ログアウト
+                i.fa.fa-sign-out.logout
           - elsif current_user
             li
               .add-button-wrapper
@@ -29,7 +29,7 @@ header
               img.header-user-icon src=current_user.slack_user.icon_url
             li
               a href=session_path data-method='delete'
-                .logout ログアウト
+                i.fa.fa-sign-out.logout
           - else
             li
               .login
