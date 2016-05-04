@@ -29,12 +29,7 @@ namespace :deploy do
       upload!('public/webpack', "#{shared_path}/public/", recursive: true)
     end
   end
-
-  desc 'Restart application'
-  task :restart do
-    invoke 'unicorn:restart'
-  end
 end
 
 before 'deploy:starting', 'deploy:webpack'
-after 'deploy:publishing', 'deploy:restart'
+after 'deploy:publishing', 'unicorn:restart'
