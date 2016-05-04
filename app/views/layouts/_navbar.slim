@@ -5,7 +5,7 @@ nav.navbar.uk-navbar
         a href=videos_path Videos
       li.navbar-item class="#{active_link_to_class(channels_path, class_active: 'is-active uk-active')}"
         a href=channels_path Slacker
-      li.navbar-item class="#{active_link_to_class(summaries_path, class_active: 'is-active uk-active')}"
+      li.navbar-item class="#{active_link_to_class('', active: [['pages', 'summaries'], []], class_active: 'is-active uk-active')}"
         a href=pages_path Rlog
       li.navbar-item class="#{active_link_to_class(events_path, class_active: 'is-active uk-active')}"
         a href=events_path Events
