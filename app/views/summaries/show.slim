@@ -2,7 +2,7 @@
   = render 'shared/item_header', item: @summary
   hr
   = render 'item', summary: @summary
-  = render 'shared/item_authority', current_user: @current_user, item: @summary, edit_path: edit_summary_path, delete_path: page_path(@summary)
+  = render 'shared/item_authority', current_user: @current_user, item: @summary, edit_path: edit_summary_path, delete_path: summary_path(@summary)
 
 - content_for :title do
   = @summary.title
