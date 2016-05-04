@@ -21,8 +21,8 @@ class SlackApiRepository
 
     # TODO: Factory Patternを適用する
     # rubocop:disable all
-    def find_all_messages_by_channel(channel)
-      SlackInfrastructure::ChannelHistory.exec(channel, cache: true).map do |hash|
+    def find_all_messages_by_channel(channel, cache: true)
+      SlackInfrastructure::ChannelHistory.exec(channel, cache: cache).map do |hash|
         user = SlackUser.find_by(uid: hash[:user_id])
         SlackMessage.find_or_initialize_by(slack_channel_id: channel.id,
                                            slack_user_id: user&.id,
@@ -39,8 +39,8 @@ class SlackApiRepository
       end
     end
 
-    def find_all_deleted_messages(channel)
-      api_messages = SlackInfrastructure::ChannelHistory.exec(channel, cahce: true)
+    def find_all_deleted_messages(channel, cache: true)
+      api_messages = SlackInfrastructure::ChannelHistory.exec(channel, cache: cache)
       oldest_api_message = api_messages.last
       SlackMessage.where(slack_channel: channel).order(ts: 'desc').limit(300).select do |message|
         oldest_api_message[:ts] < message.ts && api_messages.none? do |api_message|

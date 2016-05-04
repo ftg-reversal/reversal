@@ -2,7 +2,7 @@ module SlackInfrastructure
   class ChannelHistory
     class << self
       # rubocop:disable all
-      def exec(channel, cache = true)
+      def exec(channel, cache: true)
         Rails.cache.delete("api_channel_history_#{channel.cid}") unless cache
 
         Rails.cache.fetch("api_channel_history_#{channel.cid}", expires_in: 3.minutes) do
