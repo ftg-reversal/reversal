@@ -171,4 +171,6 @@ export default class SummaryEditor extends Vue {
   }
 };
 
-new SummaryEditor();
+$(function() {
+  new SummaryEditor();
+});
