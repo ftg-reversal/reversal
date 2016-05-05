@@ -26,7 +26,7 @@ namespace :deploy do
       execute 'rm app/assets/javascripts/webpack/*; npm run build:production'
     end
     on roles(:app) do |host|
-      upload!('app/assets/javascripts/webpack', "#{release_path}/assets/javascripts/webpack", recursive: true)
+      upload!('app/assets/javascripts/webpack', "#{release_path}/app/assets/javascripts/webpack", recursive: true)
     end
   end
 end
