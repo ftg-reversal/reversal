@@ -20,16 +20,11 @@ set :whenever_roles, -> { :batch }
 
 namespace :deploy do
   desc 'Compile and Upload webpack files'
-  task :webpack do
-    run_locally do
-      info 'Webpack Compile...'
-      execute 'rm public/webpack/*; env TARGET=production node_modules/.bin/webpack --config config/webpack.config.js'
-    end
-    on roles(:app) do |host|
-      upload!('public/webpack', "#{shared_path}/public/", recursive: true)
-    end
+  task :compile_webpack do
+    info 'Webpack Compile...'
+    execute 'rm app/assets/javascripts/webpack/* || true && env TARGET=production node_modules/.bin/webpack'
   end
 end
 
-before 'deploy:starting', 'deploy:webpack'
+before 'deploy:compile_assets', 'deploy:compile_webpack'
 after 'deploy:publishing', 'unicorn:restart'

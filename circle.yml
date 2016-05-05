@@ -1,0 +1,13 @@
+machine:
+  timezone:
+    Asia/Tokyo
+  ruby:
+    version: 2.3.0
+  node:
+    version: 5.11.0
+
+deployment:
+  production:
+    branch: master
+    commands:
+      - bundle exec cap production deploy

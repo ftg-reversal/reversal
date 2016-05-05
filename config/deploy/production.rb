@@ -17,7 +17,6 @@ server 'ftg-reversal.net',
   primary: true
 
 set :ssh_options, {
-  keys: '~/.ssh/reversal.pem',
   forward_agent: true,
   auth_methods: %w(publickey),
   user: 'ec2-user',
