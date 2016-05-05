@@ -23,7 +23,7 @@ namespace :deploy do
   task :compile_webpack do
     run_locally do
       info 'Webpack Compile...'
-      execute 'rm app/assets/javascripts/webpack/*; && npm run build:production'
+      execute 'rm app/assets/javascripts/webpack/*; npm run build:production'
     end
     on roles(:app) do |host|
       upload!('app/assets/javascripts/webpack', "#{current_path}/assets/javascripts/webpack", recursive: true)
