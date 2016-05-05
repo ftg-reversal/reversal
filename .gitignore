@@ -3,8 +3,10 @@
 /vendor/bundle
 
 # Rails
+/app/assets/javascripts/webpack
 /log
 /tmp
+/public/assets
 /public/system
 /public/ckeditor_assets
 /coverage/

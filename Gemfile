@@ -10,11 +10,10 @@ gem 'newrelic_rpm'
 gem 'mysql2'
 gem 'active_record_union'
 
-# Webpack
-gem 'webpack-rails'
 gem 'foreman'
 
 # View
+gem 'turbolinks'
 gem 'slim-rails'
 gem 'active_model_serializers'
 gem 'kaminari'

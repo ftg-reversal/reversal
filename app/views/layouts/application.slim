@@ -2,7 +2,7 @@ doctype html
 html
   head
     meta name='viewport' content='width=device-width, initial-scale=1.0'
-    = javascript_include_tag *custom_webpack_asset_paths('style')
+    = javascript_include_tag 'application'
 
     title
       - if content_for?(:title)
@@ -26,5 +26,4 @@ html
       a href='https://twitter.com/ftg_reversal' target='_blank'
         | &nbsp;@ftg_reversal
 
-    = javascript_include_tag *custom_webpack_asset_paths('bundle')
     = yield(:javascript)
