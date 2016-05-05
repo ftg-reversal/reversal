@@ -3,6 +3,7 @@ ruby '2.3.0'
 
 # rails
 gem 'rails', '~> 4.2'
+gem 'therubyracer'
 
 gem 'newrelic_rpm'
 
@@ -44,8 +45,6 @@ gem 'exception_notification'
 
 # Util
 gem 'classy_enum'
-
-# Server
 
 group :development, :test do
   gem 'thin'
