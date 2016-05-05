@@ -18,7 +18,7 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', '
 set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
 set :whenever_roles, -> { :batch }
 
-namespace :deploy do
+namespace :deploy de
   desc 'Compile and Upload webpack files'
   task :compile_webpack do
     run_locally do
@@ -26,7 +26,7 @@ namespace :deploy do
       execute 'rm app/assets/javascripts/webpack/*; npm run build:production'
     end
     on roles(:app) do |host|
-      upload!('app/assets/javascripts/webpack', "#{current_path}/assets/javascripts/webpack", recursive: true)
+      upload!('app/assets/javascripts/webpack', "#{release_path}/assets/javascripts/webpack", recursive: true)
     end
   end
 end
