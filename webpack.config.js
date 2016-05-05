@@ -6,8 +6,6 @@ var BowerWebpackPlugin = require('bower-webpack-plugin');
 var autoprefixer = require('autoprefixer');
 var precss = require('precss');
 
-var devServerPort = 3808;
-
 var production = process.env.TARGET === 'production';
 
 var config = {
@@ -27,7 +25,7 @@ var config = {
     ],
 
     loaders: [
-      { test: /\.js$/, exclude: /node_modules/, loader: 'babel' },
+      { test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel' },
       { test: /\.jade$/, loader: 'jade' },
 
       {
@@ -45,13 +43,6 @@ var config = {
   },
   postcss: function () {
     return [autoprefixer, precss];
-  },
-
-  resolve: {
-    root: [
-      path.join(__dirname, '..', 'webpack'),
-      path.join(__dirname, '..', 'webpack', 'js', 'uikit')
-    ]
   },
 
   plugins: [
@@ -80,11 +71,6 @@ if (production) {
     new webpack.optimize.OccurenceOrderPlugin()
   );
 } else {
-  config.devServer = {
-    port: devServerPort,
-    headers: { 'Access-Control-Allow-Origin': '*' }
-  };
-  config.output.publicPath = '//localhost:' + devServerPort + '/webpack/';
   // Source maps
   config.devtool = 'inline-source-map';
 }

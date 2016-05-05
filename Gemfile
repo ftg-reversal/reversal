@@ -48,7 +48,6 @@ gem 'classy_enum'
 
 group :development, :test do
   gem 'thin'
-  gem 'rack-reverse-proxy', require: 'rack/reverse_proxy'
   gem 'spring'
   gem 'spring-commands-rspec'
   gem 'quiet_assets'

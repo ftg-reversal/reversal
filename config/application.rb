@@ -26,11 +26,5 @@ module Reversal
     config.generators.template_engine = :slim
 
     config.i18n.default_locale = :ja
-
-    if ENV['RAILS_ENV'] == 'development'
-      config.middleware.use Rack::ReverseProxy do
-        reverse_proxy(%r{^/webpack/?(.*)/?$}, "http://localhost:3808/webpack/#{$1}")
-      end
-    end
   end
 end
