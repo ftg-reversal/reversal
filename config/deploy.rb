@@ -18,7 +18,7 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', '
 set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
 set :whenever_roles, -> { :batch }
 
-namespace :deploy de
+namespace :deploy do
   desc 'Compile and Upload webpack files'
   task :compile_webpack do
     run_locally do
