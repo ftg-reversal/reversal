@@ -21,8 +21,13 @@ set :whenever_roles, -> { :batch }
 namespace :deploy do
   desc 'Compile and Upload webpack files'
   task :compile_webpack do
-    info 'Webpack Compile...'
-    execute 'rm app/assets/javascripts/webpack/* || true && env TARGET=production node_modules/.bin/webpack'
+    run_locally do
+      info 'Webpack Compile...'
+      execute 'rm app/assets/javascripts/webpack/* || true && env TARGET=production node_modules/.bin/webpack'
+    end
+    on roles(:app) do |host|
+      upload!('app/assets/javascripts/webpack', "#{current_path}/assets/javascripts/webpack", recursive: true)
+    end
   end
 end
 
