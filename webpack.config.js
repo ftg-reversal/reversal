@@ -11,7 +11,9 @@ var production = process.env.TARGET === 'production';
 var config = {
   entry: {
     'bundle': './frontend/js/index.js',
-    'style': './frontend/css/index.sass'
+    'style': './frontend/css/index.sass',
+
+    vendor: ['turbolinks']
   },
 
   output: {
@@ -38,7 +40,9 @@ var config = {
       { test: /\.png$/, loader: "url" },
 
       { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "url" },
-      { test: /\.(otf|ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "url" }
+      { test: /\.(otf|ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "url" },
+
+      { test: require.resolve('turbolinks'), loader: 'imports?this=>window' }
     ]
   },
   postcss: function () {

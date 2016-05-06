@@ -171,6 +171,8 @@ export default class SummaryEditor extends Vue {
   }
 };
 
-$(function() {
-  new SummaryEditor();
+$(document).on('ready turbolinks:load', () => {
+  if (document.querySelector("#summary-editor")) {
+    new SummaryEditor();
+  }
 });

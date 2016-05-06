@@ -1,6 +1,6 @@
 import Drop from "tether-drop";
 
-$(function() {
+$(document).on('ready turbolinks:load', () => {
     if (document.querySelector(".login")) {
       new Drop({
         target: document.querySelector(".login"),
