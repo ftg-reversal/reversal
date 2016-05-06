@@ -4,6 +4,7 @@ ruby '2.3.0'
 # rails
 gem 'rails', '~> 4.2'
 gem 'therubyracer'
+gem 'uglifier'
 
 gem 'newrelic_rpm'
 
