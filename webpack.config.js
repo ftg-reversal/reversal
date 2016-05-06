@@ -45,6 +45,9 @@ var config = {
       { test: require.resolve('turbolinks'), loader: 'imports?this=>window' }
     ]
   },
+
+  resolve: { root: [ path.resolve('./frontend/js') ] },
+
   postcss: function () {
     return [autoprefixer, precss];
   },
