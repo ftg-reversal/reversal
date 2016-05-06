@@ -7,10 +7,7 @@ require("./vendor/widgets");
 
 require("./views/header");
 
-require("./vuejs/SummaryEditor.js");
+require("./vuejs/SummaryEditor");
 
-$(document).on('turbolinks:load', function() {
-  $('.ckeditor').each(function(i, e) {
-    CKEDITOR.replace(e.id);
-  });
-});
+require("./turbolinks/ckeditor");
+require("./turbolinks/twitter");
