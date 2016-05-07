@@ -15,7 +15,8 @@ html
   body
     .main
       = render 'layouts/header', current_user: @current_user, twitter_user: @twitter_user
-      = render 'layouts/navbar'
+      - if @current_user
+        = render 'layouts/navbar'
       .uk-container.uk-container-center.uk-margin-top
         = yield
 
