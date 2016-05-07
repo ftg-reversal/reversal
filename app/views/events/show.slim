@@ -6,7 +6,7 @@
 .uk-panel.uk-panel-box.uk-margin-top
   = render 'shared/item_header', item: @event
   .uk-margin-top
-    a href="https://twitter.com/intent/tweet?button_hashtag=ftg_reversal&text=#{@event.title}" class="twitter-hashtag-button" data-size="large" data-url="http://ftg-reversal.net/events/2"
+    a href="https://twitter.com/intent/tweet?button_hashtag=ftg_reversal&text=#{@event.title}" class="twitter-hashtag-button" data-size="large" data-url="#{event_url}"
   hr
   h3 概要
   == @event.description
