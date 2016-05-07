@@ -1,17 +1,13 @@
 - if current_user && (current_user == item.reversal_user || current_user.admin?)
-  ul.uk-subnav.uk-align-right.uk-margin-top
+  nav.nav.nav-inline.pull-right
     - if current_user && current_user == item.reversal_user
-      li
-        a href=edit_path
-          i.fa.fa-pencil
-          | &nbsp;編集
-      li
-        a href=delete_path data-method='delete' data-confirm='本当に削除してもよろしいですか？'
-          i.fa.fa-remove
-          | &nbsp;削除
+      a.nav-link href=edit_path
+        i.fa.fa-pencil
+        | &nbsp;編集
+      a.nav-link href=delete_path data-method='delete' data-confirm='本当に削除してもよろしいですか？'
+        i.fa.fa-remove
+        | &nbsp;削除
     - if current_user&.admin?
-      li
-        a href=delete_path data-method='delete' data-confirm='管理者特権で削除してもよろしいですか？'
-          i.fa.fa-remove
-          | &nbsp;管理者削除
-br
+      a.nav-link href=delete_path data-method='delete' data-confirm='管理者特権で削除してもよろしいですか？'
+        i.fa.fa-remove
+        | &nbsp;管理者削除

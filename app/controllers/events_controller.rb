@@ -39,9 +39,9 @@ class EventsController < ApplicationController
 
   def create
     parameter = EventParameter.new(params[:event], @current_user)
-    @event = Event.create(parameter.to_h)
+    @event = Event.new(parameter.to_h)
 
-    if @event
+    if @event.save
       redirect_to @event
     else
       render 'new'
@@ -63,7 +63,7 @@ class EventsController < ApplicationController
 
   def destroy
     @event.destroy
-    redirect_to events_url
+    redirect_to events_url, status: :see_other
   end
 
   def entried

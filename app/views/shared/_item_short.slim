@@ -1,11 +1,12 @@
-.uk-panel.uk-panel-box.uk-margin-top
-  .item-header
-    .item-icon
-      img src=item.reversal_user.slack_user.icon_url title=item.reversal_user.slack_user.name
-    h3.item-title
-      a href=path
-        = item.title
-    .item-owner
-      | by&nbsp;
-      / a href=user_path(item.reversal_user)
-      | #{item.reversal_user.slack_user.name}
+.media
+  a.media-left href='#'
+    img.media-object src=item.reversal_user.slack_user.icon_url title=item.reversal_user.slack_user.name
+  .media-body
+    a href=path
+      h3.media-heading = item.title
+    p.pull-left.m-r-1
+      | 作成者；
+      a href='#' = "#{item.reversal_user.slack_user.name}"
+    p = "最終更新；#{time_ago_in_words(item.updated_at)}前"
+
+hr

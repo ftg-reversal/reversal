@@ -26,5 +26,13 @@ module Reversal
     config.generators.template_engine = :slim
 
     config.i18n.default_locale = :ja
+
+    # config.react.server_renderer_pool_size ||= 8
+    # config.react.server_renderer_timeout   ||= 20
+    # config.react.server_renderer = React::ServerRendering::SprocketsRenderer
+    # config.react.server_renderer_options = {
+    #   files: ['react-server.js', 'webpack/components.js'],
+    #   replay_console: true
+    # }
   end
 end

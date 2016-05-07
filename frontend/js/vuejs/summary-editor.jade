@@ -1,0 +1,62 @@
+.app-root
+  .row
+    .col-md-6
+      .main-card.card
+        .card-block
+          form.summary-form(action='#', @submit.prevent='onSelectChannel($event, channel, loadMessages)')
+            .header
+              .row
+                .col-md-10
+                  select.form-control.form-control-lg(v-model='channel')
+                    option(v-for='channel in channels', :value='channel.value')
+                      | \#{{ channel.text }}
+                .col-md-2
+                  button.form-control(type='submit', :disabled='nowLoading')
+                    i.fa.fa-refresh(v-if='!nowLoading')
+                    i.fa.fa-spinner.fa-spin(v-if='nowLoading')
+          .card
+            .card-block
+              .load-messages.channel-history
+                ul
+                  li.slack-message(v-for='message in loadMessages', @click="onClickLoadMessage(this)")
+                    .media
+                      .slack-icon.media-object.pull-left
+                        img(:src='message.avatar_url')
+                      .media-body
+                        .media-heading
+                          h4.pull-left
+                            | {{ message.username }}
+                          small.m-l-1
+                            | {{ message.date }}
+                          p
+                            | {{{ message.format_text }}}
+            .card-footer.text-muted
+              | 左パネルからクリックで発言を選択<br>ドラッグで並び替え
+
+    .col-md-6
+      .main-card.card
+        .card-block
+          .header.row
+            h3.m-l-1 まとめプレビュー ({{ messages.length }} / 100)
+          .card
+            .card-block
+              .selected-messages.channel-history.editor-main-list
+                ul
+                  li.slack-message.media.no-marker(v-for='message in messages', @click="onClickMessage(this)", id="{{ $index }}", v-drag-and-drop drop='handleDrop')
+                    .slack-icon.media-object.pull-left
+                      img(:src='message.avatar_url')
+                    .media-body
+                      .media-heading
+                        h4.pull-left
+                          | {{ message.username }}
+                        small.m-l-1
+                          | {{ message.date }}
+                        p
+                          | {{{ message.format_text }}}
+
+        .card-footer
+          fieldset.form-group
+            input.form-control.js-edit-app-title(name='title', type='text', value='', placeholder='まとめのタイトル', v-model='title', :readonly='nowSubmitting')
+          fieldset.form-group
+            textarea.form-control.js-edit-app-description(name='description', placeholder='まとめの説明文(省略可)', v-model='description', :readonly='nowSubmitting')
+          button.btn.btn-primary(@click='onSubmit($event, title, description, messages)', :disabled='nowSubmitting') まとめを投稿する

@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
     session[:user_id] = nil
     session[:token] = nil
     session[:twitter_user_id] = nil
-    redirect_to root_path
+    redirect_to root_path, status: :see_other
   end
 
   private

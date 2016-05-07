@@ -1,5 +1,8 @@
-$(document).on('turbolinks:load', function() {
-  $('.ckeditor').each(function(i, e) {
-    CKEDITOR.replace(e.id);
+function onLoad() {
+  Array.prototype.map.call(document.querySelectorAll('.ckeditor'),  (e) => {
+    CKEDITOR.replace(e);
   });
-});
+}
+
+window.addEventListener('DOMContentLoaded', onLoad);
+window.addEventListener('turbolinks:load', onLoad);

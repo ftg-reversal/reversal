@@ -1,6 +1,8 @@
-.contents-type
-  .contents-type-text 動画一覧
-  - page_entries_info @videos
-= render 'list', videos: @videos
-
-= paginate @videos
+#video-index
+  .card
+    .card-block
+      h2 動画一覧
+      hr
+      - @videos.each do |video|
+        = render 'item', video: video
+      = paginate @videos

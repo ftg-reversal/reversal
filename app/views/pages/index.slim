@@ -1,6 +1,9 @@
-h2.uk-h2 まとめページ一覧
-.uk-container.uk-container-center
-  - @pages.each do |page|
-    - path = page.type == 'page' ? page_path(page) : summary_path(page)
-    = render 'shared/item_short', item: page, description: page.description.split.first , path: path
-  = paginate @pages
+#page-index
+  .card
+    .card-block
+      h2.card-title まとめページ一覧
+      hr
+      - @pages.each do |page|
+        - path = page.type == 'page' ? page_path(page) : summary_path(page)
+        = render 'shared/item_short', item: page, description: page.description.split.first , path: path
+      = paginate @pages

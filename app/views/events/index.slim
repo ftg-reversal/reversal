@@ -1,5 +1,8 @@
-/ h2.uk-h2 イベント一覧
-.uk-container.uk-container-center
-  - @events.each do |event|
-    = render 'shared/item_short', item: event, description: event.description.split.first, path: event_path(event)
-  = paginate @events
+#event-index
+  .card
+    .card-block
+      h2 イベント一覧
+      hr
+      - @events.each do |event|
+        = render 'shared/item_short', item: event, description: event.description.split.first, path: event_path(event)
+      = paginate @events

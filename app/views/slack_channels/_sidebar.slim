@@ -1,11 +1,10 @@
-.channel-list.uk-panel.uk-panel-box.uk-margin-top
-  .channel-list-header
-    h3.channel-list-header チャンネル一覧
+.card-block
+  h4.card-title チャンネル一覧
 
-  hr.channel-list-split
+hr.m-t-0
 
-  ul.uk-nav
-    - channels.each do |channel|
-      li class="#{active_link_to_class(channel_path(channel.id), class_active: 'is-active')}"
-        a href=channel_path(channel.id)
-          = "##{channel.name}"
+ul.nav.nav-pills.nav-stacked
+  - channels.each do |channel|
+    li.nav-item
+      a.nav-link href=channel_path(channel.id) class="#{active_link_to_class(channel_path(channel.id), class_active: 'active')}"
+        = "##{channel.name}"

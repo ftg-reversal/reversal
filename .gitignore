@@ -4,6 +4,7 @@
 
 # Rails
 /app/assets/javascripts/webpack
+/app/assets/stylesheets/webpack
 /log
 /tmp
 /public/assets
@@ -14,9 +15,9 @@
 /erd.pdf
 /railways.cache
 
-
 # npm
 /node_modules
+/npm-debug.log
 
 # bower
 /bower_components

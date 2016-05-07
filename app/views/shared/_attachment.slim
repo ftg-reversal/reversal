@@ -1,10 +1,10 @@
-.slack-message-attachment class="slack-message-attachment-#{attachment['service_name'] || 'other'}"
+div
   - case attachment['service_name']
   - when nil
-    .slack-message-attachment-name
+    div
       a href=attachment['title_link']
         = attachment['title']
-    .slack-message-attachment-text
+    div
       = attachment_text_format(attachment['text'])
   - when 'twitter'
     blockquote.twitter-tweet
@@ -14,5 +14,5 @@
       = " #{attachment['author_name']} (#{attachment['author_subname']}) "
       a href=attachment['from_url']
   - else
-    .slack-message-attachment-text
+    div
       = attachment['text']

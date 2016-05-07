@@ -1,11 +1,11 @@
-nav.navbar.uk-navbar
-  .navbar-container
-    ul.navbar-nav.uk-navbar-nav
-      li.navbar-item class="#{active_link_to_class(videos_path, class_active: 'is-active uk-active')}"
-        a href=videos_path Videos
-      li.navbar-item class="#{active_link_to_class(channels_path, class_active: 'is-active uk-active')}"
-        a href=channels_path Slacker
-      li.navbar-item class="#{active_link_to_class('', active: [['pages', 'summaries'], []], class_active: 'is-active uk-active')}"
-        a href=pages_path Rlog
-      li.navbar-item class="#{active_link_to_class(events_path, class_active: 'is-active uk-active')}"
-        a href=events_path Events
+nav#navbar.navbar.navbar-dark
+  .container
+    ul.nav.navbar-nav
+      li.nav-item class="#{active_link_to_class(videos_path, class_active: 'active')}"
+        a.nav-link href=videos_path Videos
+      li.nav-item class="#{active_link_to_class(channels_path, class_active: 'active')}"
+        a.nav-link href=channels_path Slacker
+      li.nav-item class="#{active_link_to_class('', active: [['pages', 'summaries'], []], class_active: 'active')}"
+        a.nav-link href=pages_path Rlog
+      li.nav-item class="#{active_link_to_class(events_path, class_active: 'active')}"
+        a.nav-link href=events_path Events

@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/bbatsov/rubocop
-  revision: 288861d4a57a92e1e06c300848b4996e49dea8a2
+  revision: 584326962d721d630c15219c0f99f040d6c27b57
   specs:
-    rubocop (0.39.0)
+    rubocop (0.40.0)
       parser (>= 2.3.1.0, < 3.0)
       powerpack (~> 0.1)
       rainbow (>= 1.99.1, < 3.0)
@@ -10,15 +10,8 @@ GIT
       unicode-display_width (~> 1.0, >= 1.0.1)
 
 GIT
-  remote: https://github.com/tablexi/capistrano3-unicorn.git
-  revision: 7ea712c013f4630f6d369e87701ee3013c4d7750
-  specs:
-    capistrano3-unicorn (0.2.1)
-      capistrano (~> 3.1, >= 3.1.0)
-
-GIT
   remote: https://github.com/thoughtbot/paperclip.git
-  revision: 80904d394ad814c8fd7fbdb4978e2f1bb920422d
+  revision: 2c59f96fe4ce8346a7d9bb9a062f2cd7073d035a
   specs:
     paperclip (5.0.0.beta2)
       activemodel (>= 4.2.0)
@@ -51,8 +44,10 @@ GEM
       rails-html-sanitizer (~> 1.0, >= 1.0.2)
     active_link_to (1.0.3)
       actionpack
-    active_model_serializers (0.9.5)
-      activemodel (>= 3.2)
+    active_model_serializers (0.10.0)
+      actionpack (>= 4.0)
+      activemodel (>= 4.0)
+      railties (>= 4.0)
     active_record_union (1.1.1)
       activerecord (>= 4.0)
     activejob (4.2.6)
@@ -65,6 +60,13 @@ GEM
       activemodel (= 4.2.6)
       activesupport (= 4.2.6)
       arel (~> 6.0)
+    activerecord-belongs_to_if (0.0.4)
+      activerecord (>= 4.0.0)
+      activesupport
+    activerecord-mysql-awesome (0.0.8)
+      activerecord (~> 4.0)
+      activesupport (~> 4.0)
+      mysql2 (>= 0.3.18)
     activesupport (4.2.6)
       i18n (~> 0.7)
       json (~> 1.7, >= 1.7.7)
@@ -72,20 +74,20 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.4.0)
-    airbrussh (1.0.1)
+    airbrussh (1.0.2)
       sshkit (>= 1.6.1, != 1.7.0)
-    annotate (2.7.0)
+    annotate (2.7.1)
       activerecord (>= 3.2, < 6.0)
-      rake (~> 10.4)
+      rake (>= 10.4, < 12.0)
     arel (6.0.3)
     ast (2.2.0)
     awesome_print (1.6.1)
-    aws-sdk (2.3.1)
-      aws-sdk-resources (= 2.3.1)
-    aws-sdk-core (2.3.1)
+    aws-sdk (2.3.7)
+      aws-sdk-resources (= 2.3.7)
+    aws-sdk-core (2.3.7)
       jmespath (~> 1.0)
-    aws-sdk-resources (2.3.1)
-      aws-sdk-core (= 2.3.1)
+    aws-sdk-resources (2.3.7)
+      aws-sdk-core (= 2.3.7)
     bcrypt (3.1.11)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
@@ -93,22 +95,14 @@ GEM
       rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    brakeman (3.2.1)
-      erubis (~> 2.6)
-      haml (>= 3.0, < 5.0)
-      highline (>= 1.6.20, < 2.0)
-      ruby2ruby (~> 2.3.0)
-      ruby_parser (~> 3.8.1)
-      safe_yaml (>= 1.0)
-      sass (~> 3.0)
-      slim (>= 1.3.6, < 4.0)
-      terminal-table (~> 1.4)
+    bootstrap_form (2.3.0)
+    brakeman (3.3.0)
     buftok (0.2.0)
     builder (3.2.2)
-    bullet (5.0.0)
+    bullet (5.1.0)
       activesupport (>= 3.0.0)
-      uniform_notifier (~> 1.9.0)
-    byebug (8.2.5)
+      uniform_notifier (~> 1.10.0)
+    byebug (9.0.4)
     capistrano (3.5.0)
       airbrussh (>= 1.0.0)
       capistrano-harrow
@@ -118,13 +112,15 @@ GEM
     capistrano-bundler (1.1.4)
       capistrano (~> 3.1)
       sshkit (~> 1.2)
-    capistrano-harrow (0.4.0)
+    capistrano-harrow (0.5.1)
     capistrano-rails (1.1.6)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
     capistrano-rbenv (2.0.4)
       capistrano (~> 3.1)
       sshkit (~> 1.3)
+    capistrano3-unicorn (0.2.1)
+      capistrano (~> 3.1, >= 3.1.0)
     choice (0.2.0)
     chronic (0.10.2)
     ckeditor (4.1.6)
@@ -153,7 +149,7 @@ GEM
       safe_yaml (~> 1.0.0)
     daemons (1.2.3)
     debug_inspector (0.0.2)
-    devise (4.1.0)
+    devise (4.1.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 4.1.0, < 5.1)
@@ -179,7 +175,7 @@ GEM
     exception_notification (4.1.4)
       actionmailer (~> 4.0)
       activesupport (~> 4.0)
-    execjs (2.6.0)
+    execjs (2.7.0)
     factory_girl (4.7.0)
       activesupport (>= 3.0.0)
     factory_girl_rails (4.7.0)
@@ -192,17 +188,16 @@ GEM
     faye-websocket (0.9.2)
       eventmachine (>= 0.12.0)
       websocket-driver (>= 0.5.1)
-    foreman (0.81.0)
+    font-awesome-rails (4.6.3.0)
+      railties (>= 3.2, < 5.1)
+    foreman (0.82.0)
       thor (~> 0.19.1)
     gemoji (2.1.0)
     get_process_mem (0.2.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
-    haml (4.0.7)
-      tilt
     hashdiff (0.3.0)
     hashie (3.4.4)
-    highline (1.7.8)
     hirb (0.7.3)
     hirb-unicode-steakknife (0.0.7)
       hirb (~> 0.5)
@@ -218,18 +213,29 @@ GEM
     http-cookie (1.0.2)
       domain_name (~> 0.5)
     http-form_data (1.0.1)
+    http_accept_language (2.0.5)
     http_parser.rb (0.6.0)
     httpclient (2.8.0)
     i18n (0.7.0)
     jmespath (1.2.4)
       json_pure (>= 1.8.1)
+    jquery-datetimepicker-rails (2.4.1.0)
+    jquery-rails (4.1.1)
+      rails-dom-testing (>= 1, < 3)
+      railties (>= 4.2.0)
+      thor (>= 0.14, < 2.0)
     json (1.8.3)
     json_pure (1.8.3)
+    json_world (0.2.3)
+      activesupport
+      json
     jwt (1.5.1)
     kaminari (0.16.3)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     kgio (2.10.0)
+    kosi (1.0.0)
+      unicode (>= 0.4.4)
     libv8 (3.16.14.15)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
@@ -240,11 +246,11 @@ GEM
     method_source (0.8.2)
     mime-types (3.0)
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2016.0221)
+    mime-types-data (3.2016.0521)
     mimemagic (0.3.1)
     mini_portile2 (2.0.0)
-    minitest (5.8.4)
-    multi_json (1.12.0)
+    minitest (5.9.0)
+    multi_json (1.12.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     mysql2 (0.4.4)
@@ -257,6 +263,7 @@ GEM
       httpclient (>= 2.6.0)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
+    nprogress-rails (0.1.6.7)
     oauth (0.5.1)
     oauth2 (1.1.0)
       faraday (>= 0.8, < 0.10)
@@ -286,8 +293,8 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
-    pry-byebug (3.3.0)
-      byebug (~> 8.0)
+    pry-byebug (3.4.0)
+      byebug (~> 9.0)
       pry (~> 0.10)
     pry-coolline (0.2.5)
       coolline (~> 0.5)
@@ -345,7 +352,7 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rainbow (2.1.0)
     raindrops (0.16.0)
-    rake (10.5.0)
+    rake (11.1.2)
     ref (2.0.0)
     request_store (1.3.1)
     require_all (1.3.3)
@@ -373,14 +380,15 @@ GEM
       rspec-support (~> 3.4.0)
     rspec-support (3.4.1)
     ruby-graphviz (1.2.2)
-    ruby-progressbar (1.8.0)
-    ruby2ruby (2.3.0)
-      ruby_parser (~> 3.1)
-      sexp_processor (~> 4.0)
-    ruby_parser (3.8.1)
-      sexp_processor (~> 4.1)
+    ruby-progressbar (1.8.1)
     safe_yaml (1.0.4)
     sass (3.4.22)
+    sass-rails (5.0.4)
+      railties (>= 4.0.0, < 5.0)
+      sass (~> 3.1)
+      sprockets (>= 2.8, < 4.0)
+      sprockets-rails (>= 2.0, < 4.0)
+      tilt (>= 1.1, < 3)
     seed_dump (3.2.4)
       activerecord (>= 4)
       activesupport (>= 4)
@@ -391,7 +399,7 @@ GEM
       json (~> 1.8)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.0)
-    slack-api (1.2.2)
+    slack-api (1.2.3)
       faraday (>= 0.7, < 0.10)
       faraday_middleware (~> 0.8)
       faye-websocket (~> 0.9.2)
@@ -400,8 +408,11 @@ GEM
       escape_utils (~> 1.0.1)
       gemoji (~> 2.1.0)
       html-pipeline (~> 1.11.0)
-    slim (3.0.6)
-      temple (~> 0.7.3)
+    slacken (0.1.3)
+      kosi (~> 1.0)
+      nokogiri (~> 1.6)
+    slim (3.0.7)
+      temple (~> 0.7.6)
       tilt (>= 1.3.3, < 2.1)
     slim-rails (3.0.1)
       actionmailer (>= 3.1, < 5.0)
@@ -430,8 +441,7 @@ GEM
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
     sysexits (1.2.0)
-    temple (0.7.6)
-    terminal-table (1.5.2)
+    temple (0.7.7)
     therubyracer (0.12.2)
       libv8 (~> 3.16.14.0)
       ref
@@ -441,7 +451,7 @@ GEM
       rack (~> 1.0)
     thor (0.19.1)
     thread_safe (0.3.5)
-    tilt (2.0.2)
+    tilt (2.0.4)
     turbolinks (2.5.3)
       coffee-rails
     twitter (5.16.0)
@@ -462,6 +472,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.2)
+    unicode (0.4.4.2)
     unicode-display_width (1.0.5)
     unicode_utils (1.4.0)
     unicorn (5.1.0)
@@ -470,22 +481,22 @@ GEM
     unicorn-worker-killer (0.4.4)
       get_process_mem (~> 0)
       unicorn (>= 4, < 6)
-    uniform_notifier (1.9.0)
+    uniform_notifier (1.10.0)
     view_source_map (0.1.1)
       rails (>= 3.2)
     warden (1.2.6)
       rack (>= 1.0)
-    webmock (2.0.1)
+    webmock (2.0.3)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff
-    websocket-driver (0.6.3)
+    websocket-driver (0.6.4)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
     whenever (0.9.4)
       chronic (>= 0.6.3)
     yard (0.8.7.6)
-    yt (0.25.35)
+    yt (0.25.37)
       activesupport
 
 PLATFORMS
@@ -495,18 +506,22 @@ DEPENDENCIES
   active_link_to
   active_model_serializers
   active_record_union
+  activerecord-belongs_to_if
+  activerecord-mysql-awesome
+  airbrussh
   annotate
   awesome_print
   aws-sdk (>= 2.0.0)
   better_errors
   binding_of_caller
+  bootstrap_form
   brakeman
   bullet
   capistrano
   capistrano-bundler
   capistrano-rails
   capistrano-rbenv
-  capistrano3-unicorn!
+  capistrano3-unicorn
   ckeditor
   classy_enum
   coderay
@@ -515,14 +530,22 @@ DEPENDENCIES
   draper
   exception_notification
   factory_girl_rails
+  faraday (= 0.9.2)
+  faraday_middleware
+  font-awesome-rails
   foreman
   gemoji
   hirb
   hirb-unicode-steakknife
+  http_accept_language
+  jquery-datetimepicker-rails
+  jquery-rails
+  json_world
   kaminari
   mysql2
   newrelic_rpm
   nico_search_snapshot
+  nprogress-rails
   omniauth
   omniauth-slack
   omniauth-twitter
@@ -533,17 +556,20 @@ DEPENDENCIES
   pry-rails
   pry-stack_explorer
   quiet_assets
-  rails (~> 4.2)
+  rails (= 4.2.6)
   rails-erd
   rails_autolink
   rails_best_practices
+  request_store
   rspec
   rspec-rails
   rubocop!
+  sass-rails
   seed_dump
   simplecov
   slack-api
   slack_markdown
+  slacken
   slim-rails
   slim_lint
   spring

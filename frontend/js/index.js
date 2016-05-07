@@ -1,13 +1,17 @@
-require("jquery");
-require("jquery-ujs");
+//vendor
+require('jquery-ujs')
+require('sweetalert')
 
-require("font-awesome-webpack");
+require('vendor/bootstrap/npm');
+require('vendor/twitter-widgets');
 
-require("vendor/twitter-widgets");
+require('views/slack-channel')
+require('views/sweetalert')
+require('views/entry')
 
-require("views/header");
+require('vuejs/summary-editor');
 
-require("vuejs/SummaryEditor");
-
-require("turbolinks/ckeditor");
-require("turbolinks/twitter");
+require('turbolinks/ckeditor');
+require('turbolinks/slack-channel');
+require('turbolinks/summary-editor');
+require('turbolinks/twitter');

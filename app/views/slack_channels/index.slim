@@ -1,12 +1,13 @@
-.uk-grid.uk-grid-match data-uk-grid-match="{target: '.uk-panel'}"
-  .uk-width-medium-1-4.uk-width-small-1-1
-    = render 'sidebar', channels: @channels
-  .history-column.uk-width-medium-3-4.uk-hidden-small
-    .uk-panel.uk-panel-box.uk-margin-top
-      p
-        | text
-      p
-        a href='' FTG-Reversal Slack
+.row
+  #channel-sidebar.col-md-3.col-sm-12
+    .card
+      = render 'sidebar', channels: @channels
+  .col-md-9.hidden-sm-down
+    .card
+      .card-block
+        h4.card-title チャンネルを選択してください
+        p.card-text
+          a href='' FTG-Reversal Slack
 
 - content_for :title do
   | Slacker チャンネル一覧

@@ -24,6 +24,8 @@
 #
 
 class SlackMessage < ActiveRecord::Base
+  paginates_per 30
+
   belongs_to :slack_channel
   belongs_to :slack_user
 

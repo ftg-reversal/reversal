@@ -1,15 +1,15 @@
-= form_for page, html: { class: 'uk-form uk-margin-top' } do |form|
+.m-t-1
   - if page.errors.any?
-    ul
       - page.errors.full_messages.each do |message|
-        li = message
+        .alert.alert-warning role='alert' = message
 
-  .uk-form-row
-    label.uk-form-label タイトル
-    .uk-form-controls
-      = form.text_field :title
-  .uk-form-row
-    label.uk-form-label 内容
-    .uk-form-controls
+  = bootstrap_form_for(page, inline_errors: false) do |form|
+    .row
+      .col-xs-6
+        label for='event_title' タイトル
+        .input-group
+          .input-group-addon
+            i.fa.fa-pencil
+          = form.text_field :title, hide_label: true
     = form.text_area :description, class: 'ckeditor'
-  .actions.uk-button.uk-margin-top = form.submit '登録'
+    = form.submit '登録', class: 'btn btn-primary btn-lg'
