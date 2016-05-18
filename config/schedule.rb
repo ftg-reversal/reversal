@@ -7,3 +7,7 @@ end
 every 15.minutes do
   runner 'Batch::UpdateVideos.exec'
 end
+
+every 6.hours do
+  rake 'db:backup'
+end
