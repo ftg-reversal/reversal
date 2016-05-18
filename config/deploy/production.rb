@@ -19,7 +19,7 @@ server 'ftg-reversal.net',
 set :ssh_options, {
   forward_agent: true,
   auth_methods: %w(publickey),
-  user: 'ec2-user',
+  user: 'ec2-user'
 }
 
 set :rails_env, :production
