@@ -1,5 +1,5 @@
-shared_path = "/home/ec2-user/apps/reversal/shared/"
-current_path = "/home/ec2-user/apps/reversal/current/"
+shared_path = '/home/ec2-user/apps/reversal/shared/'
+current_path = '/home/ec2-user/apps/reversal/current/'
 
 # ワーカーの数
 worker_processes 2
@@ -17,6 +17,10 @@ stdout_path File.expand_path('log/unicorn.log', ENV['RAILS_ROOT'])
 
 preload_app true
 GC.respond_to?(:copy_on_write_friendly=) and GC.copy_on_write_friendly = true
+
+before_exec do |server|
+  ENV['BUNDLE_GEMFILE'] = "#{current_path}/Gemfile"
+end
 
 before_fork do |server, worker|
   defined?(ActiveRecord::Base) && ActiveRecord::Base.connection.disconnect!
