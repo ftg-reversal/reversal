@@ -53,6 +53,7 @@ Rank.create!([
   {rank: "暴君"},
   {rank: "闘神"}
 ])
+
 SlackChannel.create!([
   {cid: "C136K4X5Y", name: "aaa", topic: "", is_archived: false},
   {cid: "C135T8JT0", name: "axl", topic: "", is_archived: false},
@@ -87,6 +88,33 @@ SlackChannel.create!([
   {cid: "C047L3QFU", name: "videos", topic: "動画のアップロード通知", is_archived: false},
   {cid: "C1360BCNT", name: "zato", topic: "", is_archived: false}
 ])
+
+Twitter2slackCondition.create!([
+  {text: "#ソル攻略", slack_channel: SlackChannel.find_by(name: "sol")},
+  {text: "#カイ攻略", slack_channel: SlackChannel.find_by(name: "ky")},
+  {text: "#メイ攻略", slack_channel: SlackChannel.find_by(name: "may")},
+  {text: "#ミリア攻略", slack_channel: SlackChannel.find_by(name: "millia")},
+  {text: "#ザトー攻略", slack_channel: SlackChannel.find_by(name: "zato")},
+  {text: "#ポチョムキン攻略", slack_channel: SlackChannel.find_by(name: "potemkin")},
+  {text: "#チップ攻略", slack_channel: SlackChannel.find_by(name: "chipp")},
+  {text: "#ファウスト攻略", slack_channel: SlackChannel.find_by(name: "faust")},
+  {text: "#アクセル攻略", slack_channel: SlackChannel.find_by(name: "axl")},
+  {text: "#ヴェノム攻略", slack_channel: SlackChannel.find_by(name: "venom")},
+  {text: "#スレイヤー攻略", slack_channel: SlackChannel.find_by(name: "slayer")},
+  {text: "#イノ攻略", slack_channel: SlackChannel.find_by(name: "ino")},
+  {text: "#ベッドマン攻略", slack_channel: SlackChannel.find_by(name: "bedman")},
+  {text: "#ラムレザル攻略", slack_channel: SlackChannel.find_by(name: "ramlethal")},
+  {text: "#シン攻略", slack_channel: SlackChannel.find_by(name: "sin")},
+  {text: "#エルフェルト攻略", slack_channel: SlackChannel.find_by(name: "elphelt")},
+  {text: "#レオ攻略", slack_channel: SlackChannel.find_by(name: "leo")},
+  {text: "#ジョニー攻略", slack_channel: SlackChannel.find_by(name: "johnny")},
+  {text: "#ジャックオー攻略", slack_channel: SlackChannel.find_by(name: "jack-o")},
+  {text: "#ジャム攻略", slack_channel: SlackChannel.find_by(name: "jam")},
+  {text: "#クム攻略", slack_channel: SlackChannel.find_by(name: "kum")},
+  {text: "#レイヴン攻略", slack_channel: SlackChannel.find_by(name: "raven")},
+  {text: "#ディズィー攻略", slack_channel: SlackChannel.find_by(name: "dizzy")}
+])
+
 VideoSiteSearchCondition.create!([
   {word: "GGXrd", video_site: "nicovideo"}
 ])
