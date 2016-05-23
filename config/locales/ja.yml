@@ -7,6 +7,7 @@ ja:
     rank: 段位
     comment: コメント
     event: イベント
+    datetime: 日時
   activerecord:
     errors:
       messages:

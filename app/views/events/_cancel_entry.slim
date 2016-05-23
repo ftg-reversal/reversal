@@ -1,3 +1,5 @@
-a href=entry_path(entry) data-method='delete' data-confirm='本当にキャンセルしてもよろしいですか？'
-  i.fa.fa-remove
-  | &nbsp;エントリーをキャンセル
+.row
+  .col-md-6.col-md-offset-3.col-sm-12
+    = link_to entry, data: { behavior: 'delete' }, class: 'btn btn-color1c btn-lg btn-block' do
+      i.fa.fa-remove
+        | &nbsp;エントリーをキャンセル

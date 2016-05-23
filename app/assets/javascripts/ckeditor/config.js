@@ -1,6 +1,7 @@
 CKEDITOR.editorConfig = function(config) {
     config.height = "600px";
     config.setLang = "ja";
+    config.skin = 'bootstrapck'
 
     config.filebrowserBrowseUrl = "/ckeditor/attachment_files";
     config.filebrowserFlashBrowseUrl = "/ckeditor/attachment_files";

@@ -1,0 +1,27 @@
+#header
+  $header-height: 60px
+  $header-icon-size: 40px
+
+  line-height: $header-height
+  max-width: 100%
+  background: $color1c
+  +padding(8px null 8px null)
+
+  .header-logo
+    +hide-text
+    width: 250px
+    background: inline("logo.png") 0 -8px no-repeat
+    background-size: auto 75px
+
+  .dropdown-toggle:after
+    border: 0
+
+  .dropdown-menu
+    background: black
+    border: 1px white solid
+
+  .dropdown-item
+    color: white
+
+    &:hover
+      background: tint(black, 20%)

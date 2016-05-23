@@ -1,0 +1,10 @@
+.media
+  .media-left href=video.url
+    a
+      img.media-object src=video.thumbnail title=video.title
+    p.text-md-right
+      strong = "#{time_ago_in_words(video.updated_at)}前"
+  .media-body
+    a href=video.url
+      h3.media-heading = video.title
+hr

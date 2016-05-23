@@ -1,13 +1,22 @@
-// reset
-@import "sanitize.css"
+// framework
+@import "foundation/variables"
+@import "vendor/1pxdeep/1pxdeep-scheme"
+@import "vendor/1pxdeep/1pxdeep-bootstrap-variables"
+@import "vendor/bootstrap/bootstrap"
+@import "vendor/1pxdeep/1pxdeep"
+@import "vendor/sweetalert"
+@import "vendor/validationEngine.jquery"
 
-// uikit
-@import "uikit/uikit"
-
+// @import "vendor/uikit/uikit"
 @import "bourbon"
 
-@import "mixins/**/*"
+// mixin
+@import "mixin/**/*"
 
-@import "variables"
-@import "base"
+// foundation
+@import "foundation/base"
+
+@import "layout/**/*"
+@import "helper/**/*"
+
 @import "modules/**/*"

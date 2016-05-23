@@ -1,95 +1,88 @@
 source 'https://rubygems.org'
 ruby '2.3.0'
 
-# rails
-gem 'rails', '~> 4.2'
-gem 'therubyracer'
-gem 'uglifier'
+gem 'rails', '4.2.6'
 
-gem 'newrelic_rpm'
-
-# DB
-gem 'mysql2'
-gem 'active_record_union'
-
-gem 'foreman'
-
-# View
-gem 'turbolinks'
-gem 'slim-rails'
-gem 'active_model_serializers'
-gem 'kaminari'
 gem 'active_link_to'
-gem 'rails_autolink'
-
-# Decorator
+gem 'active_model_serializers'
+gem 'active_record_union'
+gem 'activerecord-belongs_to_if'
+gem 'activerecord-mysql-awesome'
+gem 'aws-sdk', '>= 2.0.0'
+gem 'bootstrap_form'
+gem 'ckeditor'
+gem 'classy_enum'
+gem 'devise'
 gem 'draper'
-
-# Service
-gem 'twitter'
+gem 'exception_notification'
+gem 'faraday', '0.9.2'
+gem 'faraday_middleware'
+gem 'font-awesome-rails'
+gem 'foreman'
+gem 'gemoji'
+gem 'http_accept_language'
+gem 'jquery-datetimepicker-rails'
+gem 'jquery-rails'
+gem 'json_world'
+gem 'kaminari'
+gem 'mysql2'
+gem 'newrelic_rpm'
+gem 'nico_search_snapshot'
+gem 'nprogress-rails'
+gem 'omniauth'
+gem 'omniauth-slack'
+gem 'omniauth-twitter'
+gem 'paperclip', git: 'https://github.com/thoughtbot/paperclip.git'
+gem 'pry-rails'
+gem 'rails_autolink'
+gem 'request_store'
+gem 'sass-rails'
 gem 'slack-api'
 gem 'slack_markdown'
-gem 'omniauth'
-gem 'omniauth-twitter'
-gem 'omniauth-slack'
-gem 'aws-sdk', '>= 2.0.0'
-gem 'nico_search_snapshot'
-gem 'yt'
-gem 'devise'
-gem 'paperclip', git: 'https://github.com/thoughtbot/paperclip.git'
-gem 'ckeditor'
-gem 'gemoji'
-
-# Production Manage
+gem 'slacken'
+gem 'slim-rails'
+gem 'therubyracer'
+gem 'turbolinks'
+gem 'twitter'
+gem 'uglifier'
 gem 'whenever', require: false
-gem 'exception_notification'
-
-# Util
-gem 'classy_enum'
+gem 'yt'
 
 group :development, :test do
-  gem 'thin'
-  gem 'spring'
-  gem 'spring-commands-rspec'
-  gem 'quiet_assets'
-  gem 'dotenv-rails'
-
-  # DB
-  gem 'seed_dump'
-  gem 'squasher'
-
-  # Pry
-  gem 'pry-rails'
-  gem 'pry-byebug'
-  gem 'pry-stack_explorer'
-  gem 'pry-doc'
-  gem 'pry-coolline'
+  gem 'airbrussh', require: false
+  gem 'annotate'
   gem 'awesome_print'
-  gem 'hirb'
-  gem 'hirb-unicode-steakknife', require: 'hirb-unicode'
   gem 'better_errors'
   gem 'binding_of_caller'
-
-  # Visualization
-  gem 'annotate'
-  gem 'rails-erd'
-  gem 'view_source_map'
-
-  # CI
-  gem 'bullet'
-  gem 'rubocop', require: false, git: 'https://github.com/bbatsov/rubocop'
-  gem 'rails_best_practices', require: false
   gem 'brakeman', require: false
+  gem 'bullet'
+  gem 'dotenv-rails'
+  gem 'hirb'
+  gem 'hirb-unicode-steakknife', require: 'hirb-unicode'
+  gem 'pry-byebug'
+  gem 'pry-coolline'
+  gem 'pry-doc'
+  gem 'pry-stack_explorer'
+  gem 'quiet_assets'
+  gem 'rails-erd'
+  gem 'rails_best_practices', require: false
+  gem 'rubocop', require: false, git: 'https://github.com/bbatsov/rubocop'
+  gem 'seed_dump'
   gem 'slim_lint', require: false
+  gem 'spring'
+  gem 'spring-commands-rspec'
+  gem 'squasher'
+  gem 'thin'
+  gem 'view_source_map'
 end
 
 group :test do
+  gem 'coderay'
+  gem 'factory_girl_rails'
   gem 'rspec'
   gem 'rspec-rails'
-  gem 'factory_girl_rails'
   gem 'simplecov'
   gem 'webmock'
-  gem 'coderay'
 end
 
 group :production do
@@ -102,5 +95,5 @@ group :deployment do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
-  gem 'capistrano3-unicorn', git: 'https://github.com/tablexi/capistrano3-unicorn.git'
+  gem 'capistrano3-unicorn'
 end

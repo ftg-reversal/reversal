@@ -3,6 +3,7 @@ html
   head
     meta name='viewport' content='width=device-width, initial-scale=1.0'
     = javascript_include_tag 'application'
+    = stylesheet_link_tag 'application'
 
     title
       - if content_for?(:title)
@@ -13,17 +14,17 @@ html
 
     = csrf_meta_tags
   body
-    .main
+    #wrapper
       = render 'layouts/header', current_user: @current_user, twitter_user: @twitter_user
-      - if @current_user
-        = render 'layouts/navbar'
-      .uk-container.uk-container-center.uk-margin-top
+      = render 'layouts/navbar'
+      #main.container
         = yield
 
-    .footer.uk-margin-top.uk-margin-bottom.uk-text-center.uk-text-muted
+    footer#footer
       hr
-      | FTG-Reversal
-      a href='https://twitter.com/ftg_reversal' target='_blank'
-        | &nbsp;@ftg_reversal
+      .container
+        |  FTG-Reversal
+        a href='https://twitter.com/ftg_reversal' target='_blank' style='color: #ffd13d'
+          | &nbsp;&nbsp;@ftg_reversal
 
     = yield(:javascript)

@@ -1,8 +1,9 @@
-.uk-panel.uk-panel-box.uk-margin-top
-  = render 'shared/item_header', item: @summary
-  hr
-  = render 'item', summary: @summary
-  = render 'shared/item_authority', current_user: @current_user, item: @summary, edit_path: edit_summary_path, delete_path: summary_path(@summary)
+.channel-history.card.p-b-2
+  .card-block
+    = render 'shared/item_header', item: @summary
+    = render 'item', summary: @summary
+    hr
+    = render 'shared/item_authority', current_user: @current_user, item: @summary, edit_path: edit_summary_path, delete_path: summary_path(@summary)
 
 - content_for :title do
   = @summary.title

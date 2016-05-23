@@ -1,20 +1,22 @@
-h3.uk-margin-top エントリー
-= form_for entry, html: { class: 'uk-form uk-margin-top' } do |form|
-  = form.hidden_field :event, value: event.id
-  .uk-form-row
-    label.uk-form-label 名前
-    .uk-form-controls
-      = form.text_field :name
-  .uk-form-row
-    label.uk-form-label キャラ
-    .uk-form-controls
-      = form.collection_select :chara, Chara.all, :id, :name
-  .uk-form-row
-    label.uk-form-label 段位
-    .uk-form-controls
-      = form.collection_select :rank, Rank.all, :id, :rank
-  .uk-form-row
-    label.uk-form-label コメント
-    .uk-form-controls
-      = form.text_field :comment
-  .actions.uk-button.uk-margin-top = form.submit '登録'
+.row
+  .col-md-4.col-md-offset-4
+    button.btn.btn-primary.btn-lg.btn-block data-toggle='modal' data-target='#entryModal'
+      i.fa.fa-check &nbsp;エントリーする
+
+.modal#entryModal.fade tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close type='button' data-dismiss='modal'
+          span aria-hidden="true" &times;
+          span.sr-only Close
+        h4#entryModalLavel.motal-title エントリー情報
+
+      .modal-body
+        = bootstrap_form_for entry, inline_errors: false, validate: true do |form|
+          = form.hidden_field :event, value: event.id
+          = form.text_field :name, class: 'validate[required]'
+          = form.collection_select :chara, Chara.all, :id, :name
+          = form.collection_select :rank, Rank.all, :id, :rank
+          = form.text_field :comment
+          = form.submit '登録', id: 'new-entry-submit', class: 'btn-primary btn-lg'

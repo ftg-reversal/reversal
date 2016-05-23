@@ -42,7 +42,7 @@ class EntriesController < ApplicationController
   def destroy
     event = @entry.event
     @entry.destroy
-    redirect_to event
+    redirect_to event, status: :see_other
   end
 
   private

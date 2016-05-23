@@ -1,2 +1,4 @@
 **/*{.,-}min.js
-app/assets/javascripts/ckeditor/**/*.js
+app/assets/javascripts/ckeditor/
+app/assets/javascripts/webpack/
+frontend/js/vendor/

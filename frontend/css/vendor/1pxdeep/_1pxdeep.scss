@@ -1,0 +1,116 @@
+// mixins
+
+@function contrast($color) {
+  @return if( luma($color) >= $luma-upper-break, mix(darken($color,18%),#111,50%),hsl(hue($color),$sat,97%));
+}
+
+// buttons
+
+
+//
+// Alternate buttons
+//
+.btn- {
+  @each $state, $color in $brand-colors {
+    &#{$state} {
+      @include button-variant(contrast-color($color), $color, contrast-color($color));
+    }
+  }
+  @each $j in 1 2 3 4 {
+    @each $i, $char in (1: '-', 2: 'a', 3: 'b', 4: 'c') {
+      $tmp: if($char == '-', $j ,#{$j}#{$char});
+      &color#{$tmp} {
+        $tmp2: map-get($scheme-colors, 'color#{$tmp}');
+        @include button-variant(contrast-color($tmp2), $tmp2, contrast-color($tmp2));
+      }
+    }
+  }
+}
+
+// navbars
+@each $j in 1 2 3 4 {
+  .navbar-color#{$j} {
+    $color: map-get($scheme-colors, 'color#{$j}a');
+    background-color: $color;
+    $tmp: contrast($color);
+    @if luma($color) >= $luma-upper-break {
+      $navbar-color:                 rgba($tmp,.5);
+      $navbar-hover-color:           rgba($tmp,.75);
+      $navbar-active-color:          rgba($tmp,1);
+      $navbar-disabled-color:        rgba($tmp,.25);
+
+      .navbar-brand {
+        color: $navbar-active-color;
+
+        @include hover-focus {
+          color: $navbar-active-color;
+        }
+      }
+
+      .navbar-nav {
+        .nav-link {
+          color: $navbar-color;
+
+          @include hover-focus {
+            color: $navbar-hover-color;
+          }
+        }
+
+        .open > .nav-link,
+        .active > .nav-link,
+        .nav-link.open,
+        .nav-link.active {
+          @include plain-hover-focus {
+            color: $navbar-active-color;
+          }
+        }
+      }
+
+
+
+      .navbar-divider {
+        background-color: rgba(255,255,255,.075);
+      }
+    }
+    @else {
+      $navbar-color:                 rgba($tmp,.3);
+      $navbar-hover-color:           rgba($tmp,.6);
+      $navbar-active-color:          rgba($tmp,.9);
+      $navbar-disabled-color:        rgba($tmp,.15);
+
+
+      .navbar-brand {
+        color: $navbar-active-color;
+
+        @include hover-focus {
+          color: $navbar-active-color;
+        }
+      }
+
+      .navbar-nav {
+        .nav-link {
+          color: $navbar-color;
+
+          @include hover-focus {
+            color: $navbar-hover-color;
+          }
+        }
+
+        .open > .nav-link,
+        .active > .nav-link,
+        .nav-link.open,
+        .nav-link.active {
+          @include plain-hover-focus {
+            color: $navbar-active-color;
+          }
+        }
+      }
+
+
+
+      .navbar-divider {
+        background-color: rgba(0,0,0,.075);
+      }
+    }
+  }
+}

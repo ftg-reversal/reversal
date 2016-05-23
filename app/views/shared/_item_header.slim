@@ -1,10 +1,11 @@
-.item-header
-  - if item.reversal_user
-    .item-icon
-      img src=item.reversal_user.slack_user.icon_url title=item.reversal_user.slack_user.name
-  h3.item-title
-    = (item.title && !item.title.empty? ? item.title : 'no title')
-  .item-owner
-    | by&nbsp;
-    / a href=user_path(item.reversal_user)
-    | #{item.reversal_user.slack_user.name}
+.item-header.media
+  a.media-left href='#'
+    img.media-object src=item.reversal_user.slack_user.icon_url title=item.reversal_user.slack_user.name
+  .media-body
+    h2.media-heading = item.title
+    .m-t-1
+      p.pull-left.text-muted.m-r-1
+        | 作成者：
+        a href='#' #{item.reversal_user.slack_user.name}
+      p.text-muted
+        | 更新日時：#{time_ago_in_words(item.updated_at)}前

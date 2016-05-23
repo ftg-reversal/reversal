@@ -1,42 +1,34 @@
-header
-  nav.header.uk-navbar
-    .uk-container.uk-container-center
-      a href='/'
-        h1.header-logo.uk-navbar-brand Reversal
-      .uk-navbar-flip
-        ul.header-user.uk-navbar-nav
-          - if twitter_user
-            li
-              img.twitter-login-icon src="/images/twitter.png"
-            li
-              img.header-user-icon src=twitter_user.icon_url
-            li
-              a href=session_path data-method='delete'
-                i.fa.fa-sign-out.logout
-          - elsif current_user
-            li
-              .add-button-wrapper
-                i.add-button.fa.fa-plus
-                .header-menu
-                  ul.uk-nav
-                    li
-                      a href=new_page_path ページの作成
-                    li.uk-hidden-small
-                      a href=new_summary_path Slackまとめの作成（β）
-                    li
-                      a href=new_event_path イベントの作成
-            li
-              img.header-user-icon src=current_user.slack_user.icon_url
-            li
-              a href=session_path data-method='delete'
-                i.fa.fa-sign-out.logout
-          - else
-            li
-              .login
-                div ログイン
-                .login-menu
-                  ul.uk-nav
-                    li
-                      a href=auth_url('twitter') Twitterでログイン
-                    / li
-                    /   a href=auth_url('slack') Slackでログイン
+header#header
+  .container.full
+    a href='/'
+      .header-logo.full.pull-left
+        | Reversal
+    ul.nav.navbar-nav.pull-right
+      - if twitter_user
+        li.nav-item
+          img.header-user-icon src=twitter_user.icon_url
+        li.nav-item
+          = link_to session_path, method: 'delete', class: 'button btn btn-color1' do
+            i.fa.fa-sign-out &nbsp;&nbsp;ログアウト
+      - elsif current_user
+        li.nav-item
+          img.header-user-icon src=current_user.slack_user.icon_url
+        li.nav-item
+          .dropdown
+            button.btn.btn-color1.dropdown-toggle type="button" id="header-create-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+              i.fa.fa-pencil-square-o &nbsp;&nbsp;作成
+            .dropdown-menu.dropdown-menu-right.p-y-1 aria-labelledby='header-create-dropdown'
+              a.dropdown-item data-turbolinks="false" href=new_page_path ページの作成
+              a.dropdown-item data-turbolinks="false" href=new_summary_path Slackまとめの作成（β）
+              a.dropdown-item data-turbolinks="false" href=new_event_path イベントの作成
+        li.nav-item
+          = link_to session_path, method: 'delete', class: 'btn btn-color1' do
+            i.fa.fa-sign-out &nbsp;&nbsp;ログアウト
+      - else
+        li.nav-item
+          .dropdown
+            button.btn.btn-color1.dropdown-toggle type="button" id="login-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+              i.fa.fa-sign-in &nbsp;&nbsp; ログイン
+            .dropdown-menu.dropdown-menu-right.p-y-1 aria-labelledby='login-dropdown'
+              a.dropdown-item href=auth_url('twitter') Twitterでログイン
+              a.dropdown-item href=auth_url('slack') Slackでログイン

@@ -1,44 +1,52 @@
-- if flash[:alert]&.any?
-  - flash[:alert]&.each do |value|
-    .uk-alert.uk-alert-warning
-      = value
+.card.p-b-2
+  .card-block
+    - if flash[:alert]&.any?
+      - flash[:alert]&.each do |value|
+        .alert.alert-warning
+          = value
 
-.uk-panel.uk-panel-box.uk-margin-top
-  = render 'shared/item_header', item: @event
-  .uk-margin-top
-    a href="https://twitter.com/intent/tweet?button_hashtag=ftg_reversal&text=#{@event.title}" class="twitter-hashtag-button" data-size="large" data-url="#{event_url}"
-  hr
-  h3 概要
-  == @event.description
-  = render 'shared/item_authority', current_user: @current_user, item: @event, edit_path: edit_event_path, delete_path: event_path(@event)
+    p style='font-size:1.5rem' イベント概要
 
-h3.uk-margin-top 登録プレイヤー
-table.entry-table.uk-table.uk-table-hover.uk-table-striped.uk-table-condensed
-  thead
-    tr
-      th プレイヤー名
-      th キャラ
-      th 段位
-      th コメント
-  tbody
-    - @entries.each do |entry|
-      tr
-        td
-          = entry.name
-        td
-          = entry.chara_name
-        td
-          = entry.rank_name
-        td
-          = entry.comment
+    hr
 
-- if @user && !(@entries.map(&:user).include?(@user))
-  hr
-  = render 'entry', event: @event, entries: @entries, entry: @entry, user: @user
-- elsif @user
-  hr
-  = render 'cancel_entry', entry: @user_entry
+    = render 'event_header', event: @event, entry_count: @entries.size
+    .m-t-1
+      a href="https://twitter.com/intent/tweet?button_hashtag=ftg_reversal&text=#{@event.title}" class="twitter-hashtag-button" data-size="large" data-url="#{event_url}"
+    hr
+    h3 概要
+    == @event.description
+
+    = render 'shared/item_authority', current_user: @current_user, item: @event, edit_path: edit_event_path, delete_path: event_path(@event)
+
+    hr.m-y-3
+
+    - if @user && !(@entries.map(&:user).include?(@user))
+      = render 'entry', event: @event, entries: @entries, entry: @entry, user: @user
+    - elsif @user
+      = render 'cancel_entry', entry: @user_entry
+
+    hr.m-y-3
+
+    p style='font-size:1.5rem' エントリーメンバー
+    table.table.table-striped
+      thead
+        tr
+          th プレイヤー名
+          th キャラ
+          th 段位
+          th コメント
+      tbody
+        - @entries.each do |entry|
+          tr
+            td
+              = entry.name
+            td
+              = entry.chara_name
+            td
+              = entry.rank_name
+            td
+              = entry.comment
+
 
 - content_for :title do
   = @event.title
-

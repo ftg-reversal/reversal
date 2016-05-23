@@ -24,13 +24,16 @@ ratings:
   - "**.js"
   - "**.jsx"
 exclude_paths:
+- app/assets/javascripts/ckeditor
+- app/assets/javascripts/webpack
+- bower_components/
 - config/
 - db/
+- frontend/js/vendor/
 - log/
 - node_modules/
-- bower_components/
 - spec/
 - vendor/
 - public/
-- webpack/js/vendor/
 - .idea
+- webpack.config.js
