@@ -46,7 +46,7 @@ export default {
     // components: './frontend/js/components.js',
     style: './frontend/css/index.sass',
 
-    vendor: ['turbolinks', 'tether', 'vue'],
+    vendor: ['jquery-ujs', 'sweetalert', 'turbolinks', 'tether', 'vue'],
   },
 
   output: {

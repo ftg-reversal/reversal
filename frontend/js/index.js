@@ -1,7 +1,3 @@
-//vendor
-require('jquery-ujs')
-require('sweetalert')
-
 require('vendor/bootstrap/npm');
 require('vendor/twitter-widgets');
 
