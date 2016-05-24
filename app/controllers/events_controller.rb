@@ -66,10 +66,6 @@ class EventsController < ApplicationController
     redirect_to events_url, status: :see_other
   end
 
-  def entried
-    @event = Event.find(params[:event_id])
-  end
-
   private
 
   def set_event

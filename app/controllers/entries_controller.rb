@@ -33,7 +33,7 @@ class EntriesController < ApplicationController
     event = @entry.event
 
     if @entry
-      redirect_to event_entried_url(event_id: event.id)
+      redirect_to event_url(event)
     else
       redirect_to event_url(event), alert: @entry.errors.full_messages
     end

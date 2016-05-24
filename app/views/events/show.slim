@@ -1,10 +1,5 @@
 .card.p-b-2
   .card-block
-    - if flash[:alert]&.any?
-      - flash[:alert]&.each do |value|
-        .alert.alert-warning
-          = value
-
     p style='font-size:1.5rem' イベント概要
 
     hr

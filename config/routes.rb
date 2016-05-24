@@ -8,10 +8,7 @@ Rails.application.routes.draw do
   resources :slack_channels, as: :channels, path: :channels, only: [:index, :show]
   resources :summaries
   resources :pages
-  resources :events do
-    get 'entried'
-  end
-
+  resources :events
   resources :entries, only: [:create, :destroy]
 
   namespace :api, { format: 'json' } do
