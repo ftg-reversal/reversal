@@ -13,5 +13,4 @@ require('vuejs/summary-editor');
 
 require('turbolinks/ckeditor');
 require('turbolinks/slack-channel');
-require('turbolinks/summary-editor');
 require('turbolinks/twitter');
