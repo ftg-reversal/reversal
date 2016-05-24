@@ -3,8 +3,8 @@
     .card-block
       h2 最近の情報
       hr
-      / - @videos.each do |video|
-      /   = render 'videos/item', video: video
+      - @videos.each do |video|
+        = render 'videos/item', video: video
       - @events.each do |event|
         = render 'shared/item_short', item: event, description: event.description.split.first, path: event_path(event)
       - @pages.each do |page|
