@@ -7,7 +7,7 @@
             .header
               .row
                 .col-md-10
-                  select.form-control.form-control-lg(v-model='channel')
+                  select.form-control(v-model='channel')
                     option(v-for='channel in channels', :value='channel.value')
                       | \#{{ channel.text }}
                 .col-md-2
