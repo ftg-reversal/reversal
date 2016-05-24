@@ -29,6 +29,6 @@ class SlackChannelsController < ApplicationController
   private
 
   def set_channels
-    @channels = SlackChannel.all
+    @channels = SlackChannel.order(:name)
   end
 end
