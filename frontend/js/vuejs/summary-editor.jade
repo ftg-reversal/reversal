@@ -21,7 +21,8 @@
                   li.slack-message(v-for='message in loadMessages', @click="onClickLoadMessage(this)")
                     .media
                       .slack-icon.media-object.pull-left
-                        img(:src='message.avatar_url')
+                        .media-left
+                          img(:src='message.avatar_url')
                       .media-body
                         .media-heading
                           h4.pull-left
