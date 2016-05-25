@@ -33,8 +33,8 @@ export default class SummaryEditor extends Vue {
         $(this.$el).data("messages").map((message) => {
           this.messages.push({
             id: message.id,
-            avatar_url: message.slack_user.icon_url,
-            username: message.slack_user.name,
+            avatar_url: message.icon_url,
+            username: message.username,
             date: message.date,
             ts: message.ts,
             channel: message.channel,
@@ -55,59 +55,16 @@ export default class SummaryEditor extends Vue {
         let channelID = $(this.$el).data("channel-id");
         if (channelID) {
           this.channelID = channelID;
-          $.ajax({
-            type: "get",
-            url: "/api/channels/" + channelID,
-            success: (resp) => {
-              resp.filter((message) => {
-                return !this.messages.map((m) => {
-                  return m.id;
-                }).includes(message.id);
-              }).map((message) => {
-                this.loadMessages.push({
-                  id: message.id,
-                  avatar_url: message.slack_user.icon_url,
-                  username: message.slack_user.name,
-                  date: message.date,
-                  ts: message.ts,
-                  channel: message.channel,
-                  format_text: message.format_text
-                });
-              });
-            }
-          });
+          loadChannel(channelID, this.loadMessages, this);
         }
       },
 
       methods: {
         onSelectChannel: (e, channel, loadMessages) => {
           this.nowLoading = true;
-          $.ajax({
-            type: "get",
-            url: "/api/channels/" + channel,
-            success: (resp) => {
-              this.nowLoading = false;
-              loadMessages.splice(0, loadMessages.length);
-              this.messages.splice(0, this.messages.length);
-              this.channelID = channel;
-
-              resp.map((message) => {
-                loadMessages.push({
-                  id: message.id,
-                  avatar_url: message.icon_url,
-                  username: message.username,
-                  date: message.date,
-                  ts: message.ts,
-                  channel: message.channel,
-                  format_text: message.format_text
-                });
-              });
-            },
-            error: (resp) => {
-              this.nowLoading = false;
-              swal('取得できませんでした');
-            }
-          });
+          loadMessages.splice(0, loadMessages.length);
+          this.messages.splice(0, this.messages.length);
+          loadChannel(channel, loadMessages, this);
         },
         handleDrop: (itemOne, itemTwo) => {
           if (itemTwo.tagName !== "LI") {
@@ -171,6 +128,36 @@ export default class SummaryEditor extends Vue {
     super(properties);
   }
 };
+
+function loadChannel(channel, loadMessages, self) {
+  self.nowLoading = true;
+  $.ajax({
+    type: "get",
+    url: "/api/channels/" + channel,
+    success: (resp) => {
+      self.nowLoading = false;
+      self.channelID = channel;
+
+      resp.map((message) => {
+        if (!self.messages.some((selectedMessage) => { return message.id === selectedMessage.id })) {
+          loadMessages.push({
+            id: message.id,
+            avatar_url: message.icon_url,
+            username: message.username,
+            date: message.date,
+            ts: message.ts,
+            channel: message.channel,
+            format_text: message.format_text
+          });
+        }
+      });
+    },
+    error: (resp) => {
+      self.nowLoading = false;
+      swal('取得できませんでした');
+    }
+  });
+}
 
 $(document).on('ready turbolinks:load', () => {
   if (document.querySelector("#summary-editor")) {
