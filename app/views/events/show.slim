@@ -6,7 +6,7 @@
 
     = render 'event_header', event: @event, entry_count: @entries.size
     .m-t-1
-      a href="https://twitter.com/intent/tweet?button_hashtag=ftg_reversal&text=#{@event.title}" class="twitter-hashtag-button" data-size="large" data-url="#{event_url}"
+      = tw(event_url, "#{@event.title} - Reversal Event")
     hr
     h3 概要
     == @event.description
