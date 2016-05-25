@@ -6,11 +6,13 @@ class SlackMessageDecorator < Draper::Decorator
   end
 
   def username
-    object.slack_user&.name || object.username
+    object.slack_user&.name || object.username || object.attachments.first['author_name']
   end
 
   def icon
     object.slack_user&.icon_url || EmojiRepository.find_by_name(object.icon['emoji'].delete(':'))
+  rescue
+    EmojiRepository.find_by_name('slack')
   end
 
   def format_text
