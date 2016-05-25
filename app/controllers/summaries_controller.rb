@@ -35,6 +35,9 @@ class SummariesController < ApplicationController
   def create
     summary = Summary.new(summary_params)
     if summary.save
+      summary.reload
+      save_order(summary, @row_order)
+
       render json: summary, root: nil
     else
       raise 'error'
@@ -46,6 +49,9 @@ class SummariesController < ApplicationController
 
   def update
     if @summary.update(summary_params)
+      @summary.reload
+      save_order(@summary, @row_order)
+
       render json: @summary.object, root: nil
     else
       raise 'error'
@@ -59,12 +65,20 @@ class SummariesController < ApplicationController
 
   private
 
+  def save_order(summary, row_order)
+    summary.slack_messages_summaries.map do |message_summary|
+      message_summary.row_order = row_order.map(&:to_i).index(message_summary.slack_message_id)
+      message_summary.save!
+    end
+  end
+
   def set_summary
     @summary = Summary.includes(slack_messages: [:slack_user, :slack_channel]).find(params[:id]).decorate
   end
 
   def summary_params
     n = params.permit(:title, :description, :slack_channel, slack_messages: [])
+    @row_order = n[:slack_messages]
     n[:reversal_user] = @current_user
     n[:slack_channel] = SlackChannel.find(params[:slack_channel])
     n[:slack_messages] = n[:slack_messages].uniq.reject(&:empty?).map { |m| SlackMessage.find(m) }

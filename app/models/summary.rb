@@ -19,5 +19,6 @@
 class Summary < ActiveRecord::Base
   belongs_to :slack_channel
   belongs_to :reversal_user
-  has_and_belongs_to_many :slack_messages
+  has_many :slack_messages_summaries
+  has_many :slack_messages, through: :slack_messages_summaries
 end
