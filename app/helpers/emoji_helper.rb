@@ -1,12 +1,8 @@
 module EmojiHelper
   def emojify(content)
-    h(content).to_str.gsub(/:([\w+-]+):/) do |match|
-      emoji = Emoji.find_by_alias($1)
-      if emoji
-        emoji.raw
-      else
-        match
-      end
+    EmojiParser.parse_tokens(content.to_s) do |emoji|
+      path = [(emoji.custom? ? nil : 'emoji'), emoji.image_filename].compact.join('/')
+      image_tag(path, class: 'emoji', alt: emoji.name)
     end.html_safe if content.present?
   end
 end

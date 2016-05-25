@@ -1,4 +1,4 @@
 Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.paths << Emoji.images_path
 Rails.application.config.assets.precompile += %w( ckeditor/* Ckeditor.assets)
-Rails.application.config.assets.precompile += %w(emoji/**/*.png)
+Rails.application.config.assets.precompile += %w( emoji/**/*.png )
