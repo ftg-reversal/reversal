@@ -151,7 +151,7 @@ export default class SummaryEditor extends Vue {
             type: (this.summaryID ? 'put' : 'post'),
             url: (this.summaryID ? `/summaries/${this.summaryID}.json` : '/summaries.json'),
             data: {
-              authenticity_token: $('meta[name="csrf-token"]').content,
+              authenticity_token: $('meta[name="csrf-token"]')[0].content,
               title: title,
               description: description,
               slack_channel: this.channelID,
