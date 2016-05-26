@@ -16,7 +16,7 @@ class SlackMessageDecorator < Draper::Decorator
   end
 
   def format_text
-    h.emojify(self.class.processor.call(object.text, SlackDecorator::SlackContext.context)[:output].to_s.html_safe)
+    self.class.processor.call(object.text, SlackDecorator::SlackContext.context)[:output].to_s.html_safe
   end
 
   def attachment_items
