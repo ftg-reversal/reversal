@@ -88,6 +88,7 @@ group :test do
 end
 
 group :production do
+  gem 'sprockets-redirect'
   gem 'unicorn'
   gem 'unicorn-worker-killer'
 end
