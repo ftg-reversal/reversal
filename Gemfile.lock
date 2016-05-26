@@ -438,9 +438,6 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    sprockets-redirect (1.0.0)
-      activesupport (>= 3.1.0)
-      rack
     squasher (0.1.7)
     sshkit (1.10.0)
       net-scp (>= 1.1.2)
@@ -581,7 +578,6 @@ DEPENDENCIES
   slim_lint
   spring
   spring-commands-rspec
-  sprockets-redirect
   squasher
   therubyracer
   thin
