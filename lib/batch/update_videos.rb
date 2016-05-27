@@ -4,7 +4,9 @@ module Batch
       def exec
         VideoSiteSearchCondition.all.flat_map do |condition|
           videos = VideoFeedRepository.find_all_by_condition(condition).select(&:validate)
-          videos.map { |video| save(video) }
+          videos.map do |video|
+            save(video) if video.changed?
+          end
         end
       end
 

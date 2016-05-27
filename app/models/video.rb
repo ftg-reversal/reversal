@@ -24,17 +24,31 @@
 class Video < ActiveRecord::Base
   include ClassyEnum::ActiveRecord
 
+  has_many :video_matchups, dependent: :destroy
+
   validates :video_site, :title, presence: true
   validates :url, presence: true, uniqueness: true
 
   classy_enum_attr :video_site
   before_save :fetch_thumbnail
+  after_save :apply_imperial
 
   has_attached_file :thumbnail, default_url: '/images/dummy_thumbnail.png'
   validates_attachment_content_type :thumbnail, content_type: %r{/\Aimage\/.*\Z/}
 
   def fetch_thumbnail
     self.thumbnail = VideoImageDownloadService.fetch_file(thumbnail_uri)
+    true
+  end
+
+  def apply_imperial
+    return true unless title.include?('高田馬場ミカド')
+
+    video_matchups.map(&:destory)
+    ImperialRepository.find_all_by_video(self).map do |matchup|
+      matchup.video = self
+      matchup.save
+    end
     true
   end
 

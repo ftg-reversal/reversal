@@ -11,12 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160525161244) do
+ActiveRecord::Schema.define(version: 20160527074128) do
 
   create_table "charas", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "name",       limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.string   "en_name",    limit: 255
   end
 
   create_table "ckeditor_assets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
@@ -185,6 +186,17 @@ ActiveRecord::Schema.define(version: 20160525161244) do
     t.datetime "updated_at",              null: false
   end
 
+  create_table "video_matchups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+    t.integer "video_id",  limit: 4
+    t.integer "chara1_id", limit: 4
+    t.integer "chara2_id", limit: 4
+    t.integer "sec",       limit: 4
+  end
+
+  add_index "video_matchups", ["chara1_id"], name: "fk_rails_238a2e45c9", using: :btree
+  add_index "video_matchups", ["chara2_id"], name: "fk_rails_689c62c943", using: :btree
+  add_index "video_matchups", ["video_id"], name: "fk_rails_b3ee212891", using: :btree
+
   create_table "video_site_search_conditions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "word",       limit: 255, default: "", null: false
     t.string   "video_site", limit: 255, default: "", null: false
@@ -222,4 +234,7 @@ ActiveRecord::Schema.define(version: 20160525161244) do
   add_foreign_key "summaries", "reversal_users"
   add_foreign_key "summaries", "slack_channels"
   add_foreign_key "twitter2slack_conditions", "slack_channels"
+  add_foreign_key "video_matchups", "charas", column: "chara1_id"
+  add_foreign_key "video_matchups", "charas", column: "chara2_id"
+  add_foreign_key "video_matchups", "videos"
 end
