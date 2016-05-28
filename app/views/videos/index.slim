@@ -1,6 +1,6 @@
 #video-index
   .row
-    .sidebar.col-md-3.col-sm-12
+    .sidebar.col-md-3
       .card
         .card-block
           h4.card-title キャラ一覧
@@ -12,7 +12,7 @@
             li.nav-item
               a.nav-link href="/chara/#{chara.id}/videos" class="#{active_link_to_class("/chara/#{chara.id}/videos", class_active: 'sidebar-active')}"
                 = chara.name
-    .col-md-9.hidden-sm-down
+    .col-md-9
       .card
         .card-block
           h2 動画一覧
