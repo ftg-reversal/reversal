@@ -1,8 +1,22 @@
 #video-index
-  .card
-    .card-block
-      h2 動画一覧
-      hr
-      - @videos.each do |video|
-        = render 'item', video: video
-      = paginate @videos
+  .row
+    .sidebar.col-md-3.col-sm-12
+      .card
+        .card-block
+          h4.card-title キャラ一覧
+
+        hr.m-t-0
+
+        ul.nav.nav-pills.nav-stacked
+          - @charas.each do |chara|
+            li.nav-item
+              a.nav-link href="/chara/#{chara.id}/videos" class="#{active_link_to_class("/chara/#{chara.id}/videos", class_active: 'sidebar-active')}"
+                = chara.name
+    .col-md-9.hidden-sm-down
+      .card
+        .card-block
+          h2 動画一覧
+          hr
+          - @videos.each do |video|
+            = render 'videos/item', video: video
+          = paginate @videos

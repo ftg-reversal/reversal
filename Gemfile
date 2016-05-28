@@ -48,6 +48,7 @@ gem 'turbolinks'
 gem 'twitter'
 gem 'uglifier'
 gem 'whenever', require: false
+gem 'where-or'
 gem 'yt'
 
 group :development, :test do

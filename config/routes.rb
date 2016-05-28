@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'chara/video'
+
   root to: 'top#index'
 
   get '/auth/:provider/callback', to: 'sessions#create'
@@ -10,6 +12,8 @@ Rails.application.routes.draw do
   resources :pages
   resources :events
   resources :entries, only: [:create, :destroy]
+
+  get '/chara/:chara_id/videos', to: 'charas#video'
 
   namespace :api, { format: 'json' } do
     resources :channels, only: [:index, :show]

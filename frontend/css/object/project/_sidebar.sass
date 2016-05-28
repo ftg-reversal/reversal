@@ -1,4 +1,4 @@
-#channel-sidebar
+.sidebar
   $gray: #E0E0E0
   h4
     font-size: 1.3rem
@@ -6,12 +6,14 @@
   .card-block
     padding-bottom: 0
 
-  .nav-item
+  .nav
     +margin(null 1.5rem null 1.5rem)
 
-  a
+  .nav-link
     color: black
 
-  .active
+
+  .sidebar-active
     font-weight: bold
-    background: $gray
+    background-color: $gray
+    color: black

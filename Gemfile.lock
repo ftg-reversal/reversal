@@ -497,6 +497,7 @@ GEM
     websocket-extensions (0.1.2)
     whenever (0.9.4)
       chronic (>= 0.6.3)
+    where-or (0.1.1)
     yard (0.8.7.6)
     yt (0.25.37)
       activesupport
@@ -589,6 +590,7 @@ DEPENDENCIES
   view_source_map
   webmock
   whenever
+  where-or
   yt
 
 BUNDLED WITH
