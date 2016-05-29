@@ -1,12 +1,12 @@
-.media
-  .media-left href=video.url
-    a target="_blank"
-      img.media-object src=video.thumbnail title=video.title
+.row
+  .col-md-3.col-sm-4
+    a href=video.url target="_blank"
+      img src=video.thumbnail title=video.title style="display: block; height: auto; width: 100%;"
     p.text-md-right
       strong = "#{time_ago_in_words(video.posted_at)}前"
-  .media-body
-    a href=video.url
-      h3.media-heading = video.title
+  .col-md-9.col-sm-8
+    a href=video.url target="_blank"
+      h3 = video.title
     - unless video.video_matchups.empty?
       .card.bg-gray.m-t-1
         .card-block
