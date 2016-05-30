@@ -31,7 +31,7 @@ class EventsController < ApplicationController
 
   def show
     @entry = Entry.new
-    @entries = Event.find(params[:id]).entry.map(&:including_all).map(&:decorate)
+    @entries = Event.including_all.find(params[:id]).entry.map(&:decorate)
     @user = @current_user || @twitter_user
     @user_entry = Entry.find_by_user(@user)
   end

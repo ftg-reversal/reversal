@@ -26,6 +26,7 @@ class Event < ActiveRecord::Base
 
   scope :recently, -> () { order('datetime ASC') }
   scope :including_user, -> () { includes(:reversal_user) }
+  scope :including_all, -> () { includes(entry: [:rank, :reversal_user, :twitter_user, :chara]) }
 
   scope :upcoming, -> () { where('datetime >= ?', tomorrow).including_user }
   scope :finished, -> () { where('datetime < ?', tomorrow).including_user }
