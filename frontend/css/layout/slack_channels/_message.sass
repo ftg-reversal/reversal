@@ -1,6 +1,5 @@
 .channel-history
   .slack-message
-    +margin(null 1rem 2rem 1rem)
 
     h4
       +reset
@@ -12,9 +11,6 @@
     .slack-icon
       margin-top: 0.2rem
 
-    .media-body
-      padding-left: 1rem
-
     small
       color: lighten(black, 40%)
 
@@ -22,6 +18,13 @@
     img
       +size(48px)
       border-radius: 6px
+
+  .media-heading
+    display: table
+    table-layout: fixed
+    width: 100%
+    padding-right: 30px
+    word-wrap: break-word
 
   nav
     text-align: center

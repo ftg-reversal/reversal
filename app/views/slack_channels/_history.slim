@@ -3,23 +3,23 @@
   .m-t-1
     = tw(channel_url(channel), "#{channel.name} - Reversal Channel")
 
-hr.m-t-0
+  hr.m-t-0
 
-- history.each do |message|
-  .slack-message.media
-    .slack-icon.media-object.pull-left
-      a.media-left href='#'
-        img src=message.icon
-    .media-body
-      .media-heading
-        h4.pull-left
-          a href='#' #{message.username}
-        small.m-l-1 #{l(message.date)}
-        p #{message.format_text}
-      - if message.image
-        div
-          img src=message.image['thumb_360'] alt=message.image['title']
-      - message.attachments.each do |attachment|
-        = render 'shared/attachment', attachment: attachment
+  - history.each do |message|
+    .slack-message.media
+      .slack-icon.media-object.pull-left
+        a.media-left href='#'
+          img src=message.icon
+      .media-body
+        .media-heading
+          h4.pull-left
+            a href='#' #{message.username}
+          small.m-l-1 #{l(message.date)}
+          p #{message.format_text}
+        - if message.image
+          div
+            img src=message.image['thumb_360'] alt=message.image['title']
+        - message.attachments.each do |attachment|
+          = render 'shared/attachment', attachment: attachment
 
-= paginate history
+  = paginate history
