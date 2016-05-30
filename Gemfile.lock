@@ -266,7 +266,6 @@ GEM
       httpclient (>= 2.6.0)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
-    nprogress-rails (0.1.6.7)
     oauth (0.5.1)
     oauth2 (1.1.0)
       faraday (>= 0.8, < 0.10)
@@ -552,7 +551,6 @@ DEPENDENCIES
   mysql2
   newrelic_rpm
   nico_search_snapshot
-  nprogress-rails
   omniauth
   omniauth-slack
   omniauth-twitter
