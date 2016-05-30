@@ -17,4 +17,6 @@
 
 class SlackChannel < ActiveRecord::Base
   has_many :slack_message, -> { order(ts: 'desc') }
+
+  scope :including_channel_user, -> () { includes(slack_message: [:slack_user]) }
 end
