@@ -10,15 +10,12 @@ Rails.application.routes.draw do
   resources :slack_channels, as: :channels, path: :channels, only: [:index, :show]
   resources :summaries
   resources :pages
-
-  get '/events/archived', to: 'events#archived'
   resources :events
-
   resources :entries, only: [:create, :destroy]
 
   get '/chara/:chara_id/videos', to: 'charas#video'
 
-  namespace :api, format: 'json' do
+  namespace :api, { format: 'json' } do
     resources :channels, only: [:index, :show]
   end
 

@@ -21,17 +21,14 @@ class EventsController < ApplicationController
   before_action :ensure_permission, only: [:edit, :update, :destroy]
 
   def index
-    @events = Event.upcoming.recently.page(params[:page])
-  end
-
-  def archived
-    @events = Event.finished.recently.page(params[:page])
-    render 'index'
+    @events = Event.page(params[:page])
   end
 
   def show
     @entry = Entry.new
-    @entries = Event.find(params[:id]).entry.map(&:including_all).map(&:decorate)
+    @entries = Event.find(params[:id]).entry
+                 .includes(:chara).includes(:rank).includes(:reversal_user).includes(:twitter_user)
+                 .map(&:decorate)
     @user = @current_user || @twitter_user
     @user_entry = Entry.find_by_user(@user)
   end

@@ -23,14 +23,4 @@ class Event < ActiveRecord::Base
   validates :description, presence: true
   validates :datetime, presence: true
   validates :reversal_user_id, presence: true
-
-  scope :recently, -> () { order('datetime ASC') }
-  scope :including_user, -> () { includes(:reversal_user) }
-
-  scope :upcoming, -> () { where('datetime >= ?', tomorrow).including_user }
-  scope :finished, -> () { where('datetime < ?', tomorrow).including_user }
-
-  def self.tomorrow
-    Date.tomorrow.in_time_zone
-  end
 end
