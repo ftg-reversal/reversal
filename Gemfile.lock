@@ -88,7 +88,6 @@ GEM
       jmespath (~> 1.0)
     aws-sdk-resources (2.3.8)
       aws-sdk-core (= 2.3.8)
-    bcrypt (3.1.11)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -149,12 +148,6 @@ GEM
       safe_yaml (~> 1.0.0)
     daemons (1.2.3)
     debug_inspector (0.0.2)
-    devise (4.1.1)
-      bcrypt (~> 3.0)
-      orm_adapter (~> 0.1)
-      railties (>= 4.1.0, < 5.1)
-      responders
-      warden (~> 1.2.3)
     diff-lcs (1.2.5)
     docile (1.1.5)
     domain_name (0.5.20160310)
@@ -218,7 +211,6 @@ GEM
     http-form_data (1.0.1)
     http_accept_language (2.0.5)
     http_parser.rb (0.6.0)
-    httpclient (2.8.0)
     i18n (0.7.0)
     jmespath (1.2.4)
       json_pure (>= 1.8.1)
@@ -229,16 +221,11 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.3)
     json_pure (1.8.3)
-    json_world (0.2.3)
-      activesupport
-      json
     jwt (1.5.1)
     kaminari (0.16.3)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     kgio (2.10.0)
-    kosi (1.0.0)
-      unicode (>= 0.4.4)
     libv8 (3.16.14.15)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
@@ -262,8 +249,6 @@ GEM
       net-ssh (>= 2.6.5)
     net-ssh (3.1.1)
     newrelic_rpm (3.15.2.317)
-    nico_search_snapshot (0.1.1)
-      httpclient (>= 2.6.0)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
     oauth (0.5.1)
@@ -358,8 +343,6 @@ GEM
     ref (2.0.0)
     request_store (1.3.1)
     require_all (1.3.3)
-    responders (2.2.0)
-      railties (>= 4.2.0, < 5.1)
     rspec (3.4.0)
       rspec-core (~> 3.4.0)
       rspec-expectations (~> 3.4.0)
@@ -410,9 +393,6 @@ GEM
       escape_utils (~> 1.0.1)
       gemoji (~> 2.1.0)
       html-pipeline (~> 2.0)
-    slacken (0.1.3)
-      kosi (~> 1.0)
-      nokogiri (~> 1.6)
     slim (3.0.7)
       temple (~> 0.7.6)
       tilt (>= 1.3.3, < 2.1)
@@ -474,7 +454,6 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.2)
-    unicode (0.4.4.2)
     unicode-display_width (1.0.5)
     unicode_utils (1.4.0)
     unicorn (5.1.0)
@@ -486,8 +465,6 @@ GEM
     uniform_notifier (1.10.0)
     view_source_map (0.1.1)
       rails (>= 3.2)
-    warden (1.2.6)
-      rack (>= 1.0)
     webmock (2.0.3)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
@@ -528,7 +505,6 @@ DEPENDENCIES
   ckeditor
   classy_enum
   coderay
-  devise
   dotenv-rails
   draper
   exception_notification
@@ -546,11 +522,9 @@ DEPENDENCIES
   http_accept_language
   jquery-datetimepicker-rails
   jquery-rails
-  json_world
   kaminari
   mysql2
   newrelic_rpm
-  nico_search_snapshot
   omniauth
   omniauth-slack
   omniauth-twitter
@@ -574,7 +548,6 @@ DEPENDENCIES
   simplecov
   slack-api
   slack_markdown
-  slacken
   slim-rails
   slim_lint
   spring
