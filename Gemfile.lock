@@ -196,6 +196,7 @@ GEM
     get_process_mem (0.2.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    google-analytics-rails (1.1.0)
     hashdiff (0.3.0)
     hashie (3.4.4)
     hirb (0.7.3)
@@ -538,6 +539,7 @@ DEPENDENCIES
   font-awesome-rails
   foreman
   gemoji
+  google-analytics-rails
   hirb
   hirb-unicode-steakknife
   html-pipeline
