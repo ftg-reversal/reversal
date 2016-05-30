@@ -40,7 +40,6 @@ gem 'slack-api'
 gem 'slack_markdown'
 gem 'slim-rails'
 gem 'therubyracer'
-gem 'turbolinks'
 gem 'twitter'
 gem 'uglifier'
 gem 'whenever', require: false
