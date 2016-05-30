@@ -34,6 +34,8 @@ class Entry < ActiveRecord::Base
   validates :rank, presence: true
   validates :event, presence: true
 
+  scope :including_all, -> () { includes(:chara).includes(:rank).includes(:reversal_user).includes(:twitter_user) }
+
   def self.find_by_user(user)
     if user.class == ReversalUser
       find_by(reversal_user: user)

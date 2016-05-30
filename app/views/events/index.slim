@@ -1,8 +1,13 @@
 #event-index
   .card
     .card-block
-      h2 イベント一覧
-      hr
+      ul.nav.nav-tabs
+        li.nav-item
+          a.nav-link href=events_path class="#{active_link_to_class(events_path, active: /^\/events$/, class_active: 'active')}"
+            | イベント一覧
+        li.nav-item
+          a.nav-link href=events_archived_path class="#{active_link_to_class(events_archived_path, class_active: 'active')}"
+            | 過去のイベント
       - @events.each do |event|
         = render 'shared/item_short', item: event, description: event.description.split.first, path: event_path(event)
       = paginate @events
