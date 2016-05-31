@@ -90,11 +90,11 @@ export default class SummaryEditor extends Vue {
             return n.id
           });
           e.preventDefault();
-          if (messageIDs.length == 0) {
+          if (messageIDs.length === 0) {
             swal('まとめるメッセージを選択してください。');
             return;
           }
-          if (title.length < 1 || title.length > 64) {
+          if (title === undefined || title.length < 1 || title.length > 64) {
             swal('タイトルを1〜64文字で入力してください。');
             return;
           }
