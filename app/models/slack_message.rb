@@ -28,7 +28,7 @@ class SlackMessage < ActiveRecord::Base
 
   belongs_to :slack_channel
   belongs_to :slack_user
-  has_many :slack_messages_summaries
+  has_many :slack_messages_summaries, dependent: :destroy
   has_many :summaries, through: :slack_messages_summaries
 
   serialize :attachments

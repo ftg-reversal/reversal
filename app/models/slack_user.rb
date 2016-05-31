@@ -15,8 +15,8 @@
 #
 
 class SlackUser < ActiveRecord::Base
-  has_one :reversal_user
-  has_many :slack_message
+  has_one :reversal_user, dependent: :destroy
+  has_many :slack_message, dependent: :destroy
 
   def self.update_from_slack_api_repository
     SlackApiRepository.find_all_users.select(&:validate).map(&:save)

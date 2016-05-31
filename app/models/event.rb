@@ -16,7 +16,7 @@
 #
 
 class Event < ActiveRecord::Base
-  has_many :entry
+  has_many :entry, dependent: :destroy
   belongs_to :reversal_user
 
   validates :title, presence: true
