@@ -10,7 +10,7 @@ Rails.application.configure do
   config.assets.digest = true
 
   config.logger = Logger.new('log/production.log', 10, 10 * 1024 * 1024)
-  config.logger.level = Logger::INFO
+  config.log_level = :info
 
   config.i18n.fallbacks = true
   config.active_support.deprecation = :notify
