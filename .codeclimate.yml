@@ -30,6 +30,7 @@ exclude_paths:
 - config/
 - db/
 - frontend/js/vendor/
+- frontend/js/vuejs/summary-editor.js
 - log/
 - node_modules/
 - spec/
