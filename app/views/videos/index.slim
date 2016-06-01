@@ -3,21 +3,24 @@
     .sidebar.col-md-3
       .card
         .card-block
-          h4.card-title キャラ選択
+          .hidden-sm-down
+            h4.card-title キャラ選択
 
-          hr.m-t-0
+            hr.m-t-0
 
-          ul.nav.nav-pills.nav-stacked.hidden-sm-down
-            - @charas.each do |chara|
-              li.nav-item
-                a.nav-link href="/chara/#{chara.id}/videos" class="#{active_link_to_class("/chara/#{chara.id}/videos", class_active: 'sidebar-active')}"
-                  = chara.name
-
-          fieldset.form-group.hidden-md-up
-            select.form-control onchange="if (this.value) window.location.href=this.value"
+            ul.nav.nav-pills.nav-stacked
               - @charas.each do |chara|
-                option value="/chara/#{chara.id}/videos"
-                  = chara.name
+                li.nav-item
+                  a.nav-link href="/chara/#{chara.id}/videos" class="#{active_link_to_class("/chara/#{chara.id}/videos", class_active: 'sidebar-active')}"
+                    = chara.name
+
+          .hidden-md-up
+            fieldset.form-group
+              select.form-control onchange="if (this.value) window.location.href=this.value"
+                option value=videos_path キャラ選択
+                - @charas.each do |chara|
+                  option value="/chara/#{chara.id}/videos"
+                    = chara.name
 
     .col-md-9
       .card
