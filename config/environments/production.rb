@@ -8,7 +8,9 @@ Rails.application.configure do
   # configs.assets.css_compressor = :sass
   config.assets.compile = false
   config.assets.digest = true
-  config.log_level = :debug
+
+  config.logger = Logger.new('log/production.log', 10, 10 * 1024 * 1024)
+  config.logger.level = Logger::INFO
 
   config.i18n.fallbacks = true
   config.active_support.deprecation = :notify
