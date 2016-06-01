@@ -60,6 +60,9 @@ export default class SummaryEditor extends Vue {
       },
 
       methods: {
+        loadTweet: (e) => {
+          twttr.widgets.load();
+        },
         onSelectChannel: (e, channel, loadMessages) => {
           this.nowLoading = true;
           loadMessages.splice(0, loadMessages.length);
@@ -127,7 +130,7 @@ export default class SummaryEditor extends Vue {
     };
     super(properties);
   }
-};
+}
 
 function loadChannel(channel, loadMessages, self) {
   self.nowLoading = true;
@@ -147,7 +150,8 @@ function loadChannel(channel, loadMessages, self) {
             date: message.date,
             ts: message.ts,
             channel: message.channel,
-            format_text: message.format_text
+            format_text: message.format_text,
+            attachments: message.attachments
           });
         }
       });

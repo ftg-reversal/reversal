@@ -6,7 +6,7 @@
           form.summary-form(action='#', @submit.prevent='onSelectChannel($event, channel, loadMessages)')
             .header
               .row
-                .col-md-10
+                .col-md-8
                   select.form-control(v-model='channel')
                     option(v-for='channel in channels', :value='channel.value')
                       | \#{{ channel.text }}
@@ -14,6 +14,9 @@
                   button.form-control(type='submit', :disabled='nowLoading')
                     i.fa.fa-refresh(v-if='!nowLoading')
                     i.fa.fa-spinner.fa-spin(v-if='nowLoading')
+                .col-md-2
+                  button.form-control(type='button', v-on:click="loadTweet")
+                    i.fa.fa-twitter
           .card
             .card-block
               .load-messages.channel-history
@@ -31,6 +34,13 @@
                             | {{ message.date }}
                           p
                             | {{{ message.format_text }}}
+                        div(v-for='attachment in message.attachments')
+                          template(v-if='attachment.service_name === "twitter"')
+                            blockquote.twitter-tweet
+                              p {{ attachment.text }}
+                              | &mdash;
+                              | " {{ attachment.author_name }} ({{ attachment.author_subname }}) "
+                              a(:href='attachment.from_url')
             .card-footer.text-muted
               | 左パネルからクリックで発言を選択<br>ドラッグで並び替え
 
@@ -55,6 +65,13 @@
                           | {{ message.date }}
                         p
                           | {{{ message.format_text }}}
+                      div(v-for='attachment in message.attachments')
+                        template(v-if='attachment.service_name === "twitter"')
+                          blockquote.twitter-tweet
+                            p {{ attachment.text }}
+                            | &mdash;
+                            | " {{ attachment.author_name }} ({{ attachment.author_subname }}) "
+                            a(:href='attachment.from_url')
 
         .card-footer
           fieldset.form-group
