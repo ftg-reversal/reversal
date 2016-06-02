@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   get 'chara/video'
 
-  root to: 'top#index'
+  # Home
+  root to: 'home#index'
+
+  # Login
+  get '/login', to: 'login#index'
 
   get '/auth/:provider/callback', to: 'sessions#create'
   resource :session, only: [:destroy]
@@ -11,10 +15,11 @@ Rails.application.routes.draw do
   resources :summaries
   resources :pages
 
+  # Event
   get '/events/archived', to: 'events#archived'
   resources :events
-
   resources :entries, only: [:create, :destroy]
+
 
   get '/chara/:chara_id/videos', to: 'charas#video'
 

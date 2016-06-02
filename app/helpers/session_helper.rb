@@ -1,9 +1,9 @@
 module SessionHelper
   def auth_url(service)
-    if params[:back_to].blank?
+    if params[:redirect_to].blank?
       "/auth/#{service}"
     else
-      "/auth/#{service}?origin=#{params[:back_to]}"
+      "/auth/#{service}?origin=#{params[:redirect_to]}"
     end
   end
 end
