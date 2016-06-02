@@ -21,7 +21,10 @@ function onLoad() {
           authenticity_token: $('meta[name="csrf-token"]').attr('content')
         }
       });
-      setTimeout(location.href = $(this).data('redirect-to'), 500);
+      setTimeout(() => {
+        Turbolinks.clearCache();
+        location.href = $(this).data('redirect-to');
+      }, 500);
     })
   });
 };
