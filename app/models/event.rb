@@ -9,6 +9,7 @@
 #  reversal_user_id :integer
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
+#  entry_deadline   :datetime
 #
 # Indexes
 #
@@ -31,7 +32,17 @@ class Event < ActiveRecord::Base
   scope :upcoming, -> () { where('datetime >= ?', tomorrow).including_user }
   scope :finished, -> () { where('datetime < ?', tomorrow).including_user }
 
-  def self.tomorrow
-    Date.tomorrow.in_time_zone
+  def can_entry?
+    if entry_deadline
+      DateTime.now < entry_deadline
+    else
+      DateTime.now < datetime
+    end
+  end
+
+  class << self
+    def tomorrow
+      Date.tomorrow.in_time_zone
+    end
   end
 end

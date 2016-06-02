@@ -29,10 +29,10 @@ class EntriesController < ApplicationController
 
   def create
     parameter = EntryParameter.new(params[:entry], @current_user, @twitter_user)
-    @entry = Entry.create(parameter.to_h)
+    @entry = Entry.new(parameter.to_h)
     event = @entry.event
 
-    if @entry
+    if event.can_entry? && @entry.save
       redirect_to event_url(event)
     else
       redirect_to event_url(event), alert: @entry.errors.full_messages
@@ -41,7 +41,7 @@ class EntriesController < ApplicationController
 
   def destroy
     event = @entry.event
-    @entry.destroy
+    @entry.destroy if event.can_entry?
     redirect_to event, status: :see_other
   end
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160527074128) do
+ActiveRecord::Schema.define(version: 20160602044535) do
 
   create_table "charas", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "name",       limit: 255
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 20160527074128) do
     t.integer  "reversal_user_id", limit: 4
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
+    t.datetime "entry_deadline"
   end
 
   add_index "events", ["reversal_user_id"], name: "fk_rails_337cdb79bb", using: :btree

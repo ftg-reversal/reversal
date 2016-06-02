@@ -15,7 +15,12 @@
 
     hr.m-y-3
 
-    - if @user && !(@entries.map(&:user).include?(@user))
+    - if !@event.can_entry?
+      .row
+        .col-md-4.col-md-offset-4
+          button.btn.btn-primary.btn-lg.btn-block disabled='disabled'
+            | エントリー終了
+    - elsif @user && !(@entries.map(&:user).include?(@user))
       = render 'entry', event: @event, entries: @entries, entry: @entry, user: @user
     - elsif @user
       = render 'cancel_entry', entry: @user_entry

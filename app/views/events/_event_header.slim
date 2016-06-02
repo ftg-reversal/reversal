@@ -4,11 +4,12 @@
   .media-body
     h2.media-heading = event.title
     p.event-info.pull-left.m-r-1
-      | 開催日；#{l(event.datetime)}
+      | 開催日：#{l(event.datetime)}
+    p.event-info.pull-left.m-r-1
+      | エントリー締め切り：#{l(event.entry_deadline || event.datetime)}
     p.event-info
-      | エントリー数；#{entry_count}人
-    .m-t-1
-      p.pull-left.text-muted.m-r-1
-        | 作成者：#{event.reversal_user.slack_user.name}
-      p.text-muted
-        | 更新日時：#{time_ago_in_words(event.updated_at)}前
+      | エントリー数：#{entry_count}人
+    p.pull-left.text-muted.m-r-1
+      | 作成者：#{event.reversal_user.slack_user.name}
+    p.text-muted
+      | 更新日時：#{time_ago_in_words(event.updated_at)}前

@@ -1,11 +1,12 @@
 class EventParameter
   include Commons::AttrAccessorExtension
-  attr_accessor :title, :description, :datetime, :reversal_user
+  attr_accessor :title, :description, :datetime, :entry_deadline, :reversal_user
 
   def initialize(attributes, reversal_user)
     @title = attributes['title']
     @description = attributes['description']
     @datetime = Time.zone.parse(attributes['datetime'])
+    @entry_deadline = attributes['entry_deadline'] == '' ? '' : Time.zone.parse(attributes['entry_deadline'])
     @reversal_user = reversal_user
     freeze
   end

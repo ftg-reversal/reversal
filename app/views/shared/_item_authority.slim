@@ -1,7 +1,7 @@
 - if current_user && (current_user == item.reversal_user || current_user.admin?)
   nav.nav.nav-inline.pull-right
     - if current_user && current_user == item.reversal_user
-      a.nav-link href=edit_path
+      a.nav-link data-turbolinks="false" href=edit_path
         i.fa.fa-pencil
         | &nbsp;編集
       a.nav-link href=delete_path data-method='delete' data-confirm='本当に削除してもよろしいですか？'
