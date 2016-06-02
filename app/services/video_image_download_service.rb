@@ -10,7 +10,7 @@ class VideoImageDownloadService
 
     # @return [File]
     def dummy_thumbnail
-      File.open(VideoConfig.dummy_thumbnail_filepath)
+      File.open("#{Rails.root}/public/images/dummy_thumbnail.png")
     end
   end
 end

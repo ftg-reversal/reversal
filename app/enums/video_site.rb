@@ -2,12 +2,12 @@ class VideoSite < ClassyEnum::Base
   # @param _ [String]
   # @return [String]
   def thumbnail_uri(_)
-    VideoConfig.dummy_thumbnail_filepath
+    raise
   end
 
   # @return [Class]
   def search_infrastructure
-    nil
+    raise
   end
 end
 
