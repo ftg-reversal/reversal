@@ -83,4 +83,8 @@
               input.form-control.js-edit-app-title(name='title', type='text', value='', placeholder='まとめのタイトル', v-model='title', :readonly='nowSubmitting')
             fieldset.form-group
               textarea.form-control.js-edit-app-description(name='description', placeholder='まとめの説明文(省略可)', v-model='description', :readonly='nowSubmitting')
-            button.btn.btn-primary(@click='onSubmit($event, title, description, messages)', :disabled='nowSubmitting') まとめを投稿する
+
+            .form-group
+              button.btn.btn-primary(@click='onSubmit($event, title, description, messages)', :disabled='nowSubmitting') まとめを投稿する
+              a(:href='/pages')
+                button.btn.btn-secondary キャンセル
