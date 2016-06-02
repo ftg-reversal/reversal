@@ -21,26 +21,22 @@ function onLoad() {
         [$('#entry_chara').attr('name')]: $('#entry_chara').val(),
         [$('#entry_rank').attr('name')]: $('#entry_rank').val(),
         [$('#entry_comment').attr('name')]: $('#entry_comment').val()
-      },
-      success: (data, status, xhr) => {
-        if (xhr.status === 200) {
-          $('#entryModal').modal('hide');
-          swal({
-            title: 'エントリー完了',
-            text: 'エントリーに成功しました<br>エントリーしたことをツイートする<br><a href="https://twitter.com/intent/tweet?button_hashtag=ftg_reversal&text=' + eventTitle + 'にエントリーしました" class="twitter-hashtag-button" data-size="large" data-url="' + window.location.href + '">',
-            type:  'success',
-            html: true
-          },
-          () => { location.reload() });
-          twttr.widgets.load()
-        } else {
-          swal({
-            title: 'エントリー失敗',
-            text: '入力を確認してください',
-            type:  'error'
-          });
-        }
       }
+    }).done((data) => {
+      $('#entryModal').modal('hide');
+      swal({
+        title: 'エントリー完了',
+        text: 'エントリーに成功しました<br>エントリーしたことをツイートする<br><a href="https://twitter.com/intent/tweet?button_hashtag=ftg_reversal&text=' + eventTitle + 'にエントリーしました" class="twitter-hashtag-button" data-size="large" data-url="' + window.location.href + '">',
+        type:  'success',
+        html: true
+      }, () => { location.reload() });
+      twttr.widgets.load();
+    }).fail((data) => {
+      swal({
+        title: 'エントリー失敗',
+        text: '入力を確認してください',
+        type:  'error'
+      });
     });
   });
 }

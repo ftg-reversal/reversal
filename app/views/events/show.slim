@@ -23,7 +23,7 @@
     - elsif @user && !(@entries.map(&:user).include?(@user))
       = render 'entry', event: @event, entries: @entries, entry: @entry, user: @user
     - elsif @user
-      = render 'cancel_entry', entry: @user_entry
+      = render 'cancel_entry', event: @event, entry: @user_entry
     - else
       .row
         .col-md-4.col-md-offset-4

@@ -27,15 +27,16 @@ class EntriesController < ApplicationController
   before_action :do_check_any_login, only: [:create, :destroy]
   before_action :ensure_permission, only: [:destroy]
 
+  # API
   def create
     parameter = EntryParameter.new(params[:entry], @current_user, @twitter_user)
-    @entry = Entry.new(parameter.to_h)
-    event = @entry.event
+    entry = Entry.new(parameter.to_h)
+    event = entry.event
 
-    if event.can_entry? && @entry.save
-      redirect_to event_url(event)
+    if entry.save
+      render json: entry
     else
-      redirect_to event_url(event), alert: @entry.errors.full_messages
+      render json: entry.errors.full_messages, status: :internal_server_error
     end
   end
 

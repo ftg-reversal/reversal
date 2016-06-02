@@ -33,16 +33,25 @@ class Entry < ActiveRecord::Base
   validates :chara, presence: true
   validates :rank, presence: true
   validates :event, presence: true
-
-  def self.find_by_user(user)
-    if user.class == ReversalUser
-      find_by(reversal_user: user)
-    elsif user.class == TwitterUser
-      find_by(twitter_user: user)
-    end
-  end
+  validate :expiration_date_cannot_entry
 
   def user
     reversal_user || twitter_user
+  end
+
+  def expiration_date_cannot_entry
+    errors.add(:can_entry, 'エントリー締め切りを過ぎています') unless event.can_entry?
+  end
+
+  class << self
+    def find_by_user(user)
+      if user.class == ReversalUser
+        find_by(reversal_user: user)
+      elsif user.class == TwitterUser
+        find_by(twitter_user: user)
+      else
+        nil
+      end
+    end
   end
 end

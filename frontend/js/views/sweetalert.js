@@ -13,7 +13,7 @@ function onLoad() {
       cancelButtonText: 'キャンセル',
       closeOnConfirm: false,
     },
-    function() {
+    () => {
       $.ajax({
         type: 'delete',
         url: url,
@@ -21,7 +21,7 @@ function onLoad() {
           authenticity_token: $('meta[name="csrf-token"]').attr('content')
         }
       });
-      setTimeout(location.reload(), 500);
+      setTimeout(location.href = $(this).data('redirect-to'), 500);
     })
   });
 };
