@@ -33,7 +33,7 @@ class Entry < ActiveRecord::Base
   validates :chara, presence: true
   validates :rank, presence: true
   validates :event, presence: true
-  validate :expiration_date_cannot_entry
+  validate :expiration_date_cannot_entry, :exist_entry
 
   def user
     reversal_user || twitter_user
@@ -41,6 +41,10 @@ class Entry < ActiveRecord::Base
 
   def expiration_date_cannot_entry
     errors.add(:can_entry, 'エントリー締め切りを過ぎています') unless event.can_entry?
+  end
+
+  def exist_entry
+    errors.add(:exist_entry, '既にエントリーされています') if event.entry.map(&:user).include?(user)
   end
 
   class << self
