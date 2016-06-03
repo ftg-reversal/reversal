@@ -8,6 +8,7 @@
 #  last_tweet       :integer          default(0), not null
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
+#  quote            :boolean          default(FALSE)
 #
 # Indexes
 #

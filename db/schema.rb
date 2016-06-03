@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160602044535) do
+ActiveRecord::Schema.define(version: 20160603084636) do
 
   create_table "charas", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "name",       limit: 255
@@ -169,11 +169,12 @@ ActiveRecord::Schema.define(version: 20160602044535) do
   add_index "summaries", ["slack_channel_id"], name: "index_summaries_on_slack_channel_id", using: :btree
 
   create_table "twitter2slack_conditions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-    t.string   "text",             limit: 255,             null: false
-    t.integer  "slack_channel_id", limit: 4,               null: false
-    t.integer  "last_tweet",       limit: 8,   default: 0, null: false
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
+    t.string   "text",             limit: 255,                 null: false
+    t.integer  "slack_channel_id", limit: 4,                   null: false
+    t.integer  "last_tweet",       limit: 8,   default: 0,     null: false
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
+    t.boolean  "quote",                        default: false
   end
 
   add_index "twitter2slack_conditions", ["slack_channel_id"], name: "fk_rails_64fa99355b", using: :btree
