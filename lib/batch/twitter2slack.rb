@@ -10,7 +10,7 @@ module Batch
 
           if condition.quote
             unsent_tweets.map do |tweet|
-              TwitterInfrastructure.tweet(tweet[:url])
+              TwitterInfrastructure::Tweet.exec(tweet[:url])
             end
           end
 
