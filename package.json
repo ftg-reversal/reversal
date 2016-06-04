@@ -35,7 +35,6 @@
     "jade": "^1.11.0",
     "jade-loader": "^0.8.0",
     "jquery": "^2.2.4",
-    "jquery-match-height": "^0.7.0",
     "jquery-ujs": "^1.2.1",
     "less": "^2.7.1",
     "less-loader": "^2.2.3",
