@@ -1,22 +1,37 @@
 #login
   .card
     .card-block
-      .row
-        .hidden-sm-down
-          .col-md-4.col-md-offset-1
+      .row.hidden-xs-down
+        .col-sm-3.col-sm-offset-2
+          div
+            a href=auth_url('slack')
+              img.img-fluid src=asset_path('service_icon/slack.png')
+            p.text-sm-center.lead Slackでログイン
+          div
+            a href="https://reversal-slackin.herokuapp.com/"
+              p Slackのアカウント作成はこちら
+        .col-sm-3.col-sm-offset-2
+          div
             a href=auth_url('twitter')
               img.img-fluid src=asset_path('service_icon/twitter.png')
-              h2.text-md-center Twitterでログイン
-          .col-md-4.col-md-offset-2
+            p.text-sm-center.lead Twitterでログイン
+          div
+            a href="https://twitter.com/"
+              p Twitterのアカウント作成はこちら
+      .hidden-sm-up
+        .row.vertical-align
+          .col-xs-4.p-x-0
             a href=auth_url('slack')
-              img.img-fluid.img-circle src=asset_path('service_icon/slack.png')
-              h2.text-md-center Slackでログイン
-        .hidden-md-up
-          .col-xs-6
+              img.img-fluid src=asset_path('service_icon/slack.png')
+          .col-xs-8.p-x-0
+            .font-weight-bold.lead.m-b-03 Slackでログイン
+            div
+              a href="https://reversal-slackin.herokuapp.com/" Slackに新規登録
+        .row.vertical-align
+          .col-xs-4.p-x-0
             a href=auth_url('twitter')
               img.img-fluid src=asset_path('service_icon/twitter.png')
-              h2.text-xs-center Twitterでログイン
-          .col-xs-6
-            a href=auth_url('slack')
-              img.img-fluid.img-circle src=asset_path('service_icon/slack.png')
-              h2.text-xs-center Slackでログイン
+          .col-xs-8.p-x-0
+            .font-weight-bold.lead.m-b-03 Twitterでログイン
+            div
+              a href="https://twitter.com/" Twitterに新規登録
