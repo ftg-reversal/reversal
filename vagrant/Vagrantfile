@@ -7,14 +7,15 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.network 'forwarded_port', guest: 3000, host: 3000
   config.vm.network 'forwarded_port', guest: 3001, host: 3001
   config.vm.network 'forwarded_port', guest: 3002, host: 3002
+  config.vm.network 'forwarded_port', guest: 3306, host: 3306
   config.vm.network 'forwarded_port', guest: 3808, host: 3808
-  config.vm.network 'forwarded_port', guest: 35729, host: 35729
+  config.vm.network 'forwarded_port', guest: 35_729, host: 35_729
 
   config.vm.provider :virtualbox do |vb|
     vb.gui = false
     vb.customize ['modifyvm', :id, '--natdnsproxy1', 'off']
     vb.customize ['modifyvm', :id, '--natdnshostresolver1', 'off']
-    vb.customize ["modifyvm", :id, "--memory", "2048"]
+    vb.customize ['modifyvm', :id, '--memory', '2048']
   end
 
   config.vm.provision :shell, inline: <<SCRIPT
