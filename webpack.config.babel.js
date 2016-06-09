@@ -11,8 +11,8 @@ const devtool = production ? '' : 'inline-source-map'
 
 const defaultPlugins = [
   new webpack.ProvidePlugin({
-    jQuery: 'jquery',
     $: 'jquery',
+    jQuery: 'jquery',
     jquery: 'jquery',
     Tether: 'tether',
     "window.Tether": 'tether'

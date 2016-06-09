@@ -1,11 +1,4 @@
 {
-  "name": "ftg-reversal_videos",
-  "description": "ftg-reversal videos site",
-  "version": "0.0.1",
-  "engines": {
-    "node": "5.11.0",
-    "npm": "3.8.6"
-  },
   "scripts": {
     "build:dev": "webpack",
     "build:watch": "webpack --watch",
@@ -65,10 +58,5 @@
     "vue": "^1.0.24",
     "webpack": "^1.13.1",
     "webpack-bundle-size-analyzer": "^2.0.1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:ftg-reversal/video.git"
-  },
-  "license": "MIT"
+  }
 }
