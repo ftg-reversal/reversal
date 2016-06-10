@@ -43,7 +43,6 @@ const sassLoader = production ? ExtractTextPlugin.extract('style', 'css!postcss!
 export default {
   entry: {
     bundle: './frontend/js/index.js',
-    // components: './frontend/js/components.js',
     style: './frontend/css/index.sass',
 
     vendor: ['jquery-ujs', 'sweetalert', 'turbolinks', 'tether', 'vue'],

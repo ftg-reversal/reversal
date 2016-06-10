@@ -1,4 +1,4 @@
-.card.p-b-2
+.card
   .card-block
     p.lead イベント概要
 
@@ -45,14 +45,16 @@
         - @entries.each do |entry|
           tr
             td
-              = entry.name
+              - entry.entry_player.each do |player|
+                = player.name
             td
-              = entry.chara_name
+              - entry.entry_player.each do |player|
+                = player.chara.name
             td
-              = entry.rank_name
+              - entry.entry_player.each do |player|
+                = player.rank.rank
             td
               = entry.comment
-
 
 - content_for :title do
   = @event.title

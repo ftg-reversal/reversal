@@ -1,19 +1,3 @@
-# == Schema Information
-#
-# Table name: pages
-#
-#  id               :integer          not null, primary key
-#  title            :string(255)      not null
-#  description      :text(65535)      not null
-#  reversal_user_id :integer          not null
-#  created_at       :datetime         not null
-#  updated_at       :datetime         not null
-#
-# Indexes
-#
-#  index_pages_on_reversal_user_id  (reversal_user_id)
-#
-
 class PagesController < ApplicationController
   before_action :set_page, only: [:show, :edit, :update, :destroy]
   before_action :do_check_reversal_login, only: [:new, :create, :update, :edit, :destroy]

@@ -1,21 +1,3 @@
-# == Schema Information
-#
-# Table name: summaries
-#
-#  id               :integer          not null, primary key
-#  title            :string(255)      not null
-#  description      :text(65535)      not null
-#  reversal_user_id :integer          not null
-#  created_at       :datetime         not null
-#  updated_at       :datetime         not null
-#  slack_channel_id :integer          not null
-#
-# Indexes
-#
-#  index_summaries_on_reversal_user_id  (reversal_user_id)
-#  index_summaries_on_slack_channel_id  (slack_channel_id)
-#
-
 class SummariesController < ApplicationController
   before_action :set_summary, only: [:show, :edit, :update, :destroy]
   before_action :do_check_reversal_login, only: [:new, :create, :update, :edit, :destroy]

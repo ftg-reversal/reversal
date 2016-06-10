@@ -1,20 +1,3 @@
-# == Schema Information
-#
-# Table name: events
-#
-#  id               :integer          not null, primary key
-#  title            :string(255)
-#  description      :text(65535)
-#  datetime         :datetime
-#  reversal_user_id :integer
-#  created_at       :datetime         not null
-#  updated_at       :datetime         not null
-#
-# Indexes
-#
-#  fk_rails_337cdb79bb  (reversal_user_id)
-#
-
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_action :do_check_reversal_login, only: [:new, :create, :update, :edit, :destroy]
@@ -31,7 +14,7 @@ class EventsController < ApplicationController
 
   def show
     @entry = Entry.new
-    @entries = Event.including_all.find(params[:id]).entry.map(&:decorate)
+    @entries = Event.including_entry.find(params[:id]).entry
     @user = @current_user || @twitter_user
     @user_entry = Entry.find_by_user(@user)
   end

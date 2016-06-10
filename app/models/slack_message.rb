@@ -12,7 +12,7 @@
 #  attachments      :text(65535)
 #  file             :text(65535)
 #  username         :string(255)
-#  icon             :string(255)
+#  icon             :text(65535)
 #
 # Indexes
 #

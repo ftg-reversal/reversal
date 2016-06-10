@@ -4,14 +4,14 @@
         .alert.alert-warning role='alert' = message
 
   = bootstrap_form_for(event, label_errors: true) do |form|
-    .row
+    .form-group.row
       .col-md-6
         label for='event_title' タイトル
         .input-group
           .input-group-addon
             i.fa.fa-pencil
           = form.text_field :title, hide_label: true
-    .row
+    .form-group.row
       .col-md-6
         label for='event_datetime' 日時
         .input-group
@@ -24,6 +24,13 @@
           .input-group-addon
             i.fa.fa-calendar
           = form.text_field :entry_deadline, hide_label: true, class: 'datetimepicker'
+    .form-group.row
+      .col-md-6
+        label for='event_title' チーム人数
+        .input-group
+          .input-group-addon
+            i.fa.fa-user
+          = form.select :number, [[1, '1'], [2, '2'], [3, '3'], [4, '4'], [5, '5']], hide_label: true
     = form.text_area :description, class: 'ckeditor'
     .form-group
       = form.submit '登録', class: 'btn btn-primary btn-lg'

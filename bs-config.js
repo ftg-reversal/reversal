@@ -18,7 +18,7 @@ module.exports = {
             "port": 8080
         }
     },
-    "files": ["app/**/*", "webpack/**"],
+    "files": ["app/**/*"],
     "watchOptions": {
       usePolling: true,
       interval: 1000

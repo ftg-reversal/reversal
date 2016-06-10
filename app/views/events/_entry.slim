@@ -15,8 +15,18 @@
       .modal-body
         = bootstrap_form_for entry, inline_errors: false, validate: true do |form|
           = form.hidden_field :event, value: event.id
-          = form.text_field :name, class: 'validate[required]'
-          = form.collection_select :chara, Chara.all, :id, :name
-          = form.collection_select :rank, Rank.all, :id, :rank
+          - 1.upto(event.number) do |i|
+            div id="player_#{i}"
+              p.lead #{i}人目
+              .form-group.row
+                .col-md-4
+                  label for="player_name_#{i}" プレイヤー名
+                  = text_field :player_name, "#{i}", class: 'form-control validate[required]'
+                .col-md-4
+                  label for="player_chara_#{i}" キャラ
+                  = collection_select :player_chara, "#{i}", Chara.all, :id, :name, {}, { class: 'form-control' }
+                .col-md-4
+                  label for="player_rank_#{i}" 段位
+                  = collection_select :player_rank, "#{i}", Rank.all, :id, :rank, {}, { class: 'form-control' }
           = form.text_field :comment
           = form.submit '登録', id: 'new-entry-submit', class: 'btn-primary btn-lg'

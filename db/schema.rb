@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160603084636) do
+ActiveRecord::Schema.define(version: 20160615083000) do
 
   create_table "charas", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "name",       limit: 255
@@ -37,31 +37,36 @@ ActiveRecord::Schema.define(version: 20160603084636) do
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type", using: :btree
 
   create_table "entries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-    t.string   "name",             limit: 255
-    t.integer  "chara_id",         limit: 4
-    t.integer  "rank_id",          limit: 4
     t.text     "comment",          limit: 65535
     t.integer  "event_id",         limit: 4
     t.integer  "reversal_user_id", limit: 4
-    t.integer  "twitter_user_id",  limit: 4
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
   end
 
-  add_index "entries", ["chara_id"], name: "index_entries_on_chara_id", using: :btree
   add_index "entries", ["event_id"], name: "fk_rails_20eb5df311", using: :btree
-  add_index "entries", ["rank_id"], name: "index_entries_on_rank_id", using: :btree
   add_index "entries", ["reversal_user_id"], name: "fk_rails_6a9722b611", using: :btree
-  add_index "entries", ["twitter_user_id"], name: "fk_rails_8580cf0bd4", using: :btree
+
+  create_table "entry_players", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+    t.string  "name",     limit: 255
+    t.integer "chara_id", limit: 4
+    t.integer "rank_id",  limit: 4
+    t.integer "entry_id", limit: 4
+  end
+
+  add_index "entry_players", ["chara_id"], name: "fk_rails_53cb378c6b", using: :btree
+  add_index "entry_players", ["entry_id"], name: "fk_rails_c0b8648e8b", using: :btree
+  add_index "entry_players", ["rank_id"], name: "fk_rails_001d489769", using: :btree
 
   create_table "events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "title",            limit: 255
     t.text     "description",      limit: 65535
     t.datetime "datetime"
     t.integer  "reversal_user_id", limit: 4
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
     t.datetime "entry_deadline"
+    t.integer  "number",           limit: 4,     default: 1, null: false
   end
 
   add_index "events", ["reversal_user_id"], name: "fk_rails_337cdb79bb", using: :btree
@@ -128,7 +133,7 @@ ActiveRecord::Schema.define(version: 20160603084636) do
     t.text     "attachments",      limit: 65535
     t.text     "file",             limit: 65535
     t.string   "username",         limit: 255
-    t.string   "icon",             limit: 255
+    t.text     "icon",             limit: 65535
   end
 
   add_index "slack_messages", ["slack_channel_id", "slack_user_id", "ts"], name: "channel_user_ts_index", unique: true, using: :btree
@@ -225,7 +230,9 @@ ActiveRecord::Schema.define(version: 20160603084636) do
 
   add_foreign_key "entries", "events"
   add_foreign_key "entries", "reversal_users"
-  add_foreign_key "entries", "twitter_users"
+  add_foreign_key "entry_players", "charas"
+  add_foreign_key "entry_players", "entries"
+  add_foreign_key "entry_players", "ranks"
   add_foreign_key "events", "reversal_users"
   add_foreign_key "pages", "reversal_users"
   add_foreign_key "reversal_users", "slack_users"

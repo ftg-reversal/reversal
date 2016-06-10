@@ -11,17 +11,26 @@ function onLoad() {
 
     const eventTitle = $('h2:first').text().replace(/\s+/g, "");
 
+    const players = {
+      names: [],
+      charas: [],
+      ranks: []
+    }
+    $('div[id ^= player]').each((i) => {
+      i++;
+      players.names.push($(`#player_name_${i}`).val());
+      players.charas.push($(`#player_chara_${i}`).val());
+      players.ranks.push($(`#player_rank_${i}`).val());
+    });
+
     $.ajax({
       type: 'post',
       url: '/entries',
-      data: {
+      data: Object.assign(players, {
         authenticity_token: $('meta[name="csrf-token"]').attr('content'),
-        [$('#entry_event').attr('name')]: $('#entry_event').attr('value'),
-        [$('#entry_name').attr('name')]: $('#entry_name').val(),
-        [$('#entry_chara').attr('name')]: $('#entry_chara').val(),
-        [$('#entry_rank').attr('name')]: $('#entry_rank').val(),
-        [$('#entry_comment').attr('name')]: $('#entry_comment').val()
-      }
+        [$('#entry_event').attr('name')] : $('#entry_event').attr('value'),
+        [$('#entry_comment').attr('name')] : $('#entry_comment').val()
+      })
     }).done((data) => {
       $('#entryModal').modal('hide');
       swal({
