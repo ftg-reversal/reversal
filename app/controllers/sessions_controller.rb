@@ -24,13 +24,15 @@ class SessionsController < ApplicationController
 
   def create_slack(auth)
     reversal_user = ReversalUser.find_or_create_with_slack(auth)
-    session[:user_id] = reversal_user.id
-    session[:token] = auth.credentials.token
-    redirect_to redirect_path
+    save_session_and_redirect(reversal_user, auth)
   end
 
   def create_twitter(auth)
     reversal_user = ReversalUser.find_or_create_with_twitter(auth)
+    save_session_and_redirect(reversal_user, auth)
+  end
+
+  def save_session_and_redirect(reversal_user, auth)
     session[:user_id] = reversal_user.id
     session[:token] = auth.credentials.token
     redirect_to redirect_path
