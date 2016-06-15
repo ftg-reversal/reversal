@@ -5,7 +5,7 @@ Vue.use(require('vendor/vue-drag-and-drop'));
 
 export default class SummaryEditor extends Vue {
   constructor() {
-    let properties = {
+    const properties = {
       el: "#summary-editor",
 
       template: template(),
@@ -52,7 +52,7 @@ export default class SummaryEditor extends Vue {
           }
         });
 
-        let channelID = $(this.$el).data("channel-id");
+        const channelID = $(this.$el).data("channel-id");
         if (channelID) {
           this.channelID = channelID;
           loadChannel(channelID, this.loadMessages, this);
@@ -89,7 +89,7 @@ export default class SummaryEditor extends Vue {
           });
         },
         onSubmit: (e, title, description, messages) => {
-          let messageIDs = messages.map((n) => {
+          const messageIDs = messages.map((n) => {
             return n.id
           });
           e.preventDefault();
