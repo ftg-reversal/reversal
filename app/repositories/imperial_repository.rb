@@ -6,7 +6,7 @@ class ImperialRepository
           video: video,
           chara1: Chara.find_by(en_name: hash['1p']),
           chara2: Chara.find_by(en_name: hash['2p']),
-          sec: hash['sec'].to_i,
+          sec: hash['sec'].to_i
         )
       end
     end

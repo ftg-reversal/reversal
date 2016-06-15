@@ -10,8 +10,8 @@ module NicovideoInfrastructure
         {
           id: video_id,
           url: hash['nicovideo_thumb_response']['thumb']['watch_url'],
-          title: hash["nicovideo_thumb_response"]['thumb']['title'],
-          posted_at: hash["nicovideo_thumb_response"]['thumb']['first_retrieve']
+          title: hash['nicovideo_thumb_response']['thumb']['title'],
+          posted_at: hash['nicovideo_thumb_response']['thumb']['first_retrieve']
         }
       end
     end

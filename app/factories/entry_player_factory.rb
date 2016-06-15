@@ -1,6 +1,5 @@
 class EntryPlayerFactory
-  def self.create_from_entry_form(params)
-    number = Event.find(params[:entry][:event]).number
+  def self.create_from_entry_form(params, number)
     (0...number).to_a.map do |i|
       EntryPlayer.new(
         name: params[:names][i],
