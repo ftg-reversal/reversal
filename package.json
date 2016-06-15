@@ -1,8 +1,7 @@
 {
   "scripts": {
-    "build:dev": "webpack",
-    "build:watch": "webpack --watch",
-    "build:production": "env TARGET=production webpack",
+    "build:dev": "webpack-dev-server --inline --port 3500 --progress --profile --colors",
+    "build:production": "env TARGET=production webpack --progress --pforile --colors",
     "analyze": "env TARGET=production webpack --json | webpack-bundle-size-analyzer"
   },
   "devDependencies": {
@@ -16,6 +15,7 @@
     "bootstrap": "^4.0.0-alpha.2",
     "bower-webpack-plugin": "^0.1.9",
     "browser-sync": "^2.13.0",
+    "clean-webpack-plugin": "^0.1.9",
     "css-loader": "^0.23.1",
     "csswring": "^5.0.0",
     "exports-loader": "^0.6.3",
@@ -57,6 +57,7 @@
     "url-loader": "^0.5.7",
     "vue": "^1.0.24",
     "webpack": "^1.13.1",
-    "webpack-bundle-size-analyzer": "^2.0.1"
+    "webpack-bundle-size-analyzer": "^2.0.1",
+    "webpack-dev-server": "^1.14.1"
   }
 }

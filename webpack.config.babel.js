@@ -3,6 +3,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const bourbon = require('bourbon').includePaths;
 
 const production = process.env.TARGET === 'production';
@@ -17,7 +18,15 @@ const defaultPlugins = [
     Tether: 'tether',
     "window.Tether": 'tether'
   }),
-  new ExtractTextPlugin(path.join('stylesheets', 'webpack', '[name].css'))
+  new ExtractTextPlugin(path.join('stylesheets', 'webpack', '[name].css')),
+  new CleanWebpackPlugin([
+    path.join('javascripts', 'webpack'),
+    path.join('stylesheets', 'webpack')
+  ], {
+    root: path.join(__dirname, 'app', 'assets'),
+    verbose: true,
+    dry: false
+  })
 ];
 
 const productionPlugins = [
@@ -35,6 +44,14 @@ const productionPlugins = [
 
 const plugins = production ? defaultPlugins.concat(productionPlugins) : defaultPlugins;
 
+const output = production ? {
+  path: path.join(__dirname, 'app', 'assets'),
+  filename: path.join('javascripts', 'webpack', '[name].js')
+} : {
+  filename: path.join('[name].js'),
+  publicPath: 'http://localhost:3500/'
+}
+
 // css modules
 const cssLoader = production ? ExtractTextPlugin.extract('style', 'css?modules!postcss') : 'style!css?modules!postcss'
 // global css
@@ -44,14 +61,10 @@ export default {
   entry: {
     bundle: './frontend/js/index.js',
     style: './frontend/css/index.sass',
-
     vendor: ['jquery-ujs', 'sweetalert', 'turbolinks', 'tether', 'vue'],
   },
 
-  output: {
-    path: path.join(__dirname, 'app', 'assets'),
-    filename: path.join('javascripts', 'webpack', '[name].js')
-  },
+  output: output,
 
   module: {
     preloaders: [
@@ -103,5 +116,11 @@ export default {
   ],
 
   plugins: plugins,
-  devtool: devtool
+  devtool: devtool,
+  devServer: {
+    headers: {
+      "Access-Control-Allow-Origin": "http://localhost:3000",
+      "Access-Control-Allow-Credentials": "true"
+    }
+  }
 };
