@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160615083000) do
+ActiveRecord::Schema.define(version: 20160615100904) do
 
   create_table "charas", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "name",       limit: 255
@@ -104,13 +104,15 @@ ActiveRecord::Schema.define(version: 20160615083000) do
   end
 
   create_table "reversal_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-    t.integer  "slack_user_id", limit: 4
+    t.integer  "slack_user_id",   limit: 4
     t.boolean  "is_admin"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "twitter_user_id", limit: 4
   end
 
   add_index "reversal_users", ["slack_user_id"], name: "slack_user_id", unique: true, using: :btree
+  add_index "reversal_users", ["twitter_user_id"], name: "index_reversal_users_on_twitter_user_id", unique: true, using: :btree
 
   create_table "slack_channels", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "cid",         limit: 255

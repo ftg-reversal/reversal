@@ -4,22 +4,16 @@ header#header
       .header-logo.full.pull-left
         | Reversal
     ul.nav.navbar-nav.pull-right
-      - if twitter_user
+      - if current_user
         li.nav-item
-          img.header-user-icon src=twitter_user.icon_url
-        li.nav-item
-          = link_to session_path, method: 'delete', class: 'button btn btn-color1' do
-            i.fa.fa-sign-out &nbsp;&nbsp;ログアウト
-      - elsif current_user
-        li.nav-item
-          img.header-user-icon src=current_user.slack_user.icon_url
+          img.header-user-icon src=current_user.icon_url
         li.nav-item
           .dropdown
             button.btn.btn-color1.dropdown-toggle type="button" id="header-create-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
               i.fa.fa-pencil-square-o &nbsp;&nbsp;作成
             .dropdown-menu.dropdown-menu-right.p-y-1 aria-labelledby='header-create-dropdown'
               a.dropdown-item data-turbolinks="false" href=new_page_path ページの作成
-              a.dropdown-item data-turbolinks="false" href=new_summary_path Slackまとめの作成（β）
+              a.dropdown-item data-turbolinks="false" href=new_summary_path まとめの作成（β）
               a.dropdown-item data-turbolinks="false" href=new_event_path イベントの作成
         li.nav-item
           = link_to session_path, method: 'delete', class: 'btn btn-color1' do

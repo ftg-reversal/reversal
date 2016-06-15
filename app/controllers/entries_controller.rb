@@ -29,8 +29,6 @@ class EntriesController < ApplicationController
   def ensure_permission
     if @current_user && @entry.reversal_user == @current_user
       true
-    elsif @twitter_user == @entry.twitter_user
-      true
     else
       redirect_to '/'
     end

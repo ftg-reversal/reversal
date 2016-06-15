@@ -13,12 +13,6 @@
 
 class TwitterUser < ActiveRecord::Base
   class << self
-    def find_or_create_with_omniauth(auth)
-      find_by_uid(auth['uid']) || create_with_omniauth(auth)
-    end
-
-    private
-
     def create_with_omniauth(auth)
       create! do |user|
         user.uid = auth['uid']

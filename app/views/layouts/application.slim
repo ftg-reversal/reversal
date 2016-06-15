@@ -16,7 +16,7 @@ html
     = csrf_meta_tags
   body
     #wrapper
-      = render 'layouts/header', current_user: @current_user, twitter_user: @twitter_user
+      = render 'layouts/header', current_user: @current_user
       = render 'layouts/navbar'
       #main.container
         = yield

@@ -15,7 +15,7 @@ class EventsController < ApplicationController
   def show
     @entry = Entry.new
     @entries = Event.including_entry.find(params[:id]).entry
-    @user = @current_user || @twitter_user
+    @user = @current_user
     @user_entry = Entry.find_by_user(@user)
   end
 

@@ -1,6 +1,6 @@
 .event-header.media
   a.media-left href='#'
-    img.media-object src=event.reversal_user.slack_user.icon_url title=event.reversal_user.slack_user.name
+    img.media-object src=event.reversal_user.icon_url title=event.reversal_user.name
   .media-body
     h2.media-heading = event.title
     p.event-info.pull-left.m-r-1
@@ -10,6 +10,6 @@
     p.event-info
       | エントリー数：#{entry_count}人
     p.pull-left.text-muted.m-r-1
-      | 作成者：#{event.reversal_user.slack_user.name}
+      | 作成者：#{event.reversal_user.name}
     p.text-muted
       | 更新日時：#{time_ago_in_words(event.updated_at)}前

@@ -13,7 +13,6 @@ class SessionsController < ApplicationController
   def destroy
     session[:user_id] = nil
     session[:token] = nil
-    session[:twitter_user_id] = nil
     redirect_to root_path, status: :see_other
   end
 
@@ -24,16 +23,16 @@ class SessionsController < ApplicationController
   end
 
   def create_slack(auth)
-    reversal_user = ReversalUser.find_or_create_with_omniauth(auth)
-    session[:user_id] = reversal_user.uid
+    reversal_user = ReversalUser.find_or_create_with_slack(auth)
+    session[:user_id] = reversal_user.id
     session[:token] = auth.credentials.token
     redirect_to redirect_path
   end
 
   def create_twitter(auth)
-    twitter_user = TwitterUser.find_or_create_with_omniauth(auth)
-    # TODO: UPDATE
-    session[:twitter_user_id] = twitter_user.id
+    reversal_user = ReversalUser.find_or_create_with_twitter(auth)
+    session[:user_id] = reversal_user.id
+    session[:token] = auth.credentials.token
     redirect_to redirect_path
   end
 
