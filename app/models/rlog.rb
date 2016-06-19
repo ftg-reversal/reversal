@@ -18,6 +18,12 @@
 #  index_rlogs_on_type              (type)
 #
 
-class Page < Rlog
-  validates :description, presence: true
+class Rlog < ActiveRecord::Base
+  belongs_to :reversal_user
+  belongs_to :slack_channel
+  has_many :slack_messages_summaries, dependent: :destroy
+  has_many :slack_messages, through: :slack_messages_summaries
+
+  validates :title, presence: true
+  validates :reversal_user_id, presence: true
 end

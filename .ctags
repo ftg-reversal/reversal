@@ -1,0 +1,6 @@
+--langmap=RUBY:.rb
+--exclude=.git
+--exclude=vendor/*
+--exclude=node_modules/*
+--exclude=db/*
+--exclude=log/*

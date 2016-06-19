@@ -36,6 +36,3 @@ Thumbs.db
 
 # Vagrant
 /vagrant/.vagrant
-
-# Added by webpack-rails
-/public/webpack

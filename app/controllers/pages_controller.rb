@@ -1,13 +1,8 @@
-class PagesController < ApplicationController
+class PagesController < RlogsController
   before_action :set_page, only: [:show, :edit, :update, :destroy]
-  before_action :do_check_reversal_login, only: [:new, :create, :update, :edit, :destroy]
-  before_action :ensure_permission, only: [:edit, :update, :destroy]
 
   def index
-    # TODO: Modelに移す
-    @pages = Page.select("'page' as type, id, title, description, updated_at, reversal_user_id")
-               .union(Summary.select("'summary' as type, id, title, description, updated_at, reversal_user_id"))
-               .includes(:reversal_user).order('updated_at DESC').page(params[:page])
+    @pages = Page.includes(:reversal_user).order('updated_at DESC').page(params[:page])
   end
 
   def show
@@ -53,9 +48,5 @@ class PagesController < ApplicationController
     n = params.require(:page).permit(:title, :description)
     n[:reversal_user] = @current_user
     n
-  end
-
-  def ensure_permission
-    redirect_to '/' unless @page.reversal_user == @current_user || @current_user.admin?
   end
 end

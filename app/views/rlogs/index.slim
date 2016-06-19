@@ -1,0 +1,10 @@
+#page-index
+  .card
+    .card-block
+      = render 'rlogs/nav'
+      - @rlogs.each do |rlog|
+        - if rlog.type == 'Page'
+          = render 'shared/item_short', item: rlog, description: rlog.description.split.first , path: page_path(rlog)
+        - elsif rlog.type == 'Summary'
+          = render 'shared/item_short', item: rlog, description: rlog.description.split.first , path: summary_path(rlog)
+      = paginate @rlogs

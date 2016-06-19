@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160615100904) do
+ActiveRecord::Schema.define(version: 20160619195234) do
 
   create_table "charas", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "name",       limit: 255
@@ -87,16 +87,6 @@ ActiveRecord::Schema.define(version: 20160615100904) do
 
   add_index "lives", ["live_id"], name: "index_lives_on_live_id", using: :btree
 
-  create_table "pages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-    t.string   "title",            limit: 255,   null: false
-    t.text     "description",      limit: 65535, null: false
-    t.integer  "reversal_user_id", limit: 4,     null: false
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
-  end
-
-  add_index "pages", ["reversal_user_id"], name: "index_pages_on_reversal_user_id", using: :btree
-
   create_table "ranks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "rank",       limit: 255
     t.datetime "created_at",             null: false
@@ -113,6 +103,20 @@ ActiveRecord::Schema.define(version: 20160615100904) do
 
   add_index "reversal_users", ["slack_user_id"], name: "slack_user_id", unique: true, using: :btree
   add_index "reversal_users", ["twitter_user_id"], name: "index_reversal_users_on_twitter_user_id", unique: true, using: :btree
+
+  create_table "rlogs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+    t.string   "title",            limit: 255,   null: false
+    t.text     "description",      limit: 65535
+    t.integer  "slack_channel_id", limit: 4
+    t.integer  "reversal_user_id", limit: 4,     null: false
+    t.string   "type",             limit: 255,   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "rlogs", ["reversal_user_id"], name: "index_rlogs_on_reversal_user_id", using: :btree
+  add_index "rlogs", ["slack_channel_id"], name: "fk_rails_9daab45809", using: :btree
+  add_index "rlogs", ["type"], name: "index_rlogs_on_type", using: :btree
 
   create_table "slack_channels", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "cid",         limit: 255
@@ -146,12 +150,12 @@ ActiveRecord::Schema.define(version: 20160615100904) do
 
   create_table "slack_messages_summaries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.integer "slack_message_id", limit: 4, null: false
-    t.integer "summary_id",       limit: 4, null: false
     t.integer "row_order",        limit: 4
+    t.integer "summary_id",       limit: 4
   end
 
   add_index "slack_messages_summaries", ["slack_message_id"], name: "index_slack_messages_summaries_on_slack_message_id", using: :btree
-  add_index "slack_messages_summaries", ["summary_id"], name: "index_slack_messages_summaries_on_summary_id", using: :btree
+  add_index "slack_messages_summaries", ["summary_id"], name: "fk_rails_2a1b919d51", using: :btree
 
   create_table "slack_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "uid",        limit: 255
@@ -162,18 +166,6 @@ ActiveRecord::Schema.define(version: 20160615100904) do
   end
 
   add_index "slack_users", ["uid"], name: "uid", unique: true, using: :btree
-
-  create_table "summaries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-    t.string   "title",            limit: 255,   null: false
-    t.text     "description",      limit: 65535, null: false
-    t.integer  "reversal_user_id", limit: 4,     null: false
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
-    t.integer  "slack_channel_id", limit: 4,     null: false
-  end
-
-  add_index "summaries", ["reversal_user_id"], name: "index_summaries_on_reversal_user_id", using: :btree
-  add_index "summaries", ["slack_channel_id"], name: "index_summaries_on_slack_channel_id", using: :btree
 
   create_table "twitter2slack_conditions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "text",             limit: 255,                 null: false
@@ -236,14 +228,12 @@ ActiveRecord::Schema.define(version: 20160615100904) do
   add_foreign_key "entry_players", "entries"
   add_foreign_key "entry_players", "ranks"
   add_foreign_key "events", "reversal_users"
-  add_foreign_key "pages", "reversal_users"
   add_foreign_key "reversal_users", "slack_users"
+  add_foreign_key "rlogs", "slack_channels"
   add_foreign_key "slack_messages", "slack_channels"
   add_foreign_key "slack_messages", "slack_users"
+  add_foreign_key "slack_messages_summaries", "rlogs", column: "summary_id"
   add_foreign_key "slack_messages_summaries", "slack_messages"
-  add_foreign_key "slack_messages_summaries", "summaries"
-  add_foreign_key "summaries", "reversal_users"
-  add_foreign_key "summaries", "slack_channels"
   add_foreign_key "twitter2slack_conditions", "slack_channels"
   add_foreign_key "video_matchups", "charas", column: "chara1_id"
   add_foreign_key "video_matchups", "charas", column: "chara2_id"

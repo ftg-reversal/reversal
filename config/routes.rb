@@ -12,8 +12,9 @@ Rails.application.routes.draw do
 
   resources :videos, only: [:index]
   resources :slack_channels, as: :channels, path: :channels, only: [:index, :show]
-  resources :summaries
+  resources :rlogs, only: [:index]
   resources :pages
+  resources :summaries
 
   # Event
   get '/events/archived', to: 'events#archived'

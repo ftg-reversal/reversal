@@ -1,10 +1,8 @@
-class SummariesController < ApplicationController
+class SummariesController < RlogsController
   before_action :set_summary, only: [:show, :edit, :update, :destroy]
-  before_action :do_check_reversal_login, only: [:new, :create, :update, :edit, :destroy]
-  before_action :ensure_permission, only: [:edit, :update, :destroy]
 
   def index
-    @summaries = Summary.order('updated_at DESC').page(params[:page]).map(&:decorate)
+    @summaries = Summary.includes(:reversal_user).order('updated_at DESC').page(params[:page])
   end
 
   def show
@@ -65,9 +63,5 @@ class SummariesController < ApplicationController
     n[:slack_channel] = SlackChannel.find(params[:slack_channel])
     n[:slack_messages] = n[:slack_messages].uniq.reject(&:empty?).map { |m| SlackMessage.find(m) }
     n
-  end
-
-  def ensure_permission
-    redirect_to '/' unless @summary.reversal_user == @current_user || @current_user.admin?
   end
 end

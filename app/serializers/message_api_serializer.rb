@@ -1,6 +1,9 @@
 class MessageApiSerializer < ActiveModel::Serializer
   attributes :id, :slack_user, :username, :icon_url, :channel, :date, :format_text, :ts, :image, :attachments
-  delegate :username, :object
+
+  def username
+    object.username
+  end
 
   def icon_url
     object.icon
