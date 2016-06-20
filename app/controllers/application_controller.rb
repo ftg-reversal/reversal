@@ -8,11 +8,7 @@ class ApplicationController < ActionController::Base
     login if session[:user_id]
   end
 
-  def do_check_reversal_login
-    redirect_to '/' unless @current_user
-  end
-
-  def do_check_any_login
+  def do_check_login
     redirect_to '/' unless @current_user
   end
 

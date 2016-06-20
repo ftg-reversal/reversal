@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
-  before_action :do_check_reversal_login, only: [:new, :create, :update, :edit, :destroy]
+  before_action :do_check_login, only: [:new, :create, :update, :edit, :destroy]
   before_action :ensure_permission, only: [:edit, :update, :destroy]
 
   def index

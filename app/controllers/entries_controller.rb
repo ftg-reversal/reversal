@@ -1,6 +1,6 @@
 class EntriesController < ApplicationController
   before_action :set_entry, only: [:destroy]
-  before_action :do_check_any_login, only: [:create, :destroy]
+  before_action :do_check_login, only: [:create, :destroy]
   before_action :ensure_permission, only: [:destroy]
 
   # API
