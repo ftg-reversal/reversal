@@ -36,6 +36,7 @@ gem 'pry-rails'
 gem 'rails_autolink'
 gem 'request_store'
 gem 'sass-rails'
+gem 'seed_dump'
 gem 'slack-api'
 gem 'slack_markdown'
 gem 'slim-rails'
@@ -65,7 +66,6 @@ group :development, :test do
   gem 'rails-erd'
   gem 'rails_best_practices', require: false
   gem 'rubocop', require: false, git: 'https://github.com/bbatsov/rubocop'
-  gem 'seed_dump'
   gem 'slim_lint', require: false
   gem 'spring'
   gem 'spring-commands-rspec'
