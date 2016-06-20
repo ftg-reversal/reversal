@@ -3,7 +3,6 @@
 const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 const bourbon = require('bourbon').includePaths;
 
 const production = process.env.TARGET === 'production';
@@ -18,15 +17,7 @@ const defaultPlugins = [
     Tether: 'tether',
     "window.Tether": 'tether'
   }),
-  new ExtractTextPlugin(path.join('stylesheets', 'webpack', '[name].css')),
-  new CleanWebpackPlugin([
-    path.join('javascripts', 'webpack'),
-    path.join('stylesheets', 'webpack')
-  ], {
-    root: path.join(__dirname, 'app', 'assets'),
-    verbose: true,
-    dry: false
-  })
+  new ExtractTextPlugin(path.join('stylesheets', 'webpack', '[name].css'))
 ];
 
 const productionPlugins = [
