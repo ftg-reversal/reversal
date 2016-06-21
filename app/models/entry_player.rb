@@ -20,7 +20,6 @@ class EntryPlayer < ActiveRecord::Base
   belongs_to :chara
   belongs_to :rank
 
-  validates :name,  presence: true
   validates :chara, presence: true
   validates :rank,  presence: true
 end
