@@ -21,7 +21,8 @@
               .form-group.row
                 .col-md-4
                   label for="player_name_#{i}" プレイヤー名
-                  = text_field :player_name, "#{i}", class: 'form-control validate[required]'
+                  - name_validate = i == 1 ? 'validate[required]' : ''
+                  = text_field :player_name, "#{i}", class: "form-control #{name_validate}"
                 .col-md-4
                   label for="player_chara_#{i}" キャラ
                   = collection_select :player_chara, "#{i}", Chara.all, :id, :name, {}, { class: 'form-control' }
