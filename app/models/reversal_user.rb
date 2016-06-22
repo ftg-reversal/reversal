@@ -45,7 +45,7 @@ class ReversalUser < ActiveRecord::Base
     end
 
     def find_or_create_with_twitter(auth)
-      twitter_user = TwitterUser.find_by(auth['uid']) || TwitterUser.create_with_omniauth(auth)
+      twitter_user = TwitterUser.find_by(uid: auth['uid']) || TwitterUser.create_with_omniauth(auth)
       find_by(twitter_user: twitter_user) || create_with_twitter(twitter_user)
     end
 
