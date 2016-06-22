@@ -12,6 +12,8 @@
 #
 
 class TwitterUser < ActiveRecord::Base
+  has_one :reversal_user, dependent: :destroy
+
   class << self
     def create_with_omniauth(auth)
       create! do |user|
