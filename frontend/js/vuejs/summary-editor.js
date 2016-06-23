@@ -136,30 +136,28 @@ function loadChannel(channel, loadMessages, self) {
   self.nowLoading = true;
   $.ajax({
     type: "get",
-    url: "/api/channels/" + channel,
-    success: (resp) => {
-      self.nowLoading = false;
-      self.channelID = channel;
+    url: "/api/channels/" + channel
+  }).done((resp) => {
+    self.nowLoading = false;
+    self.channelID = channel;
 
-      resp.map((message) => {
-        if (!self.messages.some((selectedMessage) => { return message.id === selectedMessage.id })) {
-          loadMessages.push({
-            id: message.id,
-            avatar_url: message.icon_url,
-            username: message.username,
-            date: message.date,
-            ts: message.ts,
-            channel: message.channel,
-            format_text: message.format_text,
-            attachments: message.attachments
-          });
-        }
-      });
-    },
-    error: (resp) => {
-      self.nowLoading = false;
-      swal('取得できませんでした');
-    }
+    resp.map((message) => {
+      if (!self.messages.some((selectedMessage) => { return message.id === selectedMessage.id })) {
+        loadMessages.push({
+          id: message.id,
+          avatar_url: message.icon_url,
+          username: message.username,
+          date: message.date,
+          ts: message.ts,
+          channel: message.channel,
+          format_text: message.format_text,
+          attachments: message.attachments
+        });
+      }
+    });
+  }).fail((resp) => {
+    self.nowLoading = false;
+    swal('取得できませんでした');
   });
 }
 
