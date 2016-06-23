@@ -44,12 +44,11 @@ export default class SummaryEditor extends Vue {
 
         $.ajax({
           type: "get",
-          url: "/api/channels",
-          success: (resp) => {
-            resp.map((channel) => {
-              this.channels.push({text: channel.name, value: channel.id});
-            });
-          }
+          url: "/api/channels"
+        }).done((resp) => {
+          resp.map((channel) => {
+            this.channels.push({text: channel.name, value: channel.id});
+          });
         });
 
         const channelID = $(this.$el).data("channel-id");
