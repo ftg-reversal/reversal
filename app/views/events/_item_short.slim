@@ -1,0 +1,16 @@
+.media
+  a.media-left href='#'
+    img.c-user-icon.media-object src=event.reversal_user.icon_url title=event.reversal_user.name
+  .media-body
+    a href=event_path(event)
+      h3.media-heading = event.title
+    p.event-info
+      | 開催日：#{l(event.datetime)}
+    p.event-info.pull-left.m-r-2
+      | エントリー締め切り：#{l(event.entry_deadline || event.datetime)}
+    p.event-info
+      | エントリー数：#{event.entry.size}人
+    p.pull-left.m-r-1
+      | 作成者；
+      a href='#' = "#{event.reversal_user.name}"
+    p = "最終更新；#{time_ago_in_words(event.updated_at)}前"

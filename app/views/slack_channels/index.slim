@@ -1,7 +1,8 @@
 .row
-  .sidebar.col-md-3.col-sm-12
+  .p-sidebar.col-md-3.col-sm-12
     .card
-      = render 'sidebar', channels: @channels
+      .card-block
+        = render 'sidebar', channels: @channels
   .col-md-9.hidden-sm-down
     .card
       .card-block

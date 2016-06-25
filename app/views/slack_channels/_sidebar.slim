@@ -1,10 +1,9 @@
-.card-block
-  h4.card-title チャンネル一覧
+h4.card-title チャンネル一覧
 
-  hr.m-t-0
+hr.m-t-0
 
-  ul.nav.nav-pills.nav-stacked
-    - channels.each do |channel|
-      li.nav-item
-        a.nav-link href=channel_path(channel.id) class="#{active_link_to_class(channel_path(channel.id), class_active: 'sidebar-active')}"
-          = "##{channel.name}"
+ul.nav.nav-pills.nav-stacked
+  - channels.each do |channel|
+    li.nav-item
+      a.nav-link href=channel_path(channel.id) class="#{active_link_to_class(channel_path(channel.id), class_active: 'sidebar-active')}"
+        = "##{channel.name}"
