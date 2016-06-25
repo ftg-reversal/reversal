@@ -30,7 +30,7 @@
         .input-group
           .input-group-addon
             i.fa.fa-user
-          = form.select :number, [[1, '1'], [2, '2'], [3, '3'], [4, '4'], [5, '5']], hide_label: true
+          = form.select :number, [[1, '1'], [2, '2'], [3, '3'], [4, '4'], [5, '5']], { hide_label: true }, style: 'height: 36px'
     = form.text_area :description, class: 'ckeditor'
     .form-group
       = form.submit '登録', class: 'btn btn-primary btn-lg'
