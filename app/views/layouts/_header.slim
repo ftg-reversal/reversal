@@ -1,7 +1,9 @@
 header#header
   .container.full
     a href='/'
-      .header-logo.full.pull-left
+      .header-logo.full.pull-left.hidden-sm-down
+        | Reversal
+      .header-logo-sp.full.pull-left.hidden-md-up
         | Reversal
     ul.nav.navbar-nav.pull-right
       - if current_user
@@ -15,9 +17,12 @@ header#header
               a.dropdown-item data-turbolinks="false" href=new_page_path ページの作成
               a.dropdown-item data-turbolinks="false" href=new_summary_path まとめの作成（β）
               a.dropdown-item data-turbolinks="false" href=new_event_path イベントの作成
-        li.nav-item
+        li.nav-item.hidden-sm-down
           = link_to session_path, method: 'delete', class: 'btn btn-color1' do
             i.fa.fa-sign-out &nbsp;&nbsp;ログアウト
+        li.nav-item.hidden-md-up
+          = link_to session_path, method: 'delete', class: 'btn btn-color1' do
+            i.fa.fa-sign-out
       - else
         li.nav-item
           .dropdown

@@ -1,6 +1,9 @@
 #header
   $header-height: 60px
-  $header-icon-size: 40px
+  $header-icon-size: 38px
+
+  .header-user-icon
+    +size($header-icon-size)
 
   line-height: $header-height
   max-width: 100%
@@ -11,6 +14,11 @@
     +hide-text
     width: 250px
     background: inline("logo.png") no-repeat
+
+  .header-logo-sp
+    +hide-text
+    width: 60px
+    background: inline("logo-sp.png") no-repeat
 
   .dropdown-toggle:after
     border: 0
