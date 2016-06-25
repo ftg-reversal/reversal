@@ -1,2 +1,2 @@
-rails: bin/rails s
-webpack: npm run build:watch
+rails: bin/spring rails s
+webpack: npm run build:dev
