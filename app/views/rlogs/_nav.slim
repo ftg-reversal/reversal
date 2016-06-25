@@ -8,17 +8,3 @@ ul.nav.nav-tabs.hidden-xs-down
   li.nav-item
     a.nav-link href=summaries_path class="#{active_link_to_class(summaries_path, class_active: 'active')}"
       | まとめ一覧
-
-ul.nav.nav-tabs.hidden-sm-up
-  li.nav-item
-    a.nav-link href=rlogs_path class="#{active_link_to_class(rlogs_path, class_active: 'active')}"
-      | 全ての記事
-  li.nav-item.dropdown
-    a.nav-link.dropdown-toggle data-toggle='dropdown' aria-haspopup='true' aria-expanded='false' 種別指定
-    ul.dropdown-menu aria-labelledby='header-create-dropdown'
-      li
-        a.nav-link href=pages_path class="#{active_link_to_class(pages_path, class_active: 'active')}"
-          | ページ一覧
-      li
-        a.nav-link href=summaries_path class="#{active_link_to_class(summaries_path, class_active: 'active')}"
-          | まとめ一覧
