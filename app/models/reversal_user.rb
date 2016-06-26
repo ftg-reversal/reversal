@@ -8,10 +8,6 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  twitter_user_id :integer
-#  use_chara       :integer
-#  rank            :integer
-#  home            :text(65535)
-#  bio             :text(65535)
 #
 # Indexes
 #
@@ -24,8 +20,6 @@ class ReversalUser < ActiveRecord::Base
 
   belongs_to :slack_user
   belongs_to :twitter_user
-
-  scope :including_user, -> () { includes(:twitter_user).includes(:slack_user) }
 
   def icon_url
     if slack_user
@@ -51,14 +45,8 @@ class ReversalUser < ActiveRecord::Base
     end
 
     def find_or_create_with_twitter(auth)
-      twitter_user = TwitterUser.find_by(uid: auth['uid'])
-      if twitter_user
-        twitter_user.update_with_omniauth(auth)
-        twitter_user.reload
-      else
-        twitter_user = TwitterUser.create_with_omniauth(auth)
-      end
-      find_by(twitter_user: twitter_user) || create_with_twitter(twitter_user, auth)
+      twitter_user = TwitterUser.find_by(uid: auth['uid']) || TwitterUser.create_with_omniauth(auth)
+      find_by(twitter_user: twitter_user) || create_with_twitter(twitter_user)
     end
 
     private
@@ -70,10 +58,9 @@ class ReversalUser < ActiveRecord::Base
       end
     end
 
-    def create_with_twitter(twitter_user, auth)
+    def create_with_twitter(twitter_user)
       create! do |user|
         user.twitter_user = twitter_user
-        user.bio = auth['info']['description']
         user.is_admin = false
       end
     end

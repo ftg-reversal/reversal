@@ -6,7 +6,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.network :private_network, ip: '192.168.33.10'
   config.vm.network 'forwarded_port', guest: 3000, host: 3000
   config.vm.network 'forwarded_port', guest: 3001, host: 3001
+  config.vm.network 'forwarded_port', guest: 3002, host: 3002
   config.vm.network 'forwarded_port', guest: 3306, host: 3306
+  config.vm.network 'forwarded_port', guest: 3808, host: 3808
+  config.vm.network 'forwarded_port', guest: 35_729, host: 35_729
 
   config.vm.provider :virtualbox do |vb|
     vb.gui = false
@@ -14,6 +17,21 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     vb.customize ['modifyvm', :id, '--natdnshostresolver1', 'off']
     vb.customize ['modifyvm', :id, '--memory', '2048']
   end
+
+  config.vm.provision :shell, inline: <<SCRIPT
+GALAXY=/usr/local/bin/ansible-galaxy
+echo '#!/usr/bin/env python2
+import sys
+import os
+
+args = sys.argv
+if args[1:] == ["--help"]:
+  args.insert(1, "info")
+
+os.execv("/usr/bin/ansible-galaxy", args)
+' | sudo tee $GALAXY
+sudo chmod 0755 $GALAXY
+SCRIPT
 
   config.vm.provision :ansible_local do |ansible|
     ansible.limit = 'all'
