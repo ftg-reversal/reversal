@@ -4,10 +4,11 @@
       a.nav-link data-turbolinks="false" href=edit_path
         i.fa.fa-pencil
         | &nbsp;編集
-      a.nav-link href=delete_path data-method='delete' data-confirm='本当に削除してもよろしいですか？'
+      = link_to item, data: { behavior: 'delete', redirect_to: redirect_path }, class: 'nav-link' do
         i.fa.fa-remove
         | &nbsp;削除
     - if current_user&.admin?
+      = link_to item, data: { behavior: 'delete', redirect_to: redirect_path }, class: 'nav-link' do
       a.nav-link href=delete_path data-method='delete' data-confirm='管理者特権で削除してもよろしいですか？'
         i.fa.fa-remove
         | &nbsp;管理者削除

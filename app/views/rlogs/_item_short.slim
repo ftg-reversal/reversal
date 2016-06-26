@@ -1,0 +1,10 @@
+.media
+  a.media-left href='#'
+    img.c-user-icon.media-object src=rlog.reversal_user.icon_url title=rlog.reversal_user.name
+  .media-body
+    a href=path
+      h3.media-heading = rlog.title
+    p.pull-left.m-r-1
+      | 作成者；
+      a href='#' = "#{rlog.reversal_user.name}"
+    p = "最終更新；#{time_ago_in_words(rlog.updated_at)}前"

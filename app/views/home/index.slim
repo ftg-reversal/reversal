@@ -6,8 +6,8 @@
       - @videos.each do |video|
         = render 'videos/item', video: video
       - @events.each do |event|
-        = render 'shared/item_short', item: event, description: event.description.split.first, path: event_path(event)
+        = render 'events/item_short', event: event, path: event_path(event)
       - @pages.each do |page|
-        = render 'shared/item_short', item: page, description: page.description.split.first , path: page_path(page)
+        = render 'rlogs/item_short', rlog: page, path: page_path(page)
       - @summaries.each do |summary|
-        = render 'shared/item_short', item: summary, description: summary.description.split.first , path: summary_path(summary)
+        = render 'rlogs/item_short', rlog: summary, path: summary_path(summary)

@@ -12,7 +12,7 @@
       h3 概要
       == @event.description
 
-      = render 'shared/item_authority', current_user: @current_user, item: @event, edit_path: edit_event_path, delete_path: event_path(@event)
+      = render 'shared/item_authority', current_user: @current_user, item: @event, edit_path: edit_event_path, delete_path: event_path(@event), redirect_path: events_path
 
       hr.m-y-3
 

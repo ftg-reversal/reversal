@@ -23,7 +23,7 @@ module SlackDecorator
 
       def on_slack_user_name
         -> (name) do
-          user = SlackUser.where(name: name).first
+          user = SlackUser.find_by(name: name)
           user ? { text: user.name, url: "https://#{ENV['SLACK_TEAM_NAME']}.slack.com/team/#{user.name}" } : nil
         end
       end

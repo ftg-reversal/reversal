@@ -3,5 +3,5 @@
     .card-block
       = render 'rlogs/nav'
       - @summaries.each do |summary|
-        = render 'shared/item_short', item: summary, description: summary.description.split.first , path: summary_path(summary)
+        = render 'rlogs/item_short', rlog: summary, path: summary_path(summary)
       = paginate @summaries
