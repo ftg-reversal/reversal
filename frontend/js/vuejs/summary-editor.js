@@ -63,6 +63,7 @@ export default class SummaryEditor extends Vue {
           twttr.widgets.load();
         },
         onSelectChannel: (e, channel, loadMessages) => {
+          if (channel.toString() === '') return;
           this.nowLoading = true;
           loadMessages.splice(0, loadMessages.length);
           this.messages.splice(0, this.messages.length);
