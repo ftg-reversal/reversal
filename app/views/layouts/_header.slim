@@ -8,10 +8,15 @@ header#header
     ul.nav.navbar-nav.pull-right
       - if current_user
         li.nav-item
-          img.header-user-icon src=current_user.icon_url
+          .dropdown
+            img#header-user-dropdown.c-useer-icon.header-user-icon.dropdown-toggle src=current_user.icon_url data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+            .dropdown-menu.dropdown-menu-left.p-y-1 aria-labelledby='header-user-dropdown'
+              a.dropdown-item data-turbolinks='false' href=rlog_user_path(current_user) プロフィールの表示
+              a.dropdown-item data-turbolinks='false' href=users_path ユーザ一覧
+              a.dropdown-item data-turbolinks='false' href=participate_user_path(current_user) 参加イベント一覧
         li.nav-item
           .dropdown
-            button.btn.btn-color1.dropdown-toggle type='button' id='header-create-dropdown' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'
+            button#header-create-dropdown.btn.btn-color1.dropdown-toggle type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'
               i.fa.fa-pencil-square-o &nbsp;&nbsp;作成
             .dropdown-menu.dropdown-menu-right.p-y-1 aria-labelledby='header-create-dropdown'
               a.dropdown-item data-turbolinks='false' href=new_page_path ページの作成
