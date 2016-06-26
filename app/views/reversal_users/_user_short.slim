@@ -15,5 +15,6 @@
         p
           .card-subtitle.text-muted.nowrap = external_user_link(user)
   .card-block.p-y-0
-    p = user.bio
-
+    p = user.short_bio
+  .card-footer.text-muted.text-xs-center
+    | #{time_ago_in_words(user.updated_at)}前
