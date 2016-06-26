@@ -7,4 +7,5 @@ require('views/entry')
 require('vuejs/summary-editor');
 
 require('turbolinks/ckeditor');
+require('turbolinks/user-card');
 require('turbolinks/twitter');
