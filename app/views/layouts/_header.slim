@@ -9,11 +9,12 @@ header#header
       - if current_user
         li.nav-item
           .dropdown
-            img#header-user-dropdown.c-useer-icon.header-user-icon.dropdown-toggle src=current_user.icon_url data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+            img#header-user-dropdown.c-user-icon.header-user-icon.dropdown-toggle src=current_user.icon_url data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
             .dropdown-menu.dropdown-menu-left.p-y-1 aria-labelledby='header-user-dropdown'
               a.dropdown-item data-turbolinks='false' href=users_path ユーザ一覧
               a.dropdown-item data-turbolinks='false' href=rlog_user_path(current_user) プロフィールの表示
               a.dropdown-item data-turbolinks='false' href=participate_user_path(current_user) 参加イベント一覧
+              = link_to 'ログアウト', session_path, method: 'delete', class: 'dropdown-item', data: {turbolinks: 'false'}
         li.nav-item
           .dropdown
             button#header-create-dropdown.btn.btn-color1.dropdown-toggle type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'
@@ -23,8 +24,6 @@ header#header
               a.dropdown-item data-turbolinks='false' href=new_summary_path まとめの作成（β）
               a.dropdown-item data-turbolinks='false' href=new_event_path イベントの作成
         li.nav-item.hidden-sm-down
-          = link_to session_path, method: 'delete', class: 'btn btn-color1' do
-            i.fa.fa-sign-out &nbsp;&nbsp;ログアウト
         li.nav-item.hidden-md-up
           = link_to session_path, method: 'delete', class: 'btn btn-color1' do
             i.fa.fa-sign-out
