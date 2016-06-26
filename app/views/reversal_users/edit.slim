@@ -1,0 +1,39 @@
+.card
+  .card-block
+    h2 プロフィールの編集
+
+    .m-t-1
+      - if @user.errors.any?
+          - @user.errors.full_messages.each do |message|
+            .alert.alert-warning role='alert' = message
+
+      = bootstrap_form_for(@user, url: user_path, inline_errors: false) do |form|
+        .form-group.row
+          .col-md-6
+            label for='user_name' 名前
+            .input-group
+              .input-group-addon
+                i.fa.fa-user
+              = form.text_field :name, hide_label: true
+        .form-group.row
+          .col-md-6
+            label for='user_chara' キャラ
+            = form.collection_select :chara, Chara.all, :id, :name, hide_label: true
+          .col-md-6
+            label for='user_rank' 段位
+            = form.collection_select :rank, Rank.all, :id, :rank, hide_label: true
+        .form-group.row
+          .col-md-6
+            label for='user_name' ホームグラウンド
+            .input-group
+              .input-group-addon
+                i.fa.fa-home
+              = form.text_field :home, hide_label: true
+
+        label for="user_bio" 自己紹介
+        = form.text_area :bio, rows: 6, hide_label: true
+        .form-group
+          = form.submit '登録', class: 'btn btn-primary btn-lg'
+          a href=pages_path
+            button.btn.btn-secondary.btn-lg キャンセル
+

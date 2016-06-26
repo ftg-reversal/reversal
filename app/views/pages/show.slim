@@ -6,7 +6,7 @@
     hr
     == @page.description
     hr
-    = render 'shared/item_authority', current_user: @current_user, item: @page, edit_path: edit_page_path, delete_path: page_path(@page)
+    = render 'shared/item_authority', current_user: @current_user, item: @page, edit_path: edit_page_path, delete_path: page_path(@page), redirect_path: rlogs_path
 
 - content_for :title do
   = @page.title

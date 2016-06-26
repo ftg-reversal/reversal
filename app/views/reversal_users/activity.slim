@@ -5,7 +5,9 @@
     .card
       .card-block
         = render 'nav', user: @user
-        h4 実装途中です
+        .card
+          .card-block
+            h4 実装途中です
 
 - content_for :title do
   = "Profile ##{@user.name}"

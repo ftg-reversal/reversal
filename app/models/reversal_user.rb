@@ -8,10 +8,11 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  twitter_user_id :integer
-#  use_chara       :integer
-#  rank            :integer
+#  chara_id        :integer
+#  rank_id         :integer
 #  home            :text(65535)
 #  bio             :text(65535)
+#  name            :string(255)
 #
 # Indexes
 #
@@ -24,6 +25,8 @@ class ReversalUser < ActiveRecord::Base
 
   belongs_to :slack_user
   belongs_to :twitter_user
+  belongs_to :chara
+  belongs_to :rank
 
   scope :including_user, -> () { includes(:twitter_user).includes(:slack_user) }
 

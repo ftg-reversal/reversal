@@ -80,7 +80,7 @@ Rails.application.routes.draw do
   resources :events
   resources :entries, only: [:create, :destroy]
 
-  resources :reversal_users, path: :users, as: :users, only: [:index, :edit] do
+  resources :reversal_users, path: :users, as: :users, only: [:index, :edit, :update] do
     member do
       get :participate
       get :activity

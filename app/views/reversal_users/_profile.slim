@@ -15,8 +15,8 @@
           .card-subtitle.text-muted.nowrap = external_user_link(user)
   .card-block.p-t-0.clearfix
     p = user.bio
-    p = "使用キャラ：#{user.use_chara}"
-    p = "段位：#{user.rank}"
-    p = "ホームグラウンド：#{user.home}"
+    p = "使用キャラ：#{user&.chara&.name}"
+    p = "段位：#{user&.rank&.rank}"
+    p = "ホームグラウンド：#{user&.home}"
 
     = render 'authority', user: user, current_user: @current_user
