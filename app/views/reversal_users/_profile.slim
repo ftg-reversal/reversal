@@ -1,0 +1,22 @@
+.card
+  .card-block
+    h4.card-title = user.name
+
+    hr
+    .row
+      .col-lg-3
+        img.c-user-icon.media-object src=user.icon_url title=user.name
+      .col-lg-9.p-l-0
+        - if user.twitter_user
+          h5 Twitter ID
+        - else
+          h5 Slack ID
+        p
+          .card-subtitle.text-muted.nowrap = external_user_link(user)
+  .card-block.p-t-0.clearfix
+    p = user.bio
+    p = "使用キャラ：#{user.use_chara}"
+    p = "段位：#{user.rank}"
+    p = "ホームグラウンド：#{user.home}"
+
+    = render 'authority', user: user, current_user: @current_user

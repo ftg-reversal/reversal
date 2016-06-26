@@ -1,0 +1,11 @@
+.row
+  .p-sidebar.col-lg-4.col-md-5
+    = render 'profile', user: @user
+  .channel-history.col-lg-8.col-md-7
+    .card
+      .card-block
+        = render 'nav', user: @user
+        h4 実装途中です
+
+- content_for :title do
+  = "Profile ##{@user.name}"
