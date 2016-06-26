@@ -70,6 +70,9 @@ export default class SummaryEditor extends Vue {
           loadChannel(channel, loadMessages, this);
         },
         handleDrop: (itemOne, itemTwo) => {
+          if (itemOne.tagName !== "LI") {
+            itemOne = $(itemOne).parents('li')[0];
+          }
           if (itemTwo.tagName !== "LI") {
             itemTwo = $(itemTwo).parents('li')[0];
           }
