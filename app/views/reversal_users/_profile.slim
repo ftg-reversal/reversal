@@ -14,7 +14,7 @@
         p
           .card-subtitle.text-muted.nowrap = external_user_link(user)
   .card-block.p-t-0.clearfix
-    p = user.bio
+    p = auto_link(user.bio)
     p = "使用キャラ：#{user&.chara&.name}"
     p = "段位：#{user&.rank&.rank}"
     p = "ホームグラウンド：#{user&.home}"
