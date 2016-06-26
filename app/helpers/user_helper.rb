@@ -5,7 +5,7 @@ module UserHelper
       img_tag + twitter_user(user)
     else
       img_tag = content_tag(:img, '', class: 'c-user-twitter-icon', src: asset_path('service_icon/slack.png'))
-      img_tag + "@#{user.slack_user.name}"
+      img_tag + "@#{user.slack_user&.name}"
     end
   end
 
