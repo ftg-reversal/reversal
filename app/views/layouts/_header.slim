@@ -23,17 +23,22 @@ header#header
               a.dropdown-item data-turbolinks='false' href=new_page_path ページの作成
               a.dropdown-item data-turbolinks='false' href=new_summary_path まとめの作成（β）
               a.dropdown-item data-turbolinks='false' href=new_event_path イベントの作成
-        li.nav-item.hidden-md-up
-          = link_to session_path, method: 'delete', class: 'btn btn-color1' do
-            i.fa.fa-sign-out
       - else
-        li.nav-item.hidden-sm-down
+        li.nav-item.hidden-xs-down
           = link_to users_path, class: 'btn btn-color1' do
             i.fa.fa-user &nbsp;&nbsp; ユーザ一覧
-        li.nav-item
+        li.nav-item.hidden-xs-down
           .dropdown
             button.btn.btn-color1.dropdown-toggle type='button' id='login-dropdown' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'
               i.fa.fa-sign-in &nbsp;&nbsp; ログイン
             .dropdown-menu.dropdown-menu-right.p-y-1 aria-labelledby='login-dropdown'
               a.dropdown-item href=auth_url('twitter') Twitterでログイン
               a.dropdown-item href=auth_url('slack') Slackでログイン
+        li.nav-item.hidden-sm-up
+          .dropdown
+            button.btn.btn-color1.dropdown-toggle type='button' id='login-xs-dropdown' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false' style="padding: 6px 10px 6px 16px"
+              i.fa.fa-bars
+            .dropdown-menu.dropdown-menu-right.p-y-1 aria-labelledby='login-xs-dropdown'
+              a.dropdown-item href=auth_url('twitter') Twitterでログイン
+              a.dropdown-item href=auth_url('slack') Slackでログイン
+              a.dropdown-item href=users_path ユーザ一覧
