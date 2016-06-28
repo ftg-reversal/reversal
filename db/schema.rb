@@ -38,38 +38,38 @@ ActiveRecord::Schema.define(version: 20160628160146) do
 
   create_table "entries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.text     "comment",          limit: 65535
-    t.integer  "event_id",         limit: 4
-    t.integer  "reversal_user_id", limit: 4
+    t.integer  "event_id",         limit: 4,     null: false
+    t.integer  "reversal_user_id", limit: 4,     null: false
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
   end
 
-  add_index "entries", ["event_id"], name: "fk_rails_20eb5df311", using: :btree
-  add_index "entries", ["reversal_user_id"], name: "fk_rails_6a9722b611", using: :btree
+  add_index "entries", ["event_id"], name: "index_entries_on_event_id", using: :btree
+  add_index "entries", ["reversal_user_id"], name: "index_entries_on_reversal_user_id", using: :btree
 
   create_table "entry_players", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string  "name",     limit: 255
-    t.integer "chara_id", limit: 4
-    t.integer "rank_id",  limit: 4
-    t.integer "entry_id", limit: 4
+    t.integer "chara_id", limit: 4,   null: false
+    t.integer "rank_id",  limit: 4,   null: false
+    t.integer "entry_id", limit: 4,   null: false
   end
 
-  add_index "entry_players", ["chara_id"], name: "fk_rails_53cb378c6b", using: :btree
-  add_index "entry_players", ["entry_id"], name: "fk_rails_c0b8648e8b", using: :btree
-  add_index "entry_players", ["rank_id"], name: "fk_rails_001d489769", using: :btree
+  add_index "entry_players", ["chara_id"], name: "index_entry_players_on_chara_id", using: :btree
+  add_index "entry_players", ["entry_id"], name: "index_entry_players_on_entry_id", using: :btree
+  add_index "entry_players", ["rank_id"], name: "index_entry_players_on_rank_id", using: :btree
 
   create_table "events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "title",            limit: 255
     t.text     "description",      limit: 65535
     t.datetime "datetime"
-    t.integer  "reversal_user_id", limit: 4
+    t.integer  "reversal_user_id", limit: 4,                 null: false
     t.datetime "created_at",                                 null: false
     t.datetime "updated_at",                                 null: false
     t.datetime "entry_deadline"
     t.integer  "number",           limit: 4,     default: 1, null: false
   end
 
-  add_index "events", ["reversal_user_id"], name: "fk_rails_337cdb79bb", using: :btree
+  add_index "events", ["reversal_user_id"], name: "events_on_reversal_user_id", using: :btree
 
   create_table "lives", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "live_id",           limit: 255
@@ -120,7 +120,7 @@ ActiveRecord::Schema.define(version: 20160628160146) do
   end
 
   add_index "rlogs", ["reversal_user_id"], name: "index_rlogs_on_reversal_user_id", using: :btree
-  add_index "rlogs", ["slack_channel_id"], name: "fk_rails_9daab45809", using: :btree
+  add_index "rlogs", ["slack_channel_id"], name: "index_rlogs_on_slack_channel_id", using: :btree
   add_index "rlogs", ["type"], name: "index_rlogs_on_type", using: :btree
 
   create_table "slack_channels", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
@@ -135,8 +135,8 @@ ActiveRecord::Schema.define(version: 20160628160146) do
   add_index "slack_channels", ["cid"], name: "cid", unique: true, using: :btree
 
   create_table "slack_messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-    t.integer  "slack_channel_id", limit: 4
-    t.integer  "slack_user_id",    limit: 4
+    t.integer  "slack_channel_id", limit: 4,                              null: false
+    t.integer  "slack_user_id",    limit: 4,                              null: false
     t.decimal  "ts",                             precision: 16, scale: 6
     t.text     "text",             limit: 65535
     t.datetime "created_at",                                              null: false
@@ -156,11 +156,11 @@ ActiveRecord::Schema.define(version: 20160628160146) do
   create_table "slack_messages_summaries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.integer "slack_message_id", limit: 4, null: false
     t.integer "row_order",        limit: 4
-    t.integer "summary_id",       limit: 4
+    t.integer "summary_id",       limit: 4, null: false
   end
 
   add_index "slack_messages_summaries", ["slack_message_id"], name: "index_slack_messages_summaries_on_slack_message_id", using: :btree
-  add_index "slack_messages_summaries", ["summary_id"], name: "fk_rails_2a1b919d51", using: :btree
+  add_index "slack_messages_summaries", ["summary_id"], name: "index_slack_messages_summaries_on_summary_id", using: :btree
 
   create_table "slack_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "uid",        limit: 255
@@ -181,7 +181,7 @@ ActiveRecord::Schema.define(version: 20160628160146) do
     t.boolean  "quote",                        default: false
   end
 
-  add_index "twitter2slack_conditions", ["slack_channel_id"], name: "fk_rails_64fa99355b", using: :btree
+  add_index "twitter2slack_conditions", ["slack_channel_id"], name: "index_twitter2slack_conditions_on_slack_channel_id", using: :btree
 
   create_table "twitter_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "uid",         limit: 255
@@ -193,15 +193,15 @@ ActiveRecord::Schema.define(version: 20160628160146) do
   end
 
   create_table "video_matchups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-    t.integer "video_id",  limit: 4
-    t.integer "chara1_id", limit: 4
-    t.integer "chara2_id", limit: 4
+    t.integer "video_id",  limit: 4, null: false
+    t.integer "chara1_id", limit: 4, null: false
+    t.integer "chara2_id", limit: 4, null: false
     t.integer "sec",       limit: 4
   end
 
-  add_index "video_matchups", ["chara1_id"], name: "fk_rails_238a2e45c9", using: :btree
-  add_index "video_matchups", ["chara2_id"], name: "fk_rails_689c62c943", using: :btree
-  add_index "video_matchups", ["video_id"], name: "fk_rails_b3ee212891", using: :btree
+  add_index "video_matchups", ["chara1_id"], name: "index_video_matchups_on_chara1_id", using: :btree
+  add_index "video_matchups", ["chara2_id"], name: "index_video_matchups_on_chara2_id", using: :btree
+  add_index "video_matchups", ["video_id"], name: "index_video_matchups_on_video_id", using: :btree
 
   create_table "video_site_search_conditions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "word",       limit: 255, default: "", null: false
