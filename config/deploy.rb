@@ -32,7 +32,15 @@ namespace :deploy do
       upload!('app/assets/stylesheets/webpack', "#{release_path}/app/assets/stylesheets/webpack", recursive: true)
     end
   end
+
+  desc 'Migrate ridgepole'
+  task :ridgepole do
+    on roles(:app) do
+      execute "cd #{release_path}; bundle exec ridgepole -c config/database.yml -E production -f Schemafile --apply"
+    end
+  end
 end
 
 before 'deploy:compile_assets', 'deploy:compile_webpack'
+after 'deploy:updated', 'deploy:ridgepole'
 after 'deploy:publishing', 'unicorn:restart'

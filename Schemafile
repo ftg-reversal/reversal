@@ -22,8 +22,8 @@ add_index "ckeditor_assets", ["assetable_type", "assetable_id"], name: "idx_cked
 add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type", using: :btree
 
 create_table "entries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-  t.integer  "reversal_user_id", limit: 4
-  t.integer  "event_id",         limit: 4
+  t.integer  "reversal_user_id", limit: 4,     null: false
+  t.integer  "event_id",         limit: 4,     null: false
   t.text     "comment",          limit: 65535
   t.datetime "created_at",                     null: false
   t.datetime "updated_at",                     null: false
@@ -34,9 +34,9 @@ add_index "entries", ["reversal_user_id"], name: "index_entries_on_reversal_user
 
 create_table "entry_players", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
   t.string  "name",     limit: 255
-  t.integer "chara_id", limit: 4
-  t.integer "rank_id",  limit: 4
-  t.integer "entry_id", limit: 4
+  t.integer "entry_id", limit: 4, null: false
+  t.integer "chara_id", limit: 4, null: false
+  t.integer "rank_id",  limit: 4, null: false
 end
 
 add_index "entry_players", ["chara_id"], name: "index_entry_players_on_chara_id", using: :btree
@@ -44,7 +44,7 @@ add_index "entry_players", ["entry_id"], name: "index_entry_players_on_entry_id"
 add_index "entry_players", ["rank_id"], name: "index_entry_players_on_rank_id", using: :btree
 
 create_table "events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-  t.integer  "reversal_user_id", limit: 4
+  t.integer  "reversal_user_id", limit: 4, null: false
   t.string   "title",            limit: 255
   t.text     "description",      limit: 65535
   t.datetime "datetime"
@@ -120,8 +120,8 @@ end
 add_index "slack_channels", ["cid"], name: "cid", unique: true, using: :btree
 
 create_table "slack_messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-  t.integer  "slack_channel_id", limit: 4
-  t.integer  "slack_user_id",    limit: 4
+  t.integer  "slack_channel_id", limit: 4, null: false
+  t.integer  "slack_user_id",    limit: 4, null: false
   t.string   "username",         limit: 255
   t.text     "icon",             limit: 65535
   t.decimal  "ts",                             precision: 16, scale: 6
@@ -139,7 +139,7 @@ add_index "slack_messages", ["slack_user_id"], name: "slack_user_id", using: :bt
 add_index "slack_messages", ["ts"], name: "ts", using: :btree
 
 create_table "slack_messages_summaries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-  t.integer "summary_id",       limit: 4
+  t.integer "summary_id",       limit: 4, null: false
   t.integer "slack_message_id", limit: 4, null: false
   t.integer "row_order",        limit: 4
 end
@@ -178,9 +178,9 @@ create_table "twitter_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT C
 end
 
 create_table "video_matchups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-  t.integer "video_id",  limit: 4
-  t.integer "chara1_id", limit: 4
-  t.integer "chara2_id", limit: 4
+  t.integer "video_id",  limit: 4, null: false
+  t.integer "chara1_id", limit: 4, null: false
+  t.integer "chara2_id", limit: 4, null: false
   t.integer "sec",       limit: 4
 end
 
@@ -211,22 +211,3 @@ end
 
 add_index "videos", ["url"], name: "url", unique: true, using: :btree
 add_index "videos", ["video_id"], name: "index_videos_on_video_id", using: :btree
-
-add_foreign_key "entries", "events", name: "reference_entries_on_events"
-add_foreign_key "entries", "reversal_users", name: "reference_entries_on_reversal_users"
-add_foreign_key "entry_players", "charas", name: "reference_entryplayers_on_charas"
-add_foreign_key "entry_players", "entries", name: "reference_entryplayers_on_entries"
-add_foreign_key "entry_players", "ranks", name: "reference_entryplayers_on_ranks"
-add_foreign_key "events", "reversal_users", name: "reference_events_on_reversal_users"
-add_foreign_key "reversal_users", "slack_users", name: "reference_reversal_users_on_slack_users"
-add_foreign_key "rlogs", "slack_channels", name: "reference_rlogs_on_slack_channels"
-add_foreign_key "slack_messages", "slack_channels", name: "reference_slack_messages_slack_channels"
-add_foreign_key "slack_messages", "slack_users", name: "reference_slack_messages_slack_users"
-add_foreign_key "slack_messages_summaries", "rlogs", column: "summary_id", name: "reference_slack_messages_summaries_on_summary_id"
-add_foreign_key "slack_messages_summaries", "slack_messages", name: "reference_slack_messages_summaries_on_slack_messages"
-add_foreign_key "twitter2slack_conditions", "slack_channels", name: "reference_twitter2slack_conditions_on_slack_channels"
-add_foreign_key "video_matchups", "videos", name: "reference_video_matchups_on_videos"
-add_foreign_key "video_matchups", "charas", column: "chara1_id", name: "reference_video_matchups_on_chara1_id"
-add_foreign_key "video_matchups", "charas", column: "chara2_id", name: "reference_video_matchups_on_chara2_id"
-
-# vim: ft=ruby
