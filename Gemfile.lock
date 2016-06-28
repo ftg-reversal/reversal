@@ -338,6 +338,8 @@ GEM
     ref (2.0.0)
     request_store (1.3.1)
     require_all (1.3.3)
+    ridgepole (0.6.4)
+      activerecord (~> 4.2.1)
     rollbar (2.11.5)
       multi_json
     rspec (3.4.0)
@@ -533,6 +535,7 @@ DEPENDENCIES
   rails_autolink
   rails_best_practices
   request_store
+  ridgepole
   rollbar
   rspec
   rspec-rails
