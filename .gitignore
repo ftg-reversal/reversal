@@ -15,6 +15,10 @@
 /erd.pdf
 /railways.cache
 
+# ridgepole
+/db/ridgepole/*
+!/db/ridgepole/Schemafile
+
 # npm
 /node_modules
 /npm-debug.log

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160626135503) do
+ActiveRecord::Schema.define(version: 20160628160146) do
 
   create_table "charas", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "name",       limit: 255
@@ -227,20 +227,4 @@ ActiveRecord::Schema.define(version: 20160626135503) do
   add_index "videos", ["url"], name: "url", unique: true, using: :btree
   add_index "videos", ["video_id"], name: "index_videos_on_video_id", using: :btree
 
-  add_foreign_key "entries", "events"
-  add_foreign_key "entries", "reversal_users"
-  add_foreign_key "entry_players", "charas"
-  add_foreign_key "entry_players", "entries"
-  add_foreign_key "entry_players", "ranks"
-  add_foreign_key "events", "reversal_users"
-  add_foreign_key "reversal_users", "slack_users"
-  add_foreign_key "rlogs", "slack_channels"
-  add_foreign_key "slack_messages", "slack_channels"
-  add_foreign_key "slack_messages", "slack_users"
-  add_foreign_key "slack_messages_summaries", "rlogs", column: "summary_id"
-  add_foreign_key "slack_messages_summaries", "slack_messages"
-  add_foreign_key "twitter2slack_conditions", "slack_channels"
-  add_foreign_key "video_matchups", "charas", column: "chara1_id"
-  add_foreign_key "video_matchups", "charas", column: "chara2_id"
-  add_foreign_key "video_matchups", "videos"
 end
