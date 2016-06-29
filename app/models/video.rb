@@ -3,10 +3,10 @@
 # Table name: videos
 #
 #  id                     :integer          not null, primary key
-#  url                    :string(255)      default(""), not null
+#  url                    :string(255)      not null
 #  video_id               :string(255)
 #  video_site             :string(255)      not null
-#  title                  :string(255)      default(""), not null
+#  title                  :string(255)      not null
 #  posted_at              :datetime         not null
 #  created_at             :datetime
 #  updated_at             :datetime
@@ -17,8 +17,10 @@
 #
 # Indexes
 #
-#  index_videos_on_video_id  (video_id)
-#  url                       (url) UNIQUE
+#  index_videos_on_posted_at   (posted_at)
+#  index_videos_on_video_id    (video_id)
+#  index_videos_on_video_site  (video_site)
+#  url                         (url) UNIQUE
 #
 
 class Video < ActiveRecord::Base

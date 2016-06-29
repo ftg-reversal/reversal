@@ -3,12 +3,16 @@
 # Table name: twitter_users
 #
 #  id          :integer          not null, primary key
-#  uid         :string(255)
-#  screen_name :string(255)
-#  name        :string(255)
-#  icon_url    :string(255)
+#  uid         :string(255)      not null
+#  screen_name :string(255)      not null
+#  name        :string(255)      not null
+#  icon_url    :string(255)      not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#
+# Indexes
+#
+#  index_twitter_users_on_screen_name  (screen_name)
 #
 
 class TwitterUser < ActiveRecord::Base

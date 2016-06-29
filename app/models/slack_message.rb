@@ -3,16 +3,16 @@
 # Table name: slack_messages
 #
 #  id               :integer          not null, primary key
-#  slack_channel_id :integer
+#  slack_channel_id :integer          default(0), not null
 #  slack_user_id    :integer
-#  ts               :decimal(16, 6)
-#  text             :text(65535)
-#  created_at       :datetime         not null
-#  updated_at       :datetime         not null
-#  attachments      :text(65535)
-#  file             :text(65535)
 #  username         :string(255)
 #  icon             :text(65535)
+#  ts               :decimal(16, 6)
+#  text             :text(65535)
+#  attachments      :text(65535)
+#  file             :text(65535)
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
 #
 # Indexes
 #

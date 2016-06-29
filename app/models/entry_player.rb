@@ -4,15 +4,15 @@
 #
 #  id       :integer          not null, primary key
 #  name     :string(255)
-#  chara_id :integer
-#  rank_id  :integer
-#  entry_id :integer
+#  entry_id :integer          not null
+#  chara_id :integer          not null
+#  rank_id  :integer          not null
 #
 # Indexes
 #
-#  fk_rails_001d489769  (rank_id)
-#  fk_rails_53cb378c6b  (chara_id)
-#  fk_rails_c0b8648e8b  (entry_id)
+#  index_entry_players_on_chara_id  (chara_id)
+#  index_entry_players_on_entry_id  (entry_id)
+#  index_entry_players_on_rank_id   (rank_id)
 #
 
 class EntryPlayer < ActiveRecord::Base

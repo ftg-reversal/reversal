@@ -3,16 +3,18 @@
 # Table name: slack_channels
 #
 #  id          :integer          not null, primary key
-#  cid         :string(255)
-#  name        :string(255)
+#  cid         :string(255)      not null
+#  name        :string(255)      not null
 #  topic       :string(255)
-#  is_archived :boolean
+#  is_archived :boolean          not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
 # Indexes
 #
-#  cid  (cid) UNIQUE
+#  cid                                  (cid) UNIQUE
+#  index_slack_channels_on_is_archived  (is_archived)
+#  index_slack_channels_on_name         (name)
 #
 
 class SlackChannel < ActiveRecord::Base

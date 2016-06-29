@@ -3,18 +3,24 @@
 # Table name: events
 #
 #  id               :integer          not null, primary key
+#  reversal_user_id :integer          not null
 #  title            :string(255)
 #  description      :text(65535)
 #  datetime         :datetime
-#  reversal_user_id :integer
-#  created_at       :datetime         not null
-#  updated_at       :datetime         not null
 #  entry_deadline   :datetime
 #  number           :integer          default(1), not null
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
 #
 # Indexes
 #
-#  fk_rails_337cdb79bb  (reversal_user_id)
+#  events_on_reversal_user_id                              (reversal_user_id)
+#  index_events_on_datetime                                (datetime)
+#  index_events_on_datetime_and_entry_deadline_and_number  (datetime,entry_deadline,number)
+#  index_events_on_datetime_and_number                     (datetime,number)
+#  index_events_on_entry_deadline                          (entry_deadline)
+#  index_events_on_entry_deadline_and_number               (entry_deadline,number)
+#  index_events_on_number                                  (number)
 #
 
 class Event < ActiveRecord::Base

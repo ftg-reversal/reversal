@@ -4,13 +4,14 @@
 #
 #  id               :integer          not null, primary key
 #  slack_message_id :integer          not null
-#  row_order        :integer
-#  summary_id       :integer
+#  summary_id       :integer          not null
+#  row_order        :integer          not null
 #
 # Indexes
 #
-#  fk_rails_2a1b919d51                                 (summary_id)
+#  index_slack_messages_summaries_message_and_summary  (slack_message_id,summary_id)
 #  index_slack_messages_summaries_on_slack_message_id  (slack_message_id)
+#  index_slack_messages_summaries_on_summary_id        (summary_id)
 #
 
 class SlackMessagesSummary < ActiveRecord::Base

@@ -3,16 +3,16 @@
 # Table name: entries
 #
 #  id               :integer          not null, primary key
+#  reversal_user_id :integer          not null
+#  event_id         :integer          not null
 #  comment          :text(65535)
-#  event_id         :integer
-#  reversal_user_id :integer
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #
 # Indexes
 #
-#  fk_rails_20eb5df311  (event_id)
-#  fk_rails_6a9722b611  (reversal_user_id)
+#  index_entries_on_event_id          (event_id)
+#  index_entries_on_reversal_user_id  (reversal_user_id)
 #
 
 class Entry < ActiveRecord::Base

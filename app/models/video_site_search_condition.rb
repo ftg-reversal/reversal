@@ -3,8 +3,8 @@
 # Table name: video_site_search_conditions
 #
 #  id         :integer          not null, primary key
-#  word       :string(255)      default(""), not null
-#  video_site :string(255)      default(""), not null
+#  word       :string(255)      not null
+#  video_site :string(255)      not null
 #  created_at :datetime
 #  updated_at :datetime
 #

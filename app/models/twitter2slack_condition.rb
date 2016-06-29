@@ -6,13 +6,13 @@
 #  text             :string(255)      not null
 #  slack_channel_id :integer          not null
 #  last_tweet       :integer          default(0), not null
+#  quote            :boolean          default(FALSE), not null
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
-#  quote            :boolean          default(FALSE)
 #
 # Indexes
 #
-#  fk_rails_64fa99355b  (slack_channel_id)
+#  index_twitter2slack_conditions_on_slack_channel_id  (slack_channel_id)
 #
 
 class Twitter2slackCondition < ActiveRecord::Base
