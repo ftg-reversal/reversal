@@ -6,6 +6,11 @@ machine:
   node:
     version: 6.0.0
 
+test:
+  pre:
+    - gem install rake
+    - rake db:test:prepare
+
 deployment:
   production:
     branch: master
