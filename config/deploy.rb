@@ -36,7 +36,7 @@ namespace :deploy do
   desc 'Migrate ridgepole'
   after :published, :ridgepole do
     on roles(:db) do
-      execute "/bin/bash -l -c 'cd #{fetch(:release_path)}; bundle exec rake db:migrate'"
+      execute "/bin/bash -l -c 'cd #{fetch(:release_path)}; env RAILS_ENV=production bin/rake db:migrate'"
     end
   end
 end
