@@ -120,8 +120,8 @@ end
 add_index "slack_channels", ["cid"], name: "cid", unique: true, using: :btree
 
 create_table "slack_messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-  t.integer  "slack_channel_id", limit: 4, null: false
-  t.integer  "slack_user_id",    limit: 4, null: false
+  t.integer  "slack_channel_id", limit: 4, null: false, default: 0
+  t.integer  "slack_user_id",    limit: 4
   t.string   "username",         limit: 255
   t.text     "icon",             limit: 65535
   t.decimal  "ts",                             precision: 16, scale: 6
@@ -139,8 +139,8 @@ add_index "slack_messages", ["slack_user_id"], name: "slack_user_id", using: :bt
 add_index "slack_messages", ["ts"], name: "ts", using: :btree
 
 create_table "slack_messages_summaries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-  t.integer "summary_id",       limit: 4, null: false
-  t.integer "slack_message_id", limit: 4, null: false
+  t.integer "summary_id",       limit: 4, null: false, default: 0
+  t.integer "slack_message_id", limit: 4, null: false, default: 0
   t.integer "row_order",        limit: 4
 end
 
@@ -178,10 +178,10 @@ create_table "twitter_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT C
 end
 
 create_table "video_matchups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-  t.integer "video_id",  limit: 4, null: false
-  t.integer "chara1_id", limit: 4, null: false
-  t.integer "chara2_id", limit: 4, null: false
-  t.integer "sec",       limit: 4
+  t.integer "video_id",  limit: 4, null: false, default: 0
+  t.integer "chara1_id", limit: 4, null: false, default: 0
+  t.integer "chara2_id", limit: 4, null: false, default: 0
+  t.integer "sec",       limit: 4, default: 0
 end
 
 add_index "video_matchups", ["chara1_id"], name: "index_video_matchups_on_chara1_id", using: :btree
