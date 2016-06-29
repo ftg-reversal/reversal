@@ -1,4 +1,4 @@
-Rake.application.remove_task 'db:test:prepare'
+Rake.application.instance_variable_get('@tasks').delete('db:test:prepare')
 
 namespace :db do
   namespace :test do
