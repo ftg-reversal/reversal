@@ -8,7 +8,7 @@ class ReversalUserDecorator < Draper::Decorator
 
   def short_bio
     if bio&.size > 30
-      "#{bio&.slice(1, 30)}..."
+      "#{bio&.slice(0, 30)}..."
     else
       bio
     end
