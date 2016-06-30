@@ -3,16 +3,17 @@
 # Table name: reversal_users
 #
 #  id              :integer          not null, primary key
-#  twitter_user_id :integer
 #  slack_user_id   :integer
 #  is_admin        :boolean          default(FALSE)
-#  name            :string(255)
+#  screen_name     :string(255)      default("")
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  twitter_user_id :integer
 #  chara_id        :integer
 #  rank_id         :integer
 #  home            :text(65535)
 #  bio             :text(65535)
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
+#  name            :string(255)
 #
 # Indexes
 #
@@ -68,16 +69,26 @@ class ReversalUser < ActiveRecord::Base
 
     private
 
+    # rubocop:disable Metrics/MethodLength
     def create_with_slack(auth, slack_user)
       create! do |user|
         user.slack_user = slack_user
+        user.screen_name = slack_user.name
+        user.is_admin = auth.extra.user_info['user']['is_admin']
+      end
+    rescue
+      create! do |user|
+        user.slack_user = slack_user
+        user.screen_name = "slack-#{slack_user.name}"
         user.is_admin = auth.extra.user_info['user']['is_admin']
       end
     end
+    # rubocop:enable Metrics/MethodLength
 
     def create_with_twitter(twitter_user, auth)
       create! do |user|
         user.twitter_user = twitter_user
+        user.screen_name = twitter_user.screen_name
         user.bio = auth['info']['description']
         user.is_admin = false
       end
