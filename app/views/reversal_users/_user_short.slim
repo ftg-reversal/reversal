@@ -1,11 +1,11 @@
 .card
   .card-block
-    a href=rlog_user_path(user)
+    a href=user_path(user.screen_name)
       h4.card-title = user.name
 
     hr
     .media
-      a.media-left href=rlog_user_path(user)
+      a.media-left href=user_path(user.screen_name)
         img.c-user-icon.media-object src=user.icon_url title=user.name
       .media-body.p-l-1
         - if user.twitter_user
