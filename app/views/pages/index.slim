@@ -5,3 +5,6 @@
       - @pages.each do |page|
         = render 'rlogs/item_short', rlog: page, description: page.description.split.first , path: page_path(page)
       = paginate @pages
+
+- content_for :title do
+  | Rlog pages

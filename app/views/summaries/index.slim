@@ -5,3 +5,6 @@
       - @summaries.each do |summary|
         = render 'rlogs/item_short', rlog: summary, path: summary_path(summary)
       = paginate @summaries
+
+- content_for :title do
+  | Rlog summaries

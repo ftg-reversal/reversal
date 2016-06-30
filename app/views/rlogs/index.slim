@@ -4,3 +4,6 @@
       = render 'nav'
       = render 'rlog_list', rlogs: @rlogs
       = paginate @rlogs
+
+- content_for :title do
+  = 'Rlogs'

@@ -11,3 +11,6 @@
       - @events.each do |event|
         = render 'item_short', event: event
       = paginate @events
+
+- content_for :title do
+  = "#{@chara&.name}Events"

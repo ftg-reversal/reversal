@@ -8,6 +8,5 @@
         = render 'rlogs/rlog_list', rlogs: @rlogs
         = paginate @rlogs
 
-
 - content_for :title do
-  = "Profile ##{@user.name}"
+  = "Profile #{@user.name}"
