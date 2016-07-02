@@ -34,11 +34,4 @@ class Entry < ActiveRecord::Base
   def exist_entry
     errors.add(:exist_entry, '既にエントリーされています') if event.entry.map(&:user).include?(user)
   end
-
-  class << self
-    def find_by_user(user)
-      # TODO: あとで削除する
-      find_by(reversal_user: user)
-    end
-  end
 end

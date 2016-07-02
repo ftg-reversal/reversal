@@ -19,6 +19,4 @@ class VideoMatchup < ActiveRecord::Base
   belongs_to :video
   belongs_to :chara1, class_name: 'Chara'
   belongs_to :chara2, class_name: 'Chara'
-
-  default_scope -> { order(:sec) }
 end

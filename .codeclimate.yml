@@ -16,6 +16,8 @@ engines:
     enabled: true
   rubocop:
     enabled: true
+  scsslint:
+    enabled: true
 ratings:
   paths:
   - Gemfile.lock
@@ -24,17 +26,18 @@ ratings:
   - "**.js"
   - "**.jsx"
 exclude_paths:
+- .idea
 - app/assets/javascripts/ckeditor
 - app/assets/javascripts/webpack
 - bower_components/
 - config/
 - db/
+- frontend/css/vendor/
 - frontend/js/vendor/
 - frontend/js/vuejs/summary-editor.js
 - log/
 - node_modules/
+- public/
 - spec/
 - vendor/
-- public/
-- .idea
-- webpack.config.js
+- webpack.config.babel.js

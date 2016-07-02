@@ -11,7 +11,7 @@ function onLoad() {
       confirmButtonColor: '#DD6B55',
       confirmButtonText: '削除',
       cancelButtonText: 'キャンセル',
-      closeOnConfirm: false,
+      closeOnConfirm: false
     },
     () => {
       $.ajax({
@@ -27,7 +27,7 @@ function onLoad() {
       }, 500);
     })
   });
-};
+}
 
 window.addEventListener('DOMContentLoaded', onLoad);
 window.addEventListener('turbolinks:load', onLoad);

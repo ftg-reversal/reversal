@@ -19,4 +19,4 @@
     p = "段位：#{user&.rank&.rank}"
     p = "ホームグラウンド：#{user&.home}"
 
-    = render 'authority', user: user, current_user: @current_user
+    = render 'authority', user: user, current_user: current_user

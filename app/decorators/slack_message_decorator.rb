@@ -15,9 +15,11 @@ class SlackMessageDecorator < Draper::Decorator
     EmojiRepository.find_by_name('slack')
   end
 
+  # rubocop:disable Rails/OutputSafety
   def format_text
     self.class.processor.call(object.text, SlackDecorator::SlackContext.context)[:output].to_s.html_safe
   end
+  # rubocop:enable Rails/OutputSafety
 
   def attachment_items
     (object.attachments || []).map { |at| SlackDecorator::AttachmentParser.exec(at) }.compact

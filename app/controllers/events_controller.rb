@@ -16,7 +16,7 @@ class EventsController < ApplicationController
     @entry = Entry.new
     @entries = Event.including_entry.find(params[:id]).entry
     @user = @current_user
-    @user_entry = Entry.find_by_user(@user)
+    @user_entry = Entry.find_by(reversal_user: @user)
   end
 
   def new

@@ -19,7 +19,6 @@ class SlackApiRepository
       end
     end
 
-    # TODO: Factory Patternを適用する
     # rubocop:disable all
     def find_all_messages_by_channel(channel, cache: true)
       SlackInfrastructure::ChannelHistory.exec(channel, cache: cache).map do |hash|

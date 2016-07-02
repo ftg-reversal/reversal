@@ -17,6 +17,4 @@
 class SlackMessagesSummary < ActiveRecord::Base
   belongs_to :summary, class_name: 'Rlog'
   belongs_to :slack_message
-
-  default_scope -> { order(:row_order) }
 end
