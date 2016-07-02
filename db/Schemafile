@@ -153,7 +153,7 @@ add_index "slack_messages", ["ts"], name: "ts", using: :btree
 create_table "slack_messages_summaries", force: :cascade do |t|
   t.integer "slack_message_id", limit: 4, null: false
   t.integer "summary_id",       limit: 4, null: false
-  t.integer "row_order",        limit: 4, null: false
+  t.integer "row_order",        limit: 4
 end
 
 add_index "slack_messages_summaries", ["slack_message_id", "summary_id"], name: "index_slack_messages_summaries_message_and_summary", using: :btree
