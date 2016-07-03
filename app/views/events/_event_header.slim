@@ -10,6 +10,7 @@
     p.event-info
       | エントリー数：#{entry_count}人
     p.pull-left.text-muted.m-r-1
-      | 作成者：#{event.reversal_user.name}
+      | 作成者：
+      a href=user_path(event.reversal_user.screen_name) = "#{event.reversal_user.name}"
     p.text-muted
       | 更新日時：#{time_ago_in_words(event.updated_at)}前
