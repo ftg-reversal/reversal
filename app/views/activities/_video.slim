@@ -8,9 +8,15 @@
       |  が投稿されました
     p = "#{time_ago_in_words(activity.updated_at)}前"
     - unless video.video_matchups.empty?
-      .card.u-bg-gray.m-t-1
+      .card.u-bg-gray.m-t-1.hidden-sm-down
         .card-block
           p 対戦組み合わせ
           ul
             - video.video_matchups.each do |matchup|
               = render 'videos/matchup', matchup: matchup, video: video
+.card.u-bg-gray.m-t-1.hidden-md-up
+  .card-block
+    p 対戦組み合わせ
+    ul
+      - video.video_matchups.each do |matchup|
+        = render 'videos/matchup', matchup: matchup, video: video
