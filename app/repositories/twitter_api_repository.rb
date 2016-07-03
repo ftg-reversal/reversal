@@ -6,7 +6,11 @@ class TwitterApiRepository
     end
 
     def find_by_text(text)
-      TwitterInfrastructure::Search.exec(text)
+      TwitterInfrastructure::Search.exec(client, text)
+    end
+
+    def client
+      TwitterInfrastructure::Client.official_client
     end
   end
 end

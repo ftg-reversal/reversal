@@ -1,22 +1,28 @@
 module Batch
   class Twitter2slack
-    def self.exec
-      Twitter2slackCondition.all.map do |condition|
-        unsent_tweets = TwitterApiRepository.find_unsent_tweet(condition)
-        unsent_tweets.map do |tweet|
-          SlackApiRepository.post_message(condition.slack_channel, tweet[:url], 'twitter', icon_emoji: ':twitter:')
-        end
-
-        if condition.quote
+    class << self
+      def exec
+        Twitter2slackCondition.all.map do |condition|
+          unsent_tweets = TwitterApiRepository.find_unsent_tweet(condition)
           unsent_tweets.map do |tweet|
-            TwitterInfrastructure::Tweet.exec(tweet[:url])
+            SlackApiRepository.post_message(condition.slack_channel, tweet[:url], 'twitter', icon_emoji: ':twitter:')
+          end
+
+          if condition.quote
+            unsent_tweets.map do |tweet|
+              TwitterInfrastructure::Tweet.exec(online_bot_clien, tweet[:url])
+            end
+          end
+
+          unless unsent_tweets.last.nil?
+            condition.last_tweet = unsent_tweets.last[:id]
+            condition.save
           end
         end
+      end
 
-        unless unsent_tweets.last.nil?
-          condition.last_tweet = unsent_tweets.last[:id]
-          condition.save
-        end
+      def online_bot_client
+        TwitterInfrastructure::Client.online_bot_client
       end
     end
   end

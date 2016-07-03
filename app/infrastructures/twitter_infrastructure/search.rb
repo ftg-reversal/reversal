@@ -3,8 +3,8 @@ module TwitterInfrastructure
     class << self
       SEARCH_COUNT = 100
 
-      def exec(search_text)
-        TwitterInfrastructure::Client.exec.search("#{search_text} -rt").take(SEARCH_COUNT).map do |tweet|
+      def exec(client, search_text)
+        client.search("#{search_text} -rt").take(SEARCH_COUNT).map do |tweet|
           {
             id: tweet.id,
             screen_name: tweet.user.screen_name,
