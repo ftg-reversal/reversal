@@ -3,7 +3,7 @@ class ReversalUsersController < ApplicationController
   before_action :ensure_permission, only: [:edit, :update]
 
   def index
-    users = ReversalUser.including_user.order('updated_at DESC').page(params[:page]).per(21)
+    users = ReversalUser.including_user.order('updated_at DESC').page(params[:page]).per(24)
     @users = ReversalUserDecorator.decorate_collection(users)
   end
 
