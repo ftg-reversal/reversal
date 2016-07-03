@@ -22,4 +22,6 @@ class Summary < Rlog
   belongs_to :slack_channel
   has_many :slack_messages_summaries, dependent: :destroy
   has_many :slack_messages, through: :slack_messages_summaries
+
+  include PublicActivity::Model
 end

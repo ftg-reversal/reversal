@@ -1,0 +1,15 @@
+.media
+  a.media-left href='#'
+    img.c-user-icon.media-object src=activity.owner.icon_url title=activity.owner.name
+  .media-body
+    p.
+      a href=user_path(activity.owner.screen_name) = "#{activity.owner.name}"
+      |  が
+      | イベント
+      a href=event_path(activity.trackable) = activity.trackable.title
+      - if activity.key.include?('create')
+        |  を作成しました。
+      - elsif activity.key.include?('update')
+        |  を更新しました。
+
+    p = "#{time_ago_in_words(activity.updated_at)}前"

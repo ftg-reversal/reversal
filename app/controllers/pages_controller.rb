@@ -17,6 +17,7 @@ class PagesController < RlogsController
     @page = Page.new(page_params)
 
     if @page.save
+      @page.create_activity :create, owner: @current_user
       redirect_to @page
     else
       render 'new'
@@ -28,6 +29,7 @@ class PagesController < RlogsController
 
   def update
     if @page.update(page_params)
+      @page.create_activity :update, owner: @current_user
       redirect_to @page
     else
       render 'edit'

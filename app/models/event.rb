@@ -40,6 +40,8 @@ class Event < ActiveRecord::Base
   scope :upcoming, -> () { where('datetime >= ?', tomorrow).including_user }
   scope :finished, -> () { where('datetime < ?', tomorrow).including_user }
 
+  include PublicActivity::Model
+
   def can_entry?
     if entry_deadline
       DateTime.current < entry_deadline

@@ -45,6 +45,14 @@ class Video < ActiveRecord::Base
   scope :chara1, -> (chara) { where(video_matchups: { chara1: chara }) }
   scope :chara2, -> (chara) { where(video_matchups: { chara2: chara }) }
 
+  include PublicActivity::Model
+  after_create :create_video_activity
+
+  def create_video_activity
+    create_activity key: 'video.create', owner: nil, recipient: self
+    true
+  end
+
   def fetch_thumbnail
     self.thumbnail = VideoImageDownloadService.fetch_file(thumbnail_uri)
     true

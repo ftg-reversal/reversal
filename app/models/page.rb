@@ -20,4 +20,5 @@
 
 class Page < Rlog
   validates :description, presence: true
+  include PublicActivity::Model
 end

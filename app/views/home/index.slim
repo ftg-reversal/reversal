@@ -3,11 +3,15 @@
     .card-block
       h2 最近の情報
       hr
-      - @videos.each do |video|
-        = render 'videos/item', video: video
-      - @events.each do |event|
-        = render 'events/item_short', event: event, path: event_path(event)
-      - @pages.each do |page|
-        = render 'rlogs/item_short', rlog: page, path: page_path(page)
-      - @summaries.each do |summary|
-        = render 'rlogs/item_short', rlog: summary, path: summary_path(summary)
+      - @activities.each do |activity|
+        - if activity_type(activity) == 'ReversalUser'
+          = render 'activities/user', activity: activity
+        - if activity_type(activity) == 'Page'
+          = render 'activities/rlog', activity: activity
+        - if activity_type(activity) == 'Event'
+          = render 'activities/event', activity: activity
+        - if activity_type(activity) == 'Entry'
+          = render 'activities/entry', activity: activity
+        - if activity_type(activity) == 'Video'
+          = render 'activities/video', activity: activity
+        hr

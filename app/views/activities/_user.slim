@@ -1,0 +1,9 @@
+.media
+  a.media-left href='#'
+    img.c-user-icon.media-object src=activity.owner.icon_url title=activity.owner.name
+  .media-body
+    p
+      a href=user_path(activity.owner.screen_name) = "#{activity.owner.name}"
+      |  さんがプロフィールを更新しました。
+
+    p = "#{time_ago_in_words(activity.updated_at)}前"

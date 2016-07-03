@@ -28,6 +28,7 @@ class EventsController < ApplicationController
     @event = Event.new(parameter.to_h)
 
     if @event.save
+      @event.create_activity :create, owner: @current_user
       redirect_to @event
     else
       render 'new'
@@ -41,6 +42,7 @@ class EventsController < ApplicationController
     parameter = EventParameter.new(params[:event], @current_user)
 
     if @event.update(parameter.to_h)
+      @event.create_activity :update, owner: @current_user
       redirect_to @event
     else
       render 'edit'

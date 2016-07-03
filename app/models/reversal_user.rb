@@ -34,6 +34,8 @@ class ReversalUser < ActiveRecord::Base
 
   scope :including_user, -> () { includes(:twitter_user).includes(:slack_user) }
 
+  include PublicActivity::Model
+
   def icon_url
     if slack_user
       slack_user.icon_url

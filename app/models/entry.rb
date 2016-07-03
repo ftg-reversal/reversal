@@ -23,6 +23,8 @@ class Entry < ActiveRecord::Base
   validates :event, presence: true
   validate :expiration_date_cannot_entry, :exist_entry
 
+  include PublicActivity::Model
+
   def user
     reversal_user
   end

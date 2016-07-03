@@ -7,7 +7,7 @@
           - @user.errors.full_messages.each do |message|
             .alert.alert-warning role='alert' = message
 
-      = bootstrap_form_for(@user, url: user_path, inline_errors: false) do |form|
+      = bootstrap_form_for(@user, url: user_path(@user.screen_name), inline_errors: false) do |form|
         .form-group.row
           .col-md-6
             label for='user_name' 名前
@@ -34,7 +34,7 @@
         = form.text_area :bio, rows: 6, hide_label: true
         .form-group
           = form.submit '登録', class: 'btn btn-primary btn-lg'
-          a href=pages_path
+          a href=user_path(@user.screen_name)
             button.btn.btn-secondary.btn-lg キャンセル
 
 - content_for :title do

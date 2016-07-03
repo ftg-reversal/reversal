@@ -8,6 +8,7 @@ class EntriesController < ApplicationController
     entry = EntryFactory.create_from_entry_form(params, @current_user)
 
     if entry.save
+      entry.create_activity :create, owner: @current_user, recipient: entry.event
       render json: entry
     else
       render json: entry.errors.full_messages, status: :internal_server_error
