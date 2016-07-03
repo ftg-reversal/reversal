@@ -1,6 +1,6 @@
 class SummariesController < RlogsController
   before_action :set_summary, only: [:show, :edit, :update, :destroy]
-  before_action :set_order, only: [:show, :edit]
+  before_action :set_messages, only: [:show, :edit]
   before_action :ensure_permission, only: [:edit, :update, :destroy]
 
   def index
@@ -55,14 +55,16 @@ class SummariesController < RlogsController
   end
 
   def set_summary
-    @ordered_messages = []
     @summary = Summary.includes(slack_messages: [:slack_user, :slack_channel]).find(params[:id])
-    @summary.slack_messages_summaries.each_with_index do |messages_summary, i|
-      @ordered_messages[messages_summary.row_order] = @summary.slack_messages[i].decorate
-    end
   end
 
-  def set_order
+  def set_messages
+    @messages = Array.new(@summary.slack_messages.size)
+    @summary.slack_messages_summaries.each do |messages_summary|
+      @messages[messages_summary.row_order] = @summary.slack_messages
+                                                      .detect { |m| m.id == messages_summary.slack_message_id }
+                                                      .decorate
+    end
   end
 
   def summary_params
