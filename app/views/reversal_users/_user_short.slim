@@ -17,4 +17,4 @@
   .card-block.p-y-0
     p = user.short_bio
   .card-footer.text-muted.text-xs-center
-    | #{time_ago_in_words(user.updated_at)}前
+    | 最終更新：#{time_ago_in_words(user.updated_at)}前
