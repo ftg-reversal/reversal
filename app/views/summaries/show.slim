@@ -3,7 +3,7 @@
     = render 'shared/item_header', item: @summary
     .m-t-1
       = tw(summary_url, "#{@summary.title} - Reversal Summary")
-    = render 'item', summary: @summary
+    = render 'item', summary: @summary, ordered_messages: @ordered_messages
     hr
     = render 'shared/item_authority', current_user: @current_user, item: @summary, edit_path: edit_summary_path, delete_path: summary_path(@summary), redirect_path: rlogs_path
 
