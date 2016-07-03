@@ -6,6 +6,6 @@
     .m-t-1
       p.pull-left.text-muted.m-r-1
         | 作成者：
-        a href='#' #{item.reversal_user.name}
+        a href=user_path(item.reversal_user.screen_name) #{item.reversal_user.name}
       p.text-muted
         | 更新日時：#{time_ago_in_words(item.updated_at)}前
