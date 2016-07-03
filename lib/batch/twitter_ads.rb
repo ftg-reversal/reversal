@@ -2,9 +2,7 @@ module Batch
   class TwitterAds
     class << self
       def exec
-        tweet_data.each do |tweet|
-          TwitterInfrastructure::Tweet.exec(client, tweet)
-        end
+        TwitterInfrastructure::Tweet.exec(client, tweet_data.sample)
       end
 
       def client

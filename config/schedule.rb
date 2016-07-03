@@ -8,7 +8,7 @@ every 15.minutes do
   runner 'Batch::UpdateVideos.exec'
 end
 
-every 1.day, at: '10:00 pm' do
+every 3.hours do
   runner 'Batch::TwitterAds.exec'
 end
 
