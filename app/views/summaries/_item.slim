@@ -7,7 +7,8 @@
 
 hr
 
-- summary.messages.each do |message|
+- summary.slack_messages_summaries.size.times do |i|
+  - message = summary.slack_messages[i].decorate
   .slack-message.media
     .slack-icon.media-object.pull-left
       a.media-left href='#'
