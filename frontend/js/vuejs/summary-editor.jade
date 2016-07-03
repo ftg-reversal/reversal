@@ -58,7 +58,7 @@
               .card-block
                 .selected-messages.channel-history.editor-main-list
                   ul
-                    li.slack-message.media.no-marker(v-for='message in messages', @click="onClickMessage(this)", id="{{ $index }}", v-drag-and-drop drop='handleDrop')
+                    li.slack-message.media.u-no-marker(v-for='message in messages', @click="onClickMessage(this)", id="{{ $index }}", v-drag-and-drop drop='handleDrop')
                       .slack-icon.media-object.pull-left
                         .media-left
                           img(:src='message.avatar_url')

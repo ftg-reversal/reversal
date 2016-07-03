@@ -1,2 +1,4 @@
 app/assets/javascripts/ckeditor
+app/assets/stylesheets/ckeditor
 frontend/css/vendor
+public/css/style.css
