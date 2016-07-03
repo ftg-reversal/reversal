@@ -5,7 +5,7 @@
 #  id               :integer          not null, primary key
 #  slack_message_id :integer          not null
 #  summary_id       :integer          not null
-#  row_order        :integer          not null
+#  row_order        :integer
 #
 # Indexes
 #

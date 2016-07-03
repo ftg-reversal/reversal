@@ -3,11 +3,9 @@ class CharasController < ApplicationController
   def video
     @charas = Chara.all
     @chara = Chara.find(params[:chara_id])
-    @videos = Video.order(:sec).includes(video_matchups: [:chara1, :chara2])
-      .where(video_matchups: { chara1: @chara }).references(:video_matchups).order('posted_at DESC')
-      .or(Video.order(:sec).includes(video_matchups: [:chara1, :chara2])
-      .where(video_matchups: { chara2: @chara }).references(:video_matchups).order('posted_at DESC'))
-      .page(params[:page])
+    @videos = Video.including_matchup.chara1(@chara).recently
+              .or(Video.including_matchup.chara2(@chara).recently)
+              .page(params[:page])
 
     render 'videos/index'
   end

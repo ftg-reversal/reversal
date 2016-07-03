@@ -1,10 +1,10 @@
 module UserHelper
   def external_user_link(user)
     if user.twitter_user
-      img_tag = content_tag(:img, '', class: 'c-user-twitter-icon', src: asset_path('service_icon/twitter.png'))
+      img_tag = content_tag(:img, '', class: 'u-font-twitter-icon', src: asset_path('service_icon/twitter.png'))
       img_tag + twitter_user(user)
     else
-      img_tag = content_tag(:img, '', class: 'c-user-twitter-icon', src: asset_path('service_icon/slack.png'))
+      img_tag = content_tag(:img, '', class: 'u-font-twitter-icon', src: asset_path('service_icon/slack.png'))
       img_tag + "@#{user.slack_user&.name}"
     end
   end

@@ -26,7 +26,7 @@
 class Video < ActiveRecord::Base
   include ClassyEnum::ActiveRecord
 
-  has_many :video_matchups, dependent: :destroy
+  has_many :video_matchups, -> { order(:sec) }, dependent: :destroy
 
   validates :video_site, :title, presence: true
   validates :url, presence: true, uniqueness: true
@@ -37,6 +37,13 @@ class Video < ActiveRecord::Base
 
   has_attached_file :thumbnail, default_url: '/images/dummy_thumbnail.png'
   validates_attachment_content_type :thumbnail, content_type: %r{/\Aimage\/.*\Z/}
+
+  scope :including_matchup, -> () { includes(video_matchups: [:chara1, :chara2]).references(:video_matchups) }
+  scope :recently, -> () { order('posted_at DESC') }
+
+  # video_matchups
+  scope :chara1, -> (chara) { where(video_matchups: { chara1: chara }) }
+  scope :chara2, -> (chara) { where(video_matchups: { chara2: chara }) }
 
   def fetch_thumbnail
     self.thumbnail = VideoImageDownloadService.fetch_file(thumbnail_uri)
