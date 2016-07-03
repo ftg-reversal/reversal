@@ -1,9 +1,13 @@
 #header
   $header-height: 60px
-  $header-icon-size: 38px
+  $header-icon-size: 42px
 
   #header-user-dropdown
-    cursor: pointer
+    background-color: white
+
+    &:hover
+      filter: brightness(.85);
+      cursor: pointer
 
   .header-user-icon
     +size($header-icon-size)
