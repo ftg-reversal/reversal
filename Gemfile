@@ -37,7 +37,6 @@ gem 'public_activity'
 gem 'rails_autolink'
 gem 'request_store'
 gem 'ridgepole'
-gem 'rollbar'
 gem 'sass-rails'
 gem 'seed_dump'
 gem 'slack-api'
@@ -87,6 +86,7 @@ group :test do
 end
 
 group :production do
+  gem 'rollbar'
   gem 'unicorn'
   gem 'unicorn-worker-killer'
 end
