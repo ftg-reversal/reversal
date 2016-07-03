@@ -13,7 +13,7 @@ header#header
             .dropdown-menu.dropdown-menu-left.p-y-1 aria-labelledby='header-user-dropdown'
               a.dropdown-item href=users_path ユーザ一覧
               a.dropdown-item href=rlog_user_path(current_user) プロフィールの表示
-              a.dropdown-item href=participate_user_path(current_user) 参加イベント一覧
+              a.dropdown-item href=participate_user_path(current_user.screen_name) 参加イベント一覧
               = link_to 'ログアウト', session_path, method: 'delete', class: 'dropdown-item', data: {turbolinks: 'false'}
         li.nav-item
           .dropdown
