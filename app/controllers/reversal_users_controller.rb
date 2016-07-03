@@ -29,6 +29,12 @@ class ReversalUsersController < ApplicationController
   end
 
   def activity
+    @activities = PublicActivity::Activity.includes(:owner)
+                                          .includes(:trackable)
+                                          .includes(:recipient)
+                                          .where(owner: @user)
+                                          .order('updated_at DESC')
+                                          .page(params[:page])
   end
 
   def rlog

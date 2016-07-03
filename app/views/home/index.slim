@@ -15,3 +15,5 @@
         - if activity_type(activity) == 'Video'
           = render 'activities/video', activity: activity
         hr
+      .u-text-center
+        = paginate @activities

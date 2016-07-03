@@ -4,6 +4,6 @@ class HomeController < ApplicationController
                                           .includes(:trackable)
                                           .includes(:recipient)
                                           .order('updated_at DESC')
-                                          .limit(20)
+                                          .page(params[:page])
   end
 end

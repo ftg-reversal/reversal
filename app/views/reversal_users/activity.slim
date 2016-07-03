@@ -5,9 +5,20 @@
     .card
       .card-block
         = render 'nav', user: @user
-        .card
-          .card-block
-            h4 実装途中です
+        - @activities.each do |activity|
+          - if activity_type(activity) == 'ReversalUser'
+            = render 'activities/user', activity: activity
+          - if activity_type(activity) == 'Page'
+            = render 'activities/rlog', activity: activity
+          - if activity_type(activity) == 'Event'
+            = render 'activities/event', activity: activity
+          - if activity_type(activity) == 'Entry'
+            = render 'activities/entry', activity: activity
+          - if activity_type(activity) == 'Video'
+            = render 'activities/video', activity: activity
+          hr
+        .u-text-center
+          = paginate @activities
 
 - content_for :title do
   = "Profile ##{@user.name}"
