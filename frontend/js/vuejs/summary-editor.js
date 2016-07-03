@@ -31,6 +31,7 @@ export default class SummaryEditor extends Vue {
         this.description = $(this.$el).data("summary-description") ? $(this.$el).data("summary-description") : "";
 
         $(this.$el).data("messages").map((message) => {
+          console.log(message);
           this.messages.push({
             id: message.id,
             avatar_url: message.icon_url,
@@ -38,7 +39,8 @@ export default class SummaryEditor extends Vue {
             date: message.date,
             ts: message.ts,
             channel: message.channel,
-            format_text: message.format_text
+            format_text: message.format_text,
+            attachments: message.attachments
           });
         });
 

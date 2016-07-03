@@ -34,7 +34,7 @@ class SummariesController < RlogsController
       @summary.reload
       save_order(@summary, @row_order)
 
-      render json: @summary.object, root: nil
+      render json: @summary, root: nil
     else
       raise 'error'
     end
@@ -56,16 +56,9 @@ class SummariesController < RlogsController
 
   def set_summary
     @ordered_messages = []
-    row_order = []
-
     @summary = Summary.includes(slack_messages: [:slack_user, :slack_channel]).find(params[:id])
-    @summary.slack_messages.each do |message|
-      messages_summary = message.slack_messages_summaries.detect { |m| m.summary_id = params[:id] }
-      row_order << messages_summary.row_order
-    end
-
-    @summary.slack_messages_summaries.size.times do |i|
-      @ordered_messages << @summary.slack_messages[row_order[i]].decorate
+    @summary.slack_messages_summaries.each_with_index do |messages_summary, i|
+      @ordered_messages[messages_summary.row_order] = @summary.slack_messages[i].decorate
     end
   end
 
