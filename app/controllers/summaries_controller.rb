@@ -35,7 +35,7 @@ class SummariesController < RlogsController
       @summary.reload
       save_order(@summary, @row_order)
 
-      @summary.create_activity :create, owner: @current_user, recipient: @summary
+      @summary.create_activity :update, owner: @current_user, recipient: @summary
       render json: @summary, root: nil
     else
       raise 'error'

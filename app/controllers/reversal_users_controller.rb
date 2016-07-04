@@ -16,7 +16,7 @@ class ReversalUsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      @user.create_activity :create, owner: @current_user
+      @user.create_activity :update, owner: @current_user
       redirect_to user_path(@user.screen_name)
     else
       render 'edit'
