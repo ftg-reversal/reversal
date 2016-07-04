@@ -44,14 +44,6 @@ class ReversalUser < ActiveRecord::Base
     end
   end
 
-  def name
-    if slack_user
-      slack_user.name
-    elsif twitter_user
-      twitter_user.name
-    end
-  end
-
   class << self
     def find_or_create_with_slack(auth)
       SlackUser.update_from_slack_api_repository
