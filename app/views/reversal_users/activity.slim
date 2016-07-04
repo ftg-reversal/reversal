@@ -18,7 +18,6 @@
             = render 'activities/entry', activity: activity, owner: activity.owner.decorate
           - if activity_type(activity) == 'Video'
             = render 'activities/video', activity: activity
-          hr
         .u-text-center
           = paginate @activities
 
