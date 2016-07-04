@@ -100,7 +100,7 @@ Rails.application.routes.draw do
   end
 
   # sitemap
-  get '/sitemap' => 'https://s3-ap-northeast-1.amazonaws.com/reversal-sitemap/sitemaps/sitemap.xml.gz'
+  get '/sitemap' => redirect('https://s3-ap-northeast-1.amazonaws.com/reversal-sitemap/sitemaps/sitemap.xml.gz')
 
   mount Ckeditor::Engine => '/ckeditor'
 end
