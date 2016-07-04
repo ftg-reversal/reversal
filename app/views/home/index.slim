@@ -14,7 +14,7 @@
           = render 'activities/event', activity: activity, owner: activity.owner.decorate
         - if activity_type(activity) == 'Entry'
           = render 'activities/entry', activity: activity, owner: activity.owner.decorate
-        - if activity_type(activity) == 'Video'
+        - if activity_type(activity) == 'Video' && activity.trackable
           = render 'activities/video', activity: activity
         hr
       .u-text-center
