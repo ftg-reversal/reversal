@@ -7,15 +7,15 @@
         = render 'nav', user: @user
         - @activities.each do |activity|
           - if activity_type(activity) == 'ReversalUser'
-            = render 'activities/user', activity: activity
+            = render 'activities/user', activity: activity, owner: activity.owner.decorate
           - if activity_type(activity) == 'Page'
-            = render 'activities/rlog', activity: activity
+            = render 'activities/rlog', activity: activity, owner: activity.owner.decorate
           - if activity_type(activity) == 'Summary'
-            = render 'activities/rlog', activity: activity
+            = render 'activities/rlog', activity: activity, owner: activity.owner.decorate
           - if activity_type(activity) == 'Event'
-            = render 'activities/event', activity: activity
+            = render 'activities/event', activity: activity, owner: activity.owner.decorate
           - if activity_type(activity) == 'Entry'
-            = render 'activities/entry', activity: activity
+            = render 'activities/entry', activity: activity, owner: activity.owner.decorate
           - if activity_type(activity) == 'Video'
             = render 'activities/video', activity: activity
           hr
