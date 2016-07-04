@@ -10,15 +10,25 @@ header#header
         li.nav-item
           .dropdown
             img#header-user-dropdown.c-user-icon.header-user-icon.dropdown-toggle src=current_user.icon_url data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-            .dropdown-menu.dropdown-menu-left.p-y-1 aria-labelledby='header-user-dropdown'
-              a.dropdown-item href=users_path ユーザ一覧
+            .dropdown-menu.dropdown-menu-right.p-y-1 aria-labelledby='header-user-dropdown'
+              a.dropdown-item.hidden-sm-up href=users_path ユーザ一覧
               a.dropdown-item href=rlog_user_path(current_user.screen_name) プロフィールの表示
               a.dropdown-item href=participate_user_path(current_user.screen_name) 参加イベント一覧
               = link_to 'ログアウト', session_path, method: 'delete', class: 'dropdown-item', data: {turbolinks: 'false'}
+        li.nav-item.hidden-xs-down
+          = link_to users_path, class: 'btn btn-color1' do
+            i.fa.fa-user &nbsp;&nbsp; ユーザ一覧
         li.nav-item
-          .dropdown
-            button#header-create-dropdown.btn.btn-color1.dropdown-toggle type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'
-              i.fa.fa-pencil-square-o &nbsp;&nbsp;作成
+          .dropdown.hidden-md-up
+            button#header-create-dropdown.btn.btn-color1.dropdown-toggle type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false' style="padding: 6px 10px 6px 16px"
+              i.fa.fa-pencil-square-o
+            .dropdown-menu.dropdown-menu-right.p-y-1 aria-labelledby='header-create-dropdown'
+              a.dropdown-item data-turbolinks='false' href=new_page_path ページの作成
+              a.dropdown-item data-turbolinks='false' href=new_summary_path まとめの作成（β）
+              a.dropdown-item data-turbolinks='false' href=new_event_path イベントの作成
+          .dropdown.hidden-sm-down
+            button#header-create-dropdown.btn.btn-color1.dropdown-toggle type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false' style="padding: 6px 10px 6px 16px"
+              i.fa.fa-pencil-square-op &nbsp;&nbsp;作成
             .dropdown-menu.dropdown-menu-right.p-y-1 aria-labelledby='header-create-dropdown'
               a.dropdown-item data-turbolinks='false' href=new_page_path ページの作成
               a.dropdown-item data-turbolinks='false' href=new_summary_path まとめの作成（β）
