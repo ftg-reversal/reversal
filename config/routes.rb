@@ -99,5 +99,8 @@ Rails.application.routes.draw do
     resources :channels, only: [:index, :show]
   end
 
+  # sitemap
+  get '/sitemap' => 'https://s3-ap-northeast-1.amazonaws.com/reversal-sitemap/sitemaps/sitemap.xml.gz'
+
   mount Ckeditor::Engine => '/ckeditor'
 end
