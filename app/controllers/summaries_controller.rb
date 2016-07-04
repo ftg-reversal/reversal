@@ -57,7 +57,7 @@ class SummariesController < RlogsController
   end
 
   def set_summary
-    @summary = Summary.includes(slack_messages: [:slack_user, :slack_channel]).find(params[:id])
+    @summary = Summary.includes(slack_messages: [:slack_user, :slack_channel]).find(params[:id]).decorate
   end
 
   def set_messages
