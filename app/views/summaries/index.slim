@@ -3,7 +3,7 @@
     .card-block
       = render 'rlogs/nav'
       - @summaries.each do |summary|
-        = render 'rlogs/item_short', rlog: summary, path: summary_path(summary)
+        = render 'rlogs/item_short', rlog: summary, path: summary_path(summary), user: rlogs.reversal_user.decorate
       = paginate @summaries
 
 - content_for :title do
