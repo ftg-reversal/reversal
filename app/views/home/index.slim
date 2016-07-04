@@ -8,6 +8,8 @@
           = render 'activities/user', activity: activity
         - if activity_type(activity) == 'Page'
           = render 'activities/rlog', activity: activity
+        - if activity_type(activity) == 'Summary'
+          = render 'activities/rlog', activity: activity
         - if activity_type(activity) == 'Event'
           = render 'activities/event', activity: activity
         - if activity_type(activity) == 'Entry'
