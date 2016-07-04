@@ -4,7 +4,7 @@
   .media-body
     p.
       a href=user_path(activity.owner.screen_name) = "#{activity.owner.name}"
-      |  が
+      |  さんが
       - if activity.trackable.type == 'Page'
         | ページ 
         a href=page_path(activity.trackable) = activity.trackable.title
