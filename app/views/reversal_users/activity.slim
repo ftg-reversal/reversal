@@ -8,6 +8,8 @@
         - @activities.each do |activity|
           - if activity_type(activity) == 'ReversalUser'
             = render 'activities/user', activity: activity, owner: activity.owner.decorate
+          - if activity_type(activity) == 'Rlog'
+            = render 'activities/rlog', activity: activity, owner: activity.owner.decorate
           - if activity_type(activity) == 'Page'
             = render 'activities/rlog', activity: activity, owner: activity.owner.decorate
           - if activity_type(activity) == 'Summary'
