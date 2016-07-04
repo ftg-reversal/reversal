@@ -391,6 +391,8 @@ GEM
       json (~> 1.8)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.0)
+    sitemap_generator (5.1.0)
+      builder
     slack-api (1.2.3)
       faraday (>= 0.7, < 0.10)
       faraday_middleware (~> 0.8)
@@ -552,6 +554,7 @@ DEPENDENCIES
   sass-rails
   seed_dump
   simplecov
+  sitemap_generator
   slack-api
   slack_markdown
   slim-rails
