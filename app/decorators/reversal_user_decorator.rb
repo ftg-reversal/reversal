@@ -2,7 +2,7 @@ class ReversalUserDecorator < Draper::Decorator
   delegate_all
 
   def name
-    if object.name.present?
+    unless object.name.nil? || object.name == ''
       object.name
     elsif object.slack_user
       object.slack_user.name
