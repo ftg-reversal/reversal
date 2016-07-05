@@ -3,6 +3,7 @@ require('vendor/twitter-widgets');
 
 require('views/entry')
 require('views/sweetalert')
+require('views/good')
 
 require('vuejs/summary-editor');
 

@@ -24,14 +24,17 @@
 #
 
 class Event < ActiveRecord::Base
+  include Goodable
+
   has_many :entry, dependent: :destroy
+  has_many :goods, as: :goodable, dependent: :destroy
   belongs_to :reversal_user
 
   validates :title, presence: true
   validates :description, presence: true
   validates :datetime, presence: true
   validates :number, presence: true
-  validates :reversal_user_id, presence: true
+  validates :reversal_user, presence: true
 
   scope :recently, -> () { order('datetime ASC') }
   scope :including_user, -> () { includes(:reversal_user) }
@@ -41,6 +44,10 @@ class Event < ActiveRecord::Base
   scope :finished, -> () { where('datetime < ?', tomorrow).including_user }
 
   include PublicActivity::Model
+
+  def good?(user)
+    Good.user(user).type('Event').id(id).size != 0
+  end
 
   def can_entry?
     if entry_deadline

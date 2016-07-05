@@ -1,9 +1,8 @@
 class EntriesController < ApplicationController
-  before_action :set_entry, only: [:destroy]
   before_action :do_check_login, only: [:create, :destroy]
+  before_action :set_entry, only: [:destroy]
   before_action :ensure_permission, only: [:destroy]
 
-  # API
   def create
     entry = EntryFactory.create_from_entry_form(params, @current_user)
 

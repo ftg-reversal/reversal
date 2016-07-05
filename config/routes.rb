@@ -5,10 +5,18 @@
 #            login GET    /login(.:format)                         login#index
 #                  GET    /auth/:provider/callback(.:format)       sessions#create
 #          session DELETE /session(.:format)                       sessions#destroy
+#       video_good GET    /videos/:video_id/good(.:format)         video/goods#show
+#                  PATCH  /videos/:video_id/good(.:format)         video/goods#update
+#                  PUT    /videos/:video_id/good(.:format)         video/goods#update
+#                  DELETE /videos/:video_id/good(.:format)         video/goods#destroy
 #           videos GET    /videos(.:format)                        videos#index
 #         channels GET    /channels(.:format)                      slack_channels#index
 #          channel GET    /channels/:id(.:format)                  slack_channels#show
 #            rlogs GET    /rlogs(.:format)                         rlogs#index
+#        page_good GET    /pages/:page_id/good(.:format)           page/goods#show
+#                  PATCH  /pages/:page_id/good(.:format)           page/goods#update
+#                  PUT    /pages/:page_id/good(.:format)           page/goods#update
+#                  DELETE /pages/:page_id/good(.:format)           page/goods#destroy
 #            pages GET    /pages(.:format)                         pages#index
 #                  POST   /pages(.:format)                         pages#create
 #         new_page GET    /pages/new(.:format)                     pages#new
@@ -17,6 +25,10 @@
 #                  PATCH  /pages/:id(.:format)                     pages#update
 #                  PUT    /pages/:id(.:format)                     pages#update
 #                  DELETE /pages/:id(.:format)                     pages#destroy
+#     summary_good GET    /summaries/:summary_id/good(.:format)    summary/goods#show
+#                  PATCH  /summaries/:summary_id/good(.:format)    summary/goods#update
+#                  PUT    /summaries/:summary_id/good(.:format)    summary/goods#update
+#                  DELETE /summaries/:summary_id/good(.:format)    summary/goods#destroy
 #        summaries GET    /summaries(.:format)                     summaries#index
 #                  POST   /summaries(.:format)                     summaries#create
 #      new_summary GET    /summaries/new(.:format)                 summaries#new
@@ -25,6 +37,10 @@
 #                  PATCH  /summaries/:id(.:format)                 summaries#update
 #                  PUT    /summaries/:id(.:format)                 summaries#update
 #                  DELETE /summaries/:id(.:format)                 summaries#destroy
+#       event_good GET    /events/:event_id/good(.:format)         event/goods#show
+#                  PATCH  /events/:event_id/good(.:format)         event/goods#update
+#                  PUT    /events/:event_id/good(.:format)         event/goods#update
+#                  DELETE /events/:event_id/good(.:format)         event/goods#destroy
 #   archived_event GET    /events/:id/archived(.:format)           events#archived
 #           events GET    /events(.:format)                        events#index
 #                  POST   /events(.:format)                        events#create
@@ -70,14 +86,23 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback', to: 'sessions#create'
   resource :session, only: [:destroy]
 
-  resources :videos, only: [:index]
+  resources :videos, only: [:index] do
+    resource :good, module: :video, only: [:show, :update, :destroy]
+  end
+
   resources :slack_channels, as: :channels, path: :channels, only: [:index, :show]
   resources :rlogs, only: [:index]
-  resources :pages
-  resources :summaries
 
-  # Event
+  resources :pages do
+    resource :good, module: :page, only: [:show, :update, :destroy]
+  end
+
+  resources :summaries do
+    resource :good, module: :summary, only: [:show, :update, :destroy]
+  end
+
   resources :events do
+    resource :good, module: :event, only: [:show, :update, :destroy]
     member do
       get :archived
     end
