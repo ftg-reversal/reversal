@@ -5,6 +5,5 @@ class HomeController < ApplicationController
                                           .includes(:recipient)
                                           .order('updated_at DESC')
                                           .page(params[:page])
-                                          .select { |a| !a.trackable.nil? }
   end
 end
