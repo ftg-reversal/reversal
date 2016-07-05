@@ -1,6 +1,6 @@
 .event-header.media
   a.media-left href='#'
-    img.c-user-icon.media-object src=event.reversal_user.icon_url title=event.reversal_user.name
+    img.c-user-icon.media-object src=user.icon_url title=user.name
   .media-body
     h2.media-heading = event.title
     p.event-info.m-r-1
@@ -11,6 +11,6 @@
       | エントリー数：#{entry_count}人
     p.pull-left.text-muted.m-r-1
       | 作成者：
-      a href=user_path(event.reversal_user.screen_name) = "#{event.reversal_user.name}"
+      a href=user_path(user.screen_name) = "#{user.name}"
     p.text-muted
       | 更新日時：#{time_ago_in_words(event.updated_at)}前

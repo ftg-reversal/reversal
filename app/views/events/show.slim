@@ -5,7 +5,7 @@
 
       hr
 
-      = render 'event_header', event: @event, entry_count: @entries.size
+      = render 'event_header', event: @event, user: @event.reversal_user.decorate, entry_count: @entries.size
       .m-t-1
         = tw(event_url, "#{@event.title} - Reversal Event")
       hr
