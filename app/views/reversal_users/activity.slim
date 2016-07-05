@@ -17,7 +17,7 @@
           - if activity_type(activity) == 'Event'
             = render 'activities/event', activity: activity, owner: activity.owner.decorate
           - if activity_type(activity) == 'Entry'
-            = render 'activities/video', activity: activity
+            = render 'activities/entry', activity: activity, owner: activity.owner.decorate
           - if !activity_type(activity).nil?
             hr
         .u-text-center
