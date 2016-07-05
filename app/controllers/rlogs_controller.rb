@@ -3,7 +3,7 @@ class RlogsController < ApplicationController
   before_action :ensure_permission, only: [:edit, :update, :destroy]
 
   def index
-    @rlogs = Rlog.includes(:reversal_user).order('updated_at DESC').page(params[:page])
+    @rlogs = Rlog.includes(reversal_user: [:twitter_user, :slack_user]).order('updated_at DESC').page(params[:page])
   end
 
   private
