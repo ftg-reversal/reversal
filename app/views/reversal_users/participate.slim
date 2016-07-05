@@ -7,7 +7,7 @@
         h4 参加イベント一覧
         hr
         - @events.each do |event|
-          = render 'events/item_short', event: event
+          = render 'events/item_short', event: event, user: event.reversal_user.decorate
         = paginate @events
 
 - content_for :title do

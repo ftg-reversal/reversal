@@ -9,7 +9,7 @@
           a.nav-link href=archived_event_path(@events) class="#{active_link_to_class(archived_event_path(@events), class_active: 'active')}"
             | 過去一覧
       - @events.each do |event|
-        = render 'item_short', event: event
+        = render 'item_short', event: event, user: event.reversal_user
       = paginate @events
 
 - content_for :title do
