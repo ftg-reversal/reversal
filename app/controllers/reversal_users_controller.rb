@@ -35,7 +35,6 @@ class ReversalUsersController < ApplicationController
                                           .where(owner: @user)
                                           .order('updated_at DESC')
                                           .page(params[:page])
-                                          .select { |a| !a.trackable.nil? }
   end
 
   def rlog
