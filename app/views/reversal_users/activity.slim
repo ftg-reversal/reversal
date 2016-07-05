@@ -6,17 +6,17 @@
       .card-block
         = render 'nav', user: @user
         - @activities.each do |activity|
-          - if activity_type(activity) == 'ReversalUser'
+          - if activity_type(activity) == 'ReversalUser' && activity.trackable
             = render 'activities/user', activity: activity, owner: activity.owner.decorate
-          - if activity_type(activity) == 'Rlog'
+          - if activity_type(activity) == 'Rlog' && activity.trackable
             = render 'activities/rlog', activity: activity, owner: activity.owner.decorate
-          - if activity_type(activity) == 'Page'
+          - if activity_type(activity) == 'Page' && activity.trackable
             = render 'activities/rlog', activity: activity, owner: activity.owner.decorate
-          - if activity_type(activity) == 'Summary'
+          - if activity_type(activity) == 'Summary' && activity.trackable
             = render 'activities/rlog', activity: activity, owner: activity.owner.decorate
-          - if activity_type(activity) == 'Event'
+          - if activity_type(activity) == 'Event' && activity.trackable
             = render 'activities/event', activity: activity, owner: activity.owner.decorate
-          - if activity_type(activity) == 'Entry'
+          - if activity_type(activity) == 'Entry' && activity.trackable
             = render 'activities/entry', activity: activity, owner: activity.owner.decorate
           - if !activity_type(activity).nil?
             hr
