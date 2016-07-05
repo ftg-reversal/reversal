@@ -17,5 +17,5 @@
           select.form-control onchange="if (this.value) window.location.href=this.value"
             option value=videos_path キャラ選択
             - charas.each do |chara|
-              option value="/chara/#{chara.en_name.downcase}/videos"
+              option value=video_chara_path(chara.en_name.downcase)
                 = chara.name
