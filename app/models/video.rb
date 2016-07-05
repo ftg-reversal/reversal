@@ -7,6 +7,7 @@
 #  video_id               :string(255)
 #  video_site             :string(255)      not null
 #  title                  :string(255)      not null
+#  video_matchups_count   :integer          default(0), not null
 #  posted_at              :datetime         not null
 #  created_at             :datetime
 #  updated_at             :datetime

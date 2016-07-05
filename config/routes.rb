@@ -46,9 +46,10 @@
 #             user GET    /user/:screen_name(.:format)             reversal_users#show
 #                  PATCH  /user/:screen_name(.:format)             reversal_users#update
 #                  PUT    /user/:screen_name(.:format)             reversal_users#update
-#                  GET    /chara/:chara_id/videos(.:format)        charas#video
+#      video_chara GET    /chara/:chara_name/video(.:format)       charas#video
 #     api_channels GET    /api/channels(.:format)                  api/channels#index {:format=>/json/}
 #      api_channel GET    /api/channels/:id(.:format)              api/channels#show {:format=>/json/}
+#          sitemap GET    /sitemap(.:format)                       redirect(301, https://s3-ap-northeast-1.amazonaws.com/reversal-sitemap/sitemaps/sitemap.xml.gz)
 #         ckeditor        /ckeditor                                Ckeditor::Engine
 #
 # Routes for Ckeditor::Engine:
@@ -84,7 +85,7 @@ Rails.application.routes.draw do
   resources :entries, only: [:create, :destroy]
 
   resources :reversal_users, path: :users, as: :users, only: [:index]
-  resources :reversal_users, path: :user, param: 'screen_name', as: :users, only: [:index, :show, :edit, :update] do
+  resources :reversal_users, path: :user, param: :screen_name, as: :users, only: [:index, :show, :edit, :update] do
     member do
       get :participate
       get :activity
@@ -93,7 +94,11 @@ Rails.application.routes.draw do
     end
   end
 
-  get '/chara/:chara_id/videos', to: 'charas#video'
+  resources :charas, path: :chara, param: :chara_name, only: [] do
+    member do
+      get :video
+    end
+  end
 
   namespace :api, format: 'json' do
     resources :channels, only: [:index, :show]
