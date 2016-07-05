@@ -17,9 +17,9 @@ add_index "activities", ["trackable_id", "trackable_type"], name: "index_activit
 
 create_table "charas", force: :cascade do |t|
   t.string   "name",       limit: 255
-  t.string   "en_name",    limit: 255
   t.datetime "created_at",             null: false
   t.datetime "updated_at",             null: false
+  t.string   "en_name",    limit: 255
 end
 
 create_table "ckeditor_assets", force: :cascade do |t|
@@ -39,9 +39,9 @@ add_index "ckeditor_assets", ["assetable_type", "assetable_id"], name: "idx_cked
 add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type", using: :btree
 
 create_table "entries", force: :cascade do |t|
-  t.integer  "reversal_user_id", limit: 4,     null: false
-  t.integer  "event_id",         limit: 4,     null: false
   t.text     "comment",          limit: 65535
+  t.integer  "event_id",         limit: 4,     null: false
+  t.integer  "reversal_user_id", limit: 4,     null: false
   t.datetime "created_at",                     null: false
   t.datetime "updated_at",                     null: false
 end
@@ -51,9 +51,9 @@ add_index "entries", ["reversal_user_id"], name: "index_entries_on_reversal_user
 
 create_table "entry_players", force: :cascade do |t|
   t.string  "name",     limit: 255
-  t.integer "entry_id", limit: 4,   null: false
   t.integer "chara_id", limit: 4,   null: false
   t.integer "rank_id",  limit: 4,   null: false
+  t.integer "entry_id", limit: 4,   null: false
 end
 
 add_index "entry_players", ["chara_id"], name: "index_entry_players_on_chara_id", using: :btree
@@ -61,14 +61,14 @@ add_index "entry_players", ["entry_id"], name: "index_entry_players_on_entry_id"
 add_index "entry_players", ["rank_id"], name: "index_entry_players_on_rank_id", using: :btree
 
 create_table "events", force: :cascade do |t|
-  t.integer  "reversal_user_id", limit: 4,                 null: false
   t.string   "title",            limit: 255
   t.text     "description",      limit: 65535
   t.datetime "datetime"
-  t.datetime "entry_deadline"
-  t.integer  "number",           limit: 4,     default: 1, null: false
+  t.integer  "reversal_user_id", limit: 4,                 null: false
   t.datetime "created_at",                                 null: false
   t.datetime "updated_at",                                 null: false
+  t.datetime "entry_deadline"
+  t.integer  "number",           limit: 4,     default: 1, null: false
 end
 
 add_index "events", ["datetime", "entry_deadline", "number"], name: "index_events_on_datetime_and_entry_deadline_and_number", using: :btree
@@ -79,18 +79,31 @@ add_index "events", ["entry_deadline"], name: "index_events_on_entry_deadline", 
 add_index "events", ["number"], name: "index_events_on_number", using: :btree
 add_index "events", ["reversal_user_id"], name: "events_on_reversal_user_id", using: :btree
 
+create_table "goods", force: :cascade do |t|
+  t.integer  "target_id",   limit: 4
+  t.string   "target_type", limit: 255
+  t.integer  "owner_id",    limit: 4
+  t.string   "owner_type",  limit: 255
+  t.string   "key",         limit: 255
+  t.datetime "created_at",              null: false
+  t.datetime "updated_at",              null: false
+end
+
+add_index "goods", ["owner_id", "owner_type"], name: "index_goods_on_owner_id_and_owner_type", using: :btree
+add_index "goods", ["target_id", "target_type"], name: "index_goods_on_target_id_and_target_type", using: :btree
+
 create_table "lives", force: :cascade do |t|
   t.string   "live_id",           limit: 255
   t.string   "url",               limit: 255
   t.string   "title",             limit: 255
   t.datetime "start_time"
   t.string   "icon_url",          limit: 255
+  t.datetime "created_at",                    null: false
+  t.datetime "updated_at",                    null: false
   t.string   "icon_file_name",    limit: 255
   t.string   "icon_content_type", limit: 255
   t.integer  "icon_file_size",    limit: 4
   t.datetime "icon_updated_at"
-  t.datetime "created_at",                    null: false
-  t.datetime "updated_at",                    null: false
 end
 
 add_index "lives", ["live_id"], name: "index_lives_on_live_id", using: :btree
@@ -102,17 +115,17 @@ create_table "ranks", force: :cascade do |t|
 end
 
 create_table "reversal_users", force: :cascade do |t|
-  t.integer  "twitter_user_id", limit: 4
   t.integer  "slack_user_id",   limit: 4
   t.boolean  "is_admin",                      default: false
   t.string   "screen_name",     limit: 255
-  t.string   "name",            limit: 255
+  t.datetime "created_at",                                    null: false
+  t.datetime "updated_at",                                    null: false
+  t.integer  "twitter_user_id", limit: 4
   t.integer  "chara_id",        limit: 4
   t.integer  "rank_id",         limit: 4
   t.text     "home",            limit: 65535
   t.text     "bio",             limit: 65535
-  t.datetime "created_at",                                    null: false
-  t.datetime "updated_at",                                    null: false
+  t.string   "name",            limit: 255
 end
 
 add_index "reversal_users", ["chara_id"], name: "index_reversal_users_on_chara_id", using: :btree
@@ -124,8 +137,8 @@ add_index "reversal_users", ["twitter_user_id"], name: "index_reversal_users_on_
 create_table "rlogs", force: :cascade do |t|
   t.string   "title",            limit: 255,   null: false
   t.text     "description",      limit: 65535
-  t.integer  "reversal_user_id", limit: 4,     null: false
   t.integer  "slack_channel_id", limit: 4
+  t.integer  "reversal_user_id", limit: 4,     null: false
   t.string   "type",             limit: 255,   null: false
   t.datetime "created_at"
   t.datetime "updated_at"
@@ -151,14 +164,14 @@ add_index "slack_channels", ["name"], name: "index_slack_channels_on_name", usin
 create_table "slack_messages", force: :cascade do |t|
   t.integer  "slack_channel_id", limit: 4,                              default: 0, null: false
   t.integer  "slack_user_id",    limit: 4
-  t.string   "username",         limit: 255
-  t.text     "icon",             limit: 65535
   t.decimal  "ts",                             precision: 16, scale: 6
   t.text     "text",             limit: 65535
-  t.text     "attachments",      limit: 65535
-  t.text     "file",             limit: 65535
   t.datetime "created_at",                                                          null: false
   t.datetime "updated_at",                                                          null: false
+  t.text     "attachments",      limit: 65535
+  t.text     "file",             limit: 65535
+  t.string   "username",         limit: 255
+  t.text     "icon",             limit: 65535
 end
 
 add_index "slack_messages", ["slack_channel_id", "slack_user_id", "ts"], name: "channel_user_ts_index", unique: true, using: :btree
@@ -169,8 +182,8 @@ add_index "slack_messages", ["ts"], name: "ts", using: :btree
 
 create_table "slack_messages_summaries", force: :cascade do |t|
   t.integer "slack_message_id", limit: 4, null: false
-  t.integer "summary_id",       limit: 4, null: false
   t.integer "row_order",        limit: 4
+  t.integer "summary_id",       limit: 4, null: false
 end
 
 add_index "slack_messages_summaries", ["slack_message_id", "summary_id"], name: "index_slack_messages_summaries_message_and_summary", using: :btree
@@ -189,9 +202,9 @@ create_table "twitter2slack_conditions", force: :cascade do |t|
   t.string   "text",             limit: 255,                 null: false
   t.integer  "slack_channel_id", limit: 4,                   null: false
   t.integer  "last_tweet",       limit: 8,   default: 0,     null: false
-  t.boolean  "quote",                        default: false, null: false
   t.datetime "created_at",                                   null: false
   t.datetime "updated_at",                                   null: false
+  t.boolean  "quote",                        default: false, null: false
 end
 
 add_index "twitter2slack_conditions", ["slack_channel_id"], name: "index_twitter2slack_conditions_on_slack_channel_id", using: :btree
@@ -226,11 +239,12 @@ create_table "video_site_search_conditions", force: :cascade do |t|
 end
 
 create_table "videos", force: :cascade do |t|
-  t.string   "url",                    limit: 255, null: false
+  t.string   "url",                    limit: 255,             null: false
   t.string   "video_id",               limit: 255
-  t.string   "video_site",             limit: 255, null: false
-  t.string   "title",                  limit: 255, null: false
-  t.datetime "posted_at",                          null: false
+  t.string   "video_site",             limit: 255,             null: false
+  t.string   "title",                  limit: 255,             null: false
+  t.integer  "video_matchups_count",   limit: 4,   default: 0, null: false
+  t.datetime "posted_at",                                      null: false
   t.datetime "created_at"
   t.datetime "updated_at"
   t.string   "thumbnail_file_name",    limit: 255
