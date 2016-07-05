@@ -17,10 +17,9 @@
           - if activity_type(activity) == 'Event'
             = render 'activities/event', activity: activity, owner: activity.owner.decorate
           - if activity_type(activity) == 'Entry'
-            = render 'activities/entry', activity: activity, owner: activity.owner.decorate
-          - if activity_type(activity) == 'Video'
             = render 'activities/video', activity: activity
-          hr
+          - if !activity_type(activity).nil?
+            hr
         .u-text-center
           = paginate @activities
 
