@@ -1,12 +1,13 @@
-.card.p-b-2
-  .card-block
-    = render 'shared/item_header', item: @page
-    .m-t-1
-      = tw(page_url, "#{@page.title} - Reversal Page")
-    hr
-    == @page.description
-    hr
-    = render 'shared/item_authority', current_user: @current_user, item: @page, edit_path: edit_page_path, delete_path: page_path(@page), redirect_path: rlogs_path
+#page-show
+  .card.p-b-2
+    .card-block
+      = render 'shared/item_header', item: @page
+      .m-t-1
+        = tw(page_url, "#{@page.title} - Reversal Page")
+      hr
+      == @page.description
+      hr
+      = render 'shared/item_authority', current_user: @current_user, item: @page, edit_path: edit_page_path, delete_path: page_path(@page), redirect_path: rlogs_path
 
 - content_for :title do
   = @page.title
