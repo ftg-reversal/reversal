@@ -1,12 +1,16 @@
 .row
   .p-profile.col-lg-4.col-md-5
     = render 'profile', user: @user, current_user: @current_user
-  .channel-history.col-lg-8.col-md-7
+  .col-lg-8.col-md-7
     .card
       .card-block
         = render 'nav', user: @user
-        = render 'rlogs/rlog_list', rlogs: @rlogs
-        = paginate @rlogs
+        - @items.each do |item|
+          - if item.class == Page || item.class == Summary
+            = render 'rlog', rlog: item, user: item.reversal_user.decorate
+          - elsif item.class == PublicActivity::Activity
+            = render 'shared/activity', activity: item
+        = paginate @items
 
 - content_for :title do
   = "Profile #{@user.name}"

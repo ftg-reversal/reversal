@@ -9,6 +9,7 @@ module Batch
         TwitterInfrastructure::Client.ads_client
       end
 
+      # rubocop:disable Metrics/LineLength
       def tweet_data
         [
           '【宣伝】Reversalの目玉機能として「動画検索」があります。 キャラを指定して動画を検索し、自キャラの攻略に役立つ動画をすぐに見つけられます。 対戦組み合わせも表示され、対戦開始時間から動画を再生することができます。 http://twitter.com/ftg_reversal/status/747416383869247488/photo/1',
@@ -19,6 +20,7 @@ module Batch
           '【宣伝】動画・ページ・イベント・エントリーなどの新着情報をTOPページでアクティビティという形で確認出来ます。いち早く最新の情報を確認するのに便利です。個人のアクティビティについてもプロフィールページから見ることができます。 http://twitter.com/ftg_reversal/status/749851041160540160/photo/1'
         ]
       end
+      # rubocop:enable Metrics/LineLength
     end
   end
 end

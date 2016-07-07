@@ -1,0 +1,5 @@
+- if rlog.type == 'Page'
+  = render 'rlogs/item_short', rlog: rlog, path: page_path(rlog), user: rlog.reversal_user.decorate
+- elsif rlog.type == 'Summary'
+  = render 'rlogs/item_short', rlog: rlog, path: summary_path(rlog), user: rlog.reversal_user.decorate
+hr

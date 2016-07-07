@@ -1,0 +1,24 @@
+- if @current_user
+  = link_to '#', data: { behavior: 'good', url: event_good_url(event), user: @current_user.id, type: 'Event', id: event.id, title: "#{event.title} - Reversal Event" } do
+    .p-good-button
+      - if event.good?(@current_user)
+        button.good-button.is-good.m-r-1
+          img src=asset_path('good-icon.png')
+          | ：
+          span = "#{event.goods.size}"
+      - else
+        button.good-button.m-r-1
+          img src=asset_path('good-icon.png')
+          | ：
+          span = "#{event.goods.size}"
+
+      = good_tw(event_url(event), "#{event.title} - Reversal Event", event.good?(@current_user))
+- else
+  a href=login_with_redirect_url(event_path)
+    .p-good-button
+      button.good-button.m-r-1
+        img src=asset_path('good-icon.png')
+        | ：
+        span = "#{event.goods.size}"
+
+      = good_tw(event_url(event), "#{event.title} - Reversal Event", event.good?(@current_user))

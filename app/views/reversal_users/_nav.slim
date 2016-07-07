@@ -1,7 +1,8 @@
-ul.nav.nav-tabs
-  li.nav-item
-    a.nav-link href=rlog_user_path(user.screen_name) class="#{active_link_to_class(rlog_user_path(user.screen_name), class_active: 'active')}"
-      | 作成したページ
-  li.nav-item
-    a.nav-link href=activity_user_path(user.screen_name) class="#{active_link_to_class(activity_user_path(user.screen_name), class_active: 'active')}"
-      | アクティビティ
+.p-profile-nav
+  ul.nav.nav-tabs
+    li.nav-item
+      a.nav-link href=rlog_user_path(user.screen_name) class="#{active_link_to_class(rlog_user_path(user.screen_name), class_active: 'active')}"
+        | 作成ページ
+    li.nav-item
+      a.nav-link href=activity_user_path(user.screen_name) class="#{active_link_to_class(activity_user_path(user.screen_name), class_active: 'active')}"
+        | アクティビティ

@@ -4,8 +4,7 @@
   .media-body
     p.
       a href=user_path(owner.screen_name) = "#{owner.name}"
-      |  さんが
-      | イベント
+      |  さんがイベント
       a href=event_path(activity.trackable) = activity.trackable.title
       - if activity.key.include?('create')
         |  を作成しました。

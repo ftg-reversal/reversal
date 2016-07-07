@@ -1,6 +1,7 @@
 class PagesController < RlogsController
   before_action :set_page, only: [:show, :edit, :update, :destroy]
   before_action :ensure_permission, only: [:edit, :update, :destroy]
+  before_action :set_good, only: [:show]
 
   def index
     @pages = Page.includes(:reversal_user).order('updated_at DESC').page(params[:page])
@@ -55,5 +56,9 @@ class PagesController < RlogsController
 
   def ensure_permission
     redirect_to '/' unless @page.reversal_user == @current_user || @current_user.admin?
+  end
+
+  def set_good
+    @good = Good.user(@current_user).type('Rlog').id(@page.id).first
   end
 end

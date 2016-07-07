@@ -6,6 +6,7 @@
 #  reversal_user_id :integer          not null
 #  goodable_id      :integer
 #  goodable_type    :string(255)
+#  link             :string(255)      not null
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #
@@ -17,11 +18,14 @@
 #
 
 class Good < ActiveRecord::Base
+  include PublicActivity::Model
+
   belongs_to :goodable, polymorphic: true
   belongs_to :reversal_user
 
   validates :reversal_user, presence: true
   validates :reversal_user, uniqueness: { scope: [:goodable_id, :goodable_type] }
+  validates :link, presence: true
 
   scope :user, -> (user) { where(reversal_user: user) }
   scope :type, -> (type) { where(goodable_type: type) }

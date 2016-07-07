@@ -4,7 +4,13 @@ class Event::GoodsController < ApplicationController
   before_action :set_good, only: [:destroy]
 
   def update
-    render json: @event.goods.create!(reversal_user: @current_user)
+    good = @event.goods.create!(
+      reversal_user: @current_user,
+      link: {title: @event.title, url: event_path(@event)}.to_json
+    )
+    good.create_activity :create, owner: @current_user
+
+    render json: good
   end
 
   def destroy

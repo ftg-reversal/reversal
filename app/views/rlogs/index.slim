@@ -2,7 +2,8 @@
   .card
     .card-block
       = render 'nav'
-      = render 'rlog_list', rlogs: @rlogs
+      - @rlogs.each do |rlog|
+        = render 'shared/rlog', rlog: rlog
       = paginate @rlogs
 
 - content_for :title do

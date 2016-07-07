@@ -1,13 +1,14 @@
 - if current_user && (current_user == item.reversal_user || current_user.admin?)
-  nav.nav.nav-inline.pull-right
-    - if current_user && current_user == item.reversal_user
-      a.nav-link data-turbolinks="false" href=edit_path
-        i.fa.fa-pencil
-        | &nbsp;編集
-      = link_to item, data: { behavior: 'delete', redirect_to: redirect_path }, class: 'nav-link' do
-        i.fa.fa-remove
-        | &nbsp;削除
-    - if current_user&.admin?
-      = link_to item, data: { behavior: 'delete', redirect_to: redirect_path }, class: 'nav-link' do
-        i.fa.fa-remove
-        | &nbsp;管理者削除
+  .clearfix
+    nav.nav.nav-inline.pull-right
+      - if current_user && current_user == item.reversal_user
+        a.nav-link data-turbolinks="false" href=edit_path
+          i.fa.fa-pencil
+          | &nbsp;編集
+        = link_to item, data: { behavior: 'delete', redirect_to: redirect_path }, class: 'nav-link' do
+          i.fa.fa-remove
+          | &nbsp;削除
+      - if current_user&.admin?
+        = link_to item, data: { behavior: 'delete', redirect_to: redirect_path }, class: 'nav-link' do
+          i.fa.fa-remove
+          | &nbsp;管理者削除

@@ -1,0 +1,20 @@
+- if @current_user
+  = link_to '#', data: { behavior: 'good', url: video_good_path(video), user: @current_user.id, type: 'video', id: video.id, title: "#{video.title} - Reversal video" } do
+    .p-good-button
+      - if video.good?(@current_user)
+        button.good-sm-button.is-good.m-r-1
+          img src=asset_path('good-icon.png')
+          | ：
+          span = "#{video.goods.size}"
+      - else
+        button.good-sm-button.m-r-1
+          img src=asset_path('good-icon.png')
+          | ：
+          span = "#{video.goods.size}"
+- else
+  a href=login_with_redirect_url(videos_path)
+    .p-good-button
+      button.good-sm-button.m-r-1
+        img src=asset_path('good-icon.png')
+        | ：
+        span = "#{video.goods.size}"

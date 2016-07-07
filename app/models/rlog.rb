@@ -27,6 +27,6 @@ class Rlog < ActiveRecord::Base
   has_many :slack_messages, through: :slack_messages_summaries
   has_many :goods, as: :goodable, dependent: :destroy
 
-  validates :title, presence: true
+  validates :title, presence: true, length: { maximum: 100 }
   validates :reversal_user, presence: true
 end

@@ -1,24 +1,46 @@
 .p-good-button
-  button
+  img
+    padding-bottom: 3px
+
+  @mixin m-p-good-button
     @extend .btn
     @extend .btn-sm
-
     color: white
-    width: 120px
+
+  .good-button
+    +m-p-good-button
+    width: 100px
     height: 28px
     background: #ccc
+    transition: background .3s
 
     &:focus
       outline: none
 
+    &:hover
+      background: #6F0204
+
+  .good-sm-button
+    +m-p-good-button
+    width: 80px
+    height: 20px
+    padding-top: 0
+    font-size: .8rem
+    background: #ccc
+    transition: background .3s
+
+    &:focus
+      outline: none
+
+    &:hover
+      background: #6F0204
+
   .is-good
     background: #6F0204
 
-  .tweet-button
-    @extend .btn
-    @extend .btn-sm
-    color: white
-    width: 120px
+  .good-tweet-button
+    +m-p-good-button
+    width: 100px
     height: 28px
     background: #55acee
 

@@ -1,0 +1,24 @@
+- if @current_user
+  = link_to '#', data: { behavior: 'good', url: summary_good_url(summary), user: @current_user.id, type: 'Rlog', id: summary.id, title: "#{summary.title} - Reversal Summary" } do
+    .p-good-button
+      - if summary.good?(@current_user)
+        button.good-button.is-good.m-r-1
+          img src=asset_path('good-icon.png')
+          | ：
+          span = "#{summary.goods.size}"
+      - else
+        button.good-button.m-r-1
+          img src=asset_path('good-icon.png')
+          | ：
+          span = "#{summary.goods.size}"
+
+      = good_tw(summary_url(summary), "#{summary.title} - Reversal Summary", summary.good?(@current_user))
+- else
+  a href=login_with_redirect_url(summary_path)
+    .p-good-button
+      butto.good-button.m-r-1
+        img src=asset_path('good-icon.png')
+        | ：
+        span = "#{summary.goods.size}"
+
+      = good_tw(summary_url(summary), "#{summary.title} - Reversal Summary", summary.good?(@current_user))

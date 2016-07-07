@@ -68,6 +68,7 @@ group :development, :test do
   gem 'pry-doc'
   gem 'pry-stack_explorer'
   gem 'quiet_assets'
+  gem 'rack-mini-profiler', require: false
   gem 'rails-erd'
   gem 'rails_best_practices', require: false
   gem 'rubocop', require: false, git: 'https://github.com/bbatsov/rubocop'

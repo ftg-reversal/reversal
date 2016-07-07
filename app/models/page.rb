@@ -21,4 +21,8 @@
 class Page < Rlog
   validates :description, presence: true
   include PublicActivity::Model
+
+  def good?(user)
+    !Good.user(user).type('Rlog').id(id).empty?
+  end
 end

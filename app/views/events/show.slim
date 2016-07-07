@@ -6,75 +6,34 @@
       hr
 
       = render 'event_header', event: @event, user: @event.reversal_user.decorate, entry_count: @entries.size
-      .m-t-1
-        = tw(event_url, "#{@event.title} - Reversal Event")
       hr
-      h3 概要
-      == @event.description
+      .ckeditor-text
+        h3 概要
+        == @event.description
 
-      = render 'shared/item_authority', current_user: @current_user, item: @event, edit_path: edit_event_path, delete_path: event_path(@event), redirect_path: events_path
+        = render 'shared/item_authority', current_user: @current_user, item: @event, edit_path: edit_event_path, delete_path: event_path(@event), redirect_path: events_path
 
-      hr.m-y-3
+        hr.m-y-3
 
-      - if !@event.can_entry?
-        .row
-          .col-md-4.col-md-offset-4
-            button.btn.btn-primary.btn-lg.btn-block disabled='disabled'
-              | エントリー終了
-      - elsif @user && !(@entries.map(&:user).include?(@user))
-        = render 'entry', event: @event, entries: @entries, entry: @entry, user: @user
-      - elsif @user
-        = render 'cancel_entry', event: @event, entry: @user_entry
-      - else
-        .row
-          .col-md-4.col-md-offset-4
-            a href=login_with_redirect_url(event_path)
-              button.btn.btn-primary.btn-lg.btn-block
-                | エントリーする
+        - if !@event.can_entry?
+          .row
+            .col-md-4.col-md-offset-4
+              button.btn.btn-primary.btn-lg.btn-block disabled='disabled'
+                | エントリー終了
+        - elsif @user && !(@entries.map(&:user).include?(@user))
+          = render 'entry', event: @event, entries: @entries, entry: @entry, user: @user
+        - elsif @user
+          = render 'cancel_entry', event: @event, entry: @user_entry
+        - else
+          .row
+            .col-md-4.col-md-offset-4
+              a href=login_with_redirect_url(event_path)
+                button.btn.btn-primary.btn-lg.btn-block
+                  | エントリーする
 
-      hr.m-y-3
+        hr.m-y-3
 
-      p.lead エントリーメンバー
-      table.table.table-striped.hidden-xs-down
-        thead
-          tr
-            th プレイヤー名
-            th キャラ
-            th 段位
-            th コメント
-        tbody
-          - @entries.each do |entry|
-            tr
-              td.norwap
-                - entry.entry_player.each do |player|
-                  = player.name
-                  br
-              td.u-nowrap
-                - entry.entry_player.each do |player|
-                  = player.chara.name
-                  br
-              td.u-nowrap
-                - entry.entry_player.each do |player|
-                  = player.rank.rank
-                  br
-              td
-                = entry.comment
-
-      .hidden-md-up
-        - @entries.each_with_index do |entry, i|
-          - i += 1
-          - if @event.number != 1
-            h3.team-name  = "チーム#{i}"
-          - entry.entry_player.each do |player|
-            p
-              = player.name
-              br
-              = "　使用キャラ：#{player.chara.name}　段位：#{player.rank.rank}"
-          p
-            = "コメント"
-            br
-            = "　#{entry.comment}"
-          hr
+        = render 'member', event: @event, entries: @entries
 
   - content_for :title do
     = @event.title

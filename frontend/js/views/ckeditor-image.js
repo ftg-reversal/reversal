@@ -1,7 +1,6 @@
 function onLoad() {
-  Array.prototype.map.call(document.querySelectorAll('.ckeditor'),  (e) => {
-    CKEDITOR.replace(e);
-  });
+  $('.ckeditor-text').find('img').removeAttr('width height');
+  $('.ckeditor-text').find('img').addClass('u-image-responsive');
 }
 
 window.addEventListener('DOMContentLoaded', onLoad);

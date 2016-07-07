@@ -1,11 +1,12 @@
 .row
   .p-profile.col-lg-4.col-md-5
     = render 'profile', user: @user, current_user: @current_user
-  .channel-history.col-lg-8.col-md-7
+  .col-lg-8.col-md-7
     .card
       .card-block
         = render 'nav', user: @user
-        = render 'rlogs/rlog_list', rlogs: @rlogs
+        - @rlogs.each do |rlog|
+          = render 'shared/rlog', rlog: rlog
         = paginate @rlogs
 
 - content_for :title do

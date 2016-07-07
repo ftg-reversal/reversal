@@ -1,0 +1,28 @@
+.media
+  a.media-left href=user_path(rlog.reversal_user.screen_name)
+    img.c-user-icon.media-object src=rlog.reversal_user.icon_url title=rlog.reversal_user.name
+  .media-body
+    .row
+      .col-md-12.col-lg-9
+        .clearfix
+          - if rlog.type == 'Page'
+            a href=page_path(rlog)
+              h3.media-heading.pull-md-left.m-r-1 = rlog.title
+          - if rlog.type == 'Summary'
+            a href=summary_path(rlog)
+              h3.media-heading.pull-md-left.m-r-1 = rlog.title
+        p.pulli-md-left.m-r-1
+          | 作成者：
+          a href=user_path(rlog.reversal_user.screen_name)
+            = "#{user.name}"
+        p = "最終更新：#{time_ago_in_words(rlog.updated_at)}前"
+      .col-lg-3.u-text-right.hidden-md-down
+        .p-good-count
+          span.label
+            button.good-label
+              i.fa.fa-thumbs-o-up = "：#{rlog.goods.size}"
+      .col-md-12.hidden-lg-up
+        .p-good-count
+          span.label
+            button.good-label
+              i.fa.fa-thumbs-o-up = "：#{rlog.goods.size}"

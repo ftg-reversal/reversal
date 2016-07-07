@@ -14,3 +14,5 @@
       a href=user_path(user.screen_name) = "#{user.name}"
     p.text-muted
       | 更新日時：#{time_ago_in_words(event.updated_at)}前
+
+    = render 'good', event: event

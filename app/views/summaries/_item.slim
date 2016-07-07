@@ -9,12 +9,12 @@ hr
 - messages.each do |message|
   .slack-message.media
     .slack-icon.media-object.pull-left
-      a.media-left href='#'
+      .media-left
         img src=message.icon
     .media-body
       .media-heading
         h4.pull-left
-          a href='#' #{message.username}
+          a href=user_path(summary.reversal_user.screen_name) #{message.username}
         small.m-l-1 #{l(message.date)}
         p #{message.format_text}
       - if message.image

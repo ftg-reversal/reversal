@@ -1,0 +1,12 @@
+#video-show
+  .card
+    .card-block
+      = render 'page_header', page: @page
+      hr
+      .ckeditor-text
+        == @page.description
+      hr
+      = render 'shared/item_authority', current_user: @current_user, item: @page, edit_path: edit_page_path, delete_path: page_path(@page), redirect_path: rlogs_path
+
+- content_for :title do
+  = @page.title

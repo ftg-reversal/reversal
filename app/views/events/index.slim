@@ -6,7 +6,7 @@
           a.nav-link href=events_path class="#{active_link_to_class(events_path, active: /^\/events$/, class_active: 'active')}"
             | イベント一覧
         li.nav-item
-          a.nav-link href=archived_event_path(@events) class="#{active_link_to_class(archived_event_path(@events), class_active: 'active')}"
+          a.nav-link href=archived_event_path class="#{active_link_to_class(archived_event_path, class_active: 'active')}"
             | 過去一覧
       - @events.each do |event|
         = render 'item_short', event: event, user: event.reversal_user.decorate

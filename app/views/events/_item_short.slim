@@ -1,32 +1,26 @@
 .media
   a.media-left href=user_path(user.screen_name)
     img.c-user-icon.media-object src=user.icon_url title=user.name
+
   .media-body
-    a href=event_path(event)
-      h3.media-heading = event.title
-    p.event-info
-      | 開催日：#{l(event.datetime)}
-    p.event-info.pull-left.m-r-2
-      | エントリー締め切り：#{l(event.entry_deadline || event.datetime)}
-    p.event-info
-      | エントリー数：#{event.entry.size}人
-    p.pull-left.m-r-1
-      | 作成者：
-      a href=user_path(user.screen_name) = "#{user.name}"
-    p = "最終更新：#{time_ago_in_words(event.updated_at)}前"
-
-    = link_to '#', data: { behavior: 'good', url: event_good_path(event), user: @current_user.id, type: 'Event', id: event.id, title: "#{event.title} - Reversal Event" } do
-      .p-good-button
-        - if event.good?(@current_user)
-          button.is-good.m-r-2
-            img src=asset_path('good-icon.png')
-            | ：
-            span = "#{event.goods.size}"
-        - else
-          button.m-r-2
-            img src=asset_path('good-icon.png')
-            | ：
-            span = "#{event.goods.size}"
-
-        = good_tw(event_url(event), "#{event.title} - Reversal Event", event.good?(@current_user))
+    .row
+      .col-md-10
+        .clearfix
+          a href=event_path(event)
+            h3.media-heading.pull-left.m-r-1 = event.title
+        p.event-info
+          | 開催日：#{l(event.datetime)}
+        p.event-info.pull-left.m-r-2
+          | エントリー締め切り：#{l(event.entry_deadline || event.datetime)}
+        p.event-info
+          | エントリー数：#{event.entry.size}人
+        p.pull-left.m-r-1
+          | 作成者：
+          a href=user_path(user.screen_name) = "#{user.name}"
+        p = "最終更新：#{time_ago_in_words(event.updated_at)}前"
+      .col-md-2.u-text-right
+        .p-good-count
+          span.label
+            button.good-label
+              i.fa.fa-thumbs-o-up = "：#{event.goods.size}"
 hr

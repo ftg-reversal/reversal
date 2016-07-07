@@ -1,27 +1,14 @@
 .row
   .p-profile.col-lg-4.col-md-5
     = render 'profile', user: @user, current_user: @current_user
-  .channel-history.col-lg-8.col-md-7
+  .col-lg-8.col-md-7
     .card
       .card-block
         = render 'nav', user: @user
         - @activities.each do |activity|
-          - if activity_type(activity) == 'ReversalUser' && activity.trackable
-            = render 'activities/user', activity: activity, owner: activity.owner.decorate
-          - if activity_type(activity) == 'Rlog' && activity.trackable
-            = render 'activities/rlog', activity: activity, owner: activity.owner.decorate
-          - if activity_type(activity) == 'Page' && activity.trackable
-            = render 'activities/rlog', activity: activity, owner: activity.owner.decorate
-          - if activity_type(activity) == 'Summary' && activity.trackable
-            = render 'activities/rlog', activity: activity, owner: activity.owner.decorate
-          - if activity_type(activity) == 'Event' && activity.trackable
-            = render 'activities/event', activity: activity, owner: activity.owner.decorate
-          - if activity_type(activity) == 'Entry' && activity.trackable
-            = render 'activities/entry', activity: activity, owner: activity.owner.decorate
-          - if !activity_type(activity).nil?
-            hr
+          = render 'shared/activity', activity: activity
         .u-text-center
           = paginate @activities
 
 - content_for :title do
-  = "Profile ##{@user.name}"
+  = "#{@user.name} Profile "

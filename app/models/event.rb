@@ -25,6 +25,7 @@
 
 class Event < ActiveRecord::Base
   include Goodable
+  include PublicActivity::Model
 
   has_many :entry, dependent: :destroy
   has_many :goods, as: :goodable, dependent: :destroy
@@ -43,10 +44,8 @@ class Event < ActiveRecord::Base
   scope :upcoming, -> () { where('datetime >= ?', tomorrow).including_user }
   scope :finished, -> () { where('datetime < ?', tomorrow).including_user }
 
-  include PublicActivity::Model
-
   def good?(user)
-    Good.user(user).type('Event').id(id).size != 0
+    !Good.user(user).type('Event').id(id).empty?
   end
 
   def can_entry?

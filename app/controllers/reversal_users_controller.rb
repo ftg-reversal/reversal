@@ -1,6 +1,8 @@
 class ReversalUsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :participate, :activity, :rlog, :event]
   before_action :ensure_permission, only: [:edit, :update]
+  before_action :set_rlogs, only: [:show, :rlog]
+  before_action :set_activities, only: [:show, :activity]
 
   def index
     users = ReversalUser.including_user.order('updated_at DESC').page(params[:page]).per(24)
@@ -8,7 +10,7 @@ class ReversalUsersController < ApplicationController
   end
 
   def show
-    @rlogs = Rlog.includes(:reversal_user).where(reversal_user: @user).page(params[:page])
+    @items = Kaminari.paginate_array(@rlogs.concat(@activities).sort { |a, b| a.updated_at <=> b.updated_at }).page(params[:page])
   end
 
   def edit
@@ -38,7 +40,6 @@ class ReversalUsersController < ApplicationController
   end
 
   def rlog
-    @rlogs = Rlog.includes(:reversal_user).where(reversal_user: @user).page(params[:page])
   end
 
   def event
@@ -48,6 +49,20 @@ class ReversalUsersController < ApplicationController
 
   def set_user
     @user = ReversalUser.find_by(screen_name: params[:screen_name]).decorate
+  end
+
+  def set_rlogs
+    @rlogs = Rlog.includes(:reversal_user).where(reversal_user: @user).page(params[:page])
+  end
+
+  def set_activities
+    @activities = PublicActivity::Activity.includes(:owner)
+                                          .includes(:trackable)
+                                          .includes(:recipient)
+                                          .where(owner: @user)
+                                          .order('updated_at DESC')
+                                          .limit(50)
+                                          .to_a
   end
 
   def user_params

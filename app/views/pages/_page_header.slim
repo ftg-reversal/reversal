@@ -1,0 +1,13 @@
+.page-header.media
+  a.media-left href=user_path(page.reversal_user.screen_name)
+    img.c-user-icon.media-object src=page.reversal_user.icon_url title=page.reversal_user.name
+  .media-body
+    h2.media-heading = page.title
+    .m-t-1
+      p.pull-left.text-muted.m-r-1
+        | 作成者：
+        a href=user_path(page.reversal_user.screen_name) #{page.reversal_user.name}
+      p.text-muted
+        | 更新日時：#{time_ago_in_words(page.updated_at)}前
+
+    = render 'good', page: page

@@ -10,6 +10,7 @@
 #                  PUT    /videos/:video_id/good(.:format)         video/goods#update
 #                  DELETE /videos/:video_id/good(.:format)         video/goods#destroy
 #           videos GET    /videos(.:format)                        videos#index
+#            video GET    /videos/:id(.:format)                    videos#show
 #         channels GET    /channels(.:format)                      slack_channels#index
 #          channel GET    /channels/:id(.:format)                  slack_channels#show
 #            rlogs GET    /rlogs(.:format)                         rlogs#index
@@ -41,7 +42,6 @@
 #                  PATCH  /events/:event_id/good(.:format)         event/goods#update
 #                  PUT    /events/:event_id/good(.:format)         event/goods#update
 #                  DELETE /events/:event_id/good(.:format)         event/goods#destroy
-#   archived_event GET    /events/:id/archived(.:format)           events#archived
 #           events GET    /events(.:format)                        events#index
 #                  POST   /events(.:format)                        events#create
 #        new_event GET    /events/new(.:format)                    events#new
@@ -50,6 +50,7 @@
 #                  PATCH  /events/:id(.:format)                    events#update
 #                  PUT    /events/:id(.:format)                    events#update
 #                  DELETE /events/:id(.:format)                    events#destroy
+#   archived_event GET    /event/archived(.:format)                events#archived
 #          entries POST   /entries(.:format)                       entries#create
 #            entry DELETE /entries/:id(.:format)                   entries#destroy
 #            users GET    /users(.:format)                         reversal_users#index
@@ -86,7 +87,7 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback', to: 'sessions#create'
   resource :session, only: [:destroy]
 
-  resources :videos, only: [:index] do
+  resources :videos, only: [:index, :show] do
     resource :good, module: :video, only: [:show, :update, :destroy]
   end
 
@@ -103,10 +104,14 @@ Rails.application.routes.draw do
 
   resources :events do
     resource :good, module: :event, only: [:show, :update, :destroy]
+  end
+
+  resource :event, only: [] do
     member do
       get :archived
     end
   end
+
   resources :entries, only: [:create, :destroy]
 
   resources :reversal_users, path: :users, as: :users, only: [:index]

@@ -65,7 +65,7 @@ export default {
 
     loaders: [
       { test: /.jsx?$/, loader: 'babel-loader', exclude: /node_modules/ },
-      { test: /\.jade$/, loader: 'jade' },
+      { test: /\.vue/, loader: 'vue' },
       { test: /\.css$/, loader: cssLoader },
       { test: /\.(sass|scss)$/, loader: sassLoader },
       { test: /\.jpg$/, loader: 'url' },
@@ -77,7 +77,7 @@ export default {
   },
 
   resolve: {
-    extensions: ['', '.js', '.css', '.sass', '.scss'],
+    extensions: ['', '.js', '.css', '.sass', '.scss', '.vue'],
     root: [
       path.resolve('./frontend/js'),
       path.resolve('./frontend/css')

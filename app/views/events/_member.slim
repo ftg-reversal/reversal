@@ -1,0 +1,42 @@
+p.lead エントリーメンバー
+table.table.table-striped.hidden-xs-down
+  thead
+    tr
+      th プレイヤー名
+      th キャラ
+      th 段位
+      th コメント
+  tbody
+    - entries.each do |entry|
+      tr
+        td.norwap
+          - entry.entry_player.each do |player|
+            = player.name
+            br
+        td.u-nowrap
+          - entry.entry_player.each do |player|
+            = player.chara.name
+            br
+        td.u-nowrap
+          - entry.entry_player.each do |player|
+            = player.rank.rank
+            br
+        td
+          = entry.comment
+
+.hidden-md-up
+  - entries.each_with_index do |entry, i|
+    - i += 1
+    - if event.number != 1
+      h3.team-name  = "チーム#{i}"
+    - entry.entry_player.each do |player|
+      p
+        = player.name
+        br
+        = "　使用キャラ：#{player.chara.name}　段位：#{player.rank.rank}"
+    p
+      = "コメント"
+      br
+      = "　#{entry.comment}"
+    hr
+

@@ -14,6 +14,7 @@
         p
           .card-subtitle.text-muted.u-nowrap = external_user_link(user)
   .card-block.p-t-0.clearfix
+    = tw(user_url(user.screen_name), "#{user.name} Profile - Reversal")
     p = auto_link(user.bio)
     p = "使用キャラ：#{user&.chara&.name}"
     p = "段位：#{user&.rank&.rank}"

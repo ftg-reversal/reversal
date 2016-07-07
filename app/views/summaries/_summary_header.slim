@@ -1,0 +1,13 @@
+.p-item-header.media
+  a.media-left href=user_path(summary.reversal_user.screen_name)
+    img.c-user-icon.media-object src=summary.reversal_user.icon_url title=summary.reversal_user.name
+  .media-body
+    h2.media-heading = summary.title
+    .m-t-1
+      p.pull-left.text-muted.m-r-1
+        | 作成者：
+        a href=user_path(summary.reversal_user.screen_name) #{summary.reversal_user.name}
+      p.text-muted
+        | 更新日時：#{time_ago_in_words(summary.updated_at)}前
+
+    = render 'good', summary: summary

@@ -24,4 +24,8 @@ class Summary < Rlog
   has_many :slack_messages, through: :slack_messages_summaries
 
   include PublicActivity::Model
+
+  def good?(user)
+    !Good.user(user).type('Rlog').id(id).empty?
+  end
 end

@@ -1,11 +1,9 @@
-require 'json'
-
 module ImperialInfrastructure
   class MatchupDetector
     class << self
       def exec(video_id)
         string_io = open("http://imperial/20/100/#{video_id}", read_timeout: timeout)
-        JSON.parse(string_io.read)
+        ActiveSupport::JSON.decode(string_io.read)
       rescue
         {}
       end

@@ -1,10 +1,24 @@
 .media
-  a.media-left href='#'
+  a.media-left href=user_path(rlog.reversal_user.screen_name)
     img.c-user-icon.media-object src=rlog.reversal_user.icon_url title=rlog.reversal_user.name
   .media-body
-    a href=path
-      h3.media-heading = rlog.title
-    p.pull-left.m-r-1
-      | 作成者：
-      a href=user_path(rlog.reversal_user.screen_name) = "#{user.name}"
-    p = "最終更新：#{time_ago_in_words(rlog.updated_at)}前"
+    .row
+      .col-md-10
+        .clearfix
+          a href=path
+            h3.media-heading.pull-md-left.m-r-1 = rlog.title
+        p.pulli-md-left.m-r-1
+          | 作成者：
+          a href=user_path(rlog.reversal_user.screen_name)
+            = "#{user.name}"
+        p = "最終更新：#{time_ago_in_words(rlog.updated_at)}前"
+      .col-md-2.u-text-right.hidden-sm-down
+        .p-good-count
+          span.label
+            button.good-label
+              i.fa.fa-thumbs-o-up = "：#{rlog.goods.size}"
+      .col-md-2.u-text-left.hidden-md-up
+        .p-good-count
+          span.label
+            button.good-label
+              i.fa.fa-thumbs-o-up = "：#{rlog.goods.size}"
