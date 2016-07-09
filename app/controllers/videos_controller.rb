@@ -1,5 +1,5 @@
 class VideosController < ApplicationController
-  before_action :set_page, only: [:show]
+  before_action :set_video, only: [:show]
   before_action :set_good, only: [:show]
 
   def index
@@ -13,7 +13,7 @@ class VideosController < ApplicationController
   private
 
   def set_video
-    @video = Video.includes(video_matchups: [:chara1, :chara2]).find(params[:video_id])
+    @video = Video.includes(video_matchups: [:chara1, :chara2]).find(params[:id])
   end
 
   def set_good

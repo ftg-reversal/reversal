@@ -1,12 +1,21 @@
 #video-show
   .card
     .card-block
-      = render 'page_header', page: @page
+      h2.media-heading = @video.title
+      span
+        a href=@video.url ニコニコに飛ぶ
       hr
-      .ckeditor-text
-        == @page.description
-      hr
-      = render 'shared/item_authority', current_user: @current_user, item: @page, edit_path: edit_page_path, delete_path: page_path(@page), redirect_path: rlogs_path
+      .row
+        .col-lg-6
+          script type="text/javascript" src="http://ext.nicovideo.jp/thumb_watch/#{@video.video_id}?w=440&h=275"
+        .col-lg-6
+          .card.u-bg-gray
+            .card-block
+              p 対戦組み合わせ
+              ul
+                - @video.video_matchups.each do |matchup|
+                  = render 'videos/matchup', matchup: matchup, video: video
+hr
 
 - content_for :title do
-  = @page.title
+  = @video.title
