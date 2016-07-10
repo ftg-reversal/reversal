@@ -2,8 +2,9 @@
   .card
     .card-block
       = render 'rlogs/nav'
-      - @summaries.each do |summary|
-        = render 'rlogs/item_short', rlog: summary, path: summary_path(summary), user: summary.reversal_user.decorate
+      .p-short-item-list
+        - @summaries.each do |summary|
+          = render 'rlogs/item_short', rlog: summary, path: summary_path(summary), user: summary.reversal_user.decorate
       = paginate @summaries
 
 - content_for :title do
