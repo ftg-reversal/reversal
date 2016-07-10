@@ -1,19 +1,20 @@
-.media
-  a.media-left href=user_path(owner.screen_name)
-    img.media-object src=owner.icon_url title=owner.name
-  .media-body
-    p
-      a href=user_path(owner.screen_name) = "#{owner.name}"
-      |  さんが
-      - if activity.trackable.type == 'Page'
-        | ページ 
-        a href=page_path(activity.trackable) = activity.trackable.title
-      - elsif activity.trackable.type == 'Summary'
-        | まとめ 
-        a href=summary_path(activity.trackable) = activity.trackable.title
-      - if activity.key.include?('create')
-        |  を作成しました。
-      - elsif activity.key.include?('update')
-        |  を更新しました。
+.p-user-activity
+  .media
+    a.media-left href=user_path(owner.screen_name)
+      img.media-object src=owner.icon_url title=owner.name
+    .media-body
+      p
+        a href=user_path(owner.screen_name) = "#{owner.name}"
+        |  さんが
+        - if activity.trackable.type == 'Page'
+          | ページ 
+          a href=page_path(activity.trackable) = activity.trackable.title
+        - elsif activity.trackable.type == 'Summary'
+          | まとめ 
+          a href=summary_path(activity.trackable) = activity.trackable.title
+        - if activity.key.include?('create')
+          |  を作成しました。
+        - elsif activity.key.include?('update')
+          |  を更新しました。
 
-    p = "#{time_ago_in_words(activity.updated_at)}前"
+      p = "#{time_ago_in_words(activity.updated_at)}前"
