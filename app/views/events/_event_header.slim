@@ -16,3 +16,4 @@
       | 更新日時：#{time_ago_in_words(event.updated_at)}前
 
     = render 'good', event: event
+    = render 'shared/good_list', goods: event.goods

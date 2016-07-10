@@ -9,4 +9,7 @@ class HomeController < ApplicationController
     activities = activities.select { |activity| !activity.trackable.nil? }.first(60)
     @activities = Kaminari.paginate_array(activities).page(params[:page])
   end
+
+  def about
+  end
 end

@@ -6,8 +6,9 @@
     .m-t-1
       p.pull-left.text-muted.m-r-1
         | 作成者：
-        a href=user_path(summary.reversal_user.screen_name) #{summary.reversal_user.name}
+        a href=user_path(summary.reversal_user.screen_name) #{summary.reversal_user.decorate.name}
       p.text-muted
         | 更新日時：#{time_ago_in_words(summary.updated_at)}前
 
     = render 'good', summary: summary
+    = render 'good_list', goods: summary.goods
