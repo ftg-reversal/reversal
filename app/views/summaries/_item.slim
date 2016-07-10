@@ -1,8 +1,9 @@
 - if !summary.description.to_s.empty?
   .row.m-t-1
-    .card.u-bg-gray
-      .card-block
-        = summary.description_html
+    .col-md-10.col-md-offset-1
+      .card.u-bg-gray
+        .card-block
+          = summary.description_html
 
 hr
 - messages.each do |message|
