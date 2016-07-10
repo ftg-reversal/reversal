@@ -1,0 +1,218 @@
+#about
+  .card
+    .card-block
+
+      h2 はじめに
+      p
+        | 当サイトでは、GGXrdの攻略情報や対戦動画を、より見やすく、まとめやすくするために様々な機能をご用意しております。
+        br
+        | このページでは、サイトの機能説明や使い方についてご説明しますので、一度目を通していただければと思います。
+      p
+        | また当サイトの機能の一部は、サイトへのログインが必要になります。
+        | ログインにはSlackアカウント、またはTwitterアカウントが必要になりますので、どちらかのサービスに登録なさる事をおすすめします。
+      ul
+        li
+          a href="https://reversal-slackin.herokuapp.com/" Slackアカウントの取得
+        li
+          a href="https://twitter.com/" Twitterアカウントの取得
+
+      h2 機能一覧
+      ul
+        li
+          a href="#video" 動画検索
+        li
+          a href="#tweet" 攻略ツイート収集機能
+        li
+          a href="#summary" ログまとめ作成（要ログイン）
+        li
+          a href="#page" ページ作成（要ログイン）
+        li
+          a href="#event" イベント作成（要ログイン）
+        li
+          a href="#profile" プロフィールの設定（要ログイン）
+        li
+          a href="#good" Goodを付ける（要ログイン）
+        li
+          a href="#activity" アクティビティ（要ログイン）
+
+      hr
+
+      h2#video 動画検索
+      p
+        | Reversal目玉機能の「動画検索」です。
+        br
+        | キャラクターを指定して動画を検索する事ができ、自キャラの攻略に役立つ動画をすぐに見つけられます。 また動画毎に、その動画に含まれる対戦組み合わせが表示され、対戦開始時間から動画を再生する事ができます。
+        br
+        | ※現在は高田馬場ミカドの対戦動画のみ取得していますが、他対戦動画も随時対応していく予定です。
+
+      img.lazy data-original=asset_path('about/video.png')
+
+      h3 使用方法
+      ol
+        li
+          | ナビゲーションバーの「VIDEOS」をクリック
+          img.lazy data-original=asset_path('about/video1.png')
+        li
+          | サイドバーからキャラクターを指定
+          img.lazy data-original=asset_path('about/video2.png')
+        li
+          | 見たい動画と対戦開始時間が表示されます
+          img.lazy data-original=asset_path'about/video3.png'
+      hr
+
+      h2#tweet 攻略ツイート収集機能
+      p
+        | 「#ソル攻略」や「#カイ攻略」のような「#○○攻略」といったハッシュタグがついたツイートをサイト内に収集します。 集めたツイートはサイト内で自由に閲覧出来ます。
+        br
+        a href="#summary" また、ツイートや発言をまとめてページにする事ができます。
+
+      img.lazy data-original=asset_path('about/tweet.png')
+
+      h3 攻略ツイートの閲覧方法
+      ol
+        li
+          | ナビゲーションバーの「Slacker」をクリック
+          img.lazy data-original=asset_path('about/tweet1.png')
+        li
+          | チャンネル一覧から、キャラクターを指定
+          img.lazy data-original=asset_path('about/tweet2.png')
+        li
+          | 収集されたツイートと、チャットでの発言が表示されます。
+          img.lazy data-original=asset_path('about/tweet3.png')
+      hr
+
+      h2#summary ログまとめ作成（要ログイン）
+      p
+        | 攻略ツイート収集機能で、「#○○攻略」のハッシュタグを元に収集された各キャラクターの攻略ツイートや、チャットでの攻略情報を、Togetterのようにひとつの攻略記事としてまとめる事が出来ます。攻略記事や個人用等自由にお使い下さい。
+        br
+        | ※こちらの機能はPC限定となります。スマートフォン・タブレットからはご利用いただけません
+      img.lazy data-original=asset_path('about/summary.png')
+
+      h3 作成方法
+      ol
+        li
+          | ページ右上の「作成」ボタンから「まとめの作成」をクリック
+          img.lazy data-original=asset_path('about/summary1.png')
+        li
+          | キャラクターのチャンネルを選択
+          img.lazy data-original=asset_path('about/summary2.png')
+        li
+          | 更新ボタン・ツイート展開ボタンをクリックを押すとツイートが展開されます。
+          img.lazy data-original=asset_path('about/summary3.png')
+        li
+          | まとめたいツイート・攻略発言をクリック
+          img.lazy data-original=asset_path('about/summary4.png')
+        li
+          | ドラッグ＆ドロップで並び替え
+          img.lazy data-original=asset_path('about/summary5.png')
+        li
+          | タイトル・説明を入力し、「まとめを投稿する」をクリックし完成
+          img.lazy data-original=asset_path('about/summary6.png')
+
+      hr
+
+      h2#page ページ作成（要ログイン）
+
+      p キャラクターの攻略記事やちょっとしたメモ、簡易ブログなど、自分の好きなページを作成する事が出来ます。テキストの色やサイズの設定はもちろん、画像や動画・ツイートの埋込も可能です
+
+      img.lazy data-original=asset_path('about/page.png')
+
+      h3 作成方法
+      ol
+        li
+          | ページ右上の「作成」ボタンから「ページの作成」をクリック
+          img.lazy data-original=asset_path('about/page1.png')
+        li
+          | ページのタイトルを入力
+          img.lazy data-original=asset_path('about/page2.png')
+        li
+          | 内容を入力
+          img.lazy data-original=asset_path('about/page3.png''')
+        li
+          | 「登録」ボタンをクリックすると、作成したページが公開されます。
+          img.lazy data-original=asset_path('about/page4.png')
+
+      hr
+
+      h2#event イベント作成・エントリー（要ログイン）
+      p
+        | 大会やイベントの告知ページの作成が行えます。
+        br
+        | イベントの概要以外にも、エントリー締め切り日の設定や、シングル〜最大5onまで大会形式が設定でき、格ゲーの大会に特化したページを作成できます。
+      p
+        | 作成したページでは事前エントリーを行う事ができ、スムーズなイベント進行に役立ちます。
+        | ページ作成同様、テキストの色やサイズの設定はもちろん、画像や動画・ツイートの埋込も可能で、大会の雰囲気に合った告知ページが作成できます。
+
+      img.lazy data-original=asset_path('about/event.png')
+
+      h3 イベント作成方法
+      ol
+        li
+          | サイト右上の「作成」ボタンから「イベントの作成」をクリック
+          img.lazy data-original=asset_path('about/event1.png')
+        li
+          | タイトル・日時・エントリー締め切り・チーム人数を入力
+          img.lazy data-original=asset_path('about/event2.png')
+        li
+          | 内容を入力
+          img.lazy data-original=asset_path('about/event3.png')
+        li
+          | 「登録」ボタンをクリックすると、作成したイベントが公開されます。
+          img.lazy data-original=asset_path('about/event4.png')
+
+      h3 エントリー方法
+      ol
+        li
+          | エントリーしたいイベントをクリック
+          img.lazy data-original=asset_path('about/entry1.png')
+        li
+          | 「エントリーする」ボタンをクリック
+          img.lazy data-original=asset_path('about/entry2.png')
+        li
+          | プレイヤー情報を入力
+          img.lazy data-original=asset_path('about/entry3.png')
+        li
+          | 「登録」ボタンをクリックするとエントリーが完了します。
+          img.lazy data-original=asset_path('about/entry4.png')
+
+      hr
+
+      h2#profile プロフィールの設定（要ログイン）
+
+      p
+        | プロフィールページの作成が行えます。
+        br
+        | 自己紹介文や、使用キャラクター・段位・ホームグランドの設定・公開が行えます。
+        br
+        | また、ユーザーが作成したページやまとめ、アクティビティ等も表示されます。
+        br
+        | Reversalに登録しているユーザーは、ページ右上の自分のアイコンをクリック→「一覧ページ」から確認できます。
+      img.lazy data-original=asset_path('about/profile.png')
+      h3 プロフィールの設定方法
+      ol
+        li
+          | ページ右上の自分のアイコンをクリック
+          img.lazy data-original=asset_path('about/profile1.png')
+        li
+          | 「プロフィールの編集」をクリック
+          img.lazy data-original=asset_path('about/profile2.png')
+        li
+          | 必要情報を入力
+          img.lazy data-original=asset_path('about/profile3.png')
+        li
+          | 「登録」ボタンをクリックすると、設定したプロフィールが公開されます。
+          img.lazy data-original=asset_path('about/profile4.png')
+
+      hr
+
+      h2#good Goodを付ける（要ログイン）
+      p 投稿動画・ページ・まとめ・イベントに対して、良いと思ったものにGoodと送ることができます。
+      p Goodされたユーザは自分のコンテンツの評価が分かり、またコンテンツ毎にGood数が表示されるので、「このコンテンツはどれくらい評価されている」というのが一目でわかるため、良いコンテンツを探す際のひとつの指標になります。
+      img.lazy data-original=asset_path('about/good.png')
+
+      hr
+
+      h2#activity アクティビティ
+      p 「新着動画が投稿された」「誰かが記事を作成した」「誰かがイベントを作った」「誰かがコンテンツにGoodを付けた」といったユーザーの動向をTOPページで確認する事が出来ます。常に最新の情報が表示されるので、いち早く最新の情報を確認する事が出来ます。
+      p また、ユーザー毎のアクティビティはユーザーのプロフィールページから確認できます。
+      img.lazy data-original=asset_path('about/activity.png')
