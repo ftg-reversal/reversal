@@ -8,8 +8,9 @@
         li.nav-item
           a.nav-link href=archived_event_path class="#{active_link_to_class(archived_event_path, class_active: 'active')}"
             | 過去一覧
-      - @events.each do |event|
-        = render 'item_short', event: event, user: event.reversal_user.decorate
+      .p-short-item-list
+        - @events.each do |event|
+          = render 'item_short', event: event, user: event.reversal_user.decorate
       = paginate @events
 
 - content_for :title do

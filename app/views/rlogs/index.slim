@@ -2,8 +2,9 @@
   .card
     .card-block
       = render 'nav'
-      - @rlogs.each do |rlog|
-        = render 'shared/rlog', rlog: rlog
+      .p-short-item-list
+        - @rlogs.each do |rlog|
+          = render 'shared/rlog', rlog: rlog
       = paginate @rlogs
 
 - content_for :title do
