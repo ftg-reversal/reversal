@@ -9,7 +9,7 @@ header#header
       - if current_user
         li.nav-item
           .dropdown
-            img#header-user-dropdown.c-user-icon.header-user-icon.dropdown-toggle src=current_user.icon_url data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+            img#header-user-dropdown.header-user-icon.dropdown-toggle src=current_user.icon_url data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
             .dropdown-menu.dropdown-menu-right.p-y-1 aria-labelledby='header-user-dropdown'
               a.dropdown-item.hidden-sm-up href=users_path ユーザ一覧
               a.dropdown-item href=rlog_user_path(current_user.screen_name) プロフィールの表示

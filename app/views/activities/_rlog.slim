@@ -1,8 +1,8 @@
 .media
   a.media-left href=user_path(owner.screen_name)
-    img.c-user-icon.media-object src=owner.icon_url title=owner.name
+    img.media-object src=owner.icon_url title=owner.name
   .media-body
-    p.
+    p
       a href=user_path(owner.screen_name) = "#{owner.name}"
       |  さんが
       - if activity.trackable.type == 'Page'
