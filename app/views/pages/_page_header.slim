@@ -11,3 +11,4 @@
         | 更新日時：#{time_ago_in_words(page.updated_at)}前
 
     = render 'good', page: page
+    = render 'shared/good_list', goods: page.goods
