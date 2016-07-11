@@ -1,10 +1,10 @@
 - video = activity.trackable
 .media
-  a.media-left href=video_path(video)
+  a.media-left href=video_path(video) data-turbolinks='false'
     img.media-object src=video.thumbnail title=video.title
   .media-body
     p
-      a href=video_path(video) = "#{video.title}"
+      a href=video_path(video) data-turbolinks='false' = "#{video.title}"
       |  が投稿されました
     p = "#{time_ago_in_words(activity.updated_at)}前"
     - unless video.video_matchups.empty?
