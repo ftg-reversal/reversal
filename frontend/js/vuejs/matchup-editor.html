@@ -7,7 +7,7 @@
           <a href="#" class="nav-link" v-on:click.prevent="deleteMatchup($event, matchup)" v-if="addFlag === true">
             <i class="fa fa-times">&nbsp;&nbsp;</i>
           </a>
-          <a href="{{ videoUrl }}?{{ matchup.sec }}" target="_blank">
+          <a href="{{ videoUrl }}?from={{ matchup.sec }}" target="_blank">
             {{ Math.floor(matchup.sec / 60) + "：" + matchup.sec % 60 }}  {{ charas[matchup.chara1_id - 1].name }} vs {{ charas[matchup.chara2_id - 1].name }}
           </a>
         </li>
