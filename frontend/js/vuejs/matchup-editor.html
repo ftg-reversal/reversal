@@ -1,0 +1,12 @@
+<div class="col-lg-12">
+  <div class="card u-bg-gray">
+    <div class="card-block">
+      <p> 対戦組み合わせ</p>
+      <ul>
+        <li v-for="matchup in matchups">
+          {{ matchup.sec }}  {{ matchup.chara1_id }} vs {{ matchup.chara2_id }}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

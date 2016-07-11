@@ -64,6 +64,7 @@ export default {
     ],
 
     loaders: [
+      { test: /\.html/, loader: 'html' },
       { test: /.jsx?$/, loader: 'babel-loader', exclude: /node_modules/ },
       { test: /\.vue/, loader: 'vue' },
       { test: /\.css$/, loader: cssLoader },

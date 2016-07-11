@@ -6,15 +6,18 @@
         a href=@video.url ニコニコに飛ぶ
       hr
       .row
-        .col-lg-6
-          script type="text/javascript" src="http://ext.nicovideo.jp/thumb_watch/#{@video.video_id}?w=440&h=275"
-        .col-lg-6
-          .card.u-bg-gray
-            .card-block
-              p 対戦組み合わせ
-              ul
-                - @video.video_matchups.each do |matchup|
-                  = render 'videos/matchup', matchup: matchup, video: video
+        .col-lg-12.hidden-md-down
+          script type="text/javascript" src="http://ext.nicovideo.jp/thumb_watch/#{@video.video_id}?w=880&h=550"
+        .col-md1-2.hidden-lg-up
+          p 外部プレイヤーはご利用の端末からはご利用頂けません
+        #matchup-editor data-video-id=@video.id data-video-title=@video.title data-matchups=@video.video_matchups.to_json data-authority=(@current_user ? 'able' : 'disable') data-charas=Chara.all.to_json
+          .col-lg-12
+            .card.u-bg-gray
+              .card-block
+                p 対戦組み合わせ
+                ul
+                  - @video.video_matchups.each do |matchup|
+                    = render 'videos/matchup', matchup: matchup, video: @video
 hr
 
 - content_for :title do

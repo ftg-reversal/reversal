@@ -12,3 +12,4 @@ require('views/twitter');
 require('views/user-card');
 
 require('vuejs/summary-editor');
+require('vuejs/matchup-editor');

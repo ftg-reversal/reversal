@@ -62,8 +62,7 @@
   <div class="hidden-lg-up">
     <div class="card">
       <div class="card-block">
-        <p>ご利用の端末からはご利用頂けません
-        </p>
+        <p>ご利用の端末からはご利用頂けません</p>
       </div>
     </div>
   </div>
@@ -350,8 +349,8 @@ function loadChannel(channel, loadMessages, self) {
   });
 }
 
-$(document).on('ready turbolinks:load', () => {
-  if (document.querySelector("#summary-editor")) {
+window.addEventListener('turbolinks:load', () => {
+  if ($("#summary-editor")) {
     new SummaryEditor();
   }
 });
