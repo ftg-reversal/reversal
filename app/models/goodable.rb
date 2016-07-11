@@ -1,5 +1,5 @@
 module Goodable
-  def good?(user)
+  def good?(_user)
     raise
   end
 end

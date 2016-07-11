@@ -6,7 +6,7 @@ class Event::GoodsController < ApplicationController
   def update
     good = @event.goods.create!(
       reversal_user: @current_user,
-      link: {title: @event.title, url: event_path(@event)}.to_json
+      link: { title: @event.title, url: event_path(@event) }.to_json
     )
     good.create_activity :create, owner: @current_user
 

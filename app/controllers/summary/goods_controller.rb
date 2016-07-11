@@ -6,7 +6,7 @@ class Summary::GoodsController < ApplicationController
   def update
     good = @summary.goods.create!(
       reversal_user: @current_user,
-      link: {title: @summary.title, url: summary_path(@summary)}.to_json
+      link: { title: @summary.title, url: summary_path(@summary) }.to_json
     )
     good.create_activity :update, owner: @current_user
 

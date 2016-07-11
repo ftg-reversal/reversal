@@ -6,7 +6,7 @@ class Video::GoodsController < ApplicationController
   def update
     good = @video.goods.create!(
       reversal_user: @current_user,
-      link: {title: @video.title, url: @video.url}.to_json
+      link: { title: @video.title, url: @video.url }.to_json
     )
     good.create_activity :update, owner: @current_user
 

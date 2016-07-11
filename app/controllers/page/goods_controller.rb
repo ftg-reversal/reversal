@@ -6,7 +6,7 @@ class Page::GoodsController < ApplicationController
   def update
     good = @page.goods.create!(
       reversal_user: @current_user,
-      link: {title: @page.title, url: page_path(@page)}.to_json
+      link: { title: @page.title, url: page_path(@page) }.to_json
     )
     good.create_activity :update, owner: @current_user
 

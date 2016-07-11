@@ -10,7 +10,9 @@ class ReversalUsersController < ApplicationController
   end
 
   def show
-    @items = Kaminari.paginate_array(@rlogs.concat(@activities).sort { |a, b| a.updated_at <=> b.updated_at }).page(params[:page])
+    @items = Kaminari.paginate_array(
+      @rlogs.concat(@activities).sort { |a, b| a.updated_at <=> b.updated_at }
+    ).page(params[:page])
   end
 
   def edit
