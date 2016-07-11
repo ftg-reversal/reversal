@@ -37,6 +37,10 @@ export default class MatchupEditor extends Vue {
           this.addFlag = true;
         },
 
+        hideForm: (e) => {
+          this.addFlag = false;
+        },
+
         onSubmit: (e) => {
           $.ajax({
             type: 'post',

@@ -3,12 +3,13 @@
     <div class="card-block">
       <p>対戦組み合わせ</p>
       <ul>
-        <li class="u-no-marker" v-for="matchup in matchups">
-          <a href="#" class="nav-link" @click.prevent="deleteMatchup($event, matchup)" v-if="addFlag === true">
-            <i class="fa fa-times">&nbsp;&nbsp;</i>
-          </a>
+        <li v-for="matchup in matchups">
           <a href="{{ videoUrl }}?from={{ matchup.sec - 10 }}" target="_blank">
             {{ Math.floor(matchup.sec / 60) + "：" + ("0" + (matchup.sec % 60)).slice(-2) }}  {{ charas[matchup.chara1_id - 1].name }} vs {{ charas[matchup.chara2_id - 1].name }}
+          </a>
+          &nbsp;&nbsp;
+          <a href="#" class="nav-link" @click.prevent="deleteMatchup($event, matchup)" v-if="addFlag === true">
+            <i class="fa fa-times"></i>
           </a>
         </li>
       </ul>
@@ -42,15 +43,24 @@
             </div>
           </fieldset>
           <fieldset class="form-group">
-            <button type="submit" class="btn btn-primary m-l-1">追加</button>
+            <button type="submit" class="btn btn-primary m-l-1">対戦組み合わせを追加</button>
           </fieldset>
         </form>
       </template>
-      <template v-if="authority === 'enable'">
+      <template v-if="authority === 'enable' && addFlag === false">
         <div class="clearfix">
           <nav class="nav nav-inline pull-right">
             <a href="#" class="nav-link" @click.prevent="displayForm">
               <i class="fa fa-pencil">編集</i>
+            </a>
+          </nav>
+        </div>
+      </template>
+      <template v-if="addFlag === true">
+        <div class="clearfix">
+          <nav class="nav nav-inline pull-right">
+            <a href="#" class="nav-link" @click.prevent="hideForm">
+              <i class="fa fa-pencil">編集を終了</i>
             </a>
           </nav>
         </div>
