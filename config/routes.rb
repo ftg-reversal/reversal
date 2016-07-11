@@ -6,12 +6,14 @@
 #            login GET    /login(.:format)                         login#index
 #                  GET    /auth/:provider/callback(.:format)       sessions#create
 #          session DELETE /session(.:format)                       sessions#destroy
+#   video_matchups POST   /videos/:video_id/matchups(.:format)     video_matchups#create
 #       video_good GET    /videos/:video_id/good(.:format)         video/goods#show
 #                  PATCH  /videos/:video_id/good(.:format)         video/goods#update
 #                  PUT    /videos/:video_id/good(.:format)         video/goods#update
 #                  DELETE /videos/:video_id/good(.:format)         video/goods#destroy
 #           videos GET    /videos(.:format)                        videos#index
 #            video GET    /videos/:id(.:format)                    videos#show
+#    video_matchup DELETE /video_matchups/:id(.:format)            video_matchups#destroy
 #         channels GET    /channels(.:format)                      slack_channels#index
 #          channel GET    /channels/:id(.:format)                  slack_channels#show
 #            rlogs GET    /rlogs(.:format)                         rlogs#index
@@ -90,8 +92,10 @@ Rails.application.routes.draw do
   resource :session, only: [:destroy]
 
   resources :videos, only: [:index, :show] do
+    resources :video_matchups, as: :matchups, path: :matchups, only: [:create]
     resource :good, module: :video, only: [:show, :update, :destroy]
   end
+  resources :video_matchups, only: [:destroy]
 
   resources :slack_channels, as: :channels, path: :channels, only: [:index, :show]
   resources :rlogs, only: [:index]

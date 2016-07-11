@@ -1,12 +1,60 @@
 <div class="col-lg-12">
-  <div class="card u-bg-gray">
+  <div class="card u-bg-gray m-t-1">
     <div class="card-block">
-      <p> 対戦組み合わせ</p>
+      <p>対戦組み合わせ</p>
       <ul>
-        <li v-for="matchup in matchups">
-          {{ matchup.sec }}  {{ matchup.chara1_id }} vs {{ matchup.chara2_id }}
+        <li class="u-no-marker" v-for="matchup in matchups">
+          <a href="#" class="nav-link" v-on:click.prevent="deleteMatchup($event, matchup)" v-if="addFlag === true">
+            <i class="fa fa-times">&nbsp;&nbsp;</i>
+          </a>
+          <a href="{{ videoUrl }}?{{ matchup.sec }}" target="_blank">
+            {{ Math.floor(matchup.sec / 60) + "：" + matchup.sec % 60 }}  {{ charas[matchup.chara1_id - 1].name }} vs {{ charas[matchup.chara2_id - 1].name }}
+          </a>
         </li>
       </ul>
+
+      <template v-if="addFlag === true">
+        <form v-on:submit.prevent="onSubmit($event, minute, second, chara1, chara2)">
+          <fieldset class="form-group">
+            <div class="col-xs-3">
+              <label for="minutes">分</label>
+              <select id="minutes" class="form-control" v-model="minute">
+                <option v-for="minute in minutes" value="minute" v-bind:value="minute">{{ minute }}</option>
+              </select>
+            </div>
+            <div class="col-xs-3">
+              <label for="seconds">秒</label>
+              <select id="seconds" class="form-control" v-model="second">
+                <option v-for="second in seconds" value="minute" v-bind:value="second">{{ second }}</option>
+              </select>
+            </div>
+            <div class="col-xs-3">
+              <label for="chara1">1P</label>
+              <select id="chara1" class="form-control" v-model="chara1">
+                <option v-for="chara1 in charas" value="chara1.id" v-bind:value="chara1.id">{{ chara1.name }}</option>
+              </select>
+            </div>
+            <div class="col-xs-3">
+              <label for="chara2">2P</label>
+              <select id="chara2" class="form-control" v-model="chara2">
+                <option v-for="chara2 in charas" value="chara2.id" v-bind:value="chara2.id">{{ chara2.name }}</option>
+              </select>
+            </div>
+          </fieldset>
+          <fieldset class="form-group">
+            <button type="submit" class="btn btn-primary m-l-1">追加</button>
+          </fieldset>
+        </form>
+      </template>
+      <template v-if="authority === 'enable'">
+        <div class="clearfix">
+          <nav class="nav nav-inline pull-right">
+            <a href="#" class="nav-link" v-on:click.prevent="displayForm">
+              <i class="fa fa-pencil">編集</i>
+            </a>
+          </nav>
+        </div>
+      </template>
     </div>
   </div>
 </div>

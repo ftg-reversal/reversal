@@ -25,5 +25,8 @@
         - if activity_type(activity) == 'Video' && activity.trackable
           = render 'activities/video', activity: activity
           hr
+        - if activity_type(activity) == 'VideoMatchup' && activity.trackable
+          = render 'activities/matchup', activity: activity, owner: activity.owner.decorate
+          hr
       .u-text-center
         = paginate @activities

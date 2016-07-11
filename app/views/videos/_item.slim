@@ -1,11 +1,11 @@
 .row
   .col-md-3.col-sm-4
-    a href=video.url target="_blank"
+    a href=video_path(video) data-turbolinks='false'
       img src=video.thumbnail title=video.title style="display: block; height: auto; width: 100%;"
     p.text-md-right
       strong = "#{time_ago_in_words(video.posted_at)}前"
   .col-md-9.col-sm-8
-    a href=video.url target="_blank"
+    a href=video_path(video) data-turbolinks='false'
       h3 = video.title
       = render 'videos/good', video: video
     - unless video.video_matchups.empty?
