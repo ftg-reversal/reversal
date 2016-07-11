@@ -105,8 +105,7 @@
                         <div class="media-body">
                           <div class="media-heading">
                             <h4 class="pull-left">{{ message.username }}
-                            </h4><small class="m-l-1">{{ message.date }}
-</small>
+                            </h4><small class="m-l-1">{{ message.date }}</small>
                             <p>{{{ message.format_text }}}
                             </p>
                           </div>
@@ -114,9 +113,7 @@
                             <template v-if="attachment.service_name === &quot;twitter&quot;">
                               <blockquote class="twitter-tweet">
                                 <p>{{ attachment.text }}
-                                </p>&mdash;
-" {{ attachment.author_name }} ({{ attachment.author_subname }}) "
-<a :href="attachment.from_url"></a>
+                                </p>&mdash; " {{ attachment.author_name }} ({{ attachment.author_subname }}) " <a :href="attachment.from_url"></a>
                               </blockquote>
                             </template>
                           </div>
@@ -151,8 +148,7 @@
                       <div class="media-body">
                         <div class="media-heading">
                           <h4 class="pull-left">{{ message.username }}
-                          </h4><small class="m-l-1">{{ message.date }}
-</small>
+                          </h4><small class="m-l-1">{{ message.date }}</small>
                           <p>{{{ message.format_text }}}
                           </p>
                         </div>
@@ -160,9 +156,7 @@
                           <template v-if="attachment.service_name === &quot;twitter&quot;">
                             <blockquote class="twitter-tweet">
                               <p>{{ attachment.text }}
-                              </p>&mdash;
-" {{ attachment.author_name }} ({{ attachment.author_subname }}) "
-<a :href="attachment.from_url"></a>
+                              </p>&mdash; " {{ attachment.author_name }} ({{ attachment.author_subname }}) " <a :href="attachment.from_url"></a>
                             </blockquote>
                           </template>
                         </div>
