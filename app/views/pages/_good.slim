@@ -12,7 +12,7 @@
           | ：
           span = "#{page.goods.size}"
 
-      = good_tw(page_url(page), "#{page.title} - Reversal Page", page.good?(@current_user))
+      = good_tw(page_url(page), "#{page.title} - Reversal Page")
 - else
   a href=login_with_redirect_url(page_path)
     .p-good-button
@@ -21,4 +21,4 @@
         | ：
         span = "#{page.goods.size}"
 
-      = good_tw(page_url(page), "#{page.title} - Reversal Page", page.good?(@current_user))
+      = good_tw(page_url(page), "#{page.title} - Reversal Page")

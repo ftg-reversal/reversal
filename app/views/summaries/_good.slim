@@ -12,7 +12,7 @@
           | ：
           span = "#{summary.goods.size}"
 
-      = good_tw(summary_url(summary), "#{summary.title} - Reversal Summary", summary.good?(@current_user))
+      = good_tw(summary_url(summary), "#{summary.title} - Reversal Summary")
 - else
   a href=login_with_redirect_url(summary_path)
     .p-good-button
@@ -21,4 +21,4 @@
         | ：
         span = "#{summary.goods.size}"
 
-      = good_tw(summary_url(summary), "#{summary.title} - Reversal Summary", summary.good?(@current_user))
+      = good_tw(summary_url(summary), "#{summary.title} - Reversal Summary")

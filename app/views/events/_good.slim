@@ -12,7 +12,7 @@
           | ：
           span = "#{event.goods.size}"
 
-      = good_tw(event_url(event), "#{event.title} - Reversal Event", event.good?(@current_user))
+      = good_tw(event_url(event), "#{event.title} - Reversal Event")
 - else
   a href=login_with_redirect_url(event_path)
     .p-good-button
@@ -21,4 +21,4 @@
         | ：
         span = "#{event.goods.size}"
 
-      = good_tw(event_url(event), "#{event.title} - Reversal Event", event.good?(@current_user))
+      = good_tw(event_url(event), "#{event.title} - Reversal Event")
