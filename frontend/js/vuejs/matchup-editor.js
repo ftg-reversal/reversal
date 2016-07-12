@@ -50,12 +50,12 @@ export default class MatchupEditor extends Vue {
               sec: this.minute * 60 + this.second,
               chara1_id: this.chara1,
               chara2_id: this.chara2
-            },
-            success: (data) => {
-              swal('追加に成功しました');
-              Turbolinks.clearCache();
-              location.reload();
-            },
+            }
+          }).done((data) => {
+            swal('追加に成功しました');
+            Turbolinks.clearCache();
+            location.reload();
+          }).fail((data) => {
             error: () => {
               swal('追加に失敗しました');
             }
@@ -79,15 +79,13 @@ export default class MatchupEditor extends Vue {
               url: `/video_matchups/${matchup.id}`,
               data: {
                 authenticity_token: $('meta[name="csrf-token"]')[0].content,
-              },
-              success: (data) => {
-                swal('削除に成功しました');
-                Turbolinks.clearCache();
-                location.reload();
-              },
-              error: () => {
-                swal('削除に失敗しました');
               }
+            }).done((data) => {
+              swal('削除に成功しました');
+              Turbolinks.clearCache();
+              location.reload();
+            }).fail((data) => {
+                swal('削除に失敗しました');
             })
           })
         }
