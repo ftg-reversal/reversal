@@ -60,6 +60,7 @@ group :development, :test do
   gem 'binding_of_caller'
   gem 'brakeman', require: false
   gem 'bullet'
+  gem "rubycritic", require: false
   gem 'dotenv-rails'
   gem 'hirb'
   gem 'hirb-unicode-steakknife', require: 'hirb-unicode'
