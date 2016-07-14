@@ -52,6 +52,15 @@
           </fieldset>
         </form>
       </template>
+      <template v-if="authority === 'disable'">
+        <div class="clearfix">
+          <nav class="nav nav-inline pull-right">
+            <a href="/login?redirect_to=/videos/{{ videoID }}" class="nav-link">
+              <i class="fa fa-pencil">編集</i>
+            </a>
+          </nav>
+        </div>
+      </template>
       <template v-if="authority === 'enable' && addFlag === false">
         <div class="clearfix">
           <nav class="nav nav-inline pull-right">
