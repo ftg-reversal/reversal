@@ -23,7 +23,15 @@ html
       = render 'layouts/header', current_user: @current_user
       = render 'layouts/navbar'
       #main.container
-        = yield
+        - if content_for?(:about)
+          == yield(:about)
+
+        .row
+          .col-md-9
+            = yield
+
+          .col-md-3
+            = render 'layouts/sidebar'
 
     footer#footer
       hr

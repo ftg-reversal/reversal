@@ -1,32 +1,16 @@
-#home
-  #about.m-b-3
-    a href=about_path
-      img.banner.center-block.img-fluid src=asset_path('about-banner.png')
-  .card
-    .card-block
-      h2 最近の情報
-      hr
-      - @activities.each do |activity|
-        - if activity_type(activity) == 'ReversalUser' && activity.trackable
-          = render 'activities/user', activity: activity, owner: activity.owner.decorate
-          hr
-        - if activity_type(activity) == 'Good' && activity.trackable
-          = render 'activities/good', activity: activity, owner: activity.owner.decorate
-          hr
-        - if activity_type(activity) == 'Rlog' && activity.trackable
-          = render 'activities/rlog', activity: activity, owner: activity.owner.decorate
-          hr
-        - if activity_type(activity) == 'Event' && activity.trackable
-          = render 'activities/event', activity: activity, owner: activity.owner.decorate
-          hr
-        - if activity_type(activity) == 'Entry' && activity.trackable
-          = render 'activities/entry', activity: activity, owner: activity.owner.decorate
-          hr
-        - if activity_type(activity) == 'Video' && activity.trackable
-          = render 'activities/video', activity: activity
-          hr
-        - if activity_type(activity) == 'VideoMatchup' && activity.trackable && !activity.key.include?('destroy')
-          = render 'activities/matchup', activity: activity, owner: activity.owner.decorate
-          hr
-      .u-text-center
-        = paginate @activities
+#home-activity.card
+  .card-block
+    h2 最近の情報
+    hr
+    - @activities.each do |activity|
+      = render 'shared/activity', activity: activity
+    .u-text-center
+      = paginate @activities
+
+  .col-md-4
+
+- content_for :about do
+  .row
+    #about.m-b-3
+      a href=about_path
+        img.banner.center-block.img-fluid src=asset_path('about-banner.png')
