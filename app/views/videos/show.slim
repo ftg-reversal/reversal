@@ -3,11 +3,12 @@
     .card-block
       h2.media-heading = @video.title
       span
-        a href=@video.url target='_blank' ニコニコに飛ぶ
+        a href=@video.url target='_blank' ニコニコ動画で見る
       hr
       .row
         .col-lg-12.hidden-md-down
           script type="text/javascript" src="http://ext.nicovideo.jp/thumb_watch/#{@video.video_id}?w=660&h=412"
+          p ※外部プレイヤー再生中に組み合わせを押すとその時間から再生されます。
         .col-md1-2.hidden-lg-up
           p 外部プレイヤーはご利用の端末からはご利用頂けません
         #matchup-editor data-video-id=@video.id data-video-url=@video.url data-video-title=@video.title data-matchups=@video.video_matchups.to_json data-authority=(@current_user ? 'enable' : 'disable') data-charas=Chara.all.to_json

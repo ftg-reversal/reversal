@@ -1,6 +1,8 @@
 require('./matchup-editor.sass');
 const Vue = require('vue');
 
+var player;
+
 export default class MatchupEditor extends Vue {
   constructor() {
     const properties = {
@@ -39,6 +41,11 @@ export default class MatchupEditor extends Vue {
 
         hideForm: (e) => {
           this.addFlag = false;
+        },
+
+        setPlayheadTime: (e, time) => {
+          console.log(time);
+          player.ext_setPlayheadTime(time);
         },
 
         onSubmit: (e) => {
@@ -93,6 +100,10 @@ export default class MatchupEditor extends Vue {
     };
     super(properties);
   }
+}
+
+window.onNicoPlayerReady = function (id) {
+  player = document.getElementById(id);
 }
 
 window.addEventListener('turbolinks:load', () => {
