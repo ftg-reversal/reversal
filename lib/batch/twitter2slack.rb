@@ -10,7 +10,7 @@ module Batch
 
           if condition.quote
             unsent_tweets.map do |tweet|
-              TwitterInfrastructure::Tweet.exec(online_bot_client, "#{tweet[:text][0..100].gsub(/#GGXrdRプレマ/, '').gsub(/#GGXrdRロビー/, '')} #{tweet[:url]}")
+              TwitterInfrastructure::Tweet.exec(online_bot_client, "#{tweet[:text][0..100].gsub(/\#GGXrdRプレマ/, '').gsub(/\#GGXrdRロビー/, '')} #{tweet[:url]}")
             end
           end
 
