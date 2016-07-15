@@ -8,7 +8,7 @@ class Event::GoodsController < ApplicationController
       reversal_user: @current_user,
       link: { title: @event.title, url: event_path(@event) }.to_json
     )
-    good.create_activity :create, owner: @current_user
+    good.create_activity :update, owner: @current_user
 
     render json: good
   end
