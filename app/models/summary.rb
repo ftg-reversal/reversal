@@ -35,12 +35,11 @@ class Summary < Rlog
   after_save :save_order
 
   def save_order
-    self.slack_messages_summaries.map do |message_summary|
+    slack_messages_summaries.map do |message_summary|
       message_summary.row_order = row_orders.map(&:to_i).index(message_summary.slack_message_id)
       message_summary.save!
     end
   end
-
 
   def good?(user)
     !Good.user(user).type('Rlog').id(id).empty?
