@@ -33,12 +33,10 @@ class ReversalUsersController < ApplicationController
   end
 
   def activity
-    @activities = PublicActivity::Activity.includes(:owner)
-                                          .includes(:trackable)
-                                          .includes(:recipient)
-                                          .where(owner: @user)
-                                          .order('updated_at DESC')
-                                          .page(params[:page])
+    @activities = Activity.including_all
+                          .select_user(@user)
+                          .recently
+                          .page(params[:page])
   end
 
   def rlog
@@ -58,13 +56,11 @@ class ReversalUsersController < ApplicationController
   end
 
   def set_activities
-    @activities = PublicActivity::Activity.includes(:owner)
-                                          .includes(:trackable)
-                                          .includes(:recipient)
-                                          .where(owner: @user)
-                                          .order('updated_at DESC')
-                                          .limit(50)
-                                          .to_a
+    @activities = Activity.including_all
+                          .select_user(@user)
+                          .recently
+                          .limit(50)
+                          .to_a
   end
 
   def user_params
