@@ -94,7 +94,7 @@ export default {
   },
 
   postcss: [
-    require('autoprefixer')(),
+    require('autoprefixer')({ browsers: 'last 2 versions' }),
     require('postcss-import')(),
     require('postcss-simple-vars')(),
     require('postcss-nested')(),
