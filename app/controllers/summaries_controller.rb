@@ -57,11 +57,7 @@ class SummariesController < RlogsController
   end
 
   def set_summary
-    @summary = Summary.includes(goods: [:reversal_user])
-                      .includes(reversal_user: [:twitter_user, :slack_user])
-                      .includes(slack_messages: [:slack_user, :slack_channel])
-                      .find(params[:id])
-                      .decorate
+    @summary = Summary.including_all.find(params[:id]).decorate
   end
 
   def set_messages
