@@ -4,15 +4,26 @@
 
     hr
     .row
-      .col-lg-3
-        img.media-object src=user.icon_url title=user.name
-      .col-lg-9
-        - if user.twitter_user
-          h5 Twitter ID
-        - else
-          h5 Slack ID
-        p
-          .card-subtitle.text-muted.u-nowrap = external_user_link(user)
+      .col-xl-3.hidden-lg-down
+        img.p-profile-icon.media-object src=user.icon_url title=user.name
+      .col-xl-9.hidden-lg-down
+        .p-profile-name-xl
+          - if user.twitter_user
+            h5 Twitter ID
+          - else
+            h5 Slack ID
+          p
+            .card-subtitle.text-muted.u-nowrap = external_user_link(user)
+      .col-lg-12.hidden-xl-up
+        img.p-profile-icon.media-object src=user.icon_url title=user.name
+      .col-lg-12.hidden-xl-up
+        .p-profile-name
+          - if user.twitter_user
+            h5 Twitter ID
+          - else
+            h5 Slack ID
+          p
+            .card-subtitle.text-muted.u-nowrap = external_user_link(user)
   .card-block.p-t-0.clearfix
     = tw(user_url(user.screen_name), "#{user.name} Profile - Reversal")
     p = auto_link(user.bio)
