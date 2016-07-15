@@ -1,3 +1,4 @@
+require('./summary-editor.sass')
 const Vue = require('vue');
 Vue.use(require('vendor/vue-drag-and-drop'));
 
