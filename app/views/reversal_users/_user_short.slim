@@ -4,17 +4,15 @@
       h4.card-title = user.name
 
     hr
-    .media
-      a.media-left href=user_path(user.screen_name)
-        img.media-object src=user.icon_url title=user.name
-      .media-body.p-l-1
-        - if user.twitter_user
-          h5 Twitter ID
-        - else
-          h5 Slack ID
-        p
-          .card-subtitle.text-muted.u-nowrap = external_user_link(user)
-  .card-block.p-y-0
-    p = user.short_bio
+    a href=user_path(user.screen_name)
+      img.p-user-card-icon.media-object.m-b-1 src=user.icon_url title=user.name
+    .m-l-1
+      - if user.twitter_user
+        h5 Twitter ID
+      - else
+        h5 Slack ID
+      p
+        .card-subtitle.text-muted.u-nowrap = external_user_link(user)
+      p = user.short_bio
   .card-footer.text-muted.text-xs-center
     | 最終更新：#{time_ago_in_words(user.updated_at)}前

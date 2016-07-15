@@ -1,7 +1,7 @@
 const matchHeight = require('jquery-match-height');
 
 function onLoad() {
-  $('.user-card').matchHeight();
+  $('.p-user-card').matchHeight();
 }
 
 window.addEventListener('turbolinks:load', onLoad);
