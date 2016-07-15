@@ -5,9 +5,10 @@
     .card
       .card-block
         = render 'nav', user: @user
-        - @rlogs.each do |rlog|
-          = render 'shared/rlog', rlog: rlog
-        = paginate @rlogs
+        .p-short-item-list
+          - @rlogs.each do |rlog|
+            = render 'shared/rlog', rlog: rlog
+          = paginate @rlogs
 
 - content_for :title do
   = "Profile #{@user.name}"

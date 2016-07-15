@@ -3,6 +3,7 @@ table.table.table-striped.hidden-xs-down
   thead
     tr
       th プレイヤー名
+      th Twitter
       th キャラ
       th 段位
       th コメント
@@ -13,6 +14,10 @@ table.table.table-striped.hidden-xs-down
           - entry.entry_player.each do |player|
             = player.name
             br
+        td.norwap
+          - if entry.reversal_user.twitter_user
+            a href="https://twitter.com/#{entry.reversal_user.screen_name}"
+              = "@#{entry.reversal_user.screen_name}"
         td.u-nowrap
           - entry.entry_player.each do |player|
             = player.chara.name

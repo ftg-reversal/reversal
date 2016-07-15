@@ -38,6 +38,7 @@ class Event < ActiveRecord::Base
   validates :reversal_user, presence: true
 
   scope :recently, -> () { order('datetime ASC') }
+  scope :lately, -> () { order('datetime DESC') }
   scope :including_user, -> () { includes(:reversal_user) }
   scope :including_entry, -> () { includes(entry: [:reversal_user, entry_player: [:chara, :rank]]) }
 
