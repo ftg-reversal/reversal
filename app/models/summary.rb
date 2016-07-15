@@ -19,6 +19,8 @@
 #
 
 class Summary < Rlog
+  attr_accessor :row_orders
+
   belongs_to :slack_channel
   has_many :slack_messages_summaries, dependent: :destroy
   has_many :slack_messages, through: :slack_messages_summaries
@@ -29,6 +31,16 @@ class Summary < Rlog
   scope :including_user,     -> () { includes(reversal_user: [:twitter_user, :slack_user]) }
   scope :including_message, -> () { includes(slack_messages: [:slack_user, :slack_channel]) }
   scope :including_all, -> () { including_good.including_user.including_message }
+
+  after_save :save_order
+
+  def save_order
+    self.slack_messages_summaries.map do |message_summary|
+      message_summary.row_order = row_orders.map(&:to_i).index(message_summary.slack_message_id)
+      message_summary.save!
+    end
+  end
+
 
   def good?(user)
     !Good.user(user).type('Rlog').id(id).empty?
