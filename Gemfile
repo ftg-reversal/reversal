@@ -60,7 +60,6 @@ group :development, :test do
   gem 'binding_of_caller'
   gem 'brakeman', require: false
   gem 'bullet'
-  gem "rubycritic", require: false
   gem 'dotenv-rails'
   gem 'hirb'
   gem 'hirb-unicode-steakknife', require: 'hirb-unicode'
@@ -69,10 +68,12 @@ group :development, :test do
   gem 'pry-doc'
   gem 'pry-stack_explorer'
   gem 'quiet_assets'
+  gem 'rack-lineprof'
   gem 'rack-mini-profiler', require: false
   gem 'rails-erd'
   gem 'rails_best_practices', require: false
   gem 'rubocop', require: false, git: 'https://github.com/bbatsov/rubocop'
+  gem 'rubycritic', require: false
   gem 'slim_lint', require: false
   gem 'spring'
   gem 'spring-commands-rspec'
