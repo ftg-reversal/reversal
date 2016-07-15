@@ -40,7 +40,7 @@ class ReversalUser < ActiveRecord::Base
     if slack_user
       slack_user.icon_url
     elsif twitter_user
-      twitter_user.icon_url
+      "http://furyu.nazo.cc/twicon/#{screen_name}/original"
     end
   end
 
