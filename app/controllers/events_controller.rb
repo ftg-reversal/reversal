@@ -8,7 +8,7 @@ class EventsController < ApplicationController
   end
 
   def archived
-    @events = Event.finished.recently.page(params[:page])
+    @events = Event.finished.lately.page(params[:page])
     render 'index'
   end
 
