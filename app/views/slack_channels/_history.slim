@@ -8,12 +8,12 @@
   - history.each do |message|
     .slack-message.media
       .slack-icon.media-object.pull-left
-        a.media-left href='#'
+        a.media-left href="https://ftg-reversal.slack.com/team/#{message.username}"
           img src=message.icon
       .media-body
         .media-heading
           h4.pull-left
-            a href='#' #{message.username}
+            a href="https://ftg-reversal.slack.com/team/#{message.username}" #{message.username}
           small.m-l-1 #{l(message.date)}
           p #{message.format_text}
         - if message.image
