@@ -4,9 +4,9 @@ every 5.minutes do
   runner 'Batch::UpdateLives.exec'
 end
 
-# every 15.minutes do
-#   runner 'Batch::UpdateVideos.exec'
-# end
+every 15.minutes do
+  runner 'Batch::UpdateVideos.exec'
+end
 
 every 3.hours do
   runner 'Batch::TwitterAds.exec'
