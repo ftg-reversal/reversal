@@ -6,7 +6,7 @@
       strong = "#{time_ago_in_words(video.posted_at)}前"
   .col-md-9.col-sm-8
     a href=video_path(video) data-turbolinks='false'
-      h3 = video.title
+      h3 == video.title
       = render 'videos/good', video: video
       = render 'shared/good_list', goods: video.goods
     - unless video.video_matchups.empty?
