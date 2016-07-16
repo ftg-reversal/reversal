@@ -1,11 +1,13 @@
 function onLoad() {
   $("[data-behavior='good']").click(function(e) {
     e.preventDefault();
+
+    const targetPage = $('.good-tweet-button').length === 1 ? true : false;
+
     const replace_page_title = `${$('title').text()} をGoodしました`;
     const url = $(this).data('url');
     const button = $(this).find('button')[0];
     const tw_link = $('.good-tweet-link')[0];
-    console.log(url);
 
     $.ajax({
       type: $(button).hasClass('is-good') ? 'delete' : 'put',
@@ -25,7 +27,11 @@ function onLoad() {
       } else {
         $(button).addClass('is-good');
         $(count).text(parseInt($(count).text()) + 1);
-        $(tw_link).attr('href', `https://twitter.com/share?url=${encodeURIComponent(url)}&text=${encodeURIComponent(replace_page_title)}`);
+
+        if (targetPage) {
+          $(tw_link).attr('href', `https://twitter.com/share?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(replace_page_title)}&hashtags=ftg_reversal`);
+        }
+
       }
     }).fail((data) => {
       swal({

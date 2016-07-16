@@ -2,8 +2,10 @@
   .card
     .card-block
       h2.media-heading = @video.title
-      span
+      p.u-m-b-03
         a href=@video.url target='_blank' ニコニコ動画で見る
+      = render 'videos/good', video: @video
+      = render 'shared/good_list', goods: @video.goods
       hr
       .row
         .col-lg-12.hidden-md-down

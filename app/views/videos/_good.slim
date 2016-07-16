@@ -1,20 +1,45 @@
+- if !defined? sm
+  - sm = false
+
 - if @current_user
-  = link_to '#', data: { behavior: 'good', url: video_good_path(video), user: @current_user.id, type: 'video', id: video.id, title: "#{video.title} - Reversal video" } do
+  = link_to '#', data: { behavior: 'good', url: video_good_path(video), user: @current_user.id, type: 'video', id: video.id, title: "#{video.title} - Reversal Video" } do
     .p-good-button
       - if video.good?(@current_user)
-        button.good-sm-button.is-good.m-r-1
-          img src=asset_path('good-icon.png')
-          | ：
-          span = "#{video.goods.size}"
+        - if sm
+          button.good-sm-button.is-good.m-r-1
+            img src=asset_path('good-icon.png')
+            | ：
+            span = "#{video.goods.size}"
+        - else
+          button.good-button.is-good.m-r-1
+            img src=asset_path('good-icon.png')
+            | ：
+            span = "#{video.goods.size}"
       - else
-        button.good-sm-button.m-r-1
-          img src=asset_path('good-icon.png')
-          | ：
-          span = "#{video.goods.size}"
+        - if sm
+          button.good-sm-button.m-r-1
+            img src=asset_path('good-icon.png')
+            | ：
+            span = "#{video.goods.size}"
+        - else
+          button.good-button.m-r-1
+            img src=asset_path('good-icon.png')
+            | ：
+            span = "#{video.goods.size}"
+
+      - if sm
+        = good_tw_sm(video_url(video), "#{video.title} - Reversal Video")
+      - else
+        = good_tw(video_url(video), "#{video.title} - Reversal Video")
 - else
   a href=login_with_redirect_url(videos_path)
     .p-good-button
-      button.good-sm-button.m-r-1
+      button.good-button.m-r-1
         img src=asset_path('good-icon.png')
         | ：
         span = "#{video.goods.size}"
+
+      - if sm
+        = good_tw_sm(video_url(video), "#{video.title} - Reversal Video")
+      - else
+        = good_tw(video_url(video), "#{video.title} - Reversal Video")
