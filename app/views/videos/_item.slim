@@ -8,6 +8,7 @@
     a href=video_path(video) data-turbolinks='false'
       h3 = video.title
       = render 'videos/good', video: video
+      = render 'shared/good_list', goods: video.goods
     - unless video.video_matchups.empty?
       .card.u-bg-gray.m-t-1
         .card-block
