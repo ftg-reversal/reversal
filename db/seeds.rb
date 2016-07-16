@@ -119,5 +119,6 @@ Twitter2slackCondition.create!([
 ])
 
 VideoSiteSearchCondition.create!([
-  {word: "GGXrd", video_site: "nicovideo"}
+  {word: "GGXrd", video_site: "nicovideo"},
+  {word: "GGXrdR", video_site: "nicovideo"}
 ])
