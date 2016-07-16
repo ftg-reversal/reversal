@@ -250,6 +250,7 @@ GEM
     http-form_data (1.0.1)
     http_accept_language (2.0.5)
     http_parser.rb (0.6.0)
+    httpclient (2.8.0)
     i18n (0.7.0)
     ice_nine (0.11.2)
     ipaddress (0.8.3)
@@ -292,6 +293,8 @@ GEM
       net-ssh (>= 2.6.5)
     net-ssh (3.2.0)
     newrelic_rpm (3.16.0.318)
+    nico_search_snapshot (0.1.1)
+      httpclient (>= 2.6.0)
     nokogiri (1.6.8)
       mini_portile2 (~> 2.1.0)
       pkg-config (~> 1.1.7)
@@ -611,6 +614,7 @@ DEPENDENCIES
   kaminari
   mysql2
   newrelic_rpm
+  nico_search_snapshot
   omniauth
   omniauth-slack
   omniauth-twitter
