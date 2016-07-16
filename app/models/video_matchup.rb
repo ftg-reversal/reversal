@@ -17,7 +17,6 @@
 
 class VideoMatchup < ActiveRecord::Base
   belongs_to :video
-  counter_culture :video
 
   belongs_to :chara1, class_name: 'Chara'
   belongs_to :chara2, class_name: 'Chara'

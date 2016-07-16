@@ -7,7 +7,6 @@
 #  video_id               :string(255)
 #  video_site             :string(255)      not null
 #  title                  :string(255)      not null
-#  video_matchups_count   :integer          default(0), not null
 #  posted_at              :datetime         not null
 #  created_at             :datetime
 #  updated_at             :datetime
@@ -47,6 +46,9 @@ class Video < ActiveRecord::Base
   # video_matchups
   scope :chara1, -> (chara) { where(video_matchups: { chara1: chara }) }
   scope :chara2, -> (chara) { where(video_matchups: { chara2: chara }) }
+
+  scope :counts, -> () { eager_count(:video_matchup).each { |video| video.video_matchups.count } }
+  scope :goods, -> () { eager_count(:goods).each { |video| video.good.count } }
 
   include PublicActivity::Model
   after_create :create_video_activity
