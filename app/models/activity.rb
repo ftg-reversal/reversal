@@ -1,4 +1,6 @@
 class Activity < PublicActivity::Activity
+  self.abstract_class = true
+
   scope :including_owner, -> () { includes(:owner) }
   scope :including_trackable, -> () { includes(:trackable) }
   scope :including_recipient, -> () { includes(:recipient) }
