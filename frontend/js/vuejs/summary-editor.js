@@ -121,7 +121,8 @@ export default class SummaryEditor extends Vue {
               slack_messages: messageIDs
             },
             success: (data) => {
-              location.href = `/summaries/${this.summaryID}`
+              (this.summaryID ? 'put' : 'post'),
+              location.href = this.summaryID ? `/summaries/${this.summaryID}` : '/summaries/'
             },
             error: () => {
               this.nowSubmitting = false;
