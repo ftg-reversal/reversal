@@ -15,7 +15,7 @@ table.table.table-striped.hidden-xs-down
             = player.name
             br
         td.norwap
-          - if entry.reversal_user.&twitter_user
+          - if entry.reversal_user&.twitter_user
             a href="https://twitter.com/#{entry.reversal_user.screen_name}"
               = "@#{entry.reversal_user.screen_name}"
         td.u-nowrap
