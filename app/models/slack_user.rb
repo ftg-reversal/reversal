@@ -10,7 +10,7 @@
 #  updated_at :datetime         not null
 #
 
-class SlackUser < ActiveRecord::Base
+class SlackUser < ApplicationRecord
   has_one :reversal_user, dependent: :destroy
   has_many :slack_message, dependent: :destroy
 

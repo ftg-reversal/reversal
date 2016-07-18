@@ -24,7 +24,7 @@
 #  slack_user_id                            (slack_user_id) UNIQUE
 #
 
-class ReversalUser < ActiveRecord::Base
+class ReversalUser < ApplicationRecord
   alias_attribute :admin?, :is_admin
 
   belongs_to :slack_user

@@ -15,7 +15,7 @@
 #  index_entry_players_on_rank_id   (rank_id)
 #
 
-class EntryPlayer < ActiveRecord::Base
+class EntryPlayer < ApplicationRecord
   belongs_to :entry
   belongs_to :chara
   belongs_to :rank

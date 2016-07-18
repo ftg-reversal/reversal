@@ -9,7 +9,7 @@
 #  updated_at :datetime
 #
 
-class VideoSiteSearchCondition < ActiveRecord::Base
+class VideoSiteSearchCondition < ApplicationRecord
   include ClassyEnum::ActiveRecord
 
   classy_enum_attr :video_site

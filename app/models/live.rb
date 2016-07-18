@@ -20,7 +20,7 @@
 #  index_lives_on_live_id  (live_id)
 #
 
-class Live < ActiveRecord::Base
+class Live < ApplicationRecord
   validates :live_id, :url, presence: true, uniqueness: true
   validates :title, :start_time, presence: true
 

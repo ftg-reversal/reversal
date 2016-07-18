@@ -20,7 +20,7 @@
 #  idx_ckeditor_assetable_type  (assetable_type,type,assetable_id)
 #
 
-class Ckeditor::Asset < ActiveRecord::Base
+class Ckeditor::Asset < ApplicationRecord
   include Ckeditor::Orm::ActiveRecord::AssetBase
   include Ckeditor::Backend::Paperclip
 end
