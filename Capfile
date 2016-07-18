@@ -5,7 +5,8 @@ require 'capistrano/rails'
 # require 'capistrano/rails/migrations'
 require 'capistrano/rbenv'
 require 'capistrano/bundler'
-require 'capistrano3/puma'
+require 'capistrano/puma'
+require 'capistrano/puma/nginx'   # if you want to upload a nginx site template
 require 'whenever/capistrano'
 
 Dir.glob('lib/capistrano/tasks/*.rake').each { |r| import r }
