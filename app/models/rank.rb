@@ -8,5 +8,5 @@
 #  updated_at :datetime         not null
 #
 
-class Rank < ActiveRecord::Base
+class Rank < ApplicationRecord
 end

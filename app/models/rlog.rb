@@ -18,7 +18,7 @@
 #  index_rlogs_on_type              (type)
 #
 
-class Rlog < ActiveRecord::Base
+class Rlog < ApplicationRecord
   include Goodable
 
   belongs_to :reversal_user

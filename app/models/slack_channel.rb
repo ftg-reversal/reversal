@@ -17,7 +17,7 @@
 #  index_slack_channels_on_name         (name)
 #
 
-class SlackChannel < ActiveRecord::Base
+class SlackChannel < ApplicationRecord
   has_many :slack_message, -> { order(ts: 'desc') }
 
   scope :including_channel_user, -> () { includes(slack_message: [:slack_user]) }

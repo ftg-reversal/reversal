@@ -15,6 +15,6 @@
 #  index_twitter2slack_conditions_on_slack_channel_id  (slack_channel_id)
 #
 
-class Twitter2slackCondition < ActiveRecord::Base
+class Twitter2slackCondition < ApplicationRecord
   belongs_to :slack_channel
 end

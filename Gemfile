@@ -1,19 +1,17 @@
 source 'https://rubygems.org'
 ruby '2.3.1'
 
-gem 'rails', '4.2.6'
+gem "rails", "~> 5.0.0"
 
 gem 'active_link_to'
 gem 'active_model_serializers'
-gem 'active_record_union'
-gem 'activerecord-belongs_to_if'
-gem 'activerecord-mysql-awesome'
+gem 'activemodel-serializers-xml'
 gem 'aws-sdk'
 gem 'bootstrap_form'
 gem 'ckeditor'
 gem 'classy_enum'
 gem 'counter_culture'
-gem 'draper'
+gem 'draper', github: 'audionerd/draper', branch: 'rails5'
 gem 'exception_notification'
 gem 'faraday'
 gem 'faraday_middleware'
@@ -50,7 +48,6 @@ gem 'therubyracer'
 gem 'twitter'
 gem 'uglifier'
 gem 'whenever', require: false
-gem 'where-or'
 gem 'yt'
 
 group :development, :test do
@@ -68,8 +65,7 @@ group :development, :test do
   gem 'pry-coolline'
   gem 'pry-doc'
   gem 'pry-stack_explorer'
-  gem 'quiet_assets'
-  gem 'rack-lineprof'
+  gem 'puma'
   gem 'rack-mini-profiler', require: false
   gem 'rails-erd'
   gem 'rails_best_practices', require: false
@@ -79,7 +75,6 @@ group :development, :test do
   gem 'spring'
   gem 'spring-commands-rspec'
   gem 'squasher'
-  gem 'thin'
   gem 'view_source_map'
 end
 
@@ -103,5 +98,5 @@ group :deployment do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
-  gem 'capistrano3-unicorn'
+  gem 'capistrano3-puma'
 end

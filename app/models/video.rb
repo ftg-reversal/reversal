@@ -25,7 +25,7 @@
 #  url                         (url) UNIQUE
 #
 
-class Video < ActiveRecord::Base
+class Video < ApplicationRecord
   include ClassyEnum::ActiveRecord
   include Goodable
 

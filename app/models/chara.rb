@@ -9,5 +9,5 @@
 #  en_name    :string(255)
 #
 
-class Chara < ActiveRecord::Base
+class Chara < ApplicationRecord
 end

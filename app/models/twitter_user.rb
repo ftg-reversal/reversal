@@ -15,7 +15,7 @@
 #  index_twitter_users_on_screen_name  (screen_name)
 #
 
-class TwitterUser < ActiveRecord::Base
+class TwitterUser < ApplicationRecord
   has_one :reversal_user, dependent: :destroy
 
   def update_with_omniauth(auth)

@@ -14,7 +14,7 @@
 #  index_slack_messages_summaries_on_summary_id        (summary_id)
 #
 
-class SlackMessagesSummary < ActiveRecord::Base
+class SlackMessagesSummary < ApplicationRecord
   belongs_to :summary, class_name: 'Rlog'
   belongs_to :slack_message
 end

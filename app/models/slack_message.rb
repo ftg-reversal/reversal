@@ -23,7 +23,7 @@
 #  ts                     (ts)
 #
 
-class SlackMessage < ActiveRecord::Base
+class SlackMessage < ApplicationRecord
   paginates_per 30
 
   belongs_to :slack_channel

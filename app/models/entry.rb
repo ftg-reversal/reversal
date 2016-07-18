@@ -15,7 +15,7 @@
 #  index_entries_on_reversal_user_id  (reversal_user_id)
 #
 
-class Entry < ActiveRecord::Base
+class Entry < ApplicationRecord
   has_many :entry_player, dependent: :destroy
   belongs_to :event
   belongs_to :reversal_user

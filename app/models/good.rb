@@ -17,7 +17,7 @@
 #  index_goods_on_reversal_user_id               (reversal_user_id)
 #
 
-class Good < ActiveRecord::Base
+class Good < ApplicationRecord
   include PublicActivity::Model
 
   belongs_to :goodable, polymorphic: true

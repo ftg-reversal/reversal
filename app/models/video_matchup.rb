@@ -15,7 +15,7 @@
 #  index_video_matchups_on_video_id   (video_id)
 #
 
-class VideoMatchup < ActiveRecord::Base
+class VideoMatchup < ApplicationRecord
   belongs_to :video
   counter_culture :video
 

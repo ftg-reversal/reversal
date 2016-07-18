@@ -23,7 +23,7 @@
 #  index_events_on_number                                  (number)
 #
 
-class Event < ActiveRecord::Base
+class Event < ApplicationRecord
   include PublicActivity::Model
   include Goodable
 
