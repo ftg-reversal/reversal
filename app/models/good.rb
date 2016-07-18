@@ -30,4 +30,15 @@ class Good < ActiveRecord::Base
   scope :user, -> (user) { where(reversal_user: user) }
   scope :type, -> (type) { where(goodable_type: type) }
   scope :id,   -> (id)   { where(goodable_id: id) }
+
+  before_create  :increment_counter
+  before_destroy :decrement_counter
+
+  def increment_counter
+    self.goodable_type.constantize.increment_counter("goods_count", self.goodable_id)
+  end
+
+  def decrement_counter
+    self.goodable_type.constantize.decrement_counter("goods_count", self.goodable_id)
+  end
 end

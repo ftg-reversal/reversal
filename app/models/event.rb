@@ -24,8 +24,8 @@
 #
 
 class Event < ActiveRecord::Base
-  include Goodable
   include PublicActivity::Model
+  include Goodable
 
   has_many :entry, dependent: :destroy
   has_many :goods, as: :goodable, dependent: :destroy
