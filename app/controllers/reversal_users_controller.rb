@@ -11,7 +11,7 @@ class ReversalUsersController < ApplicationController
 
   def show
     @items = Kaminari.paginate_array(
-      @rlogs.concat(@activities).sort { |a, b| b.updated_at <=> a.updated_at }
+      @rlogs.to_a.concat(@activities).sort { |a, b| b.updated_at <=> a.updated_at }
     ).page(params[:page])
   end
 
