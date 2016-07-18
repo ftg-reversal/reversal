@@ -35,6 +35,7 @@ gem 'omniauth-twitter'
 gem 'paperclip', git: 'https://github.com/thoughtbot/paperclip.git'
 gem 'pry-rails'
 gem 'public_activity'
+gem 'puma'
 gem 'rails_autolink'
 gem 'request_store'
 gem 'ridgepole'
@@ -65,7 +66,6 @@ group :development, :test do
   gem 'pry-coolline'
   gem 'pry-doc'
   gem 'pry-stack_explorer'
-  gem 'puma'
   gem 'rack-mini-profiler', require: false
   gem 'rails-erd'
   gem 'rails_best_practices', require: false
@@ -89,8 +89,6 @@ end
 
 group :production do
   gem 'rollbar'
-  gem 'unicorn'
-  gem 'unicorn-worker-killer'
 end
 
 group :deployment do

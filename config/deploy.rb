@@ -11,16 +11,6 @@ set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rben
 set :rbenv_map_bins, %w(rake gem bundle ruby rails)
 set :rbenv_roles, :all # default value
 
-set :puma_bind,       "unix://#{shared_path}/tmp/sockets/puma.sock"
-set :puma_state,      "#{shared_path}/tmp/pids/puma.state"
-set :puma_pid,        "#{shared_path}/tmp/pids/puma.pid"
-set :puma_access_log, "#{release_path}/log/puma.error.log"
-set :puma_error_log,  "#{release_path}/log/puma.access.log"
-set :ssh_options,     { forward_agent: true, user: fetch(:user), keys: %w(~/.ssh/id_rsa.pub) }
-set :puma_preload_app, true
-set :puma_worker_timeout, nil
-set :puma_init_active_record, true  # Change to false when not using ActiveRecord
-
 set :use_sudo, false
 set :bundle_binstubs, nil
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/webpack', 'public/system', 'public/ckeditor_assets')
@@ -39,8 +29,16 @@ namespace :puma do
     end
   end
 
-  before :start, :make_dirs
+  desc 'Upload puma production settings file'
+  task :upload_settings do
+    on roles(:app) do |_|
+      upload!('config/puma/production.rb', "#{shared_path}/puma.rb")
+    end
+  end
+
 end
+before 'puma:check', 'puma:upload_settings'
+before 'puma:start', 'puma:make_dirs'
 
 namespace :deploy do
   desc 'Compile and Upload webpack files'
