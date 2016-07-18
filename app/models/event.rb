@@ -9,6 +9,7 @@
 #  datetime         :datetime
 #  entry_deadline   :datetime
 #  number           :integer          default(1), not null
+#  goods_count      :integer          default(0), not null
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #

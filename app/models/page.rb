@@ -8,6 +8,7 @@
 #  reversal_user_id :integer          not null
 #  slack_channel_id :integer
 #  type             :string(255)      not null
+#  goods_count      :integer          default(0), not null
 #  created_at       :datetime
 #  updated_at       :datetime
 #
