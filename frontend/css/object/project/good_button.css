@@ -5,59 +5,62 @@
 
   @define-mixin m-p-good-button {
     display: inline-block;
+    border: 1px;
+    color: white;
+    vertical-align: middle;
     text-align: center;
     white-space: nowrap;
-    vertical-align: middle;
     cursor: pointer;
     user-select: none;
-    color: white;
-    border: 1px
   }
 
   .good-button {
-    @mixin m-p-good-button;
     width: 100px;
     height: 28px;
     background: #ccc;
     transition: background 0.3s;
+
+    @mixin m-p-good-button ;
 
     &:focus {
       outline: none;
     }
 
     &:hover {
-      background: #6F0204;
+      background: #6f0204;
     }
   }
 
   .good-sm-button {
-    @mixin m-p-good-button;
+    padding-top: 0;
     width: 80px;
     height: 20px;
-    padding-top: 0;
-    font-size: 0.8rem;
     background: #ccc;
+    font-size: 0.8rem;
     transition: background 0.3s;
+
+    @mixin m-p-good-button ;
 
     &:focus {
       outline: none;
     }
 
     &:hover {
-      background: #6F0204;
+      background: #6f0204;
     }
   }
 
   .is-good {
-    background: #6F0204;
+    background: #6f0204;
   }
 
   .good-tweet-button {
-    @mixin m-p-good-button;
+    padding-top: 0.2rem;
     width: 100px;
     height: 28px;
-    padding-top: 0.2rem;
     background: #55acee;
+
+    @mixin m-p-good-button ;
 
     &:focus {
       outline: none;
@@ -65,12 +68,13 @@
   }
 
   .good-tweet-sm-button {
-    @mixin m-p-good-button;
+    padding-top: 0;
     width: 80px;
     height: 20px;
-    padding-top: 0;
-    font-size: 0.8rem;
     background: #55acee;
+    font-size: 0.8rem;
+
+    @mixin m-p-good-button ;
 
     &:focus {
       outline: none;

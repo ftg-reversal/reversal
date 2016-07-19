@@ -22,13 +22,12 @@ img {
 }
 
 blockquote {
-  font-size: 1.1rem;
-  padding: 10px 20px 10px 20px;
   margin-top: 0;
   margin-right: 0;
   margin-bottom: 20px;
-
+  padding: 10px 20px 10px 20px;
   border-left: 5px solid #eee;
+  font-size: 1.1rem;
 }
 
 h2 {

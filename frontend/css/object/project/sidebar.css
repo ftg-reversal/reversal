@@ -8,8 +8,8 @@
   }
 
   .sidebar-active {
-    font-weight: bold;
-    background-color: #E0E0E0;
+    background-color: #e0e0e0;
     color: black;
+    font-weight: bold;
   }
 }

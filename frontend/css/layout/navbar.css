@@ -1,45 +1,42 @@
 #navbar {
-  height: 50px;
-
   padding-top: 0;
   padding-bottom: 0;
-
-  background-color: #A70004;
-  border-bottom: #8E0003;
+  height: 50px;
+  border-bottom: #8e0003;
   border-bottom-width: 5px;
   border-bottom-style: solid;
+  background-color: #a70004;
 
   .navbar-nav {
-    margin-left: 0;
-    margin-right: 0;
     display: flex;
     float: none;
+    margin-right: 0;
+    margin-left: 0;
     text-align: center;
   }
 
   .nav-item {
-    width: 25%;
-
     margin: 0;
+    width: 25%;
     height: 50px;
     line-height: 50px;
 
     &:hover {
-      background: #C6595C;
+      background: #c6595c;
     }
   }
 
   .active {
-    border-bottom-color: #DA0005;
     border-bottom-width: 5px;
     border-bottom-style: solid;
+    border-bottom-color: #da0005;
   }
 
   .nav-link {
+    display: block;
     margin: 0;
     padding: 0;
-    color: white;
-    display: block;
     height: inherit;
+    color: white;
   }
 }
