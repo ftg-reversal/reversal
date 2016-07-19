@@ -1,8 +1,6 @@
-$seed-color: #A70004;
-
 #footer {
   height: 60px;
   text-align: center;
-  background: $seed-color;
+  background: #A70004;
   color: white;
 }

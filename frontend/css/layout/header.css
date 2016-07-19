@@ -1,7 +1,9 @@
 #header {
-  $header-color: #6F0204;
-  $header-height: 60px;
-  $header-icon-size: 42px;
+  line-height: 60px;
+  max-width: 100%;
+  background: #6F0204;
+  padding-top: 8px;
+  padding-bottom: 8px;
 
   #header-user-dropdown {
     background-color: white;
@@ -13,16 +15,9 @@
   }
 
   .header-user-icon {
-    size: $header-icon-size;
-
+    size: 42px;
     border-radius: 2px;
   }
-
-  line-height: $header-height;
-  max-width: 100%;
-  background: $header-color;
-
-  padding: 8px * 8px *;
 
   .header-logo {
     text-indent: 101%;
@@ -55,7 +50,7 @@
     color: white;
 
     &:hover {
-      background: tint(black, 20%);
+      background: #333333;
     }
   }
 }

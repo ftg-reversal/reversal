@@ -1,6 +1,4 @@
 .p-sidebar {
-  $gray: #E0E0E0;
-
   h4 {
     font-size: 1.3rem;
   }
@@ -11,7 +9,7 @@
 
   .sidebar-active {
     font-weight: bold;
-    background-color: $gray;
+    background-color: #E0E0E0;
     color: black;
   }
 }

@@ -1,6 +1,7 @@
 #event-show {
   .team-name {
-    padding: 0.5rem, *, 0.5rem, *;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
 
     width: 100%;
     background: black;
