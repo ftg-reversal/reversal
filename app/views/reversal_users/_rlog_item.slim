@@ -18,12 +18,10 @@
         p = "最終更新：#{time_ago_in_words(rlog.updated_at)}前"
       .col-lg-3.u-text-right.hidden-md-down
         .p-good-count
-          span.label
-            button.good-label
-              i.fa.fa-thumbs-o-up = "：#{rlog.goods.size}"
+          .good-label.btn.btn-default
+            i.fa.fa-thumbs-o-up = "：#{rlog.goods.size}"
       .col-md-12.hidden-lg-up
         .p-good-count
-          span.label
-            button.good-label
-              i.fa.fa-thumbs-o-up = "：#{rlog.goods.size}"
+          .good-label.btn.btn-default
+            i.fa.fa-thumbs-o-up = "：#{rlog.goods.size}"
 hr

@@ -20,7 +20,6 @@
         p = "最終更新：#{time_ago_in_words(event.updated_at)}前"
       .col-md-2.u-text-right
         .p-good-count
-          span.label
-            button.good-label
-              i.fa.fa-thumbs-o-up = "：#{event.goods.size}"
+          .good-label.btn.btn-default
+            i.fa.fa-thumbs-o-up = "：#{event.goods.size}"
 hr
