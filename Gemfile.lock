@@ -1,5 +1,5 @@
 GIT
-  remote: git://github.com/audionerd/draper.git
+  remote: https://github.com/audionerd/draper.git
   revision: e816e0e5876b76c648c0928f1c3f2aa2c7a3d1f2
   branch: rails5
   specs:

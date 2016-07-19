@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.3.1'
 
-gem "rails", "~> 5.0.0"
+gem 'rails', '~> 5.0.0'
 
 gem 'active_link_to'
 gem 'active_model_serializers'
@@ -11,7 +11,7 @@ gem 'bootstrap_form'
 gem 'ckeditor'
 gem 'classy_enum'
 gem 'counter_culture'
-gem 'draper', github: 'audionerd/draper', branch: 'rails5'
+gem 'draper', git: 'https://github.com/audionerd/draper.git', branch: 'rails5'
 gem 'exception_notification'
 gem 'faraday'
 gem 'faraday_middleware'
