@@ -11,13 +11,13 @@ module Reversal
     config.time_zone = 'Tokyo'
 
     config.active_record.raise_in_transactional_callbacks = true
+    config.autoload_paths.push "#{Rails.root}/app/batch"
     config.autoload_paths.push "#{Rails.root}/app/factories"
     config.autoload_paths.push "#{Rails.root}/app/infrastructures"
     config.autoload_paths.push "#{Rails.root}/app/notifiers"
     config.autoload_paths.push "#{Rails.root}/app/parameters"
     config.autoload_paths.push "#{Rails.root}/app/repositories"
     config.autoload_paths.push "#{Rails.root}/app/services"
-    config.autoload_paths.push "#{Rails.root}/lib"
 
     config.generators.template_engine = :slim
 
