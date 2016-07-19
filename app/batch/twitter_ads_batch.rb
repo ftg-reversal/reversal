@@ -1,4 +1,4 @@
-class TwitterAds
+class TwitterAdsBatch
   class << self
     def exec
       TwitterInfrastructure::Tweet.exec(client, tweet_data.sample)

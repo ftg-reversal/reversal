@@ -1,4 +1,4 @@
-class UpdateLives
+class UpdateLivesBatch
   def self.exec
     lives = LiveApiRepository.find_nicovideo_live.select(&:validate)
     lives.map(&:save)

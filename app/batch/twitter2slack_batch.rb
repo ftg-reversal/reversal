@@ -1,4 +1,4 @@
-class Twitter2slack
+class Twitter2slackBatch
   class << self
     def exec
       Twitter2slackCondition.all.map do |condition|

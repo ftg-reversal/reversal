@@ -1,15 +1,15 @@
 every 5.minutes do
-  runner 'Twitter2slack.exec'
-  runner 'UpdateSlack.exec'
-  runner 'UpdateLives.exec'
+  runner 'Twitter2slackBatch.exec'
+  runner 'UpdateSlackBatch.exec'
+  runner 'UpdateLivesBatch.exec'
 end
 
 every 15.minutes do
-  runner 'UpdateVideos.exec'
+  runner 'UpdateVideosBatch.exec'
 end
 
 every 3.hours do
-  runner 'TwitterAds.exec'
+  runner 'TwitterAdsBatch.exec'
 end
 
 every 6.hours do

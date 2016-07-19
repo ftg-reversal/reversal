@@ -1,4 +1,4 @@
-class UpdateSlack
+class UpdateSlackBatch
   def self.exec
     SlackApiRepository.find_all_channels.select(&:validate).map(&:save)
     SlackApiRepository.find_all_users.select(&:validate).map(&:save)

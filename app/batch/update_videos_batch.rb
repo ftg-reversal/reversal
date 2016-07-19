@@ -1,4 +1,4 @@
-class UpdateVideos
+class UpdateVideosBatch
   class << self
     def exec
       VideoSiteSearchCondition.all.flat_map do |condition|
