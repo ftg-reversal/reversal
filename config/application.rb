@@ -17,7 +17,7 @@ module Reversal
     config.autoload_paths.push "#{Rails.root}/app/parameters"
     config.autoload_paths.push "#{Rails.root}/app/repositories"
     config.autoload_paths.push "#{Rails.root}/app/services"
-    config.autoload_paths.push "#{Rails.root}/lib/batch"
+    config.autoload_paths.push "#{Rails.root}/lib"
 
     config.generators.template_engine = :slim
 
