@@ -1,11 +1,6 @@
 .p-good-count {
   .good-label {
-    &:focus {
-      outline: none;
-    }
-
     &:hover {
-      background: white;
       cursor: default;
     }
   }
