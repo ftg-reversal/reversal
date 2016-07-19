@@ -1,0 +1,46 @@
+#navbar {
+  $navbar-height: 50px;
+
+  height: $navbar-height;
+
+  padding: 0 * 0 *;
+
+  background-color: #A70004;
+  border-bottom: #8E0003;
+  border-bottom-width: 5px;
+  border-bottom-style: solid;
+
+  .navbar-nav {
+    margin: * 0 * 0;
+
+    display: flex;
+    float: none;
+    text-align: center;
+  }
+
+  .nav-item {
+    width: 25%;
+
+    margin: 0;
+    height: $navbar-height;
+    line-height: $navbar-height;
+
+    &:hover {
+      background: #C6595C;
+    }
+  }
+
+  .active {
+    border-bottom-color: #DA0005;
+    border-bottom-width: 5px;
+    border-bottom-style: solid;
+  }
+
+  .nav-link {
+    margin: 0;
+    padding: 0;
+    color: white;
+    display: block;
+    height: inherit;
+  }
+}

@@ -1,0 +1,20 @@
+.p-good-count {
+  .good-label {
+    display: inline-block;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    color: white;
+    font-size: 0.7rem;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:hover {
+      background: white;
+    }
+  }
+}

@@ -43,15 +43,13 @@ const output = production ? {
   publicPath: 'http://localhost:3500/'
 }
 
-// css modules
-const cssLoader = production ? ExtractTextPlugin.extract('style', 'css?modules!postcss') : 'style!css?modules!postcss'
-// global css
-const sassLoader = production ? ExtractTextPlugin.extract('style', 'css!postcss!sass?sourceMap!import-glob') : 'style!css!postcss!sass?sourceMap!import-glob'
+const cssLoader = production ? ExtractTextPlugin.extract('style', 'css!postcss') : 'style!css?sourceMap!postcss'
+const sassLoader = production ? ExtractTextPlugin.extract('style', 'css!postcss!sass?sourceMap') : 'style!css!postcss!sass?sourceMap'
 
 export default {
   entry: {
     bundle: './frontend/js/index.js',
-    style: './frontend/css/index.sass',
+    style: './frontend/css/index.js',
     vendor: ['jquery-ujs', 'sweetalert', 'turbolinks', 'tether', 'vue'],
   },
 
@@ -60,7 +58,6 @@ export default {
   module: {
     preloaders: [
       { test: /\.css/, loader: 'stylelint' },
-      { test: /\.sass/, loader: 'import-glob' }
     ],
 
     loaders: [

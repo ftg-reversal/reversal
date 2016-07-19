@@ -1,0 +1,79 @@
+.p-good-button {
+  img {
+    padding-bottom: 3px;
+  }
+
+  @define-mixin m-p-good-button {
+    display: inline-block;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    color: white;
+    border: 1px
+  }
+
+  .good-button {
+    @mixin m-p-good-button;
+    width: 100px;
+    height: 28px;
+    background: #ccc;
+    transition: background 0.3s;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:hover {
+      background: #6F0204;
+    }
+  }
+
+  .good-sm-button {
+    @mixin m-p-good-button;
+    width: 80px;
+    height: 20px;
+    padding-top: 0;
+    font-size: 0.8rem;
+    background: #ccc;
+    transition: background 0.3s;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:hover {
+      background: #6F0204;
+    }
+  }
+
+  .is-good {
+    background: #6F0204;
+  }
+
+  .good-tweet-button {
+    @mixin m-p-good-button;
+    width: 100px;
+    height: 28px;
+    padding-top: 0.2rem;
+    background: #55acee;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .good-tweet-sm-button {
+    @mixin m-p-good-button;
+    width: 80px;
+    height: 20px;
+    padding-top: 0;
+    font-size: 0.8rem;
+    background: #55acee;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}

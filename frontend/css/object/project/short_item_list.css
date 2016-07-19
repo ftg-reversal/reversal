@@ -1,0 +1,16 @@
+.p-short-item-list {
+  margin-top: 1rem;
+
+  img {
+    width: 48px;
+    height: 48px;
+  }
+
+  h3 {
+    margin-bottom: 1rem;
+  }
+
+  p {
+    margin-bottom: 0.3rem;
+  }
+}

@@ -1,0 +1,61 @@
+#header {
+  $header-color: #6F0204;
+  $header-height: 60px;
+  $header-icon-size: 42px;
+
+  #header-user-dropdown {
+    background-color: white;
+
+    &:hover {
+      filter: brightness(0.85);
+      cursor: pointer;
+    }
+  }
+
+  .header-user-icon {
+    size: $header-icon-size;
+
+    border-radius: 2px;
+  }
+
+  line-height: $header-height;
+  max-width: 100%;
+  background: $header-color;
+
+  padding: 8px * 8px *;
+
+  .header-logo {
+    text-indent: 101%;
+    overflow: hidden;
+    white-space: nowrap;
+
+    width: 180px;
+    background: inline("logo.png") no-repeat;
+  }
+
+  .header-logo-sp {
+    text-indent: 101%;
+    overflow: hidden;
+    white-space: nowrap;
+
+    width: 60px;
+    background: inline("logo-sp.png") no-repeat;
+  }
+
+  .dropdown-toggle:after {
+    border: 0;
+  }
+
+  .dropdown-menu {
+    background: black;
+    border: 1px white solid;
+  }
+
+  .dropdown-item {
+    color: white;
+
+    &:hover {
+      background: tint(black, 20%);
+    }
+  }
+}

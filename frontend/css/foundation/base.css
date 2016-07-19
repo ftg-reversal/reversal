@@ -1,0 +1,40 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #191919;
+  color: black;
+  word-wrap: break-word;
+}
+
+img {
+  max-height: 100%;
+  height: auto;
+}
+
+#wrapper {
+  min-height: calc(100vh - 60px);
+}
+
+#main {
+  padding-top: 2.5rem;
+}
+
+blockquote {
+  font-size: 1.1rem;
+
+  padding: 10px 20px 10px 20px;
+
+  margin: 0 0 20px *;
+
+  border-left: 5px solid #eee;
+}
+
+h2 {
+  font-size: 1.7rem;
+}
+
+h3 {
+  font-size: 1.4rem;
+}

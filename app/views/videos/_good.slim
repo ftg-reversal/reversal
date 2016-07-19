@@ -34,10 +34,16 @@
 - else
   a href=login_with_redirect_url(videos_path)
     .p-good-button
-      button.good-button.m-r-1
-        img src=asset_path('good-icon.png')
-        | ：
-        span = "#{video.goods.size}"
+      - if sm
+        button.good-sm-button.m-r-1
+          img src=asset_path('good-icon.png')
+          | ：
+          span = "#{video.goods.size}"
+      - else
+        button.good-button.m-r-1
+          img src=asset_path('good-icon.png')
+          | ：
+          span = "#{video.goods.size}"
 
       - if sm
         = good_tw_sm(video_url(video), "#{video.title} - Reversal Video")

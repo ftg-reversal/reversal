@@ -1,0 +1,42 @@
+.slack-channel {
+  .slack-message {
+    h4 {
+      margin: 0;
+      padding: 0;
+
+      font-size: 1.2rem;
+
+      a {
+        color: black;
+      }
+    }
+
+    .slack-icon {
+      margin-top: 0.2rem;
+    }
+
+    small {
+      color: lighten(black, 40%);
+    }
+  }
+
+  .media-left {
+    img {
+      size: 48px;
+
+      border-radius: 6px;
+    }
+  }
+
+  .media-heading {
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+    padding-right: 30px;
+    word-wrap: break-word;
+  }
+
+  nav {
+    text-align: center;
+  }
+}

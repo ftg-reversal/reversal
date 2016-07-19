@@ -1,0 +1,8 @@
+.p-profile-nav {
+  margin-bottom: 1rem;
+
+  .nav-link {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+}
