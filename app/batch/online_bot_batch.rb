@@ -11,7 +11,7 @@ class OnlineBotBatch
       end
 
       unless unsent_tweets.last.nil?
-        REDIS.set(ONLINE_BOT_LAST_TWEET, unset_tweets.last[:id].to_s)
+        REDIS.set(ONLINE_BOT_LAST_TWEET, unsent_tweets.last[:id].to_s)
       end
     end
 
