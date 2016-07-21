@@ -30,6 +30,6 @@ SitemapGenerator::Sitemap.create do
     add event_path(event), lastmod: event.updated_at
   end
   ReversalUser.find_each do |user|
-    add user_path(user), lastmod: user.updated_at
+    add user_path(user.screen_name), lastmod: user.updated_at
   end
 end
