@@ -625,6 +625,7 @@ DEPENDENCIES
   rails-erd
   rails_autolink
   rails_best_practices
+  redis
   redis-rails
   request_store
   ridgepole

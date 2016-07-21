@@ -7,12 +7,6 @@ class Twitter2slackBatch
           SlackApiRepository.post_message(condition.slack_channel, tweet[:url], 'twitter', icon_emoji: ':twitter:')
         end
 
-        if condition.quote
-          unsent_tweets.map do |tweet|
-            TwitterInfrastructure::Tweet.exec(online_bot_client, ".@#{tweet[:screen_name]} #{tweet[:text][0..100].gsub(/\#GGXrdRプレマ/, '').gsub(/\#GGXrdRロビー/, '')} #{tweet[:url]}")
-          end
-        end
-
         unless unsent_tweets.last.nil?
           condition.last_tweet = unsent_tweets.last[:id]
           condition.save
