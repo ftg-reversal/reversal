@@ -1,0 +1,9 @@
+---
+- name: Install Redis
+  apt: name=redis-server state=latest
+
+- name: Put redis.conf
+  copy: src=redis.conf dest=/etc/redis/redis.conf
+
+- name: Restart redis
+  command: /etc/init.d/redis-server restart

@@ -1,4 +1,4 @@
-create_table "activities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+create_table "activities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
   t.integer  "trackable_id"
   t.string   "trackable_type"
   t.integer  "owner_id"
@@ -14,14 +14,14 @@ create_table "activities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHAR
   t.index ["trackable_id", "trackable_type"], name: "index_activities_on_trackable_id_and_trackable_type", using: :btree
 end
 
-create_table "charas", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+create_table "charas", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
   t.string   "name"
   t.string   "en_name"
   t.datetime "created_at", null: false
   t.datetime "updated_at", null: false
 end
 
-create_table "ckeditor_assets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+create_table "ckeditor_assets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
   t.string   "data_file_name",               null: false
   t.string   "data_content_type"
   t.integer  "data_file_size"
@@ -36,7 +36,7 @@ create_table "ckeditor_assets", force: :cascade, options: "ENGINE=InnoDB DEFAULT
   t.index ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type", using: :btree
 end
 
-create_table "entries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+create_table "entries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
   t.integer  "reversal_user_id",               null: false
   t.integer  "event_id",                       null: false
   t.text     "comment",          limit: 65535
@@ -46,7 +46,7 @@ create_table "entries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET
   t.index ["reversal_user_id"], name: "index_entries_on_reversal_user_id", using: :btree
 end
 
-create_table "entry_players", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+create_table "entry_players", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
   t.string  "name"
   t.integer "entry_id", null: false
   t.integer "chara_id", null: false
@@ -56,7 +56,7 @@ create_table "entry_players", force: :cascade, options: "ENGINE=InnoDB DEFAULT C
   t.index ["rank_id"], name: "index_entry_players_on_rank_id", using: :btree
 end
 
-create_table "events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+create_table "events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
   t.integer  "reversal_user_id",                           null: false
   t.string   "title"
   t.text     "description",      limit: 65535
@@ -75,7 +75,7 @@ create_table "events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=
   t.index ["reversal_user_id"], name: "events_on_reversal_user_id", using: :btree
 end
 
-create_table "goods", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+create_table "goods", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
   t.integer  "reversal_user_id", null: false
   t.integer  "goodable_id"
   t.string   "goodable_type"
@@ -87,7 +87,7 @@ create_table "goods", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=u
   t.index ["reversal_user_id"], name: "index_goods_on_reversal_user_id", using: :btree
 end
 
-create_table "lives", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+create_table "lives", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
   t.string   "live_id"
   t.string   "url"
   t.string   "title"
@@ -102,13 +102,13 @@ create_table "lives", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=u
   t.index ["live_id"], name: "index_lives_on_live_id", using: :btree
 end
 
-create_table "ranks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+create_table "ranks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
   t.string   "rank"
   t.datetime "created_at", null: false
   t.datetime "updated_at", null: false
 end
 
-create_table "reversal_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+create_table "reversal_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
   t.integer  "twitter_user_id"
   t.integer  "slack_user_id"
   t.boolean  "is_admin",                      default: false
@@ -127,7 +127,7 @@ create_table "reversal_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT 
   t.index ["twitter_user_id"], name: "index_reversal_users_on_twitter_user_id", unique: true, using: :btree
 end
 
-create_table "rlogs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+create_table "rlogs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
   t.string   "title",                                      null: false
   t.text     "description",      limit: 65535
   t.integer  "reversal_user_id",                           null: false
@@ -141,7 +141,7 @@ create_table "rlogs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=u
   t.index ["type"], name: "index_rlogs_on_type", using: :btree
 end
 
-create_table "slack_channels", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+create_table "slack_channels", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
   t.string   "cid",         null: false
   t.string   "name",        null: false
   t.string   "topic"
@@ -153,7 +153,7 @@ create_table "slack_channels", force: :cascade, options: "ENGINE=InnoDB DEFAULT 
   t.index ["name"], name: "index_slack_channels_on_name", using: :btree
 end
 
-create_table "slack_messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+create_table "slack_messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
   t.integer  "slack_channel_id",                                        default: 0, null: false
   t.integer  "slack_user_id"
   t.string   "username"
@@ -171,7 +171,7 @@ create_table "slack_messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT 
   t.index ["ts"], name: "ts", using: :btree
 end
 
-create_table "slack_messages_summaries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+create_table "slack_messages_summaries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
   t.integer "slack_message_id", null: false
   t.integer "summary_id",       null: false
   t.integer "row_order"
@@ -180,7 +180,7 @@ create_table "slack_messages_summaries", force: :cascade, options: "ENGINE=InnoD
   t.index ["summary_id"], name: "index_slack_messages_summaries_on_summary_id", using: :btree
 end
 
-create_table "slack_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+create_table "slack_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
   t.string   "uid",        null: false
   t.string   "name",       null: false
   t.string   "icon_url"
@@ -188,7 +188,7 @@ create_table "slack_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHA
   t.datetime "updated_at", null: false
 end
 
-create_table "twitter2slack_conditions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+create_table "twitter2slack_conditions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
   t.string   "text",                             null: false
   t.integer  "slack_channel_id",                 null: false
   t.bigint   "last_tweet",       default: 0,     null: false
@@ -198,7 +198,7 @@ create_table "twitter2slack_conditions", force: :cascade, options: "ENGINE=InnoD
   t.index ["slack_channel_id"], name: "index_twitter2slack_conditions_on_slack_channel_id", using: :btree
 end
 
-create_table "twitter_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+create_table "twitter_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
   t.string   "uid",         null: false
   t.string   "screen_name", null: false
   t.string   "name",        null: false
@@ -208,7 +208,7 @@ create_table "twitter_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT C
   t.index ["screen_name"], name: "index_twitter_users_on_screen_name", using: :btree
 end
 
-create_table "video_matchups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+create_table "video_matchups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
   t.integer "video_id",  null: false
   t.integer "chara1_id", null: false
   t.integer "chara2_id", null: false
@@ -218,14 +218,14 @@ create_table "video_matchups", force: :cascade, options: "ENGINE=InnoDB DEFAULT 
   t.index ["video_id"], name: "index_video_matchups_on_video_id", using: :btree
 end
 
-create_table "video_site_search_conditions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+create_table "video_site_search_conditions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
   t.string   "word",       null: false
   t.string   "video_site", null: false
   t.datetime "created_at"
   t.datetime "updated_at"
 end
 
-create_table "videos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+create_table "videos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
   t.string   "url",                                null: false
   t.string   "video_id"
   t.string   "video_site",                         null: false

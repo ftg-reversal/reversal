@@ -74,6 +74,9 @@ Rails.application.configure do
 
   GA.tracker = ENV['GOOGLE_ANALYTICS']
 
+  config.cache_store   = :redis_store, 'redis://store:6379/0/cache',   { expires_in: 90.minutes }
+  config.session_store = :redis_store, 'redis://store:6379/0/session', { expires_in: 1.month }
+
   if ENV["RAILS_LOG_TO_STDOUT"].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter
