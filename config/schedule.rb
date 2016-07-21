@@ -1,3 +1,7 @@
+every 3.minutes do
+  runner 'OnlineBotBatch.exec'
+end
+
 every 5.minutes do
   runner 'Twitter2slackBatch.exec'
   runner 'UpdateSlackBatch.exec'
