@@ -14,6 +14,11 @@ class SummariesController < RlogsController
     @summary = SummaryDecorator.decorate(Summary.new)
   end
 
+  def new_summary_from_channel
+    @channel = SlackChannel.find(params[:channel_id].to_i)
+    render 'new'
+  end
+
   def create
     summary = Summary.new(summary_params)
     if summary.save

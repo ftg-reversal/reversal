@@ -41,6 +41,7 @@
 #                  PATCH  /summaries/:id(.:format)                 summaries#update
 #                  PUT    /summaries/:id(.:format)                 summaries#update
 #                  DELETE /summaries/:id(.:format)                 summaries#destroy
+#                  GET    /summaries/channel/:channel_id(.:format) summaries#new_summary_from_channel
 #       event_good GET    /events/:event_id/good(.:format)         event/goods#show
 #                  PATCH  /events/:event_id/good(.:format)         event/goods#update
 #                  PUT    /events/:event_id/good(.:format)         event/goods#update
@@ -106,6 +107,12 @@ Rails.application.routes.draw do
 
   resources :summaries do
     resource :good, module: :summary, only: [:show, :update, :destroy]
+  end
+
+  resource :summaries, only: [] do
+    member do
+      get 'channel/:channel_id', action: :new_summary_from_channel
+    end
   end
 
   resources :events do

@@ -1,4 +1,7 @@
-#summary-editor data-summary-id=nil data-channel-id=nil data-messages=[]
+- if @channel== nil
+  #summary-editor data-summary-id=nil data-channel-id=nil data-messages=[]
+- else
+  #summary-editor data-summary-id=nil data-channel-id=@channel.id data-messages=[]
 
 - content_for :title do
   | まとめの作成
