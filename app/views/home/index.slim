@@ -1,5 +1,5 @@
 #home-chara.card
-  .card-block.hidden-lg-down
+  .card-block.hidden-md-down
     h2 キャラ攻略情報
     hr
     a href='/channels/28'
@@ -49,13 +49,13 @@
     a href='/channels/5'
       img.m-r-2.m-b-1 src=asset_path('chara_icon/di.png')
 
-  .card-block.hidden-md-up
+  .card-block.hidden-lg-up
     h2
       a data-toggle='collapse' href='#chara-link' aria-expanded="false" aria-controls="chara-link"
         | キャラ攻略情報
         i.fa.fa-folder-open.m-l-1 aria-hidden='true'
-    hr
     #chara-link.collapse
+      hr
       a href='/channels/28'
         img.m-r-1.m-b-1 src=asset_path('chara_icon/so.png')
       a href='/channels/15'
