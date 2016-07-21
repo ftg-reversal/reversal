@@ -1,162 +1,172 @@
-create_table "activities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-  t.integer  "trackable_id"
-  t.string   "trackable_type"
-  t.integer  "owner_id"
-  t.string   "owner_type"
-  t.string   "key"
+create_table "activities", force: :cascade do |t|
+  t.integer  "trackable_id",   limit: 4
+  t.string   "trackable_type", limit: 255
+  t.integer  "owner_id",       limit: 4
+  t.string   "owner_type",     limit: 255
+  t.string   "key",            limit: 255
   t.text     "parameters",     limit: 65535
-  t.integer  "recipient_id"
-  t.string   "recipient_type"
+  t.integer  "recipient_id",   limit: 4
+  t.string   "recipient_type", limit: 255
   t.datetime "created_at",                   null: false
   t.datetime "updated_at",                   null: false
-  t.index ["owner_id", "owner_type"], name: "index_activities_on_owner_id_and_owner_type", using: :btree
-  t.index ["recipient_id", "recipient_type"], name: "index_activities_on_recipient_id_and_recipient_type", using: :btree
-  t.index ["trackable_id", "trackable_type"], name: "index_activities_on_trackable_id_and_trackable_type", using: :btree
 end
 
-create_table "charas", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-  t.string   "name"
-  t.string   "en_name"
-  t.datetime "created_at", null: false
-  t.datetime "updated_at", null: false
+add_index "activities", ["owner_id", "owner_type"], name: "index_activities_on_owner_id_and_owner_type", using: :btree
+add_index "activities", ["recipient_id", "recipient_type"], name: "index_activities_on_recipient_id_and_recipient_type", using: :btree
+add_index "activities", ["trackable_id", "trackable_type"], name: "index_activities_on_trackable_id_and_trackable_type", using: :btree
+
+create_table "charas", force: :cascade do |t|
+  t.string   "name",       limit: 255
+  t.string   "en_name",    limit: 255
+  t.datetime "created_at",             null: false
+  t.datetime "updated_at",             null: false
 end
 
-create_table "ckeditor_assets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-  t.string   "data_file_name",               null: false
-  t.string   "data_content_type"
-  t.integer  "data_file_size"
-  t.integer  "assetable_id"
+create_table "ckeditor_assets", force: :cascade do |t|
+  t.string   "data_file_name",    limit: 255, null: false
+  t.string   "data_content_type", limit: 255
+  t.integer  "data_file_size",    limit: 4
+  t.integer  "assetable_id",      limit: 4
   t.string   "assetable_type",    limit: 30
   t.string   "type",              limit: 30
-  t.integer  "width"
-  t.integer  "height"
-  t.datetime "created_at",                   null: false
-  t.datetime "updated_at",                   null: false
-  t.index ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable", using: :btree
-  t.index ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type", using: :btree
+  t.integer  "width",             limit: 4
+  t.integer  "height",            limit: 4
+  t.datetime "created_at",                    null: false
+  t.datetime "updated_at",                    null: false
 end
 
-create_table "entries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-  t.integer  "reversal_user_id",               null: false
-  t.integer  "event_id",                       null: false
+add_index "ckeditor_assets", ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable", using: :btree
+add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type", using: :btree
+
+create_table "entries", force: :cascade do |t|
+  t.integer  "reversal_user_id", limit: 4,     null: false
+  t.integer  "event_id",         limit: 4,     null: false
   t.text     "comment",          limit: 65535
   t.datetime "created_at",                     null: false
   t.datetime "updated_at",                     null: false
-  t.index ["event_id"], name: "index_entries_on_event_id", using: :btree
-  t.index ["reversal_user_id"], name: "index_entries_on_reversal_user_id", using: :btree
 end
 
-create_table "entry_players", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-  t.string  "name"
-  t.integer "entry_id", null: false
-  t.integer "chara_id", null: false
-  t.integer "rank_id",  null: false
-  t.index ["chara_id"], name: "index_entry_players_on_chara_id", using: :btree
-  t.index ["entry_id"], name: "index_entry_players_on_entry_id", using: :btree
-  t.index ["rank_id"], name: "index_entry_players_on_rank_id", using: :btree
+add_index "entries", ["event_id"], name: "index_entries_on_event_id", using: :btree
+add_index "entries", ["reversal_user_id"], name: "index_entries_on_reversal_user_id", using: :btree
+
+create_table "entry_players", force: :cascade do |t|
+  t.string  "name",     limit: 255
+  t.integer "entry_id", limit: 4,   null: false
+  t.integer "chara_id", limit: 4,   null: false
+  t.integer "rank_id",  limit: 4,   null: false
 end
 
-create_table "events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-  t.integer  "reversal_user_id",                           null: false
-  t.string   "title"
+add_index "entry_players", ["chara_id"], name: "index_entry_players_on_chara_id", using: :btree
+add_index "entry_players", ["entry_id"], name: "index_entry_players_on_entry_id", using: :btree
+add_index "entry_players", ["rank_id"], name: "index_entry_players_on_rank_id", using: :btree
+
+create_table "events", force: :cascade do |t|
+  t.integer  "reversal_user_id", limit: 4,                 null: false
+  t.string   "title",            limit: 255
   t.text     "description",      limit: 65535
   t.datetime "datetime"
   t.datetime "entry_deadline"
-  t.integer  "number",                         default: 1, null: false
-  t.integer  "goods_count",                    default: 0, null: false
+  t.integer  "number",           limit: 4,     default: 1, null: false
+  t.integer  "goods_count",      limit: 4,     default: 0, null: false
   t.datetime "created_at",                                 null: false
   t.datetime "updated_at",                                 null: false
-  t.index ["datetime", "entry_deadline", "number"], name: "index_events_on_datetime_and_entry_deadline_and_number", using: :btree
-  t.index ["datetime", "number"], name: "index_events_on_datetime_and_number", using: :btree
-  t.index ["datetime"], name: "index_events_on_datetime", using: :btree
-  t.index ["entry_deadline", "number"], name: "index_events_on_entry_deadline_and_number", using: :btree
-  t.index ["entry_deadline"], name: "index_events_on_entry_deadline", using: :btree
-  t.index ["number"], name: "index_events_on_number", using: :btree
-  t.index ["reversal_user_id"], name: "events_on_reversal_user_id", using: :btree
 end
 
-create_table "goods", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-  t.integer  "reversal_user_id", null: false
-  t.integer  "goodable_id"
-  t.string   "goodable_type"
-  t.string   "link",             null: false
-  t.datetime "created_at",       null: false
-  t.datetime "updated_at",       null: false
-  t.index ["goodable_id", "goodable_type"], name: "index_goods_on_goodable_id_and_goodable_type", using: :btree
-  t.index ["reversal_user_id", "goodable_id", "goodable_type"], name: "index_goods_on_id_and_type", unique: true, using: :btree
-  t.index ["reversal_user_id"], name: "index_goods_on_reversal_user_id", using: :btree
+add_index "events", ["datetime", "entry_deadline", "number"], name: "index_events_on_datetime_and_entry_deadline_and_number", using: :btree
+add_index "events", ["datetime", "number"], name: "index_events_on_datetime_and_number", using: :btree
+add_index "events", ["datetime"], name: "index_events_on_datetime", using: :btree
+add_index "events", ["entry_deadline", "number"], name: "index_events_on_entry_deadline_and_number", using: :btree
+add_index "events", ["entry_deadline"], name: "index_events_on_entry_deadline", using: :btree
+add_index "events", ["number"], name: "index_events_on_number", using: :btree
+add_index "events", ["reversal_user_id"], name: "events_on_reversal_user_id", using: :btree
+
+create_table "goods", force: :cascade do |t|
+  t.integer  "reversal_user_id", limit: 4,   null: false
+  t.integer  "goodable_id",      limit: 4
+  t.string   "goodable_type",    limit: 255
+  t.string   "link",             limit: 255, null: false
+  t.datetime "created_at",                   null: false
+  t.datetime "updated_at",                   null: false
 end
 
-create_table "lives", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-  t.string   "live_id"
-  t.string   "url"
-  t.string   "title"
+add_index "goods", ["goodable_id", "goodable_type"], name: "index_goods_on_goodable_id_and_goodable_type", using: :btree
+add_index "goods", ["reversal_user_id", "goodable_id", "goodable_type"], name: "index_goods_on_id_and_type", unique: true, using: :btree
+add_index "goods", ["reversal_user_id"], name: "index_goods_on_reversal_user_id", using: :btree
+
+create_table "lives", force: :cascade do |t|
+  t.string   "live_id",           limit: 255
+  t.string   "url",               limit: 255
+  t.string   "title",             limit: 255
   t.datetime "start_time"
-  t.string   "icon_url"
-  t.string   "icon_file_name"
-  t.string   "icon_content_type"
-  t.integer  "icon_file_size"
+  t.string   "icon_url",          limit: 255
+  t.string   "icon_file_name",    limit: 255
+  t.string   "icon_content_type", limit: 255
+  t.integer  "icon_file_size",    limit: 4
   t.datetime "icon_updated_at"
-  t.datetime "created_at",        null: false
-  t.datetime "updated_at",        null: false
-  t.index ["live_id"], name: "index_lives_on_live_id", using: :btree
+  t.datetime "created_at",                    null: false
+  t.datetime "updated_at",                    null: false
 end
 
-create_table "ranks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-  t.string   "rank"
-  t.datetime "created_at", null: false
-  t.datetime "updated_at", null: false
+add_index "lives", ["live_id"], name: "index_lives_on_live_id", using: :btree
+
+create_table "ranks", force: :cascade do |t|
+  t.string   "rank",       limit: 255
+  t.datetime "created_at",             null: false
+  t.datetime "updated_at",             null: false
 end
 
-create_table "reversal_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-  t.integer  "twitter_user_id"
-  t.integer  "slack_user_id"
+create_table "reversal_users", force: :cascade do |t|
+  t.integer  "twitter_user_id", limit: 4
+  t.integer  "slack_user_id",   limit: 4
   t.boolean  "is_admin",                      default: false
-  t.string   "screen_name"
-  t.string   "name"
-  t.integer  "chara_id"
-  t.integer  "rank_id"
+  t.string   "screen_name",     limit: 255
+  t.string   "name",            limit: 255
+  t.integer  "chara_id",        limit: 4
+  t.integer  "rank_id",         limit: 4
   t.text     "home",            limit: 65535
   t.text     "bio",             limit: 65535
   t.datetime "created_at",                                    null: false
   t.datetime "updated_at",                                    null: false
-  t.index ["chara_id"], name: "index_reversal_users_on_chara_id", using: :btree
-  t.index ["rank_id"], name: "index_reversal_users_on_rank_id", using: :btree
-  t.index ["screen_name"], name: "index_reversal_users_on_screen_name", using: :btree
-  t.index ["slack_user_id"], name: "slack_user_id", unique: true, using: :btree
-  t.index ["twitter_user_id"], name: "index_reversal_users_on_twitter_user_id", unique: true, using: :btree
 end
 
-create_table "rlogs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-  t.string   "title",                                      null: false
+add_index "reversal_users", ["chara_id"], name: "index_reversal_users_on_chara_id", using: :btree
+add_index "reversal_users", ["rank_id"], name: "index_reversal_users_on_rank_id", using: :btree
+add_index "reversal_users", ["screen_name"], name: "index_reversal_users_on_screen_name", using: :btree
+add_index "reversal_users", ["slack_user_id"], name: "slack_user_id", unique: true, using: :btree
+add_index "reversal_users", ["twitter_user_id"], name: "index_reversal_users_on_twitter_user_id", unique: true, using: :btree
+
+create_table "rlogs", force: :cascade do |t|
+  t.string   "title",            limit: 255,               null: false
   t.text     "description",      limit: 65535
-  t.integer  "reversal_user_id",                           null: false
-  t.integer  "slack_channel_id"
-  t.string   "type",                                       null: false
-  t.integer  "goods_count",                    default: 0, null: false
+  t.integer  "reversal_user_id", limit: 4,                 null: false
+  t.integer  "slack_channel_id", limit: 4
+  t.string   "type",             limit: 255,               null: false
+  t.integer  "goods_count",      limit: 4,     default: 0, null: false
   t.datetime "created_at"
   t.datetime "updated_at"
-  t.index ["reversal_user_id"], name: "index_rlogs_on_reversal_user_id", using: :btree
-  t.index ["slack_channel_id"], name: "index_rlogs_on_slack_channel_id", using: :btree
-  t.index ["type"], name: "index_rlogs_on_type", using: :btree
 end
 
-create_table "slack_channels", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-  t.string   "cid",         null: false
-  t.string   "name",        null: false
-  t.string   "topic"
-  t.boolean  "is_archived", null: false
-  t.datetime "created_at",  null: false
-  t.datetime "updated_at",  null: false
-  t.index ["cid"], name: "cid", unique: true, using: :btree
-  t.index ["is_archived"], name: "index_slack_channels_on_is_archived", using: :btree
-  t.index ["name"], name: "index_slack_channels_on_name", using: :btree
+add_index "rlogs", ["reversal_user_id"], name: "index_rlogs_on_reversal_user_id", using: :btree
+add_index "rlogs", ["slack_channel_id"], name: "index_rlogs_on_slack_channel_id", using: :btree
+add_index "rlogs", ["type"], name: "index_rlogs_on_type", using: :btree
+
+create_table "slack_channels", force: :cascade do |t|
+  t.string   "cid",         limit: 255, null: false
+  t.string   "name",        limit: 255, null: false
+  t.string   "topic",       limit: 255
+  t.boolean  "is_archived",             null: false
+  t.datetime "created_at",              null: false
+  t.datetime "updated_at",              null: false
 end
 
-create_table "slack_messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-  t.integer  "slack_channel_id",                                        default: 0, null: false
-  t.integer  "slack_user_id"
-  t.string   "username"
+add_index "slack_channels", ["cid"], name: "cid", unique: true, using: :btree
+add_index "slack_channels", ["is_archived"], name: "index_slack_channels_on_is_archived", using: :btree
+add_index "slack_channels", ["name"], name: "index_slack_channels_on_name", using: :btree
+
+create_table "slack_messages", force: :cascade do |t|
+  t.integer  "slack_channel_id", limit: 4,                              default: 0, null: false
+  t.integer  "slack_user_id",    limit: 4
+  t.string   "username",         limit: 255
   t.text     "icon",             limit: 65535
   t.decimal  "ts",                             precision: 16, scale: 6
   t.text     "text",             limit: 65535
@@ -164,83 +174,89 @@ create_table "slack_messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT 
   t.text     "file",             limit: 65535
   t.datetime "created_at",                                                          null: false
   t.datetime "updated_at",                                                          null: false
-  t.index ["slack_channel_id", "slack_user_id", "ts"], name: "channel_user_ts_index", unique: true, using: :btree
-  t.index ["slack_channel_id", "ts"], name: "channel_ts_index", using: :btree
-  t.index ["slack_channel_id"], name: "slack_channel_id", using: :btree
-  t.index ["slack_user_id"], name: "slack_user_id", using: :btree
-  t.index ["ts"], name: "ts", using: :btree
 end
 
-create_table "slack_messages_summaries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-  t.integer "slack_message_id", null: false
-  t.integer "summary_id",       null: false
-  t.integer "row_order"
-  t.index ["slack_message_id", "summary_id"], name: "index_slack_messages_summaries_message_and_summary", using: :btree
-  t.index ["slack_message_id"], name: "index_slack_messages_summaries_on_slack_message_id", using: :btree
-  t.index ["summary_id"], name: "index_slack_messages_summaries_on_summary_id", using: :btree
+add_index "slack_messages", ["slack_channel_id", "slack_user_id", "ts"], name: "channel_user_ts_index", unique: true, using: :btree
+add_index "slack_messages", ["slack_channel_id", "ts"], name: "channel_ts_index", using: :btree
+add_index "slack_messages", ["slack_channel_id"], name: "slack_channel_id", using: :btree
+add_index "slack_messages", ["slack_user_id"], name: "slack_user_id", using: :btree
+add_index "slack_messages", ["ts"], name: "ts", using: :btree
+
+create_table "slack_messages_summaries", force: :cascade do |t|
+  t.integer "slack_message_id", limit: 4, null: false
+  t.integer "summary_id",       limit: 4, null: false
+  t.integer "row_order",        limit: 4
 end
 
-create_table "slack_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-  t.string   "uid",        null: false
-  t.string   "name",       null: false
-  t.string   "icon_url"
-  t.datetime "created_at", null: false
-  t.datetime "updated_at", null: false
+add_index "slack_messages_summaries", ["slack_message_id", "summary_id"], name: "index_slack_messages_summaries_message_and_summary", using: :btree
+add_index "slack_messages_summaries", ["slack_message_id"], name: "index_slack_messages_summaries_on_slack_message_id", using: :btree
+add_index "slack_messages_summaries", ["summary_id"], name: "index_slack_messages_summaries_on_summary_id", using: :btree
+
+create_table "slack_users", force: :cascade do |t|
+  t.string   "uid",        limit: 255, null: false
+  t.string   "name",       limit: 255, null: false
+  t.string   "icon_url",   limit: 255
+  t.datetime "created_at",             null: false
+  t.datetime "updated_at",             null: false
 end
 
-create_table "twitter2slack_conditions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-  t.string   "text",                             null: false
-  t.integer  "slack_channel_id",                 null: false
-  t.bigint   "last_tweet",       default: 0,     null: false
-  t.boolean  "quote",            default: false, null: false
-  t.datetime "created_at",                       null: false
-  t.datetime "updated_at",                       null: false
-  t.index ["slack_channel_id"], name: "index_twitter2slack_conditions_on_slack_channel_id", using: :btree
+create_table "twitter2slack_conditions", force: :cascade do |t|
+  t.string   "text",             limit: 255,                 null: false
+  t.integer  "slack_channel_id", limit: 4,                   null: false
+  t.integer  "last_tweet",       limit: 8,   default: 0,     null: false
+  t.boolean  "quote",                        default: false, null: false
+  t.datetime "created_at",                                   null: false
+  t.datetime "updated_at",                                   null: false
 end
 
-create_table "twitter_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-  t.string   "uid",         null: false
-  t.string   "screen_name", null: false
-  t.string   "name",        null: false
-  t.string   "icon_url",    null: false
-  t.datetime "created_at",  null: false
-  t.datetime "updated_at",  null: false
-  t.index ["screen_name"], name: "index_twitter_users_on_screen_name", using: :btree
+add_index "twitter2slack_conditions", ["slack_channel_id"], name: "index_twitter2slack_conditions_on_slack_channel_id", using: :btree
+
+create_table "twitter_users", force: :cascade do |t|
+  t.string   "uid",         limit: 255, null: false
+  t.string   "screen_name", limit: 255, null: false
+  t.string   "name",        limit: 255, null: false
+  t.string   "icon_url",    limit: 255, null: false
+  t.datetime "created_at",              null: false
+  t.datetime "updated_at",              null: false
 end
 
-create_table "video_matchups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-  t.integer "video_id",  null: false
-  t.integer "chara1_id", null: false
-  t.integer "chara2_id", null: false
-  t.integer "sec",       null: false
-  t.index ["chara1_id"], name: "index_video_matchups_on_chara1_id", using: :btree
-  t.index ["chara2_id"], name: "index_video_matchups_on_chara2_id", using: :btree
-  t.index ["video_id"], name: "index_video_matchups_on_video_id", using: :btree
+add_index "twitter_users", ["screen_name"], name: "index_twitter_users_on_screen_name", using: :btree
+
+create_table "video_matchups", force: :cascade do |t|
+  t.integer "video_id",  limit: 4, null: false
+  t.integer "chara1_id", limit: 4, null: false
+  t.integer "chara2_id", limit: 4, null: false
+  t.integer "sec",       limit: 4, null: false
 end
 
-create_table "video_site_search_conditions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-  t.string   "word",       null: false
-  t.string   "video_site", null: false
+add_index "video_matchups", ["chara1_id"], name: "index_video_matchups_on_chara1_id", using: :btree
+add_index "video_matchups", ["chara2_id"], name: "index_video_matchups_on_chara2_id", using: :btree
+add_index "video_matchups", ["video_id"], name: "index_video_matchups_on_video_id", using: :btree
+
+create_table "video_site_search_conditions", force: :cascade do |t|
+  t.string   "word",       limit: 255, null: false
+  t.string   "video_site", limit: 255, null: false
   t.datetime "created_at"
   t.datetime "updated_at"
 end
 
-create_table "videos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-  t.string   "url",                                null: false
-  t.string   "video_id"
-  t.string   "video_site",                         null: false
-  t.string   "title",                              null: false
-  t.integer  "video_matchups_count",   default: 0, null: false
-  t.integer  "goods_count",            default: 0, null: false
-  t.datetime "posted_at",                          null: false
+create_table "videos", force: :cascade do |t|
+  t.string   "url",                    limit: 255,             null: false
+  t.string   "video_id",               limit: 255
+  t.string   "video_site",             limit: 255,             null: false
+  t.string   "title",                  limit: 255,             null: false
+  t.integer  "video_matchups_count",   limit: 4,   default: 0, null: false
+  t.integer  "goods_count",            limit: 4,   default: 0, null: false
+  t.datetime "posted_at",                                      null: false
   t.datetime "created_at"
   t.datetime "updated_at"
-  t.string   "thumbnail_file_name"
-  t.string   "thumbnail_content_type"
-  t.integer  "thumbnail_file_size"
+  t.string   "thumbnail_file_name",    limit: 255
+  t.string   "thumbnail_content_type", limit: 255
+  t.integer  "thumbnail_file_size",    limit: 4
   t.datetime "thumbnail_updated_at"
-  t.index ["posted_at"], name: "index_videos_on_posted_at", using: :btree
-  t.index ["url"], name: "url", unique: true, using: :btree
-  t.index ["video_id"], name: "index_videos_on_video_id", using: :btree
-  t.index ["video_site"], name: "index_videos_on_video_site", using: :btree
 end
+
+add_index "videos", ["posted_at"], name: "index_videos_on_posted_at", using: :btree
+add_index "videos", ["url"], name: "url", unique: true, using: :btree
+add_index "videos", ["video_id"], name: "index_videos_on_video_id", using: :btree
+add_index "videos", ["video_site"], name: "index_videos_on_video_site", using: :btree
