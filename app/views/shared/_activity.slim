@@ -4,10 +4,7 @@
 - if activity_type(activity) == 'Good' && activity.trackable
   = render 'activities/good', activity: activity, owner: activity.owner.decorate
   hr
-- if activity_type(activity) == 'Page' && activity.trackable
-  = render 'activities/rlog', activity: activity, owner: activity.owner.decorate
-  hr
-- if activity_type(activity) == 'Summary' && activity.trackable
+- if activity_type(activity) == 'Rlog' && activity.trackable
   = render 'activities/rlog', activity: activity, owner: activity.owner.decorate
   hr
 - if activity_type(activity) == 'Event' && activity.trackable
