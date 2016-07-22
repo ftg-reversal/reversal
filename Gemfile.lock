@@ -31,6 +31,15 @@ GIT
       mime-types
       mimemagic (~> 0.3.0)
 
+GIT
+  remote: https://github.com/winebarrel/ridgepole.git
+  revision: b983b592ca92648ca114f2df26554457ec5d536f
+  branch: v0.6.5
+  specs:
+    ridgepole (0.6.5.beta12)
+      activerecord (>= 4.2, < 6)
+      diffy
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -170,6 +179,7 @@ GEM
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
     diff-lcs (1.2.5)
+    diffy (3.1.0)
     docile (1.1.5)
     domain_name (0.5.20160615)
       unf (>= 0.0.5, < 1.0.0)
@@ -419,8 +429,6 @@ GEM
     ref (2.0.0)
     request_store (1.3.1)
     require_all (1.3.3)
-    ridgepole (0.5.0)
-      activerecord
     rollbar (2.12.0)
       multi_json
     rspec (3.5.0)
@@ -628,7 +636,7 @@ DEPENDENCIES
   redis
   redis-rails
   request_store
-  ridgepole
+  ridgepole!
   rollbar
   rspec
   rspec-rails
