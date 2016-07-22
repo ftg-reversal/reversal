@@ -35,6 +35,7 @@ Rails.application.configure do
   end
   config.assets.quiet = true
 
+  # Redis
   config.cache_store   = :redis_store, 'redis://localhost:6379/0/cache',   { expires_in: 90.minutes }
   config.session_store = :redis_store, 'redis://localhost:6379/0/session', { expires_in: 1.month }
 end
