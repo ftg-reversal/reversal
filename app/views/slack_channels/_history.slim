@@ -1,9 +1,11 @@
 .card-block
   h4.fa.fa-2x.fa-slack.m-r-2 &nbsp;#{channel.name}
   - if @current_user
-    a href="/summaries/channel/#{channel.id}" まとめの作成
+    a.btn.btn-primary.btn-sm.u-m-b-06 href="/summaries/channel/#{channel.id}"
+      i.fa.fa-pencil-square-o &nbsp;&nbsp;まとめの作成
   - else
-    a href=login_with_redirect_url(request.url) まとめの作成
+    a.btn.btn-primary.btn-sm.u-m-b-06 href=login_with_redirect_url(request.url)
+      i.fa.fa-pencil-square-o &nbsp;&nbsp;まとめの作成
 
   .m-t-1
     = tw(channel_url(channel), "#{channel.name} - Reversal Channel")
