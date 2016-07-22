@@ -13,3 +13,5 @@ require('utils/user-card');
 
 require('vuejs/summary-editor');
 require('vuejs/matchup-editor');
+
+require('react/room.jsx');

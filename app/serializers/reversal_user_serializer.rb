@@ -1,3 +1,4 @@
+<<<<<<< 1c933c5fe9a411d9af72014448d3c274ee8246fd
 # == Schema Information
 #
 # Table name: reversal_users

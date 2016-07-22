@@ -1,3 +1,5 @@
+import $ from 'jquery';
+
 export default class VideoMatchupApi {
   static async fetchMatchups(videoID) {
     return await fetch(`/api/videos/${videoID}/matchups`);
@@ -9,10 +11,10 @@ export default class VideoMatchupApi {
       url: `/api/videos/${videoID}/matchups`,
       data: {
         authenticity_token: document.querySelector('meta[name="csrf-token"]').content,
-        sec: sec,
+        sec,
         chara1_id: chara1ID,
-        chara2_id: chara2ID
-      }
+        chara2_id: chara2ID,
+      },
     });
   }
 
@@ -21,8 +23,8 @@ export default class VideoMatchupApi {
       type: 'delete',
       url: `/api/video_matchups/${matchupID}`,
       data: {
-        authenticity_token: document.querySelector('meta[name="csrf-token"]').content
-      }
-    })
-  }
+        authenticity_token: document.querySelector('meta[name="csrf-token"]').content,
+      },
+    }),
+  },
 }

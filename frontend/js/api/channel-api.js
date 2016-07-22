@@ -1,6 +1,9 @@
+import $ from 'jquery';
+import fetch from 'whatwg-fetch';
+
 export default class ChannelApi {
   static async fetchChannelList() {
-    return await fetch('/api/channels')
+    return await fetch('/api/channels');
   }
 
   static async fetchLatestMessages(channelID) {
@@ -13,10 +16,10 @@ export default class ChannelApi {
       url: '/summaries.json',
       data: {
         authenticity_token: document.querySelector('meta[name="csrf-token"]').content,
-        title: title,
-        description: description,
+        title,
+        description,
         slack_channel: channelID,
-        slack_messages: messageIDs
+        slack_messages: messageIDs,
       },
     });
   }
@@ -27,10 +30,10 @@ export default class ChannelApi {
       url: `/summaries/${summaryID}.json`,
       data: {
         authenticity_token: document.querySelector('meta[name="csrf-token"]').content,
-        title: title,
-        description: description,
+        title,
+        description,
         slack_channel: channelID,
-        slack_messages: messageIDs
+        slack_messages: messageIDs,
       },
     });
   }

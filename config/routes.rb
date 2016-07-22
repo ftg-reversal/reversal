@@ -72,14 +72,19 @@
 #                      PUT    /user/:screen_name(.:format)                 reversal_users#update
 #          video_chara GET    /chara/:chara_name/video(.:format)           charas#video
 #               search GET    /search(.:format)                            search#index
+#             api_user GET    /api/user/:screen_name(.:format)             api/reversal_users#show {:format=>/json/}
 # api_channel_messages GET    /api/channels/:channel_id/messages(.:format) api/channel/messages#index {:format=>/json/}
 #         api_channels GET    /api/channels(.:format)                      api/channels#index {:format=>/json/}
 #          api_channel GET    /api/channels/:id(.:format)                  api/channels#show {:format=>/json/}
 #   api_video_matchups GET    /api/videos/:video_id/matchups(.:format)     api/video_matchups#index {:format=>/json/}
 #                      POST   /api/videos/:video_id/matchups(.:format)     api/video_matchups#create {:format=>/json/}
 #    api_video_matchup DELETE /api/video_matchups/:id(.:format)            api/video_matchups#destroy {:format=>/json/}
+#            api_rooms GET    /api/rooms(.:format)                         api/rooms#index {:format=>/json/}
+#             api_room GET    /api/rooms/:id(.:format)                     api/rooms#show {:format=>/json/}
+#                rooms GET    /rooms(.:format)                             rooms#index
+#                 room GET    /rooms/:room_name(.:format)                  rooms#show
 #              sitemap GET    /sitemap(.:format)                           redirect(301, https://s3-ap-northeast-1.amazonaws.com/reversal-sitemap/sitemaps/sitemap.xml.gz)
-#                             /cable                                       #<ActionCable::Server::Base:0x007fc4716e8218 @mutex=#<Monitor:0x007fc4716e81f0 @mon_owner=nil, @mon_count=0, @mon_mutex=#<Thread::Mutex:0x007fc4716e81a0>>, @pubsub=nil, @worker_pool=nil, @event_loop=nil, @remote_connections=nil>
+#                             /cable                                       #<ActionCable::Server::Base:0x007fb4598e9378 @mutex=#<Monitor:0x007fb4598e9328 @mon_owner=nil, @mon_count=0, @mon_mutex=#<Thread::Mutex:0x007fb4598e92d8>>, @pubsub=nil, @worker_pool=nil, @event_loop=nil, @remote_connections=nil>
 #             ckeditor        /ckeditor                                    Ckeditor::Engine
 #
 # Routes for Ckeditor::Engine:
@@ -172,6 +177,8 @@ Rails.application.routes.draw do
   get :search, controller: :search, action: :index
 
   namespace :api, format: 'json' do
+    resources :reversal_users, path: :user, param: :screen_name, as: :users, only: [:show]
+
     resources :channels, only: [:index, :show] do
       resources :messages, module: :channel, only: [:index]
     end
@@ -180,7 +187,10 @@ Rails.application.routes.draw do
       resources :video_matchups, as: :matchups, path: :matchups, only: [:index, :create]
     end
     resources :video_matchups, only: [:destroy]
+    resources :rooms, only: [:index, :show]
   end
+
+  resources :rooms, param: :room_name, only: [:index, :show]
 
   # sitemap
   get '/sitemap' => redirect('https://s3-ap-northeast-1.amazonaws.com/reversal-sitemap/sitemaps/sitemap.xml.gz')
