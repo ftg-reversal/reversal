@@ -8,4 +8,7 @@
       = render 'history', channel: @channel, history: @history
 
 - content_for :title do
-  = "Slacker ##{@channel.name}"
+  - if @channel
+    = "Slack Log ##{@channel.name}"
+  - else
+    = "Slack Log"

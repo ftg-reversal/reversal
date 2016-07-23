@@ -54,6 +54,14 @@ class EventsController < ApplicationController
     redirect_to events_url, status: :see_other
   end
 
+  def search
+    @q = params[:text]
+    @q_type = 'Event'
+    @events = Event.upcoming.recently.page(params[:page])
+    @events = Event.ransack(title_or_description_cont: params[:text]).result.upcoming.recently.page(params[:page])
+    render 'index'
+  end
+
   private
 
   def set_event

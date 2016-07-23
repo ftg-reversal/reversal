@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   serialization_scope :view_context
 
+  before_action :initialize_search_query
   before_action :do_login
 
   def do_login
@@ -13,6 +14,11 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def initialize_search_query
+    @q = ''
+    @q_type = ''
+  end
 
   def login
     @current_user = ReversalUser.find(session['user_id'])

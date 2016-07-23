@@ -6,6 +6,7 @@
 #            login GET    /login(.:format)                         login#index
 #                  GET    /auth/:provider/callback(.:format)       sessions#create
 #          session DELETE /session(.:format)                       sessions#destroy
+#    search_videos GET    /videos/search(.:format)                 videos#search
 #   video_matchups POST   /videos/:video_id/matchups(.:format)     video_matchups#create
 #       video_good GET    /videos/:video_id/good(.:format)         video/goods#show
 #                  PATCH  /videos/:video_id/good(.:format)         video/goods#update
@@ -14,9 +15,11 @@
 #           videos GET    /videos(.:format)                        videos#index
 #            video GET    /videos/:id(.:format)                    videos#show
 #    video_matchup DELETE /video_matchups/:id(.:format)            video_matchups#destroy
+#  search_channels GET    /channels/search(.:format)               slack_channels#search
 #         channels GET    /channels(.:format)                      slack_channels#index
 #          channel GET    /channels/:id(.:format)                  slack_channels#show
 #            rlogs GET    /rlogs(.:format)                         rlogs#index
+#     search_pages GET    /pages/search(.:format)                  pages#search
 #        page_good GET    /pages/:page_id/good(.:format)           page/goods#show
 #                  PATCH  /pages/:page_id/good(.:format)           page/goods#update
 #                  PUT    /pages/:page_id/good(.:format)           page/goods#update
@@ -29,6 +32,7 @@
 #                  PATCH  /pages/:id(.:format)                     pages#update
 #                  PUT    /pages/:id(.:format)                     pages#update
 #                  DELETE /pages/:id(.:format)                     pages#destroy
+# search_summaries GET    /summaries/search(.:format)              summaries#search
 #     summary_good GET    /summaries/:summary_id/good(.:format)    summary/goods#show
 #                  PATCH  /summaries/:summary_id/good(.:format)    summary/goods#update
 #                  PUT    /summaries/:summary_id/good(.:format)    summary/goods#update
@@ -42,6 +46,7 @@
 #                  PUT    /summaries/:id(.:format)                 summaries#update
 #                  DELETE /summaries/:id(.:format)                 summaries#destroy
 #                  GET    /summaries/channel/:channel_id(.:format) summaries#new_summary_from_channel
+#    search_events GET    /events/search(.:format)                 events#search
 #       event_good GET    /events/:event_id/good(.:format)         event/goods#show
 #                  PATCH  /events/:event_id/good(.:format)         event/goods#update
 #                  PUT    /events/:event_id/good(.:format)         event/goods#update
@@ -68,6 +73,7 @@
 #                  PATCH  /user/:screen_name(.:format)             reversal_users#update
 #                  PUT    /user/:screen_name(.:format)             reversal_users#update
 #      video_chara GET    /chara/:chara_name/video(.:format)       charas#video
+#           search GET    /search(.:format)                        search#index
 #     api_channels GET    /api/channels(.:format)                  api/channels#index {:format=>/json/}
 #      api_channel GET    /api/channels/:id(.:format)              api/channels#show {:format=>/json/}
 #          sitemap GET    /sitemap(.:format)                       redirect(301, https://s3-ap-northeast-1.amazonaws.com/reversal-sitemap/sitemaps/sitemap.xml.gz)
@@ -93,19 +99,35 @@ Rails.application.routes.draw do
   resource :session, only: [:destroy]
 
   resources :videos, only: [:index, :show] do
+    collection do
+      get :search
+    end
+
     resources :video_matchups, as: :matchups, path: :matchups, only: [:create]
     resource :good, module: :video, only: [:show, :update, :destroy]
   end
   resources :video_matchups, only: [:destroy]
 
-  resources :slack_channels, as: :channels, path: :channels, only: [:index, :show]
+  resources :slack_channels, as: :channels, path: :channels, only: [:index, :show] do
+    collection do
+      get :search
+    end
+  end
   resources :rlogs, only: [:index]
 
   resources :pages do
+    collection do
+      get :search
+    end
+
     resource :good, module: :page, only: [:show, :update, :destroy]
   end
 
   resources :summaries do
+    collection do
+      get :search
+    end
+
     resource :good, module: :summary, only: [:show, :update, :destroy]
   end
 
@@ -116,6 +138,10 @@ Rails.application.routes.draw do
   end
 
   resources :events do
+    collection do
+      get :search
+    end
+
     resource :good, module: :event, only: [:show, :update, :destroy]
   end
 
@@ -142,6 +168,8 @@ Rails.application.routes.draw do
       get :video
     end
   end
+
+  get :search, controller: :search, action: :index
 
   namespace :api, format: 'json' do
     resources :channels, only: [:index, :show]

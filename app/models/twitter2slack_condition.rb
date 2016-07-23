@@ -6,7 +6,6 @@
 #  text             :string(255)      not null
 #  slack_channel_id :integer          not null
 #  last_tweet       :integer          default(0), not null
-#  quote            :boolean          default(FALSE), not null
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #
