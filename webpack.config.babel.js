@@ -44,7 +44,7 @@ const output = production ? {
 }
 
 const cssLoader = production ? ExtractTextPlugin.extract('style', 'css!postcss') : 'style!css?sourceMap!postcss'
-const sassLoader = production ? ExtractTextPlugin.extract('style', 'css!postcss!sass?sourceMap') : 'style!css!postcss!sass?sourceMap'
+const sassLoader = production ? ExtractTextPlugin.extract('style', 'css!postcss!sass') : 'style!css?sourceMap!postcss!sass?sourceMap'
 
 export default {
   entry: {
