@@ -10,7 +10,7 @@ class OnlineBotBatch
         TwitterInfrastructure::Tweet.exec(online_bot_client, tweet_text(tweet))
       end
 
-      cache_last_tweet_id(unsent_tweets.last[:id])
+      cache_last_tweet_id(unsent_tweets.last[:id]) unless unsent_tweets.empty?
     end
 
     private
