@@ -17,8 +17,10 @@ require('layout/rlogs');
 require('layout/slack_channel');
 require('layout/videos');
 
+// component
+require('object/component/button');
+
 // object
-require('object/project/good_button');
 require('object/project/good_count');
 require('object/project/good_users');
 require('object/project/header');

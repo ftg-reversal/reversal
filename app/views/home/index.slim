@@ -5,9 +5,8 @@
   .card-block
     h2 最近の情報
     hr
-    - cache @activities
-      - @activities.each do |activity|
-        = render 'shared/activity', activity: activity
+    - @activities.each do |activity|
+      = render 'shared/activity', activity: activity
 
   .col-md-4
 

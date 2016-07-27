@@ -1,24 +1,22 @@
 - if @current_user
   = link_to '#', data: { behavior: 'good', url: page_good_url(page), user: @current_user.id, type: 'Rlog', id: page.id, title: "#{page.title} - Reversal Page" } do
-    .p-good-button
-      - if page.good?(@current_user)
-        button.good-button.is-good.m-r-1
-          img src=asset_path('good-icon.png')
-          | ：
-          span = "#{page.goods.size}"
-      - else
-        button.good-button.m-r-1
-          img src=asset_path('good-icon.png')
-          | ：
-          span = "#{page.goods.size}"
-
-      = good_tw(page_url(page), "#{page.title} - Reversal Page")
-- else
-  a href=login_with_redirect_url(page_path)
-    .p-good-button
-      button.good-button.m-r-1
+    - if page.good?(@current_user)
+      button.c-button.good-button.is-good.m-r-1
+        img src=asset_path('good-icon.png')
+        | ：
+        span = "#{page.goods.size}"
+    - else
+      button.c-button.good-button.m-r-1
         img src=asset_path('good-icon.png')
         | ：
         span = "#{page.goods.size}"
 
       = good_tw(page_url(page), "#{page.title} - Reversal Page")
+- else
+  a href=login_with_redirect_url(page_path)
+    button.c-button.good-button.m-r-1
+      img src=asset_path('good-icon.png')
+      | ：
+      span = "#{page.goods.size}"
+
+    = good_tw(page_url(page), "#{page.title} - Reversal Page")

@@ -6,13 +6,13 @@ module TwitterHelper
 
   def good_tw(url, text)
     content_tag :a, href: "https://twitter.com/share?url=#{url_encode(url)}&text=#{url_encode(text)}&hashtags=ftg_reversal", target: '_blank', class: 'good-tweet-link' do
-      concat content_tag(:button, 'Tweet', class: 'good-tweet-button')
+      concat content_tag(:button, 'Tweet', class: 'c-button good-tweet-button')
     end
   end
 
   def good_tw_sm(url, text)
     content_tag :a, href: "https://twitter.com/share?url=#{url_encode(url)}&text=#{url_encode(text)}&hashtags=ftg_reversal", target: '_blank', class: 'good-tweet-sm-link' do
-      concat content_tag(:button, 'Tweet', class: 'good-tweet-sm-button')
+      concat content_tag(:button, 'Tweet', class: 'c-button good-tweet-sm-button')
     end
   end
   # rubocop:enable Metrics/LineLength
