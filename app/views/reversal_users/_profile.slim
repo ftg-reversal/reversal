@@ -5,9 +5,9 @@
     hr
     .row
       .col-xl-3.hidden-lg-down
-        img.p-profile-icon.media-object src=user.icon_url title=user.name
+        img.p-profile__icon.media-object src=user.icon_url title=user.name
       .col-xl-9.hidden-lg-down
-        .p-profile-name-xl
+        .p-profile__name--xl
           - if user.twitter_user
             h5 Twitter ID
           - else
@@ -15,7 +15,7 @@
           p
             .card-subtitle.text-muted.u-nowrap = external_user_link(user)
       .col-lg-12.hidden-xl-up
-        img.p-profile-icon.media-object src=user.icon_url title=user.name
+        img.p-profile__icon.media-object src=user.icon_url title=user.name
       .col-lg-12.hidden-xl-up
         .p-profile-name
           - if user.twitter_user

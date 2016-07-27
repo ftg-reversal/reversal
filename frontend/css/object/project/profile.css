@@ -1,10 +1,10 @@
 .p-profile {
-  .p-profile-icon {
+  .p-profile__icon {
     width: 64px;
     height: 64px;
   }
 
-  .p-profile-name-xl {
+  .p-profile__name--xl {
     margin-left: 1rem;
   }
 }

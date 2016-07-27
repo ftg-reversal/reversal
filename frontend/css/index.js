@@ -27,8 +27,6 @@ require('object/project/header');
 require('object/project/item_header');
 require('object/project/profile');
 require('object/project/profile_nav');
-require('object/project/rlog');
-require('object/project/short_item');
 require('object/project/short_item_list');
 require('object/project/sidebar');
 require('object/project/user_activity');
