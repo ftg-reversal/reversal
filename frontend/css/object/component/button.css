@@ -49,7 +49,11 @@
   }
 }
 
-.is-good {
+.good-button.is-good {
+  background: #6f0204;
+}
+
+.good-sm-button.is-good {
   background: #6f0204;
 }
 
