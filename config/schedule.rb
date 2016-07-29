@@ -12,9 +12,9 @@ every 15.minutes do
   runner 'UpdateVideosBatch.exec'
 end
 
-every 3.hours do
-  runner 'TwitterAdsBatch.exec'
-end
+# every 3.hours do
+#   runner 'TwitterAdsBatch.exec'
+# end
 
 every 6.hours do
   rake 'db:backup'
