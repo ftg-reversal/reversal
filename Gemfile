@@ -54,7 +54,6 @@ gem 'whenever', require: false
 gem 'yt'
 
 group :development, :test do
-  gem 'airbrussh', require: false
   gem 'annotate'
   gem 'awesome_print'
   gem 'better_errors'
