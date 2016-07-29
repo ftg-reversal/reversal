@@ -68,7 +68,6 @@ group :development, :test do
   gem 'pry-coolline'
   gem 'pry-doc'
   gem 'pry-stack_explorer'
-  gem 'puma'
   gem 'rack-mini-profiler', require: false
   gem 'rails-erd'
   gem 'rails_best_practices', require: false
@@ -101,5 +100,5 @@ group :deployment do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
-  gem 'capistrano3-puma'
+  gem 'capistrano3-unicorn'
 end
