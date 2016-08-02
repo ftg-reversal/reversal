@@ -76,6 +76,7 @@ group :development, :test do
   gem 'spring'
   gem 'spring-commands-rspec'
   gem 'squasher'
+  gem 'thin'
   gem 'view_source_map'
 end
 
