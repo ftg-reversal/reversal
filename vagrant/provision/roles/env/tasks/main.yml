@@ -6,12 +6,8 @@
   apt: name=ntp state=latest
 - name: Configure NTP
   template: src=ntp.conf.j2 dest=/etc/ntp.conf
-  notify:
-    - restart ntpd
 - name: Be sure NTPd is running and enabled
   service: name=ntp state=started enabled=yes
-- name: restart ntpd
-  service: name=ntp state=restarted
 
 - name: Install Vim
   apt: name={{ item }} state=latest
