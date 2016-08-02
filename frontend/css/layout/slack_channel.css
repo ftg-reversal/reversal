@@ -10,12 +10,25 @@
       }
     }
 
+    h5 {
+      font-size: 1.1rem;
+    }
+
     .slack-icon {
       margin-top: 0.2rem;
     }
 
     small {
       color: lighten(black, 40%);
+    }
+
+    blockquote {
+      font-size: 0.9rem;
+    }
+
+    iframe {
+      border: solid 1px #CCC;
+      margin-bottom: 1rem;
     }
   }
 
