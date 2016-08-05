@@ -32,6 +32,7 @@ require('object/project/sidebar');
 require('object/project/user_activity');
 require('object/project/user_card');
 
+require('object/utility/clearfix');
 require('object/utility/color');
 require('object/utility/font');
 require('object/utility/image');

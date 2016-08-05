@@ -3,7 +3,6 @@
 const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const bourbon = require('bourbon').includePaths;
 
 const production = process.env.TARGET === 'production';
 const localIdentName = production ? '[local]__[hash:base64:5]' : '[path]___[name]__[local]___[hash:base64:3]'
@@ -86,8 +85,7 @@ export default {
   },
 
   sassLoader: {
-    indentedSyntax: 'sass',
-    includePaths: [bourbon]
+    indentedSyntax: 'sass'
   },
 
   postcss: [
