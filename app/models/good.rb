@@ -35,10 +35,10 @@ class Good < ApplicationRecord
   before_destroy :decrement_counter
 
   def increment_counter
-    self.goodable_type.constantize.increment_counter("goods_count", self.goodable_id)
+    goodable_type.constantize.increment_counter('goods_count', goodable_id)
   end
 
   def decrement_counter
-    self.goodable_type.constantize.decrement_counter("goods_count", self.goodable_id)
+    goodable_type.constantize.decrement_counter('goods_count', goodable_id)
   end
 end
