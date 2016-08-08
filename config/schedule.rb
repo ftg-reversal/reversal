@@ -1,14 +1,14 @@
-every 3.minutes do
+every 3.minutes, roles: [:batch] do
   runner 'OnlineBotBatch.exec'
 end
 
-every 5.minutes do
+every 5.minutes, roles: [:batch] do
   runner 'Twitter2slackBatch.exec'
   runner 'UpdateSlackBatch.exec'
   runner 'UpdateLivesBatch.exec'
 end
 
-every 15.minutes do
+every 15.minutes, roles: [:batch] do
   runner 'UpdateVideosBatch.exec'
 end
 
@@ -16,13 +16,11 @@ end
 #   runner 'TwitterAdsBatch.exec'
 # end
 
-every 6.hours do
+every 6.hours, roles: [:batch] do
   rake 'db:backup'
 end
 
 # sitemap
-if @environment.to_sym == :production
-  every 1.day, at: '10:00 am' do
-    rake 'sitemap:refresh'
-  end
+every 1.day, at: '10:00 am', roles: [:batch] do
+  rake 'sitemap:refresh'
 end

@@ -11,7 +11,13 @@ set :use_sudo, false
 set :unicorn_rack_env, 'production'
 
 server 'ftg-reversal.net',
-  roles: [:web, :app, :db, :batch],
+  roles: [:app],
+  port: fetch(:port),
+  user: fetch(:user),
+  primary: true
+
+server 'batch.ftg-reversal.net',
+  roles: [:batch],
   port: fetch(:port),
   user: fetch(:user),
   primary: true
