@@ -60,7 +60,7 @@ export default {
     ],
 
     loaders: [
-      { test: /\.html/, loader: 'html' },
+      { test: /\.html$/, loader: 'html' },
       { test: /\.jsx?$/, loader: 'babel-loader', exclude: /node_modules/ },
       { test: /\.css$/, loader: cssLoader },
       { test: /\.(sass|scss)$/, loader: sassLoader },
