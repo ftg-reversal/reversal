@@ -1,4 +1,4 @@
-lock '3.5.0'
+lock '3.6.0'
 
 set :application, 'ftg-reversal'
 set :repo_url, 'git@github.com:ftg-reversal/reversal.git'
