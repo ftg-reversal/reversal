@@ -1,7 +1,5 @@
 class OnlineBotBatch
   class << self
-    ONLINE_BOT_LAST_TWEET = 'online_bot_last_tweet'.freeze
-
     def exec
       tweets = search_tweet
       unsent_tweets = tweets.select { |tweet| tweet[:id] > last_tweet_id }
