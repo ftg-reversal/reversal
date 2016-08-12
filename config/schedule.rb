@@ -1,6 +1,6 @@
-# every 3.minutes, roles: [:batch] do
-#   runner 'OnlineBotBatch.exec'
-# end
+every 3.minutes, roles: [:batch] do
+  runner 'OnlineBotBatch.exec'
+end
 
 every 5.minutes, roles: [:batch] do
   runner 'Twitter2slackBatch.exec'
