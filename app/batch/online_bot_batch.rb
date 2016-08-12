@@ -22,7 +22,7 @@ class OnlineBotBatch
     end
 
     def tweet_text(tweet)
-      ".@#{tweet[:screen_name]} #{tweet[:text][0..100].gsub(/\#GGXrdRプレマ/i, '')} #{tweet[:url]}"
+      ".@#{tweet[:screen_name]} #{tweet[:text][0..80].gsub(/\#GGXrdRプレマ/i, '')} #{tweet[:url]}"
     end
 
     def last_tweet_id
