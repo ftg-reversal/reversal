@@ -35,7 +35,7 @@
     white-space: nowrap;
   }
 
-  .dropdown-toggle:after {
+  .dropdown-toggle::after {
     border: 0;
   }
 
@@ -48,7 +48,7 @@
     color: white;
 
     &:hover {
-      background: #333333;
+      background: #333;
     }
   }
 

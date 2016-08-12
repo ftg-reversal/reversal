@@ -1,7 +1,9 @@
 const gulp = require('gulp');
 const postcss = require('gulp-postcss');
+const postcssReporter = require('postcss-reporter')
 const sorting = require('postcss-sorting');
 const stylefmt = require('gulp-stylefmt');
+const stylelint = require('stylelint')
 
 gulp.task('stylefmt', function () {
     return gulp.src('./frontend/css/**/*.css')
@@ -9,4 +11,12 @@ gulp.task('stylefmt', function () {
         .pipe(stylefmt())
         .pipe(gulp.dest('./frontend/css')
     );
+});
+
+gulp.task('stylelint', function () {
+    return gulp.src('./frontend/css/**/*.css')
+        .pipe(postcss([
+            stylelint(),
+            postcssReporter({clearMessages: true})
+        ]));
 });
