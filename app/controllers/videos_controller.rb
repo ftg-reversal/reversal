@@ -13,7 +13,12 @@ class VideosController < ApplicationController
   def search
     @q = params[:text]
     @q_type = 'Video'
-    @videos = Video.ransack(title_or_url_cont: params[:text]).result.order('posted_at DESC').including_matchup.page(params[:page])
+    @videos = Video
+      .ransack(title_or_url_cont: params[:text])
+      .result
+      .order('posted_at DESC')
+      .including_matchup
+      .page(params[:page])
     render 'index'
   end
 

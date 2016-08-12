@@ -45,7 +45,12 @@ class PagesController < RlogsController
   def search
     @q = params[:text]
     @q_type = 'Page'
-    @rlogs = Page.search(title_or_description_cont: params[:text]).result.includes(reversal_user: [:twitter_user, :slack_user]).order('updated_at DESC').page(params[:page])
+    @rlogs = Page
+      .search(title_or_description_cont: params[:text])
+      .result
+      .includes(reversal_user: [:twitter_user, :slack_user])
+      .order('updated_at DESC')
+      .page(params[:page])
     render 'rlogs/index'
   end
 

@@ -1,4 +1,5 @@
 class SearchController < ApplicationController
+  # rubocop:disable Metrics/AbcSize,Metrics/MethodLength
   def index
     if params[:search][:type] == 'Video'
       redirect_to controller: :videos, action: :search, text: params[:search][:text]
@@ -14,4 +15,5 @@ class SearchController < ApplicationController
       raise
     end
   end
+  # rubocop:enable Metrics/AbcSize,Metrics/MethodLength
 end

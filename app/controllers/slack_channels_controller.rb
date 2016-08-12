@@ -12,7 +12,10 @@ class SlackChannelsController < ApplicationController
   def search
     @q = params[:text]
     @q_type = 'Message'
-    @history = SlackMessagesDecorator.decorate(SlackMessage.where('attachments LIKE ?', "%#{params[:text]}%").order('updated_at DESC').page(params[:page]))
+    @history = SlackMessagesDecorator
+      .decorate(SlackMessage.where('attachments LIKE ?', "%#{params[:text]}%")
+      .order('updated_at DESC')
+      .page(params[:page]))
     render 'show'
   end
 

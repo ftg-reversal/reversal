@@ -1,6 +1,7 @@
 class ReversalUserDecorator < Draper::Decorator
   delegate_all
 
+  # rubocop:disable Metrics/AbcSize
   def name
     if !object.name.nil?
       object.name
@@ -10,6 +11,7 @@ class ReversalUserDecorator < Draper::Decorator
       object.twitter_user.name
     end
   end
+  # rubocop:enable Metrics/AbcSize
 
   def bio
     return '' if object.bio&.nil? || object.bio.nil?

@@ -51,7 +51,12 @@ class SummariesController < RlogsController
   def search
     @q = params[:text]
     @q_type = 'Summary'
-    @rlogs = Summary.including_all.ransack(title_or_description_or_slack_messages_text_or_slack_messages_attachments_cont: params[:text]).result(distinct: true).order('updated_at DESC').page(params[:page])
+    @rlogs = Summary
+      .including_all
+      .ransack(title_or_description_or_slack_messages_text_or_slack_messages_attachments_cont: params[:text])
+      .result(distinct: true)
+      .order('updated_at DESC')
+      .page(params[:page])
     render 'rlogs/index'
   end
 

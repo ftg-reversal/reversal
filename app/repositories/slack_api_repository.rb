@@ -19,7 +19,7 @@ class SlackApiRepository
       end
     end
 
-    # rubocop:disable all
+    # rubocop:disable Metrics/AbcSize,Metrics/MethodLength
     def find_all_messages_by_channel(channel, cache: true)
       SlackInfrastructure::ChannelHistory.exec(channel, cache: cache).map do |hash|
         user = SlackUser.find_by(uid: hash[:user_id])
@@ -37,6 +37,7 @@ class SlackApiRepository
         end
       end
     end
+    # rubocop:enable Metrics/MethodLength
 
     def find_all_deleted_messages(channel, cache: true)
       api_messages = SlackInfrastructure::ChannelHistory.exec(channel, cache: cache)
@@ -44,12 +45,12 @@ class SlackApiRepository
       SlackMessage.where(slack_channel: channel).order(ts: 'desc').limit(300).select do |message|
         oldest_api_message[:ts] < message.ts && api_messages.none? do |api_message|
           api_message[:channel_id] == message.slack_channel.cid &&
-           api_message[:user_id] == message.slack_user&.uid &&
-           api_message[:ts] == message.ts
+            api_message[:user_id] == message.slack_user&.uid &&
+            api_message[:ts] == message.ts
         end
       end
     end
-    # rubocop:enable all
+    # rubocop:enable Metrics/AbcSize
 
     def post_message(channel, text, username, icon_emoji: nil, icon_url: nil)
       SlackInfrastructure::PostMessage.exec(channel.name, text, username, icon_emoji: icon_emoji, icon_url: icon_url)
