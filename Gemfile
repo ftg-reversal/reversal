@@ -76,7 +76,6 @@ group :development, :test do
   gem 'spring'
   gem 'spring-commands-rspec'
   gem 'squasher'
-  gem 'thin'
   gem 'view_source_map'
 end
 
@@ -91,8 +90,6 @@ end
 
 group :production do
   gem 'rollbar'
-  gem 'unicorn'
-  gem 'unicorn-worker-killer'
 end
 
 group :deployment do
@@ -100,5 +97,5 @@ group :deployment do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
-  gem 'capistrano3-unicorn'
+  gem 'capistrano3-puma'
 end
