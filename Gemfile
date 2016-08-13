@@ -3,6 +3,7 @@ ruby '2.3.1'
 
 gem 'rails', '~> 5.0.0'
 
+# gem 'puma'
 gem 'active_link_to'
 gem 'active_model_serializers'
 gem 'activemodel-serializers-xml'
@@ -76,6 +77,7 @@ group :development, :test do
   gem 'spring'
   gem 'spring-commands-rspec'
   gem 'squasher'
+  gem 'thin'
   gem 'view_source_map'
 end
 
@@ -90,6 +92,8 @@ end
 
 group :production do
   gem 'rollbar'
+  gem 'unicorn'
+  gem 'unicorn-worker-killer'
 end
 
 group :deployment do
@@ -97,5 +101,6 @@ group :deployment do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
-  gem 'capistrano3-puma'
+  gem 'capistrano3-unicorn'
+  # gem 'capistrano3-puma'
 end
