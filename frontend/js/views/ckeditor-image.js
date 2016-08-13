@@ -3,5 +3,4 @@ function onLoad() {
   $('.ckeditor-text').find('img').addClass('u-image-responsive');
 }
 
-window.addEventListener('DOMContentLoaded', onLoad);
 window.addEventListener('turbolinks:load', onLoad);
