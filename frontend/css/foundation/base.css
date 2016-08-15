@@ -1,3 +1,45 @@
+@font-face {
+  font-weight: 100;
+  font-family: "Yu Gothic";
+  src: local("Yu Gothic Medium");
+}
+
+@font-face {
+  font-weight: 200;
+  font-family: "Yu Gothic";
+  src: local("Yu Gothic Medium");
+}
+
+@font-face {
+  font-weight: 300;
+  font-family: "Yu Gothic";
+  src: local("Yu Gothic Medium");
+}
+
+@font-face {
+  font-weight: 400;
+  font-family: "Yu Gothic";
+  src: local("Yu Gothic Medium");
+}
+
+@font-face {
+  font-weight: bold;
+  font-family: "Yu Gothic";
+  src: local("Yu Gothic Bold");
+}
+
+@font-face {
+  font-weight: 100;
+  font-family: "Helvetica Neue";
+  src: local("Helvetica Neue Regular");
+}
+
+@font-face {
+  font-weight: 200;
+  font-family: "Helvetica Neue";
+  src: local("Helvetica Neue Regular");
+}
+
 * {
   box-sizing: border-box;
 }
@@ -6,6 +48,7 @@ body {
   background-color: #191919;
   color: black;
   word-wrap: break-word;
+  font-family: "-apple-system", "Helvetica Neue", "Yu Gothic", YuGothic, Verdana, Meiryo, "M+ 1p", sans-serif;
 }
 
 img {
