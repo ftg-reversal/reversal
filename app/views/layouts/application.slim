@@ -1,7 +1,7 @@
 doctype html
 html
   head
-    meta name='viewport' content='width=device-width, initial-scale=1.0'
+    meta name="viewport" content="width=device-width,user-scalable=0"
     - if Rails.env.development?
       = javascript_include_tag webpack_path('bundle.js')
       = javascript_include_tag webpack_path('style.js')
