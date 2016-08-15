@@ -191,9 +191,6 @@ GEM
     erubis (2.7.0)
     escape_utils (1.0.1)
     eventmachine (1.2.0.1)
-    exception_notification (4.2.1)
-      actionmailer (>= 4.0, < 6)
-      activesupport (>= 4.0, < 6)
     excon (0.51.0)
     execjs (2.7.0)
     factory_girl (4.7.0)
@@ -612,14 +609,10 @@ DEPENDENCIES
   capistrano3-unicorn
   ckeditor
   classy_enum
-  coderay
   counter_culture
   dotenv-rails
   draper!
-  exception_notification
   factory_girl_rails
-  faraday
-  faraday_middleware
   fog-aws
   font-awesome-rails
   foreman
@@ -654,7 +647,6 @@ DEPENDENCIES
   ransack
   redis
   redis-rails
-  request_store
   ridgepole!
   rollbar
   rspec

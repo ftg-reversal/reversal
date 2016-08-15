@@ -3,7 +3,6 @@ ruby '2.3.1'
 
 gem 'rails', '~> 5.0.0'
 
-# gem 'puma'
 gem 'active_link_to'
 gem 'active_model_serializers'
 gem 'activemodel-serializers-xml'
@@ -13,9 +12,6 @@ gem 'ckeditor'
 gem 'classy_enum'
 gem 'counter_culture'
 gem 'draper', git: 'https://github.com/audionerd/draper.git', branch: 'rails5'
-gem 'exception_notification'
-gem 'faraday'
-gem 'faraday_middleware'
 gem 'fog-aws'
 gem 'font-awesome-rails'
 gem 'foreman'
@@ -40,7 +36,6 @@ gem 'rails_autolink'
 gem 'ransack'
 gem 'redis'
 gem 'redis-rails'
-gem 'request_store'
 gem 'ridgepole', git: 'https://github.com/winebarrel/ridgepole.git', branch: 'v0.6.5'
 gem 'sass-rails'
 gem 'seed_dump'
@@ -82,7 +77,6 @@ group :development, :test do
 end
 
 group :test do
-  gem 'coderay'
   gem 'factory_girl_rails'
   gem 'rspec'
   gem 'rspec-rails'
@@ -102,5 +96,4 @@ group :deployment do
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
   gem 'capistrano3-unicorn'
-  # gem 'capistrano3-puma'
 end
