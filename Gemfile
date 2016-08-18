@@ -63,6 +63,7 @@ group :development, :test do
   gem 'pry-coolline'
   gem 'pry-doc'
   gem 'pry-stack_explorer'
+  gem 'puma'
   gem 'rack-mini-profiler', require: false
   gem 'rails-erd'
   gem 'rails_best_practices', require: false
@@ -72,7 +73,6 @@ group :development, :test do
   gem 'spring'
   gem 'spring-commands-rspec'
   gem 'squasher'
-  gem 'thin'
   gem 'view_source_map'
 end
 
