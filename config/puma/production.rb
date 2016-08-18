@@ -3,17 +3,15 @@
 directory '/home/ec2-user/apps/reversal/current'
 rackup '/home/ec2-user/apps/reversal/current/config.ru'
 environment 'production'
+workers Integer(ENV['WEB_CONCURRENCY'] || 2)
 
 pidfile '/home/ec2-user/apps/reversal/shared/tmp/pids/puma.pid'
 state_path '/home/ec2-user/apps/reversal/shared/tmp/pids/puma.state'
 stdout_redirect '/home/ec2-user/apps/reversal/current/log/puma.error.log', '/home/ec2-user/apps/reversal/current/log/puma.access.log', true
 
-
 threads 0, 16
 
 bind 'unix:///home/ec2-user/apps/reversal/shared/tmp/sockets/puma.sock'
-
-workers 0
 
 preload_app!
 
