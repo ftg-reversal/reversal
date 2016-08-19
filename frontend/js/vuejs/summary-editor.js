@@ -77,8 +77,8 @@ export default class SummaryEditor extends Vue {
             itemTwo = $(itemTwo).parents('li')[0];
           }
           const dummy = this.messages[itemOne.id];
-          this.messages.$set(itemOne.id, this.messages[itemTwo.id]);
-          this.messages.$set(itemTwo.id, dummy);
+          this.messages.splice(itemOne.id, 1);
+          this.messages.splice(itemTwo.id, 0, dummy);
         },
         onClickLoadMessage: (el) => {
           this.messages.push(this.loadMessages[el.$index]);
