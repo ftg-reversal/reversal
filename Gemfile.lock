@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/bbatsov/rubocop
-  revision: 429153801d1922bd7f2cc8ab577374cea7017630
+  revision: 344156ac9a4ac8b3b8167c52b92c8e12a2e3ff43
   specs:
     rubocop (0.42.0)
       parser (>= 2.3.1.1, < 3.0)
@@ -22,7 +22,7 @@ GIT
 
 GIT
   remote: https://github.com/thoughtbot/paperclip.git
-  revision: 90c80bb9487a60b18c09065914d89f68d6ad621b
+  revision: ba54d033da5d68decf1d24d625dd6fc2002e9de9
   specs:
     paperclip (5.0.0)
       activemodel (>= 4.2.0)
@@ -104,12 +104,12 @@ GEM
     arel (7.1.1)
     ast (2.3.0)
     awesome_print (1.7.0)
-    aws-sdk (2.5.3)
-      aws-sdk-resources (= 2.5.3)
-    aws-sdk-core (2.5.3)
+    aws-sdk (2.5.5)
+      aws-sdk-resources (= 2.5.5)
+    aws-sdk-core (2.5.5)
       jmespath (~> 1.0)
-    aws-sdk-resources (2.5.3)
-      aws-sdk-core (= 2.5.3)
+    aws-sdk-resources (2.5.5)
+      aws-sdk-core (= 2.5.5)
     axiom-types (0.1.1)
       descendants_tracker (~> 0.0.4)
       ice_nine (~> 0.11.0)
@@ -120,11 +120,11 @@ GEM
       rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    bootstrap_form (2.4.0)
-    brakeman (3.3.4)
+    bootstrap_form (2.5.0)
+    brakeman (3.3.5)
     buftok (0.2.0)
     builder (3.2.2)
-    bullet (5.2.1)
+    bullet (5.3.0)
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.10.0)
     byebug (9.0.5)
@@ -259,7 +259,7 @@ GEM
     http-form_data (1.0.1)
     http_accept_language (2.0.5)
     http_parser.rb (0.6.0)
-    httpclient (2.8.1)
+    httpclient (2.8.2.2)
     i18n (0.7.0)
     ice_nine (0.11.2)
     ipaddress (0.8.3)
@@ -301,7 +301,7 @@ GEM
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (3.2.0)
-    newrelic_rpm (3.16.0.318)
+    newrelic_rpm (3.16.1.320)
     nico_search_snapshot (0.1.1)
       httpclient (>= 2.6.0)
     nio4r (1.2.1)
@@ -463,7 +463,7 @@ GEM
     ruby-progressbar (1.8.1)
     ruby_parser (3.8.2)
       sexp_processor (~> 4.1)
-    rubycritic (2.9.2)
+    rubycritic (2.9.3)
       colorize
       flay (= 2.8.0)
       flog (= 4.4.0)
