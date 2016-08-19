@@ -44,6 +44,7 @@
     "postcss-reporter": "^1.4.1",
     "postcss-short": "^1.4.0",
     "postcss-simple-vars": "^3.0.0",
+    "raven-js": "^3.5.1",
     "sass-loader": "^4.0.0",
     "style-loader": "^0.13.1",
     "stylefmt": "^4.1.1",

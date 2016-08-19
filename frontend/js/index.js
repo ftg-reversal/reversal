@@ -7,6 +7,7 @@ require('views/ckeditor-image');
 require('views/entry');
 require('views/good');
 require('views/lazy-load');
+require('views/raven');
 require('views/sweetalert');
 require('views/twitter');
 require('views/user-card');

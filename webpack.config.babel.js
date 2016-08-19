@@ -49,7 +49,7 @@ export default {
   entry: {
     bundle: './frontend/js/index.js',
     style: './frontend/css/index.js',
-    vendor: ['jquery-ujs', 'sweetalert', 'turbolinks', 'tether', 'vue'],
+    vendor: ['jquery-ujs', 'raven-js', 'sweetalert', 'turbolinks', 'tether', 'vue'],
   },
 
   output: output,
