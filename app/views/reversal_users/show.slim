@@ -9,7 +9,7 @@
           - @items.each do |item|
             - if item.class == Page || item.class == Summary
               = render 'rlog_item', rlog: item, user: item.reversal_user.decorate
-            - elsif item.class == PublicActivity::Activity
+            - elsif item.class == Activity
               = render 'shared/activity', activity: item
         = paginate @items
 

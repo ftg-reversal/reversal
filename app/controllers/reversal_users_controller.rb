@@ -40,6 +40,7 @@ class ReversalUsersController < ApplicationController
   end
 
   def rlog
+    @rlogs = @rlogs.page(params[:page])
   end
 
   def event
@@ -52,7 +53,7 @@ class ReversalUsersController < ApplicationController
   end
 
   def set_rlogs
-    @rlogs = Rlog.includes(:reversal_user).where(reversal_user: @user).page(params[:page])
+    @rlogs = Rlog.includes(:reversal_user).where(reversal_user: @user)
   end
 
   def set_activities
