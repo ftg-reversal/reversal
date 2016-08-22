@@ -11,10 +11,10 @@
         | ：
         span = "#{summary.goods.size}"
 
-      = good_tw(summary_url(summary), "#{summary.title} - Reversal Summary")
+    = good_tw(summary_url(summary), "#{summary.title} - Reversal Summary")
 - else
   a href=login_with_redirect_url(summary_path)
-    butto.c-button.good-button.m-r-1
+    button.c-button.good-button.m-r-1
       img src=asset_path('good-icon.png')
       | ：
       span = "#{summary.goods.size}"
