@@ -11,7 +11,7 @@ module NicovideoInfrastructure
 
       let(:lives) { LiveSearch.exec('ggxrd') }
 
-      it 'XMLに含まれている数の配信情報が取得できること' do
+      it 'JSONに含まれている配信情報数が正しいこと' do
         expect(lives.size).to eq 3
       end
 
