@@ -1,0 +1,19 @@
+.row
+  .p-sidebar.col-md-3.col-sm-12
+    .card
+      .card-block
+        h3 キャラを選択
+        hr
+        ul.nav.nav-pills.nav-stacked
+          - @rooms.each do |room|
+            li.nav-item
+              a.nav-link href=room_path(room.url) class="#{active_link_to_class(room_path(room.url), class_active: 'sidebar-active')}"
+                = room.name
+
+  .col-md-9.hidden-sm-down
+    .card
+      .card-block
+        h3 左からキャラを選択
+
+- content_for :title do
+  | Slack channels
