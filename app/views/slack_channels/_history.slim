@@ -1,6 +1,6 @@
 .card-block
   - if channel
-    h4.fa.fa-2x.fa-slack.m-r-2 &nbsp;#{channel.name}
+    h3.fa.fa-2x.fa-slack.m-r-2 &nbsp;#{channel.name}
     - if @current_user
       a.btn.btn-primary.btn-sm.u-m-b-06 href="/summaries/channel/#{channel.id}"
         i.fa.fa-pencil-square-o &nbsp;&nbsp;まとめの作成
