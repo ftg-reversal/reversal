@@ -8,7 +8,7 @@ class EntriesController < ApplicationController
 
     if entry.save
       entry.create_activity :create, owner: @current_user, recipient: entry.event
-      render json: entry
+      render nothing: true
     else
       render json: entry.errors.full_messages, status: :internal_server_error
     end

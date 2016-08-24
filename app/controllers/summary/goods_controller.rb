@@ -10,11 +10,12 @@ class Summary::GoodsController < ApplicationController
     )
     good.create_activity :update, owner: @current_user
 
-    render json: good
+    render nothing: true
   end
 
   def destroy
-    render json: @good.destroy
+    @good.destroy!
+    render nothing: true
   end
 
   def show

@@ -5,13 +5,14 @@ class VideoMatchupsController < ApplicationController
   def create
     matchup = @video.video_matchups.create!(matchup_params)
     matchup.create_activity :update, owner: @current_user
-    render json: matchup
+    render nothing: true
   end
 
   def destroy
     matchup = VideoMatchup.find(params[:id])
     matchup.create_activity :destroy, owner: @current_user
-    render json: VideoMatchup.find(params[:id]).destroy
+    VideoMatchup.find(params[:id]).destroy!
+    render nothing: true
   end
 
   private

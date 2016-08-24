@@ -24,7 +24,7 @@ class SummariesController < RlogsController
     if summary.save
       summary.create_activity :create, owner: @current_user, recipient: summary
 
-      render json: summary, root: nil
+      render nothing: true
     else
       raise 'error'
     end
@@ -37,7 +37,7 @@ class SummariesController < RlogsController
     if @summary.update(summary_params)
       @summary.create_activity :update, owner: @current_user, recipient: @summary
 
-      render json: @summary, root: nil
+      render nothing: true
     else
       raise 'error'
     end
