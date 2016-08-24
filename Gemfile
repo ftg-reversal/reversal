@@ -24,7 +24,6 @@ gem 'jquery-datetimepicker-rails'
 gem 'jquery-rails'
 gem 'kaminari'
 gem 'mysql2'
-gem 'newrelic_rpm'
 gem 'nico_search_snapshot'
 gem 'omniauth'
 gem 'omniauth-slack'
@@ -34,6 +33,7 @@ gem 'pry-rails'
 gem 'public_activity'
 gem 'rails_autolink'
 gem 'ransack'
+gem 'react-rails'
 gem 'redis'
 gem 'redis-rails'
 gem 'ridgepole', git: 'https://github.com/winebarrel/ridgepole.git', branch: 'v0.6.5'
@@ -85,6 +85,7 @@ group :test do
 end
 
 group :production do
+  gem 'newrelic_rpm'
   gem 'rollbar'
   gem 'unicorn'
   gem 'unicorn-worker-killer'
