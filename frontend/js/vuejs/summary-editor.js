@@ -26,13 +26,11 @@ export default class SummaryEditor extends Vue {
       },
 
       ready: async function() {
-        this.channelApi = new ChannelApi();
+        this.summaryID = this.$el.dataset.summaryId;
+        this.title = this.$el.dataset.summaryTitle;
+        this.description = this.$el.dataset.summaryDescription ? this.$el.dataset.summaryDescription : "";
 
-        this.summaryID = $(this.$el).data("summary-id");
-        this.title = $(this.$el).data("summary-title");
-        this.description = $(this.$el).data("summary-description") ? $(this.$el).data("summary-description") : "";
-
-        $(this.$el).data("messages").map((message) => {
+        JSON.parse(this.$el.dataset.messages).map((message) => {
           this.messages.push({
             id: message.id,
             avatar_url: message.icon_url,
@@ -45,16 +43,17 @@ export default class SummaryEditor extends Vue {
           });
         });
 
-        const response = await this.channelApi.fetchChannelList();
+        const response = await ChannelApi.fetchChannelList();
         const json = await response.json();
         json.map((channel) => {
           this.channels.push({text: channel.name, value: channel.id});
-        })
+        });
 
-        const channelID = $(this.$el).data("channel-id");
+        const channelID = this.$el.dataset.channelId;
         if (channelID) {
           this.channelID = channelID;
-          this.loadChannelMessage(channelID, this.loadedMessages);
+          await this.loadChannelMessage(channelID, this.loadedMessages);
+          twttr.widgets.load();
         }
       },
 
@@ -62,13 +61,16 @@ export default class SummaryEditor extends Vue {
         loadTweet: (e) => {
           twttr.widgets.load();
         },
-        onSelectChannel: (e, channel, loadedMessages) => {
+
+        onSelectChannel: async (e, channel, loadedMessages) => {
           if (channel.toString() === '') return;
           this.nowLoading = true;
           loadedMessages.splice(0, loadedMessages.length);
           this.messages.splice(0, this.messages.length);
-          this.loadChannelMessage(channel, loadedMessages);
+          await this.loadChannelMessage(channel, loadedMessages);
+          twttr.widgets.load();
         },
+
         handleDrop: (itemOne, itemTwo) => {
           if (itemOne.tagName !== "LI") {
             itemOne = $(itemOne).parents('li')[0];
@@ -80,10 +82,12 @@ export default class SummaryEditor extends Vue {
           this.messages.splice(itemOne.id, 1);
           this.messages.splice(itemTwo.id, 0, dummy);
         },
+
         onClickLoadMessage: (el) => {
           this.messages.push(this.loadedMessages[el.$index]);
           this.loadedMessages.splice(el.$index, 1);
         },
+
         onClickMessage: (el) => {
           this.loadedMessages.push(this.messages[el.$index]);
           this.messages.splice(el.$index, 1);
@@ -91,6 +95,7 @@ export default class SummaryEditor extends Vue {
             return b.ts - a.ts;
           });
         },
+
         onSubmit: async (e, title, description, messages) => {
           e.preventDefault();
 
@@ -98,29 +103,23 @@ export default class SummaryEditor extends Vue {
             return;
           }
 
-          const messageIDs = messages.map((n) => {
-            return n.id
+          const messageIDs = messages.map((message) => {
+            return message.id
           });
+
           this.nowSubmitting = true;
-          $.ajax({
-            type: (this.summaryID ? 'put' : 'post'),
-            url: (this.summaryID ? `/summaries/${this.summaryID}.json` : '/summaries.json'),
-            data: {
-              authenticity_token: document.querySelector('meta[name="csrf-token"]').content,
-              title: title,
-              description: description,
-              slack_channel: this.channelID,
-              slack_messages: messageIDs
-            },
-            success: (data) => {
-              (this.summaryID ? 'put' : 'post'),
-              location.href = this.summaryID ? `/summaries/${this.summaryID}` : '/summaries/'
-            },
-            error: () => {
-              this.nowSubmitting = false;
-              swal('投稿できませんでした')
+          try {
+            if (!this.summaryID) {
+              await ChannelApi.newSummary(title, description, this.channelID, messageIDs);
+              location.href = '/summaries/';
+            } else {
+              await ChannelApi.editSummary(this.summaryID, title, description, this.channelID, messageIDs);
+              location.href = `/summaries/${this.summaryID}`;
             }
-          })
+          } catch(error) {
+            this.nowSubmitting = false;
+            swal('投稿できませんでした')
+          }
         }
       }
     };
@@ -131,7 +130,7 @@ export default class SummaryEditor extends Vue {
     this.nowLoading = true;
 
     try {
-      const response = await this.channelApi.fetchLatestMessages(channelID);
+      const response = await ChannelApi.fetchLatestMessages(channelID);
       const json = await response.json();
       this.nowLoading = false;
       this.channelID = channelID;
@@ -154,7 +153,7 @@ export default class SummaryEditor extends Vue {
       this.nowLoading = false;
       console.log(error);
       swal('取得できませんでした');
-    };
+    }
   }
 
   validate(title, description, messages) {
