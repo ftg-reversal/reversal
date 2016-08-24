@@ -1,6 +1,11 @@
-class VideoMatchupsController < ApplicationController
+class Api::VideoMatchupsController < ApplicationController
   before_action :do_check_login, only: [:create, :destroy]
   before_action :set_video, only: [:create]
+
+  def index
+    matchups = Video.including_matchup.find(params[:video_id]).video_matchups.order(:sec)
+    render json: matchups, each_serializer: VideoMatchupSerializer
+  end
 
   def create
     matchup = @video.video_matchups.create!(matchup_params)

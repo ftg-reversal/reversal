@@ -13,14 +13,7 @@
           p ※外部プレイヤー再生中に組み合わせを押すとその時間から再生されます。
         .col-md1-2.hidden-lg-up
           p 外部プレイヤーはご利用の端末からはご利用頂けません
-        #matchup-editor data-video-id=@video.id data-video-url=@video.url data-video-title=@video.title data-matchups=@video.video_matchups.to_json data-authority=(@current_user ? 'enable' : 'disable') data-charas=Chara.all.to_json
-          .col-lg-12
-            .card.u-bg-gray
-              .card-block
-                p 対戦組み合わせ
-                ul
-                  - @video.video_matchups.each do |matchup|
-                    = render 'videos/matchup', matchup: matchup, video: @video
+        #matchup-editor data-video-id=@video.id data-video-url=@video.url data-authority=(@current_user ? 'enable' : 'disable') data-charas=Chara.all.to_json
 hr
 
 - content_for :title do

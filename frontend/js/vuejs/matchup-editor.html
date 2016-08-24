@@ -4,6 +4,10 @@
       <p>対戦組み合わせ</p>
       <ul>
         <li v-for="matchup in matchups">
+          <a href="#" class="nav-link" @click.prevent="deleteMatchup($event, matchup)" v-if="addFlag === true">
+            <i class="fa fa-times"></i>
+          </a>
+          &nbsp;&nbsp;
           <a @click.prevent="setPlayheadTime($event, matchup.sec - 10)">
             {{ Math.floor(matchup.sec / 60) + "：" + ("0" + (matchup.sec % 60)).slice(-2) }}  {{ charas[matchup.chara1_id - 1].name }} vs {{ charas[matchup.chara2_id - 1].name }}
           </a>
@@ -12,10 +16,6 @@
             ニコニコ動画で見る
           </a>
           ）
-          &nbsp;&nbsp;
-          <a href="#" class="nav-link" @click.prevent="deleteMatchup($event, matchup)" v-if="addFlag === true">
-            <i class="fa fa-times"></i>
-          </a>
         </li>
       </ul>
 

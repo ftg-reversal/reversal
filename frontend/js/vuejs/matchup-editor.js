@@ -1,5 +1,6 @@
-require('./matchup-editor.sass');
-const Vue = require('vue');
+import Vue from 'vue'
+import VideoMatchupApi from '../api/video-matchup-api'
+import './matchup-editor.sass'
 
 var player;
 
@@ -23,15 +24,17 @@ export default class MatchupEditor extends Vue {
         chara2: null
       },
 
-      ready: function() {
-        this.videoID = $(this.$el).data("video-id");
-        this.videoUrl = $(this.$el).data("video-url");
-        this.matchups = $(this.$el).data("matchups");
-        this.authority = $(this.$el).data("authority");
-        this.charas = $(this.$el).data("charas");
+      ready: async function() {
+        this.videoID = this.$el.dataset.videoId;
+        this.videoUrl = this.$el.dataset.videoUrl;
+        this.authority = this.$el.dataset.authority;
+        this.charas = JSON.parse(this.$el.dataset.charas);
 
         this.chara1 = this.charas[0].id;
         this.chara2 = this.charas[0].id;
+
+        const response = await VideoMatchupApi.fetchMatchups(this.videoID);
+        this.matchups = await response.json();
       },
 
       methods: {
@@ -47,25 +50,16 @@ export default class MatchupEditor extends Vue {
           player.ext_setPlayheadTime(time);
         },
 
-        onSubmit: (e) => {
-          $.ajax({
-            type: 'post',
-            url: `/videos/${this.videoID}/matchups`,
-            data: {
-              authenticity_token: $('meta[name="csrf-token"]')[0].content,
-              sec: this.minute * 60 + this.second,
-              chara1_id: this.chara1,
-              chara2_id: this.chara2
-            }
-          }).done((data) => {
+        onSubmit: async (event) => {
+          try {
+            await VideoMatchupApi.newMatchup(this.videoID, this.minute * 60 + this.second, this.chara1, this.chara2);
             swal('追加に成功しました');
-            Turbolinks.clearCache();
-            location.reload();
-          }).fail((data) => {
-            error: () => {
-              swal('追加に失敗しました');
-            }
-          })
+            const response = await VideoMatchupApi.fetchMatchups(this.videoID);
+            this.matchups = await response.json();
+          } catch (error) {
+            console.error(error);
+            swal('追加に失敗しました');
+          }
         },
 
         deleteMatchup: (e, matchup) => {
@@ -78,32 +72,31 @@ export default class MatchupEditor extends Vue {
             confirmButtonText: '削除',
             cancelButtonText: 'キャンセル',
             closeOnConfirm: false
-          },
-          () => {
-            $.ajax({
-              type: 'delete',
-              url: `/video_matchups/${matchup.id}`,
-              data: {
-                authenticity_token: $('meta[name="csrf-token"]')[0].content,
-              }
-            }).done((data) => {
+          }, async () => {
+            try {
+              await VideoMatchupApi.deleteMatchup(matchup.id);
               swal('削除に成功しました');
-              Turbolinks.clearCache();
-              location.reload();
-            }).fail((data) => {
-                swal('削除に失敗しました');
-            })
+              const response = await VideoMatchupApi.fetchMatchups(this.videoID);
+              this.matchups = await response.json();
+            } catch (error) {
+              console.error(error);
+              swal('削除に失敗しました');
+            }
           })
         }
       }
     };
     super(properties);
   }
+
+  static csrfToken() {
+    return document.querySelector('meta[name="csrf-token"]').content;
+  }
 }
 
 window.onNicoPlayerReady = function (id) {
   player = document.getElementById(id);
-}
+};
 
 window.addEventListener('turbolinks:load', () => {
   if (document.querySelector('#matchup-editor') != null) {

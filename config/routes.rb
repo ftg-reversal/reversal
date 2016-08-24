@@ -7,14 +7,12 @@
 #                      GET    /auth/:provider/callback(.:format)           sessions#create
 #              session DELETE /session(.:format)                           sessions#destroy
 #        search_videos GET    /videos/search(.:format)                     videos#search
-#       video_matchups POST   /videos/:video_id/matchups(.:format)         video_matchups#create
 #           video_good GET    /videos/:video_id/good(.:format)             video/goods#show
 #                      PATCH  /videos/:video_id/good(.:format)             video/goods#update
 #                      PUT    /videos/:video_id/good(.:format)             video/goods#update
 #                      DELETE /videos/:video_id/good(.:format)             video/goods#destroy
 #               videos GET    /videos(.:format)                            videos#index
 #                video GET    /videos/:id(.:format)                        videos#show
-#        video_matchup DELETE /video_matchups/:id(.:format)                video_matchups#destroy
 #      search_channels GET    /channels/search(.:format)                   slack_channels#search
 #             channels GET    /channels(.:format)                          slack_channels#index
 #              channel GET    /channels/:id(.:format)                      slack_channels#show
@@ -77,8 +75,11 @@
 # api_channel_messages GET    /api/channels/:channel_id/messages(.:format) api/channel/messages#index {:format=>/json/}
 #         api_channels GET    /api/channels(.:format)                      api/channels#index {:format=>/json/}
 #          api_channel GET    /api/channels/:id(.:format)                  api/channels#show {:format=>/json/}
+#   api_video_matchups GET    /api/videos/:video_id/matchups(.:format)     api/video_matchups#index {:format=>/json/}
+#                      POST   /api/videos/:video_id/matchups(.:format)     api/video_matchups#create {:format=>/json/}
+#    api_video_matchup DELETE /api/video_matchups/:id(.:format)            api/video_matchups#destroy {:format=>/json/}
 #              sitemap GET    /sitemap(.:format)                           redirect(301, https://s3-ap-northeast-1.amazonaws.com/reversal-sitemap/sitemaps/sitemap.xml.gz)
-#                             /cable                                       #<ActionCable::Server::Base:0x007faec2454ef8 @mutex=#<Monitor:0x007faec2454ed0 @mon_owner=nil, @mon_count=0, @mon_mutex=#<Thread::Mutex:0x007faec2454e80>>, @pubsub=nil, @worker_pool=nil, @event_loop=nil, @remote_connections=nil>
+#                             /cable                                       #<ActionCable::Server::Base:0x007fc4716e8218 @mutex=#<Monitor:0x007fc4716e81f0 @mon_owner=nil, @mon_count=0, @mon_mutex=#<Thread::Mutex:0x007fc4716e81a0>>, @pubsub=nil, @worker_pool=nil, @event_loop=nil, @remote_connections=nil>
 #             ckeditor        /ckeditor                                    Ckeditor::Engine
 #
 # Routes for Ckeditor::Engine:
@@ -104,11 +105,8 @@ Rails.application.routes.draw do
     collection do
       get :search
     end
-
-    resources :video_matchups, as: :matchups, path: :matchups, only: [:create]
     resource :good, module: :video, only: [:show, :update, :destroy]
   end
-  resources :video_matchups, only: [:destroy]
 
   resources :slack_channels, as: :channels, path: :channels, only: [:index, :show] do
     collection do
@@ -177,6 +175,11 @@ Rails.application.routes.draw do
     resources :channels, only: [:index, :show] do
       resources :messages, module: :channel, only: [:index]
     end
+
+    resources :videos, only: [] do
+      resources :video_matchups, as: :matchups, path: :matchups, only: [:index, :create]
+    end
+    resources :video_matchups, only: [:destroy]
   end
 
   # sitemap
