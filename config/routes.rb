@@ -78,6 +78,7 @@
 #         api_channels GET    /api/channels(.:format)                      api/channels#index {:format=>/json/}
 #          api_channel GET    /api/channels/:id(.:format)                  api/channels#show {:format=>/json/}
 #              sitemap GET    /sitemap(.:format)                           redirect(301, https://s3-ap-northeast-1.amazonaws.com/reversal-sitemap/sitemaps/sitemap.xml.gz)
+#                             /cable                                       #<ActionCable::Server::Base:0x007faec2454ef8 @mutex=#<Monitor:0x007faec2454ed0 @mon_owner=nil, @mon_count=0, @mon_mutex=#<Thread::Mutex:0x007faec2454e80>>, @pubsub=nil, @worker_pool=nil, @event_loop=nil, @remote_connections=nil>
 #             ckeditor        /ckeditor                                    Ckeditor::Engine
 #
 # Routes for Ckeditor::Engine:
@@ -181,5 +182,6 @@ Rails.application.routes.draw do
   # sitemap
   get '/sitemap' => redirect('https://s3-ap-northeast-1.amazonaws.com/reversal-sitemap/sitemaps/sitemap.xml.gz')
 
+  mount ActionCable.server => '/cable'
   mount Ckeditor::Engine => '/ckeditor'
 end
