@@ -40,7 +40,7 @@ gem 'ridgepole', git: 'https://github.com/winebarrel/ridgepole.git', branch: 'v0
 gem 'sass-rails'
 gem 'seed_dump'
 gem 'sitemap_generator'
-gem 'slack-api'
+gem 'slack-api', require: 'slack'
 gem 'slack_markdown'
 gem 'slim-rails'
 gem 'therubyracer'
