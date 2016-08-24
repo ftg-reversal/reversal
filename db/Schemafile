@@ -102,6 +102,18 @@ create_table "lives", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=u
   t.index ["live_id"], name: "index_lives_on_live_id", using: :btree
 end
 
+create_table "messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  t.integer  "room_id",                        default: 0, null: false
+  t.integer  "reversal_user_id"
+  t.string   "user_name"
+  t.text     "icon",             limit: 65535
+  t.text     "text",             limit: 65535
+  t.datetime "created_at",                                 null: false
+  t.datetime "updated_at",                                 null: false
+  t.index ["reversal_user_id"], name: "index_messages_on_reversal_user_id", using: :btree
+  t.index ["room_id"], name: "index_messages_on_room_id", using: :btree
+end
+
 create_table "ranks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
   t.string   "rank"
   t.datetime "created_at", null: false
@@ -141,15 +153,21 @@ create_table "rlogs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=u
   t.index ["type"], name: "index_rlogs_on_type", using: :btree
 end
 
+create_table "rooms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  t.string   "name",       null: false
+  t.string   "url",        null: false
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
+  t.index ["name"], name: "index_rooms_on_name", using: :btree
+  t.index ["url"], name: "index_rooms_on_url", using: :btree
+end
+
 create_table "slack_channels", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-  t.string   "cid",         null: false
-  t.string   "name",        null: false
-  t.string   "topic"
-  t.boolean  "is_archived", null: false
-  t.datetime "created_at",  null: false
-  t.datetime "updated_at",  null: false
+  t.string   "cid",        null: false
+  t.string   "name",       null: false
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
   t.index ["cid"], name: "cid", unique: true, using: :btree
-  t.index ["is_archived"], name: "index_slack_channels_on_is_archived", using: :btree
   t.index ["name"], name: "index_slack_channels_on_name", using: :btree
 end
 

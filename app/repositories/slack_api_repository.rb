@@ -4,8 +4,6 @@ class SlackApiRepository
       SlackInfrastructure::ChannelList.exec.map do |hash|
         SlackChannel.find_or_initialize_by(cid: hash[:channel_id]).tap do |channel|
           channel.name = hash[:name]
-          channel.topic = hash[:topic]
-          channel.is_archived = hash[:is_archived]
         end
       end
     end

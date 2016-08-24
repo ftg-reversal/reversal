@@ -23,6 +23,7 @@ Chara.create!([
   {name: "レイヴン", en_name: "Raven"},
   {name: "ディズィー", en_name: "Dizzy"}
 ])
+
 Rank.create!([
   {rank: "初段未満"},
   {rank: "初段"},
@@ -58,38 +59,38 @@ Rank.create!([
 ])
 
 SlackChannel.create!([
-  {cid: "C136K4X5Y", name: "aaa", topic: "", is_archived: false},
-  {cid: "C135T8JT0", name: "axl", topic: "", is_archived: false},
-  {cid: "C135R2WMS", name: "bedman", topic: "", is_archived: false},
-  {cid: "C1361G745", name: "chipp", topic: "", is_archived: false},
-  {cid: "C136C6Y3C", name: "dizzy", topic: "", is_archived: false},
-  {cid: "C1360FFRV", name: "elphelt", topic: "", is_archived: false},
-  {cid: "C135T85U6", name: "faust", topic: "", is_archived: false},
-  {cid: "C048NEW63", name: "feedback", topic: "サービス全体を通したフィードバックをください", is_archived: false},
-  {cid: "C135W9KRA", name: "hiro_test", topic: "", is_archived: false},
-  {cid: "C136C2JUS", name: "ino", topic: "", is_archived: false},
-  {cid: "C135Z4GN4", name: "jack-o", topic: "", is_archived: false},
-  {cid: "C135R4TKN", name: "jam", topic: "", is_archived: false},
-  {cid: "C1360FYMD", name: "johnny", topic: "", is_archived: false},
-  {cid: "C135Z55GQ", name: "kum", topic: "", is_archived: false},
-  {cid: "C135YUUF2", name: "ky", topic: "", is_archived: false},
-  {cid: "C135R47PW", name: "leo", topic: "", is_archived: false},
-  {cid: "C135QV5JQ", name: "may", topic: "", is_archived: false},
-  {cid: "C135YUZFA", name: "millia", topic: "", is_archived: false},
-  {cid: "C1364A5J4", name: "nagememo", topic: "", is_archived: false},
-  {cid: "C1368HMS9", name: "nakamuramemo", topic: "", is_archived: false},
-  {cid: "C047KK2JG", name: "notify", topic: "全体通知用", is_archived: false},
-  {cid: "C134K6DMH", name: "potemkin", topic: "", is_archived: false},
-  {cid: "C134K8J83", name: "ramlethal", topic: "", is_archived: false},
-  {cid: "C047KK2JL", name: "random", topic: "雑談など", is_archived: false},
-  {cid: "C1366E6BB", name: "raven", topic: "", is_archived: false},
-  {cid: "C1360EYPR", name: "sin", topic: "", is_archived: false},
-  {cid: "C1361HDTP", name: "slayer", topic: "", is_archived: false},
-  {cid: "C1361E1QD", name: "sol", topic: "", is_archived: false},
-  {cid: "C1488DMDW", name: "takamemo", topic: "", is_archived: false},
-  {cid: "C134K7TCK", name: "venom", topic: "", is_archived: false},
-  {cid: "C047L3QFU", name: "videos", topic: "動画のアップロード通知", is_archived: false},
-  {cid: "C1360BCNT", name: "zato", topic: "", is_archived: false}
+  {cid: "C136K4X5Y", name: "aaa"},
+  {cid: "C135T8JT0", name: "axl"},
+  {cid: "C135R2WMS", name: "bedman"},
+  {cid: "C1361G745", name: "chipp"},
+  {cid: "C136C6Y3C", name: "dizzy"},
+  {cid: "C1360FFRV", name: "elphelt"},
+  {cid: "C135T85U6", name: "faust"},
+  {cid: "C048NEW63", name: "feedback"},
+  {cid: "C135W9KRA", name: "hiro_test"},
+  {cid: "C136C2JUS", name: "ino"},
+  {cid: "C135Z4GN4", name: "jack-o"},
+  {cid: "C135R4TKN", name: "jam"},
+  {cid: "C1360FYMD", name: "johnny"},
+  {cid: "C135Z55GQ", name: "kum"},
+  {cid: "C135YUUF2", name: "ky"},
+  {cid: "C135R47PW", name: "leo"},
+  {cid: "C135QV5JQ", name: "may"},
+  {cid: "C135YUZFA", name: "millia"},
+  {cid: "C1364A5J4", name: "nagememo"},
+  {cid: "C1368HMS9", name: "nakamuramemo"},
+  {cid: "C047KK2JG", name: "notify"},
+  {cid: "C134K6DMH", name: "potemkin"},
+  {cid: "C134K8J83", name: "ramlethal"},
+  {cid: "C047KK2JL", name: "random"},
+  {cid: "C1366E6BB", name: "raven"},
+  {cid: "C1360EYPR", name: "sin"},
+  {cid: "C1361HDTP", name: "slayer"},
+  {cid: "C1361E1QD", name: "sol"},
+  {cid: "C1488DMDW", name: "takamemo"},
+  {cid: "C134K7TCK", name: "venom"},
+  {cid: "C047L3QFU", name: "videos"},
+  {cid: "C1360BCNT", name: "zato"}
 ])
 
 Twitter2slackCondition.create!([
@@ -121,4 +122,30 @@ Twitter2slackCondition.create!([
 VideoSiteSearchCondition.create!([
   {word: "GGXrd", video_site: "nicovideo"},
   {word: "GGXrdR", video_site: "nicovideo"}
+])
+
+Room.create!([
+  {name: "Sol", url: "sol"},
+  {name: "Ky", url: "ky"},
+  {name: "May", url: "may"},
+  {name: "Millia", url: "millia"},
+  {name: "Zato", url: "zato"},
+  {name: "Potemkin", url: "potemkin"},
+  {name: "Chipp", url: "chipp"},
+  {name: "Faust", url: "faust"},
+  {name: "Axl", url: "axl"},
+  {name: "Slayer", url: "slayer"},
+  {name: "Venom", url: "venom"},
+  {name: "Ino", url: "ino"},
+  {name: "Bedman", url: "bedman"},
+  {name: "Ramlethal", url: "ramlethal"},
+  {name: "Sin", url: "sin"},
+  {name: "Elphelt", url: "elphelt"},
+  {name: "Leo", url: "leo"},
+  {name: "Johnny", url: "johnny"},
+  {name: "Jack-O", url: "jack-o"},
+  {name: "Jam", url: "jam"},
+  {name: "Kum", url: "kum"},
+  {name: "Raven", url: "raven"},
+  {name: "Dizzy", url: "dizzy"}
 ])
