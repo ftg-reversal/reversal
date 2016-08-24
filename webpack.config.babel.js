@@ -5,8 +5,7 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const production = process.env.TARGET === 'production';
-const localIdentName = production ? '[local]__[hash:base64:5]' : '[path]___[name]__[local]___[hash:base64:3]'
-const devtool = production ? '' : 'inline-source-map'
+const devtool = production ? '' : 'inline-source-map';
 
 const defaultPlugins = [
   new webpack.ProvidePlugin({
@@ -40,18 +39,17 @@ const output = production ? {
 } : {
   filename: path.join('[name].js'),
   publicPath: 'http://localhost:3500/'
-}
+};
 
-const cssLoader = production ? ExtractTextPlugin.extract('style', 'css!postcss') : 'style!css?sourceMap!postcss'
-const sassLoader = production ? ExtractTextPlugin.extract('style', 'css!postcss!sass') : 'style!css?sourceMap!postcss!sass?sourceMap'
+const cssLoader = production ? ExtractTextPlugin.extract('style', 'css!postcss') : 'style!css?sourceMap!postcss';
+const sassLoader = production ? ExtractTextPlugin.extract('style', 'css!postcss!sass') : 'style!css?sourceMap!postcss!sass?sourceMap';
 
 export default {
   entry: {
     bundle: './frontend/js/index.js',
     style: './frontend/css/index.js',
-    vendor: ['jquery-ujs', 'raven-js', 'sweetalert', 'turbolinks', 'tether', 'vue'],
+    vendor: ['jquery-ujs', 'raven-js', 'sweetalert', 'turbolinks', 'tether', 'vue', 'whatwg-fetch']
   },
-
   output: output,
 
   module: {
@@ -61,7 +59,7 @@ export default {
 
     loaders: [
       { test: /\.html$/, loader: 'html' },
-      { test: /\.jsx?$/, loader: 'babel-loader', exclude: /node_modules/ },
+      { test: /\.jsx?$/, loader: 'babel', exclude: /node_modules/ },
       { test: /\.css$/, loader: cssLoader },
       { test: /\.(sass|scss)$/, loader: sassLoader },
       { test: /\.jpg$/, loader: 'url' },
@@ -73,15 +71,11 @@ export default {
   },
 
   resolve: {
-    extensions: ['', '.js', '.css', '.sass', '.scss'],
+    extensions: ['', '.js', 'jsx', '.css', '.sass', '.scss'],
     root: [
       path.resolve('./frontend/js'),
       path.resolve('./frontend/css')
     ]
-  },
-
-  cssLoader: {
-    localIdentName: localIdentName
   },
 
   sassLoader: {
