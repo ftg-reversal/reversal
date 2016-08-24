@@ -3,7 +3,6 @@ require 'webmock/rspec'
 
 module NicovideoInfrastructure
   describe TagSearch do
-    # RSSへのアクセスをWebMockに差し替え
     before do
       WebMock.stub_request(:any, 'http://www.nicovideo.jp/tag/hoge?sort=f&rss=2.0')
         .to_return(status: 200, body: fixture('infrastructures/nicovideo_infrastructure/tag_search.xml'))
@@ -25,7 +24,7 @@ module NicovideoInfrastructure
       end
 
       it '投稿日時が正しいこと' do
-        expect(video[:posted_at]).to eq Time.parse('2015-01-01 00:00:00 +0900')
+        expect(video[:posted_at]).to eq Time.zone.parse('2015-01-01 00:00:00 +0900')
       end
     end
   end

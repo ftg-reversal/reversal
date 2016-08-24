@@ -1,0 +1,22 @@
+{
+  "data": [
+    {
+      "contentId": "lv1",
+      "title": "LIVE_TITLE1",
+      "startTime": "2015-01-01T00:00:00+09:00",
+      "communityIcon": "http://icon.nimg.jp/community/1/co1.jpg"
+    },
+    {
+      "contentId": "lv2",
+      "title": "LIVE_TITLE2",
+      "startTime": "2015-01-02T00:00:00+09:00",
+      "communityIcon": "http://icon.nimg.jp/community/2/co2.jpg"
+    },
+    {
+      "contentId": "lv3",
+      "title": "LIVE_TITLE3",
+      "startTime": "2015-01-01T00:00:00+09:00",
+      "communityIcon": "http://icon.nimg.jp/community/3/co3.jpg"
+    }
+  ]
+}

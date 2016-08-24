@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nicovideo_thumb_response status="ok">
+  <thumb>
+    <title>VIDEO_TITLE</title>
+    <first_retrieve>2015-01-01T00:00:00+09:00</first_retrieve>
+    <watch_url>http://www.nicovideo.jp/watch/sm1</watch_url>
+  </thumb>
+</nicovideo_thumb_response>
