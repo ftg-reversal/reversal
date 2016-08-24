@@ -27,8 +27,6 @@ class OnlineBotBatch
 
     def last_tweet_id
       RedisInfrastructure::Get.exec(RedisInfrastructure::Key.online_bot_last_tweet).to_i
-    rescue
-      0
     end
 
     def cache_last_tweet_id(id)
