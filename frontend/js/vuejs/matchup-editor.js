@@ -106,7 +106,7 @@ window.onNicoPlayerReady = function (id) {
 }
 
 window.addEventListener('turbolinks:load', () => {
-  if ($('#matchup-editor')) {
+  if (document.querySelector('#matchup-editor') != null) {
     new MatchupEditor();
   }
 });

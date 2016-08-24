@@ -11,7 +11,7 @@
       <div class="col-lg-6">
         <div class="main-card card">
           <div class="card-block">
-            <form action="#" @submit.prevent="onSelectChannel($event, channel, loadMessages)" class="summary-form">
+            <form action="#" @submit.prevent="onSelectChannel($event, channel, loadedMessages)" class="summary-form">
               <div class="header">
                 <div class="row">
                   <div class="col-lg-8">
@@ -34,9 +34,9 @@
             </form>
             <div class="card">
               <div class="card-block">
-                <div class="load-messages slack-channel">
+                <div class="load-messages room">
                   <ul>
-                    <li v-for="message in loadMessages" @click="onClickLoadMessage(this)" class="slack-message">
+                    <li v-for="message in loadedMessages" @click="onClickLoadMessage(this)" class="message">
                       <div class="media">
                         <div class="slack-icon media-object pull-left">
                           <div class="media-left"><img :src="message.avatar_url"/>
@@ -78,9 +78,9 @@
             </div>
             <div class="card">
               <div class="card-block">
-                <div class="selected-messages slack-channel editor-main-list">
+                <div class="selected-messages room editor-main-list">
                   <ul>
-                    <li v-for="message in messages" @click="onClickMessage(this)" id="{{ $index }}" v-drag-and-drop drop="handleDrop" class="slack-message media u-no-marker">
+                    <li v-for="message in messages" @click="onClickMessage(this)" id="{{ $index }}" v-drag-and-drop drop="handleDrop" class="message media u-no-marker">
                       <div class="slack-icon media-object pull-left">
                         <div class="media-left"><img :src="message.avatar_url"/>
                         </div>

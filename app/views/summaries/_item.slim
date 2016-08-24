@@ -1,4 +1,4 @@
-- if !summary.description.to_s.empty?
+- unless summary.description.to_s.empty?
   .row.m-t-1
     .col-md-10.col-md-offset-1
       .card.u-bg-gray
@@ -7,7 +7,7 @@
 
 hr
 - messages.each do |message|
-  .slack-message.media
+  .message.media
     .slack-icon.media-object.pull-left
       .media-left
         img src=message.icon

@@ -1,7 +1,7 @@
 .card
   .card-block
     = render 'summary_header', summary: @summary
-    .slack-channel
+    .room
       = render 'item', summary: @summary, messages: @messages
     hr
     = render 'shared/item_authority', current_user: @current_user, item: @summary, edit_path: edit_summary_path, delete_path: summary_path(@summary), redirect_path: rlogs_path

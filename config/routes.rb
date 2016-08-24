@@ -172,7 +172,9 @@ Rails.application.routes.draw do
   get :search, controller: :search, action: :index
 
   namespace :api, format: 'json' do
-    resources :channels, only: [:index, :show]
+    resources :channels, only: [:index, :show] do
+      resources :messages, module: :channel, only: [:index]
+    end
   end
 
   # sitemap
