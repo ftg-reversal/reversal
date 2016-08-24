@@ -1,9 +1,7 @@
-module TwitterInfrastructure
-  class Tweet
-    class << self
-      def exec(client, text)
-        client.update(text)
-      end
+class TwitterInfrastructure::Tweet
+  class << self
+    def exec(client, text)
+      client.update(text)
     end
   end
 end
