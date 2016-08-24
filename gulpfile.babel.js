@@ -6,16 +6,16 @@ const stylefmt = require('gulp-stylefmt');
 const stylelint = require('stylelint');
 
 gulp.task('stylefmt', function () {
-    return gulp.src('./frontend/css/**/*.css')
-        .pipe(postcss([sorting({'sort-order': 'zen'})]))
-        .pipe(stylefmt())
-        .pipe(gulp.dest('./frontend/css'));
+  return gulp.src('./frontend/css/**/*.css')
+    .pipe(postcss([sorting({'sort-order': 'zen'})]))
+    .pipe(stylefmt())
+    .pipe(gulp.dest('./frontend/css'));
 });
 
 gulp.task('stylelint', function () {
-    return gulp.src('./frontend/css/**/*.css')
-        .pipe(postcss([
-            stylelint(),
-            postcssReporter({clearMessages: true})
-        ]));
+  return gulp.src('./frontend/css/**/*.css')
+    .pipe(postcss([
+      stylelint(),
+      postcssReporter({clearMessages: true})
+    ]));
 });
