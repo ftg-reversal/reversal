@@ -48,7 +48,7 @@ module NicovideoInfrastructure
 
       let(:lives) { LiveSearch.exec('ggxrd') }
 
-      it '空配列が返ってくる' do
+      it '空配列が返ってくること' do
         expect(lives).to eq []
       end
     end
