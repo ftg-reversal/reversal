@@ -24,7 +24,7 @@ export default class ChannelApi {
   static async editSummary(summaryID, title, description, channelID, messageIDs) {
     return await $.ajax({
       type: 'put',
-      url: `/summaries/${this.summaryID}.json`,
+      url: `/summaries/${summaryID}.json`,
       data: {
         authenticity_token: document.querySelector('meta[name="csrf-token"]').content,
         title: title,
