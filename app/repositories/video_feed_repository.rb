@@ -4,7 +4,7 @@ class VideoFeedRepository
     # @return [Array<Video>]
     def find_all_by_condition(condition)
       condition.video_site.search_infrastructure.exec(condition.word)
-               .map { |hash| update_or_initialize_video(hash, condition) }
+        .map { |hash| update_or_initialize_video(hash, condition) }
     end
 
     private
