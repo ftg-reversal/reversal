@@ -4,7 +4,7 @@ module RedisInfrastructure
   describe RedisSet do
     context '正常系' do
       before do
-        RedisSet.client = double('client', set: nil)
+        RedisSet.client = double('Redis Client', set: nil)
       end
 
       it 'RedisInfrastructure::RedisKeyを渡したとき期待した値がセットされること' do

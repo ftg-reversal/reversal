@@ -4,7 +4,7 @@ module RedisInfrastructure
   describe RedisGet do
     context '正常系' do
       before do
-        RedisGet.client = double('client', get: 1)
+        RedisGet.client = double('Redis Client', get: 1)
       end
 
       it 'RedisInfrastructure::RedisKeyを渡したとき期待した値が返ってくること' do
