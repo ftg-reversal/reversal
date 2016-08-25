@@ -4,7 +4,7 @@ module RedisInfrastructure
       attr_writer :client
 
       def exec(key, str)
-        raise TypeError unless key.class == ::RedisInfrastructure::Key
+        raise TypeError unless key.class == RedisKey
         client.set(key.to_s, str)
       end
 

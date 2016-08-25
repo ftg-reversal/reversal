@@ -26,11 +26,11 @@ class OnlineBotBatch
     end
 
     def last_tweet_id
-      RedisInfrastructure::RedisGet.exec(RedisInfrastructure::Key.online_bot_last_tweet).to_i
+      RedisInfrastructure::RedisGet.exec(RedisInfrastructure::RedisKey.online_bot_last_tweet).to_i
     end
 
     def cache_last_tweet_id(id)
-      RedisInfrastructure::RedisSet.exec(RedisInfrastructure::Key.online_bot_last_tweet, id.to_s)
+      RedisInfrastructure::RedisSet.exec(RedisInfrastructure::RedisKey.online_bot_last_tweet, id.to_s)
     end
   end
 end
