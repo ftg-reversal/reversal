@@ -23,7 +23,7 @@ class TwitterUser < ApplicationRecord
     self.screen_name = auth['info']['nickname']
     self.name = auth['info']['name']
     self.icon_url = auth['info']['image']
-    save
+    save!
   end
 
   class << self
