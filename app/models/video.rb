@@ -36,8 +36,7 @@ class Video < ApplicationRecord
   validates :url, presence: true, uniqueness: true
 
   classy_enum_attr :video_site
-  before_save :fetch_thumbnail
-  after_save :apply_imperial
+  before_save :fetch_thumbnail, :apply_imperial
 
   has_attached_file :thumbnail, default_url: '/images/dummy_thumbnail.png'
   validates_attachment_content_type :thumbnail, content_type: %r{/\Aimage\/.*\Z/}
