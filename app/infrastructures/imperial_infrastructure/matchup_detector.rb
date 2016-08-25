@@ -11,9 +11,11 @@ module ImperialInfrastructure
       private
 
       def timeout
-        7200 if Rails.env.production?
-        1 if Rails.env.development?
-        0.1
+        if Rails.env.production?
+          7200
+        else
+          0.1
+        end
       end
     end
   end
