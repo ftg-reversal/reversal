@@ -5,6 +5,10 @@ module RedisInfrastructure
     end
 
     class << self
+      def dummy_key
+        @dummy_key ||= Key.new('DUMMY_KEY'.freeze)
+      end
+
       def online_bot_last_tweet
         @online_bot_last_tweet ||= Key.new('ONLINE_BOT_LAST_TWEET'.freeze)
       end
