@@ -57,6 +57,7 @@ group :development, :test do
   gem 'brakeman', require: false
   gem 'bullet'
   gem 'dotenv-rails'
+  gem 'guard-rspec', require: false
   gem 'hirb'
   gem 'hirb-unicode-steakknife', require: 'hirb-unicode'
   gem 'pry-byebug'
@@ -73,6 +74,8 @@ group :development, :test do
   gem 'spring'
   gem 'spring-commands-rspec'
   gem 'squasher'
+  gem 'terminal-notifier'
+  gem 'terminal-notifier-guard'
   gem 'view_source_map'
 end
 
