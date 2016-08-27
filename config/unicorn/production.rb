@@ -35,4 +35,5 @@ before_fork do |server, worker|
 end
 
 after_fork do |server, worker|
-  dhttp://www.nicovideo.jp/watch/sm29469611efined?(ActiveRecord::Base) and ActiveRecord::Base.establish_connection
+  defined?(ActiveRecord::Base) and ActiveRecord::Base.establish_connection
+end
