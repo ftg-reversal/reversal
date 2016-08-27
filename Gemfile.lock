@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/thoughtbot/paperclip.git
-  revision: 2edf0459aad2eb4bf40a4823c8fc16d7ade45a99
+  revision: 544fa14cdb5715ba9a15d519783025c467448759
   specs:
     paperclip (5.1.0)
       activemodel (>= 4.2.0)
@@ -93,12 +93,12 @@ GEM
     arel (7.1.1)
     ast (2.3.0)
     awesome_print (1.7.0)
-    aws-sdk (2.5.5)
-      aws-sdk-resources (= 2.5.5)
-    aws-sdk-core (2.5.5)
+    aws-sdk (2.5.6)
+      aws-sdk-resources (= 2.5.6)
+    aws-sdk-core (2.5.6)
       jmespath (~> 1.0)
-    aws-sdk-resources (2.5.5)
-      aws-sdk-core (= 2.5.5)
+    aws-sdk-resources (2.5.6)
+      aws-sdk-core (= 2.5.6)
     axiom-types (0.1.1)
       descendants_tracker (~> 0.0.4)
       ice_nine (~> 0.11.0)
@@ -121,7 +121,7 @@ GEM
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.10.0)
     byebug (9.0.5)
-    capistrano (3.6.0)
+    capistrano (3.6.1)
       airbrussh (>= 1.0.0)
       capistrano-harrow
       i18n
@@ -485,7 +485,7 @@ GEM
     rspec-mocks (3.5.0)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.5.0)
-    rspec-rails (3.5.1)
+    rspec-rails (3.5.2)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       railties (>= 3.0)
