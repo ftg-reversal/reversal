@@ -2,7 +2,7 @@ shared_path = '/home/ec2-user/apps/reversal/shared/'
 current_path = '/home/ec2-user/apps/reversal/current/'
 
 # ワーカーの数
-worker_processes 2
+worker_processes 3
 
 # ソケット
 listen File.expand_path('tmp/sockets/unicorn.sock', shared_path)
@@ -35,6 +35,4 @@ before_fork do |server, worker|
 end
 
 after_fork do |server, worker|
-  defined?(ActiveRecord::Base) and ActiveRecord::Base.establish_connection
-end
-
+  dhttp://www.nicovideo.jp/watch/sm29469611efined?(ActiveRecord::Base) and ActiveRecord::Base.establish_connection
