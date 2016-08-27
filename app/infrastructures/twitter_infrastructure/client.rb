@@ -3,6 +3,10 @@ require 'twitter'
 module TwitterInfrastructure
   class Client
     class << self
+      def dummy_client
+        @dummy_client ||= ::Twitter::REST::Client.new
+      end
+
       def official_client
         @official_client ||= ::Twitter::REST::Client.new do |conf|
           conf.consumer_key        = ENV['TWITTER_CONSUMER_KEY']

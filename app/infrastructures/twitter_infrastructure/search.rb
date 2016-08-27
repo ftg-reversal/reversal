@@ -4,7 +4,7 @@ module TwitterInfrastructure
       SEARCH_COUNT = 100
 
       def exec(client, search_text)
-        client.search("#{search_text} -rt").take(SEARCH_COUNT).map do |tweet|
+        search_tweets(client, search_text).map do |tweet|
           {
             id: tweet.id,
             screen_name: tweet.user.screen_name,
@@ -13,6 +13,12 @@ module TwitterInfrastructure
             created_at: tweet.created_at
           }
         end
+      rescue
+        []
+      end
+
+      def search_tweets(client, search_text)
+        client.search("#{search_text} -rt").take(SEARCH_COUNT)
       end
     end
   end
