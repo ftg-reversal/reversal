@@ -116,7 +116,30 @@ Twitter2slackCondition.create!([
   {text: "#ジャム攻略", slack_channel: SlackChannel.find_by(name: "jam")},
   {text: "#クム攻略", slack_channel: SlackChannel.find_by(name: "kum")},
   {text: "#レイヴン攻略", slack_channel: SlackChannel.find_by(name: "raven")},
-  {text: "#ディズィー攻略", slack_channel: SlackChannel.find_by(name: "dizzy")}
+  {text: "#ディズィー攻略", slack_channel: SlackChannel.find_by(name: "dizzy")},
+  {text: "#GGXrd_SO", slack_channel: SlackChannel.find_by(name: "sol")},
+  {text: "#GGXrd_KY", slack_channel: SlackChannel.find_by(name: "ky")},
+  {text: "#GGXrd_MA", slack_channel: SlackChannel.find_by(name: "may")},
+  {text: "#GGXrd_MI", slack_channel: SlackChannel.find_by(name: "millia")},
+  {text: "#GGXrd_ZA", slack_channel: SlackChannel.find_by(name: "zato")},
+  {text: "#GGXrd_PO", slack_channel: SlackChannel.find_by(name: "potemkin")},
+  {text: "#GGXrd_CH", slack_channel: SlackChannel.find_by(name: "chipp")},
+  {text: "#GGXrd_FA", slack_channel: SlackChannel.find_by(name: "faust")},
+  {text: "#GGXrd_AX", slack_channel: SlackChannel.find_by(name: "axl")},
+  {text: "#GGXrd_VE", slack_channel: SlackChannel.find_by(name: "venom")},
+  {text: "#GGXrd_SL", slack_channel: SlackChannel.find_by(name: "slayer")},
+  {text: "#GGXrd_IN", slack_channel: SlackChannel.find_by(name: "ino")},
+  {text: "#GGXrd_BE", slack_channel: SlackChannel.find_by(name: "bedman")},
+  {text: "#GGXrd_RA", slack_channel: SlackChannel.find_by(name: "ramlethal")},
+  {text: "#GGXrd_SI", slack_channel: SlackChannel.find_by(name: "sin")},
+  {text: "#GGXrd_EL", slack_channel: SlackChannel.find_by(name: "elphelt")},
+  {text: "#GGXrd_LE", slack_channel: SlackChannel.find_by(name: "leo")},
+  {text: "#GGXrd_JO", slack_channel: SlackChannel.find_by(name: "johnny")},
+  {text: "#GGXrd_JC", slack_channel: SlackChannel.find_by(name: "jack-o")},
+  {text: "#GGXrd_JA", slack_channel: SlackChannel.find_by(name: "jam")},
+  {text: "#GGXrd_KU", slack_channel: SlackChannel.find_by(name: "kum")},
+  {text: "#GGXrd_RV", slack_channel: SlackChannel.find_by(name: "raven")},
+  {text: "#GGXrd_DI", slack_channel: SlackChannel.find_by(name: "dizzy")}
 ])
 
 VideoSiteSearchCondition.create!([
