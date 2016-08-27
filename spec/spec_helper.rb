@@ -20,4 +20,5 @@ RSpec.configure do |config|
   end
 
   config.include FactoryGirl::Syntax::Methods
+  FactoryGirl.definition_file_paths << File.join(File.dirname(__FILE__), 'factory_girl')
 end
