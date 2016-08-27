@@ -3,7 +3,7 @@ class Api::VideoMatchupsController < ApplicationController
   before_action :set_video, only: [:create]
 
   def index
-    matchups = Video.including_matchup.find(params[:video_id]).video_matchups
+    matchups = Video.including_matchup.find(params[:video_id]).video_matchups.order(:sec)
     render json: matchups, each_serializer: VideoMatchupSerializer
   end
 

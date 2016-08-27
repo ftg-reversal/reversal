@@ -42,7 +42,7 @@ class Video < ApplicationRecord
   has_attached_file :thumbnail, default_url: '/images/dummy_thumbnail.png'
   validates_attachment_content_type :thumbnail, content_type: %r{/\Aimage\/.*\Z/}
 
-  scope :including_matchup, -> () { includes(video_matchups: [:chara1, :chara2]).order('video_matchups.sec asc').references(:video_matchups) }
+  scope :including_matchup, -> () { includes(video_matchups: [:chara1, :chara2]).references(:video_matchups) }
   scope :recently, -> () { order('posted_at DESC') }
 
   # video_matchups
