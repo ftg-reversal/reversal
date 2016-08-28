@@ -48,10 +48,6 @@ Style/MultilineMethodCallIndentation:
 Style/GuardClause:
   Enabled: false
 
-# has_and_belongs_to_manyを許可
-Rails/HasAndBelongsToMany:
-  Enabled: false
-
 Style/FrozenStringLiteralComment:
   Enabled: false
 
