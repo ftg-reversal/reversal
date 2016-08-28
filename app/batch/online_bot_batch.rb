@@ -18,7 +18,7 @@ class OnlineBotBatch
     end
 
     def search_tweet
-      TwitterApiRepository.find_by_text('#GGXrdRプレマ').sort { |a, b| a[:id] <=> b[:id] }
+      TwitterApiRepository.find_by_text('#GGXrdRプレマ')
     end
 
     def tweet_text(tweet)
