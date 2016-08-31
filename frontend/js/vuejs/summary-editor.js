@@ -1,6 +1,6 @@
 import './summary-editor.sass'
 import Vue from 'vue';
-import ChannelApi from '../api/channel-api'
+import ChannelApi from 'api/channel-api'
 
 Vue.use(require('vendor/vue-drag-and-drop'));
 
