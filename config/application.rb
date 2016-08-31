@@ -13,18 +13,8 @@ module Reversal
     config.autoload_paths.push "#{Rails.root}/lib"
 
     config.generators.template_engine = :slim
+    config.generators.fixture_replacement :factory_girl, dir: 'spec/factory_girl'
 
     config.i18n.default_locale = :ja
-
-    # config.react.server_renderer_pool_size ||= 8
-    # config.react.server_renderer_timeout   ||= 20
-    # config.react.server_renderer = React::ServerRendering::SprocketsRenderer
-    # config.react.server_renderer_options = {
-    #   files: ['react-server.js', 'webpack/components.js'],
-    #   replay_console: true
-    # }
-    # Settings in config/environments/* take precedence over those specified here.
-    # Application configuration should go into files in config/initializers
-    # -- all .rb files in that directory are automatically loaded.
   end
 end
