@@ -4,11 +4,11 @@ require 'spec_helper'
 require File.expand_path('../config/environment', File.dirname(__FILE__))
 require 'rspec/rails'
 require 'pry-rails'
+require 'factory_girl_rails'
+
+FactoryGirl.definition_file_paths = [File.expand_path('../factory_girl', __FILE__)]
 
 ActiveRecord::Migration.maintain_test_schema!
-
-FactoryGirl.definition_file_paths = [Rails.root.join('spec', 'factory_girl')]
-FactoryGirl.find_definitions
 
 def fixture_path
   File.expand_path('../fixtures', __FILE__)
@@ -22,5 +22,8 @@ RSpec.configure do |config|
   config.fixture_path = Rails.root.join('spec', 'fixtures', 'models')
   config.use_transactional_fixtures = true
 
-  config.infer_spec_type_from_file_location!
+  config.include FactoryGirl::Syntax::Methods
+  config.before(:all) do
+    FactoryGirl.reload
+  end
 end
