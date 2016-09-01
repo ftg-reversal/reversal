@@ -2,7 +2,7 @@
   .card
     .card-block
       .hidden-sm-down
-        h4.card-title キャラ選択
+        h4.card-title = t('select_chara')
 
         hr.m-t-0
 
@@ -10,12 +10,12 @@
           - @charas.each do |chara|
             li.nav-item
               a.nav-link href=video_chara_path(chara.en_name.downcase) class="#{active_link_to_class(video_chara_path(chara.en_name.downcase), class_active: 'sidebar-active')}"
-                = chara.name
+                = t("chara.#{chara.en_name.downcase}")
 
       .hidden-md-up
         fieldset.form-group
           select.form-control onchange="if (this.value) window.location.href=this.value"
-            option value=videos_path キャラ選択
+            option value=videos_path = t('chara.select_chara')
             - charas.each do |chara|
               option value=video_chara_path(chara.en_name.downcase)
-                = chara.name
+                = t("chara.#{chara.en_name.downcase}")

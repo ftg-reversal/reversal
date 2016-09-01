@@ -1,6 +1,6 @@
 li
   a href="#{video.url}?from=#{matchup.sec - 10}" target="_blank"
     | #{sec_to_time(matchup.sec)}&nbsp;&nbsp;
-    | #{matchup.chara1.name}
+    | #{t("chara.#{matchup.chara1.en_name.downcase}")}
     | &nbsp;vs&nbsp;
-    | #{matchup.chara2.name}
+    | #{t("chara.#{matchup.chara2.en_name.downcase}")}

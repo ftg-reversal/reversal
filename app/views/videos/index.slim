@@ -6,7 +6,7 @@
     .col-md-9
       .card
         .card-block
-          h2 動画一覧
+          h2 = t('video_list')
           hr
           - @videos.each do |video|
             = render 'videos/item', video: video

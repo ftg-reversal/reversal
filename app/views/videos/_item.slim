@@ -3,7 +3,7 @@
     a href=video_path(video) data-turbolinks='false'
       img src=video.thumbnail title=video.title style="display: block; height: auto; width: 100%;"
     p.text-md-right
-      strong = "#{time_ago_in_words(video.posted_at)}前"
+      strong = "#{time_ago_in_words(video.posted_at)}#{t('ago')}"
   .col-md-9.col-sm-8
     a href=video_path(video) data-turbolinks='false'
       h3 == video.title
@@ -12,7 +12,7 @@
     - unless video.video_matchups.empty?
       .card.u-bg-gray.m-t-1
         .card-block
-          p 対戦組み合わせ
+          p = t('matchup')
           ul
             - video.video_matchups.order(:sec).each do |matchup|
               = render 'videos/matchup', matchup: matchup, video: video
