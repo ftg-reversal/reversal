@@ -1,17 +1,14 @@
 class VideoFeedRepository
   class << self
-    # @param condition [VideoSiteSearchCondition]
-    # @return [Array<Video>]
     def find_all_by_condition(condition)
-      condition.video_site.search_infrastructure.exec(condition.word)
-        .map { |hash| update_or_initialize_video(hash, condition) }
+      infrastructure = condition_to_infrastructure(condition)
+      infrastructure.exec(condition.word).map { |hash| update_or_initialize_video(hash, condition) }
     end
 
-    private
+    def condition_to_infrastructure(condition)
+      condition.video_site.search_infrastructure
+    end
 
-    # @param [Hash] hash
-    # @param [VideoSiteSearchCondition] condition
-    # @return [Video]
     def update_or_initialize_video(hash, condition)
       Video.find_or_initialize_by(url: hash[:url]).tap do |video|
         video.url = hash[:url]
