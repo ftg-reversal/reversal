@@ -3,4 +3,8 @@
   background: #a70004;
   color: white;
   text-align: center;
+
+  a {
+    color: #ffd13d;
+  }
 }
