@@ -3,7 +3,7 @@
     .card-block
       h2.media-heading = @video.title
       p.u-m-b-03
-        a href=@video.url target='_blank' = t('play_nicovideo')
+        a href=@video.url target="_blank" rel="noopener" = t('play_nicovideo')
       = render 'videos/good', video: @video
       = render 'shared/good_list', goods: @video.goods
       hr
