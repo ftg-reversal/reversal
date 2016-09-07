@@ -43,8 +43,8 @@ class Event < ApplicationRecord
   scope :including_user, -> () { includes(:reversal_user) }
   scope :including_entry, -> () { includes(entry: [:reversal_user, entry_player: [:chara, :rank]]) }
 
-  scope :upcoming, -> () { where('datetime >= ?', tomorrow).including_user }
-  scope :finished, -> () { where('datetime < ?', tomorrow).including_user }
+  scope :upcoming, -> () { where('datetime >= ?', today).including_user }
+  scope :finished, -> () { where('datetime < ?', today).including_user }
 
   def good?(user)
     !Good.user(user).type('Event').id(id).empty?
@@ -59,8 +59,8 @@ class Event < ApplicationRecord
   end
 
   class << self
-    def tomorrow
-      Date.tomorrow.in_time_zone
+    def today
+      Time.zone.today.in_time_zone
     end
   end
 end
