@@ -3,7 +3,7 @@ require 'webmock/rspec'
 
 module NicovideoInfrastructure
   describe LiveSearch do
-    context '正常に取出来たとき' do
+    context '正常系' do
       before do
         WebMock.stub_request(:any, 'http://api.search.nicovideo.jp/api/v2/live/contents/search?q=ggxrd&targets=tags&fields=contentId,title,startTime,communityIcon&_sort=-startTime&filters[liveStatus][0]=onair&_offset=0&_limit=100&_context=reversal')
           .to_return(status: 200, body: fixture('infrastructures/nicovideo_infrastructure/live_search.json'))
@@ -40,7 +40,7 @@ module NicovideoInfrastructure
       end
     end
 
-    context '正常に取得出来なかったとき' do
+    context '異常系' do
       before do
         WebMock.stub_request(:any, 'http://api.search.nicovideo.jp/api/v2/live/contents/search?q=ggxrd&targets=tags&fields=contentId,title,startTime,communityIcon&_sort=-startTime&filters[liveStatus][0]=onair&_offset=0&_limit=100&_context=reversal')
           .to_return(status: 503)

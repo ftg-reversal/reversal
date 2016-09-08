@@ -3,7 +3,7 @@ require 'webmock/rspec'
 
 module ImperialInfrastructure
   describe MatchupDetector do
-    context '正常に取出来たとき' do
+    context '正常系' do
       before do
         WebMock.stub_request(:any, 'http://imperial/20/100/sm1')
           .to_return(status: 200, body: fixture('infrastructures/imperial_infrastructure/matchup_detector.json'))
@@ -32,7 +32,7 @@ module ImperialInfrastructure
       end
     end
 
-    context '正常に取得出来なかったとき' do
+    context '異常系' do
       before do
         WebMock.stub_request(:any, 'http://imperial/20/100/sm1')
           .to_return(status: 503)
