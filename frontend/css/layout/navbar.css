@@ -27,9 +27,7 @@
   }
 
   .active {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
-    border-bottom-color: #da0005;
+    border-bottom: solid 5px #da0005;
   }
 
   .nav-link {
