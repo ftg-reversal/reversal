@@ -1,6 +1,6 @@
 function onLoad() {
-  Array.prototype.map.call(document.querySelectorAll('.ckeditor'),  (e) => {
-    CKEDITOR.replace(e);
+  Array.prototype.map.call(document.querySelectorAll('.ckeditor'), (e) => {
+    CKEDITOR.replace(e); // eslint-disable-line no-undef
   });
 }
 

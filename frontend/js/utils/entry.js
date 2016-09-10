@@ -41,7 +41,7 @@ function onLoad() {
         type: 'success',
         html: true,
       }, () => { location.reload(); });
-      twttr.widgets.load();// eslint-disable-line no-undef
+      twttr.widgets.load(); // eslint-disable-line no-undef
     }).fail((data) => { // eslint-disable-line no-unused-vars
       salert({
         title: 'エントリー失敗',
