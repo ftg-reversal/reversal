@@ -3,6 +3,7 @@ module TwitterInfrastructure
     class << self
       SEARCH_COUNT = 100
 
+      # rubocop:disable Metrics/MethodLength
       def exec(client, search_text)
         search_tweets(client, search_text).map do |tweet|
           {
@@ -16,6 +17,7 @@ module TwitterInfrastructure
       rescue
         []
       end
+      # rubocop:enable Metrics/MethodLength
 
       def search_tweets(client, search_text)
         client.search("#{search_text} -rt").take(SEARCH_COUNT)
