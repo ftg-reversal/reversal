@@ -1,15 +1,15 @@
-require('vendor/bootstrap/npm');
-require('vendor/jquery.lazyload');
-require('vendor/twitter-widgets');
+import './vendor/bootstrap/npm';
+import './vendor/jquery.lazyload';
+import './vendor/twitter-widgets';
 
-require('utils/ckeditor');
-require('utils/ckeditor-image');
-require('utils/entry');
-require('utils/good');
-require('utils/lazy-load');
-require('utils/sweetalert');
-require('utils/twitter');
-require('utils/user-card');
+import './utils/ckeditor';
+import './utils/ckeditor-image';
+import './utils/entry';
+import './utils/good';
+import './utils/lazy-load';
+import './utils/sweetalert';
+import './utils/twitter';
+import './utils/user-card';
 
-require('vuejs/summary-editor');
-require('vuejs/matchup-editor');
+import './vuejs/summary-editor';
+import './vuejs/matchup-editor';
