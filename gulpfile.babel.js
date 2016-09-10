@@ -1,9 +1,9 @@
-const gulp = require('gulp');
-const postcss = require('gulp-postcss');
-const postcssReporter = require('postcss-reporter');
-const sorting = require('postcss-sorting');
-const stylefmt = require('gulp-stylefmt');
-const stylelint = require('stylelint');
+import gulp from 'gulp';
+import postcss from 'gulp-postcss';
+import postcssReporter from 'postcss-reporter';
+import sorting from 'postcss-sorting';
+import stylefmt from 'gulp-stylefmt';
+import stylelint from 'stylelint';
 
 gulp.task('stylefmt', () => (
   gulp.src('./frontend/css/**/*.css')
