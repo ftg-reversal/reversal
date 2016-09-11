@@ -1,0 +1,3 @@
+---
+nodebrew_user: vagrant
+nodebrew_nodejs_version: v6.5.0

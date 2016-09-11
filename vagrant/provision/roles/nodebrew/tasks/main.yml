@@ -1,0 +1,22 @@
+---
+- name: Install nodebrew
+  become: yes
+  become_user: "{{ nodebrew_user }}"
+  shell: "curl -L git.io/nodebrew | perl - setup"
+
+- name: Add ~/.nodebrew/current/bin to PATH
+  become: yes
+  become_user: "{{ nodebrew_user }}"
+  lineinfile: >
+    dest="~/.profile"
+    line="export PATH=$HOME/.nodebrew/current/bin:$PATH"
+
+- name: Install nodejs
+  become: yes
+  become_user: "{{ nodebrew_user }}"
+  command: "nodebrew install-binary {{ nodebrew_nodejs_version }}"
+
+- name: Set default nodejs version
+  become: yes
+  become_user: "{{ nodebrew_user }}"
+  command: "nodebrew use {{ nodebrew_nodejs_version }}"

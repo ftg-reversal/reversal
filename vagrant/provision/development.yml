@@ -4,8 +4,8 @@
   become: yes
   roles:
     - apt-upgrade
+    - nodebrew
     - rbenv
     - mysql
     - redis
-    - nodejs
     - env
