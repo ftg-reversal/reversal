@@ -9,7 +9,7 @@
   become_user: "{{ rbenv_user }}"
   git: repo=https://github.com/sstephenson/rbenv.git dest=~/.rbenv
 
-- name: Add ~.rbenv/bin to PATH
+- name: Add ~/.rbenv/bin to PATH
   become: yes
   become_user: "{{ rbenv_user }}"
   lineinfile: >
