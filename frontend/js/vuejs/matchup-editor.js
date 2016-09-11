@@ -1,14 +1,16 @@
-import Vue from 'vue'
-import VideoMatchupApi from '../api/video-matchup-api'
-import './matchup-editor.sass'
+import salert from 'sweetalert';
+import Vue from 'vue';
+import VideoMatchupApi from '../api/video-matchup-api';
+import './matchup-editor.sass';
+import template from './matchup-editor.html';
 
-var player;
+let player;
 
 export default class MatchupEditor extends Vue {
   constructor() {
     const properties = {
-      el: "#matchup-editor",
-      template: require('./matchup-editor.html'),
+      el: '#matchup-editor',
+      template,
 
       data: {
         videoID: 0,
@@ -16,15 +18,15 @@ export default class MatchupEditor extends Vue {
         matchups: [],
         authority: 'disable',
         addFlag: false,
-        minutes: Array.apply(null, {length: 60}).map(Number.call, Number),
-        seconds: Array.apply(null, {length: 60}).map(Number.call, Number),
+        minutes: [...Array(60)].map((_v, i) => i),
+        seconds: [...Array(60)].map((_v, i) => i),
         minute: 0,
         second: 0,
         chara1: null,
-        chara2: null
+        chara2: null,
       },
 
-      ready: async function() {
+      ready: async function ready() {
         this.videoID = this.$el.dataset.videoId;
         this.videoUrl = this.$el.dataset.videoUrl;
         this.authority = this.$el.dataset.authority;
@@ -38,32 +40,32 @@ export default class MatchupEditor extends Vue {
       },
 
       methods: {
-        displayForm: (e) => {
+        displayForm: (_e) => {
           this.addFlag = true;
         },
 
-        hideForm: (e) => {
+        hideForm: (_e) => {
           this.addFlag = false;
         },
 
-        setPlayheadTime: (e, time) => {
+        setPlayheadTime: (_e, time) => {
           player.ext_setPlayheadTime(time);
         },
 
-        onSubmit: async (event) => {
+        onSubmit: async (_event) => {
           try {
-            await VideoMatchupApi.newMatchup(this.videoID, this.minute * 60 + this.second, this.chara1, this.chara2);
-            swal('追加に成功しました');
+            const sec = (this.minute * 60) + this.second;
+            await VideoMatchupApi.newMatchup(this.videoID, sec, this.chara1, this.chara2);
+            salert('追加に成功しました');
             const response = await VideoMatchupApi.fetchMatchups(this.videoID);
             this.matchups = await response.json();
           } catch (error) {
-            console.error(error);
-            swal('追加に失敗しました');
+            salert('追加に失敗しました');
           }
         },
 
         deleteMatchup: (e, matchup) => {
-          swal({
+          salert({
             title: '削除確認',
             text: '本当に削除してよろしいですか？',
             type: 'warning',
@@ -71,20 +73,19 @@ export default class MatchupEditor extends Vue {
             confirmButtonColor: '#DD6B55',
             confirmButtonText: '削除',
             cancelButtonText: 'キャンセル',
-            closeOnConfirm: false
+            closeOnConfirm: false,
           }, async () => {
             try {
               await VideoMatchupApi.deleteMatchup(matchup.id);
-              swal('削除に成功しました');
+              salert('削除に成功しました');
               const response = await VideoMatchupApi.fetchMatchups(this.videoID);
               this.matchups = await response.json();
             } catch (error) {
-              console.error(error);
-              swal('削除に失敗しました');
+              salert('削除に失敗しました');
             }
-          })
-        }
-      }
+          });
+        },
+      },
     };
     super(properties);
   }
@@ -94,12 +95,12 @@ export default class MatchupEditor extends Vue {
   }
 }
 
-window.onNicoPlayerReady = function (id) {
+window.onNicoPlayerReady = (id) => {
   player = document.getElementById(id);
 };
 
 window.addEventListener('turbolinks:load', () => {
   if (document.querySelector('#matchup-editor') != null) {
-    new MatchupEditor();
+    new MatchupEditor(); // eslint-disable-line no-new
   }
 });
