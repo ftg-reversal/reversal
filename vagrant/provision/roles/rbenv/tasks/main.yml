@@ -46,30 +46,12 @@
   become_user: "{{ rbenv_user }}"
   git: repo=https://github.com/sstephenson/ruby-build.git dest=~/.rbenv/plugins/ruby-build
 
-- name: Check if version is installed ruby
-  become: yes
-  become_user: "{{ rbenv_user }}"
-  shell: "rbenv versions | grep {{ rbenv_ruby_version }}"
-  register: rbenv_check_install
-  changed_when: False
-  ignore_errors: yes
-
 - name: Install ruby
   become: yes
   become_user: "{{ rbenv_user }}"
   command: "rbenv install {{ rbenv_ruby_version }}"
-  when: rbenv_check_install|failed
-
-- name: Check if version is the default ruby version
-  become: yes
-  become_user: "{{ rbenv_user }}"
-  shell: "rbenv version | grep {{ rbenv_ruby_version }}"
-  register: rbenv_check_default
-  changed_when: False
-  ignore_errors: yes
 
 - name: Set default ruby version
   become: yes
   become_user: "{{ rbenv_user }}"
   command: "rbenv global {{ rbenv_ruby_version }}"
-  when: rbenv_check_default|failed
