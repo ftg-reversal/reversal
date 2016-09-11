@@ -33,7 +33,7 @@ function onLoad() {
         [$('#entry_event').attr('name')]: $('#entry_event').attr('value'),
         [$('#entry_comment').attr('name')]: $('#entry_comment').val(),
       }),
-    }).done((data) => { // eslint-disable-line no-unused-vars
+    }).done((_data) => {
       $('#entryModal').modal('hide');
       salert({
         title: 'エントリー完了',
@@ -42,7 +42,7 @@ function onLoad() {
         html: true,
       }, () => { location.reload(); });
       twttr.widgets.load(); // eslint-disable-line no-undef
-    }).fail((data) => { // eslint-disable-line no-unused-vars
+    }).fail((_data) => {
       salert({
         title: 'エントリー失敗',
         text: '入力を確認してください',
