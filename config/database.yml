@@ -5,14 +5,14 @@ default: &default
 
 development:
   <<: *default
-  host: 127.0.0.1
+  host: reversal
   database: reversal
   username: reversal
   password: pw
 
 test:
   <<: *default
-  host: 127.0.0.1
+  host: reversal
   database: test
   username: reversal
   password: pw

@@ -185,6 +185,6 @@ Rails.application.routes.draw do
   # sitemap
   get '/sitemap' => redirect('https://s3-ap-northeast-1.amazonaws.com/reversal-sitemap/sitemaps/sitemap.xml.gz')
 
-  mount ActionCable.server => '/cable'
+  # mount ActionCable.server => '/cable'
   mount Ckeditor::Engine => '/ckeditor'
 end
