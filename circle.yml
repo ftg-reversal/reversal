@@ -4,7 +4,7 @@ machine:
   ruby:
     version: 2.3.1
   node:
-    version: 6.0.0
+    version: 6.5.0
 
 test:
   pre:
