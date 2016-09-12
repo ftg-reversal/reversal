@@ -17,6 +17,7 @@ rules:
   no-unused-vars: ["error", { "argsIgnorePattern": "^_" }]
   import/extensions: 2
   import/no-extraneous-dependencies: [error, { devDependencies: true }]
+  generator-star-spacing: 0
 
 plugins:
 - import
