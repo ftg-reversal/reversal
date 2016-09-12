@@ -79,7 +79,6 @@
 #                      POST   /api/videos/:video_id/matchups(.:format)     api/video_matchups#create {:format=>/json/}
 #    api_video_matchup DELETE /api/video_matchups/:id(.:format)            api/video_matchups#destroy {:format=>/json/}
 #              sitemap GET    /sitemap(.:format)                           redirect(301, https://s3-ap-northeast-1.amazonaws.com/reversal-sitemap/sitemaps/sitemap.xml.gz)
-#                             /cable                                       #<ActionCable::Server::Base:0x007fc4716e8218 @mutex=#<Monitor:0x007fc4716e81f0 @mon_owner=nil, @mon_count=0, @mon_mutex=#<Thread::Mutex:0x007fc4716e81a0>>, @pubsub=nil, @worker_pool=nil, @event_loop=nil, @remote_connections=nil>
 #             ckeditor        /ckeditor                                    Ckeditor::Engine
 #
 # Routes for Ckeditor::Engine:
