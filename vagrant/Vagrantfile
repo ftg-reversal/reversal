@@ -5,8 +5,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.hostname = 'reversal'
   config.vm.network :private_network, ip: '192.168.50.10'
-  config.vm.network 'forwarded_port', guest: 3306, host: 3306
-  config.vm.network 'forwarded_port', guest: 6379, host: 6379
 
   config.vm.provider :virtualbox do |vb|
     vb.gui = false
