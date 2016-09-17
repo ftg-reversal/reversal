@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/bbatsov/rubocop
-  revision: c0afadd8c3718115eacdd8f7f6e54672b23594df
+  revision: 57273d9fe8751f204860bbfbeecd45b02291e51c
   specs:
     rubocop (0.42.0)
       parser (>= 2.3.1.1, < 3.0)
@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/thoughtbot/paperclip.git
-  revision: 8d08559e965c6b5407beed6e68e6822782efca17
+  revision: 7edb35a2a9a80c9598dfde235c7e593c023fc914
   specs:
     paperclip (5.1.0)
       activemodel (>= 4.2.0)
@@ -22,7 +22,7 @@ GIT
 
 GIT
   remote: https://github.com/winebarrel/ridgepole.git
-  revision: b983b592ca92648ca114f2df26554457ec5d536f
+  revision: 264594c1616fbb6e08b4be11a710b9ff7b2e085c
   branch: v0.6.5
   specs:
     ridgepole (0.6.5.beta12)
@@ -85,20 +85,20 @@ GEM
     after_commit_action (1.0.1)
       activerecord (>= 3.0.0)
       activesupport (>= 3.0.0)
-    airbrussh (1.1.0)
+    airbrussh (1.1.1)
       sshkit (>= 1.6.1, != 1.7.0)
     annotate (2.7.1)
       activerecord (>= 3.2, < 6.0)
       rake (>= 10.4, < 12.0)
-    arel (7.1.1)
+    arel (7.1.2)
     ast (2.3.0)
     awesome_print (1.7.0)
-    aws-sdk (2.5.11)
-      aws-sdk-resources (= 2.5.11)
-    aws-sdk-core (2.5.11)
+    aws-sdk (2.6.1)
+      aws-sdk-resources (= 2.6.1)
+    aws-sdk-core (2.6.1)
       jmespath (~> 1.0)
-    aws-sdk-resources (2.5.11)
-      aws-sdk-core (= 2.5.11)
+    aws-sdk-resources (2.6.1)
+      aws-sdk-core (= 2.6.1)
     axiom-types (0.1.1)
       descendants_tracker (~> 0.0.4)
       ice_nine (~> 0.11.0)
@@ -117,7 +117,7 @@ GEM
     brakeman (3.4.0)
     buftok (0.2.0)
     builder (3.2.2)
-    bullet (5.3.0)
+    bullet (5.4.0)
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.10.0)
     byebug (9.0.5)
@@ -131,7 +131,7 @@ GEM
       capistrano (~> 3.1)
       sshkit (~> 1.2)
     capistrano-harrow (0.5.3)
-    capistrano-rails (1.1.7)
+    capistrano-rails (1.1.8)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
     capistrano-rbenv (2.0.4)
@@ -206,7 +206,7 @@ GEM
       eventmachine (>= 0.12.0)
       websocket-driver (>= 0.5.1)
     ffi (1.9.14)
-    flay (2.8.0)
+    flay (2.8.1)
       erubis (~> 2.7.0)
       path_expander (~> 1.0)
       ruby_parser (~> 3.0)
@@ -255,7 +255,7 @@ GEM
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
     hashdiff (0.3.0)
-    hashie (3.4.4)
+    hashie (3.4.6)
     hirb (0.7.3)
     hirb-unicode-steakknife (0.0.7)
       hirb (~> 0.5)
@@ -274,7 +274,7 @@ GEM
       domain_name (~> 0.5)
     http-form_data (1.0.1)
     http_parser.rb (0.6.0)
-    httpclient (2.8.2.3)
+    httpclient (2.8.2.4)
     i18n (0.7.0)
     ice_nine (0.11.2)
     ipaddress (0.8.3)
@@ -287,7 +287,7 @@ GEM
     json (1.8.3)
     jsonapi (0.1.1.beta2)
       json (~> 1.8)
-    jwt (1.5.4)
+    jwt (1.5.5)
     kaminari (0.17.0)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -463,14 +463,14 @@ GEM
       redis-store (~> 1.2.0)
     redis-store (1.2.0)
       redis (>= 2.2)
-    reek (4.1.0)
+    reek (4.4.1)
       codeclimate-engine-rb (~> 0.3.1)
       parser (~> 2.3.1, >= 2.3.1.2)
       rainbow (~> 2.0)
     ref (2.0.0)
     request_store (1.3.1)
     require_all (1.3.3)
-    rollbar (2.12.0)
+    rollbar (2.13.0)
       multi_json
     rspec (3.5.0)
       rspec-core (~> 3.5.0)
@@ -498,13 +498,13 @@ GEM
     ruby_dep (1.4.0)
     ruby_parser (3.8.2)
       sexp_processor (~> 4.1)
-    rubycritic (2.9.3)
+    rubycritic (2.9.4)
       colorize
-      flay (= 2.8.0)
-      flog (= 4.4.0)
+      flay (~> 2.8)
+      flog (~> 4.4)
       launchy (= 2.4.3)
       parser (= 2.3.1.2)
-      reek (= 4.1.0)
+      reek (~> 4.4)
       ruby_parser (~> 3.8)
       virtus (~> 1.0)
     safe_yaml (1.0.4)
@@ -561,7 +561,7 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     squasher (0.2.0)
-    sshkit (1.11.2)
+    sshkit (1.11.3)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
     sysexits (1.2.0)
