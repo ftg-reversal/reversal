@@ -1,0 +1,41 @@
+#mikado23on
+  .card
+    .card-block
+      img.center-block.img-fluid.m-b-2 src=asset_path('23on-east.png')
+      h3 あーくれぼ後夜祭 東西戦 23on
+      h4 東チーム 参加プレイヤー投票ページ
+      hr
+
+      - unless @current_user
+        .alert.alert-warning role="alert" 投票するにはログインしてください
+
+      h3 エントリー中のメンバー
+      = bootstrap_form_tag url: '/mikado23on/vote' do |form|
+        = form.hidden_field :area, value: 'east'
+        - @chara.each do |chara|
+          .card
+            .card-header = chara.name
+            .card-block
+              - if @entries[chara.name].size == 0
+                = form.hidden_field chara.en_name, value: 0
+                p エントリーなし
+              - else
+                = form.form_group chara.en_name do
+                  = form.radio_button chara.en_name, 0, label: '投票しない', class: 'blank', checked: true
+                  hr
+                  - @entries[chara.name].each do |entry|
+                    = form.radio_button chara.en_name, entry.entry_num, label: entry.name
+                    p.player
+                      a href="https://twitter.com/#{entry.twitter}" target="_blank" rel="noopener" = entry.twitter
+                      = "　#{entry.rank.rank}"
+                    p.comment
+                      = "コメント：#{entry.comment}"
+                    hr
+        - if @current_user
+          .row
+            .col-md-4.col-md-offset-4
+              - if @status.can_east
+                = form.submit '投票', class: 'btn btn-primary btn-lg btn-block'
+              - else
+                button.btn.btn-primary.btn-lg.btn-block disabled='disabled'
+                  | 投票済みです

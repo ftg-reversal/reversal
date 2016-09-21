@@ -114,6 +114,51 @@ create_table "messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSE
   t.index ["room_id"], name: "index_messages_on_room_id", using: :btree
 end
 
+create_table "mikado23on_entries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  t.string  "area",                  null: false
+  t.integer "chara_id",              null: false
+  t.integer "entry_num",             null: false
+  t.string  "name",                  null: false
+  t.string  "twitter"
+  t.integer "rank_id",               null: false
+  t.string  "comment",               null: false
+  t.integer "count",     default: 0, null: false
+end
+
+create_table "mikado23on_vote_statuses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  t.integer "reversal_user_id",                null: false
+  t.boolean "can_east",         default: true, null: false
+  t.boolean "can_west",         default: true, null: false
+end
+
+create_table "mikado23on_votes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  t.integer "reversal_user_id",             null: false
+  t.string  "area",                         null: false
+  t.integer "Sol",              default: 0, null: false
+  t.integer "Ky",               default: 0, null: false
+  t.integer "May",              default: 0, null: false
+  t.integer "Millia",           default: 0, null: false
+  t.integer "Zato",             default: 0, null: false
+  t.integer "Potemkin",         default: 0, null: false
+  t.integer "Chipp",            default: 0, null: false
+  t.integer "Faust",            default: 0, null: false
+  t.integer "Axl",              default: 0, null: false
+  t.integer "Slayer",           default: 0, null: false
+  t.integer "Venom",            default: 0, null: false
+  t.integer "Ino",              default: 0, null: false
+  t.integer "Bedman",           default: 0, null: false
+  t.integer "Ramlethal",        default: 0, null: false
+  t.integer "Sin",              default: 0, null: false
+  t.integer "Elphelt",          default: 0, null: false
+  t.integer "Leo",              default: 0, null: false
+  t.integer "Johnny",           default: 0, null: false
+  t.integer "Jack-O",           default: 0, null: false
+  t.integer "Jam",              default: 0, null: false
+  t.integer "Kum",              default: 0, null: false
+  t.integer "Raven",            default: 0, null: false
+  t.integer "Dizzy",            default: 0, null: false
+end
+
 create_table "ranks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
   t.string   "rank"
   t.datetime "created_at", null: false

@@ -1,4 +1,26 @@
-#about {
+#top-carousel {
+  margin-top: 1rem;
+
+  .banner {
+    margin: 1rem auto;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  .carousel-item {
+    height: 100%;
+  }
+
+  .carousel-control.left {
+    background: none;
+  }
+
+  .carousel-control.right {
+    background: none;
+  }
+
   hr {
     margin-top: 3rem;
     margin-bottom: 3rem;

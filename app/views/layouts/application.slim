@@ -22,9 +22,10 @@ html
     #wrapper
       = render 'layouts/header', current_user: @current_user
       = render 'layouts/navbar'
+      .container
+        - if content_for?(:top_carousel)
+          == yield(:top_carousel)
       #main.container
-        - if content_for?(:about)
-          == yield(:about)
 
         .row
           .col-lg-9.p-y-0

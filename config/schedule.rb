@@ -20,6 +20,11 @@ every 6.hours, roles: [:batch] do
   rake 'db:backup'
 end
 
+# mikado23on
+every 1.day, at: '00:00 am', roles: [:batch] do
+  runner 'Mikado23onResetBatch.exec'
+end
+
 # sitemap
 every 1.day, at: '10:00 am', roles: [:batch] do
   rake 'sitemap:refresh'

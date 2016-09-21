@@ -1,3 +1,21 @@
+- content_for :top_carousel do
+  .row
+    .col-lg-offset-2.col-lg-8.col-md-12
+      #top-carousel.carousel.slide data-ride="carousel"
+        .carousel-inner role="listbox"
+          .carousel-item.active
+            a href=mikado23on_path
+              img.banner.center-block.img-fluid src=asset_path('23on-banner.png')
+          .carousel-item
+            a href=about_path
+              img.banner.center-block.img-fluid src=asset_path('about-banner.png')
+        a.left.carousel-control href="#top-carousel" role="button" data-slide="prev"
+          span.icon-prev aria-hidden="true"
+          span.sr-only Previous
+        a.right.carousel-control href="#top-carousel" role="button" data-slide="next"
+          span.icon-next aria-hidden="true"
+          span.sr-only Next
+
 #home-chara.card
   = render 'chara'
 
@@ -9,9 +27,3 @@
       = render 'shared/activity', activity: activity
 
   .col-md-4
-
-- content_for :about do
-  .row
-    #about.m-b-3
-      a href=about_path
-        img.banner.center-block.img-fluid src=asset_path('about-banner.png')

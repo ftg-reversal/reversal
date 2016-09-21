@@ -1,0 +1,43 @@
+#mikado23on {
+  h3,
+  h4 {
+    text-align: center;
+    font-weight: bold;
+  }
+
+  h5 {
+    background: black;
+    color: white;
+  }
+
+  p.player {
+    margin-bottom: 0.3rem;
+    margin-left: 2.3rem;
+  }
+
+  p.comment {
+    margin-bottom: 1.2rem;
+    margin-left: 2.3rem;
+  }
+
+  .blank {
+    margin-bottom: 1.5rem;
+  }
+
+  input[type=radio] {
+    margin-right: 1rem;
+  }
+
+  .card hr {
+    border-top: 1px dashed #bbb;
+  }
+
+  .widget-center {
+    text-align: center;
+  }
+
+  iframe {
+    display: block;
+    margin: 0 auto;
+  }
+}

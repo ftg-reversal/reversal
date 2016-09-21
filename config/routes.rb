@@ -3,6 +3,10 @@
 #               Prefix Verb   URI Pattern                                  Controller#Action
 #                 root GET    /                                            home#index
 #                about GET    /about(.:format)                             home#about
+#           mikado23on GET    /mikado23on(.:format)                        mikado23on#index
+#      mikado23on_east GET    /mikado23on/east(.:format)                   mikado23on#east
+#      mikado23on_west GET    /mikado23on/west(.:format)                   mikado23on#west
+#      mikado23on_vote POST   /mikado23on/vote(.:format)                   mikado23on#vote
 #                login GET    /login(.:format)                             login#index
 #                      GET    /auth/:provider/callback(.:format)           sessions#create
 #              session DELETE /session(.:format)                           sessions#destroy
@@ -94,6 +98,11 @@ Rails.application.routes.draw do
   # Home
   root to: 'home#index'
   get '/about', to: 'home#about'
+
+  get '/mikado23on', to: 'mikado23on#index'
+  get '/mikado23on/east', to: 'mikado23on#east'
+  get '/mikado23on/west', to: 'mikado23on#west'
+  post '/mikado23on/vote', to: 'mikado23on#vote'
 
   # Login
   get '/login', to: 'login#index'
