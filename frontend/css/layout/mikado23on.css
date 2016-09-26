@@ -10,18 +10,20 @@
     color: white;
   }
 
+  p.blank {
+    margin-bottom: 0;
+  }
+
   p.player {
     margin-bottom: 0.3rem;
-    margin-left: 2.3rem;
   }
 
   p.comment {
-    margin-bottom: 1.2rem;
-    margin-left: 2.3rem;
+    margin-bottom: 0.3rem;
   }
 
-  .blank {
-    margin-bottom: 1.5rem;
+  .radio {
+    margin-bottom: 0;
   }
 
   input[type=radio] {
