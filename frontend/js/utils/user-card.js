@@ -1,4 +1,5 @@
-const matchHeight = require('jquery-match-height');
+import $ from 'jquery';
+import 'jquery-match-height';
 
 function onLoad() {
   $('.p-user-card').matchHeight();
