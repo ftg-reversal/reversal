@@ -102,6 +102,7 @@ Rails.application.routes.draw do
   get '/mikado23on', to: 'mikado23on#index'
   get '/mikado23on/east', to: 'mikado23on#east'
   get '/mikado23on/west', to: 'mikado23on#west'
+  get '/mikado23on/vote', to: 'mikado23on#vote'
   post '/mikado23on/vote', to: 'mikado23on#vote'
 
   # Login

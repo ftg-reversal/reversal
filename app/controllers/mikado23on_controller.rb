@@ -15,11 +15,11 @@ class Mikado23onController < ApplicationController
   end
 
   def vote
-    save_status(params['area'])
-    save_vote(params)
-    save_vote_log(params)
-  rescue
-    render text: 'error', status: :bad_request
+    if request.post?
+      save_status(params['area'])
+      save_vote(params)
+      save_vote_log(params)
+    end
   end
 
   private
@@ -33,6 +33,8 @@ class Mikado23onController < ApplicationController
       @status.can_west = false
     end
     @status.save!
+  rescue
+    render_400
   end
 
   def save_vote(params)
