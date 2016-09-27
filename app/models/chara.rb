@@ -4,9 +4,10 @@
 #
 #  id         :integer          not null, primary key
 #  name       :string(255)
+#  en_name    :string(255)
+#  abbrev     :string(255)      default("")
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  en_name    :string(255)
 #
 
 class Chara < ApplicationRecord
