@@ -18,14 +18,18 @@ class Mikado23onController < ApplicationController
     save_status(params['area'])
     save_vote(params)
     save_vote_log(params)
+  rescue
+    render text: 'error', status: :bad_request
   end
 
   private
 
   def save_status(area)
     if area == 'east'
+      raise unless @status.can_east
       @status.can_east = false
     elsif area == 'west'
+      raise unless @status.can_west
       @status.can_west = false
     end
     @status.save!
