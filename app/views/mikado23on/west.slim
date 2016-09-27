@@ -14,7 +14,9 @@
         = form.hidden_field :area, value: 'west'
         - @chara.each do |chara|
           .card
-            .card-header = chara.name
+            .card-header.u-vertical-align-center
+              img.u-m-r-05 src=asset_path("chara_icon/#{chara.abbrev}-sm.png")
+              = chara.name
             .card-block
               - if @entries[chara.name].size == 0
                 = form.hidden_field chara.en_name, value: 0
