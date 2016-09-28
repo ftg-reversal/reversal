@@ -61,13 +61,6 @@ namespace :deploy do
     end
   end
 
-  desc 'Migrate ridgepole'
-  after :published, :ridgepole do
-    on roles(:db) do
-      execute "/bin/bash -l -c 'cd #{fetch(:release_path)}; env RAILS_ENV=production bin/rake db:migrate'"
-    end
-  end
-
   desc 'Restart application'
   after :publishing, :restart do
     on roles(:app), in: :sequence, wait: 5 do
