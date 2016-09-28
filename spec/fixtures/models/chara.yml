@@ -1,69 +1,92 @@
 sol:
   name: ソル
   en_name: Sol
+  abbrev: so
 ky:
   name: カイ
   en_name: Ky
+  abbrev: ky
 may:
   name: メイ
   en_name: May
+  abbrev: ma
 millia:
   name: ミリア
   en_name: Millia
+  abbrev: mi
 zato:
   name: ザトー
   en_name: Zato
+  abbrev: za
 potemkin:
   name: ポチョムキン
   en_name: Potemkin
+  abbrev: po
 chipp:
   name: チップ
   en_name: Chipp
+  abbrev: ch
 Faust:
   name: ファウスト
   en_name: Faust
+  abbrev: fa
 Axl:
   name: アクセル
   en_name: Axl
+  abbrev: ax
 slayer:
   name: スレイヤー
   en_name: Slayer
+  abbrev: sl
 venom:
   name: ヴェノム
   en_name: Venom
+  abbrev: ve
 ino:
   name: イノ
   en_name: Ino
+  abbrev: in
 bedman:
   name: ベッドマン
   en_name: Bedman
+  abbrev: be
 ramlethal:
   name: ラムレザル
   en_name: Ramlethal
+  abbrev: ra
 sin:
   name: シン
   en_name: Sin
+  abbrev: si
 elphelt:
   name: エルフェルト
   en_name: Elphelt
+  abbrev: el
 leo:
   name: レオ
   en_name: Leo
+  abbrev: le
 johnny:
   name: ジョニー
   en_name: Johnny
+  abbrev: jo
 jack-o:
   name: ジャックオー
   en_name: Jack-O
+  abbrev: ja
 jam:
   name: ジャム
   en_name: Jam
+  abbrev: ja
 kum:
   name: クム
   en_name: Kum
+  abbrev: ku
 raven:
   name: レイヴン
   en_name: Raven
+  abbrev: rv
 dizzy:
   name: ディズィー
   en_name: Dizzy
+  abbrev: di

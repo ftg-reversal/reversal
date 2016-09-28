@@ -17,9 +17,9 @@ end
 create_table "charas", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
   t.string   "name"
   t.string   "en_name"
-  t.string   "abbrev",     default: ""
-  t.datetime "created_at",              null: false
-  t.datetime "updated_at",              null: false
+  t.string   "abbrev",     null: false
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
 end
 
 create_table "ckeditor_assets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
