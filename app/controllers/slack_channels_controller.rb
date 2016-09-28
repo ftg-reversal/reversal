@@ -22,6 +22,6 @@ class SlackChannelsController < ApplicationController
   private
 
   def set_channels
-    @channels = SlackChannel.order(:name)
+    @channels = SlackChannel.where(is_archived: false).order(:name)
   end
 end

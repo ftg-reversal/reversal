@@ -188,10 +188,11 @@ create_table "rlogs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=u
 end
 
 create_table "slack_channels", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-  t.string   "cid",        null: false
-  t.string   "name",       null: false
-  t.datetime "created_at", null: false
-  t.datetime "updated_at", null: false
+  t.string   "cid",                         null: false
+  t.string   "name",                        null: false
+  t.boolean  "is_archived", default: false, null: false
+  t.datetime "created_at",                  null: false
+  t.datetime "updated_at",                  null: false
   t.index ["cid"], name: "cid", unique: true, using: :btree
   t.index ["name"], name: "index_slack_channels_on_name", using: :btree
 end

@@ -2,11 +2,12 @@
 #
 # Table name: slack_channels
 #
-#  id         :integer          not null, primary key
-#  cid        :string(255)      not null
-#  name       :string(255)      not null
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id          :integer          not null, primary key
+#  cid         :string(255)      not null
+#  name        :string(255)      not null
+#  is_archived :boolean          default(FALSE), not null
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
 #
 # Indexes
 #
