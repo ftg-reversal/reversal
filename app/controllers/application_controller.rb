@@ -6,6 +6,10 @@ class ApplicationController < ActionController::Base
   before_action :initialize_search_query
   before_action :do_login
 
+  def render_400
+    render file: Rails.root.join('public/400.html'), status: :bad_request, layout: false, content_type: 'text/html'
+  end
+
   def do_login
     login if session[:user_id]
   end
