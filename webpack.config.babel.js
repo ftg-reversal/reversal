@@ -53,10 +53,6 @@ export default {
   output,
 
   module: {
-    preloaders: [
-      { test: /\.css/, loader: 'stylelint' },
-    ],
-
     loaders: [
       { test: /\.html$/, loader: 'html' },
       { test: /\.jsx?$/, loader: 'babel', exclude: /node_modules/ },
