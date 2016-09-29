@@ -1,7 +1,7 @@
 {
   "scripts": {
     "build:dev": "rm app/assets/stylesheets/webpack/* app/assets/javascripts/webpack/*; webpack-dev-server --inline --port 3500 --progress --profile --colors",
-    "build:production": "env TARGET=production webpack --progress --profile --colors",
+    "build:production": "env TARGET=production webpack --progress --profile --colors --bail",
     "sync": "browser-sync start --config bs-config.js",
     "analyze": "env TARGET=production webpack --json | webpack-bundle-size-analyzer",
     "css:format": "gulp stylefmt",
