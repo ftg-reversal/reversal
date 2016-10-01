@@ -1,20 +1,19 @@
 default: &default
   adapter: mysql2
   encoding: utf8
+  username: root
   pool: 5
 
 development:
   <<: *default
-  host: reversal
+  host: 127.0.0.1
   database: reversal
-  username: reversal
   password: pw
 
 test:
   <<: *default
-  host: reversal
+  host: 127.0.0.1
   database: test
-  username: reversal
   password: pw
 
 production:

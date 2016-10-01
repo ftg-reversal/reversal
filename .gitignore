@@ -19,6 +19,10 @@
 /node_modules
 /npm-debug.log
 
+# Docker
+/docker_mount/db/*
+!/docker_mount/db/.keep
+
 # OSX
 .DS_Store
 .AppleDouble
