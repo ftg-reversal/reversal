@@ -1,8 +1,10 @@
 class OnlineBotBatch
   class << self
+    TWITTER_ID = 'ggxrd_online'.freeze
+
     def exec
       tweets = search_tweet
-      unsent_tweets = tweets.select { |tweet| tweet[:id] > last_tweet_id }
+      unsent_tweets = tweets.select { |tweet| unsent_tweet?(tweet) }
 
       unsent_tweets.map do |tweet|
         TwitterInfrastructure::Tweet.exec(online_bot_client, tweet_text(tweet))
@@ -12,6 +14,10 @@ class OnlineBotBatch
     end
 
     private
+
+    def unsent_tweet?
+      tweet[:id] > last_tweet_id && tweet[:screen_name] != TWITTER_ID
+    end
 
     def online_bot_client
       TwitterInfrastructure::Client.online_bot_client
