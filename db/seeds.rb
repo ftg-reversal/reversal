@@ -147,32 +147,6 @@ VideoSiteSearchCondition.create!([
   {word: "GGXrdR", video_site: "nicovideo"}
 ])
 
-Room.create!([
-  {name: "Sol", url: "sol"},
-  {name: "Ky", url: "ky"},
-  {name: "May", url: "may"},
-  {name: "Millia", url: "millia"},
-  {name: "Zato", url: "zato"},
-  {name: "Potemkin", url: "potemkin"},
-  {name: "Chipp", url: "chipp"},
-  {name: "Faust", url: "faust"},
-  {name: "Axl", url: "axl"},
-  {name: "Slayer", url: "slayer"},
-  {name: "Venom", url: "venom"},
-  {name: "Ino", url: "ino"},
-  {name: "Bedman", url: "bedman"},
-  {name: "Ramlethal", url: "ramlethal"},
-  {name: "Sin", url: "sin"},
-  {name: "Elphelt", url: "elphelt"},
-  {name: "Leo", url: "leo"},
-  {name: "Johnny", url: "johnny"},
-  {name: "Jack-O", url: "jack-o"},
-  {name: "Jam", url: "jam"},
-  {name: "Kum", url: "kum"},
-  {name: "Raven", url: "raven"},
-  {name: "Dizzy", url: "dizzy"}
-])
-
 Mikado23onEntry.create!([
   {area: 'east', chara: Chara.find_by(en_name: 'Sol'),       entry_num: 1, name: 'ロイ', twitter: '@Ume_MK2', rank: Rank.find_by(rank: '王者'), comment: '盛り上げに貢献したい！'},
   {area: 'east', chara: Chara.find_by(en_name: 'Sol'),       entry_num: 2, name: 'NOB', twitter: '@nobsol_7', rank: Rank.find_by(rank: '25段'), comment: '東京シンガポール遠征で金切符取ってきます！'},
