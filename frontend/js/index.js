@@ -12,4 +12,6 @@ import './utils/twitter';
 import './utils/user-card';
 
 import './vuejs/summary-editor';
-import './vuejs/matchup-editor';
+// import './vuejs/matchup-editor';
+
+import './components/matchup-editor';

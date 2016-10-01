@@ -67,7 +67,7 @@ export default {
   },
 
   resolve: {
-    extensions: ['', '.js', 'jsx', '.css', '.sass', '.scss'],
+    extensions: ['', '.js', '.jsx', '.css', '.sass', '.scss'],
     root: [
       path.resolve('./frontend/js'),
       path.resolve('./frontend/css'),
