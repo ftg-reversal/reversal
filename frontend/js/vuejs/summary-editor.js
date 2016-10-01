@@ -108,7 +108,7 @@ export default class SummaryEditor extends Vue {
             return;
           }
 
-          const messageIDs = messages.map((message) => message.id);
+          const messageIDs = messages.map(message => message.id);
 
           this.nowSubmitting = true;
           try {
@@ -145,7 +145,7 @@ export default class SummaryEditor extends Vue {
       this.channelID = channelID;
 
       json.forEach((message) => {
-        if (!this.messages.some((selectedMessage) => message.id === selectedMessage.id)) {
+        if (!this.messages.some(selectedMessage => message.id === selectedMessage.id)) {
           this.loadedMessages.push({
             id: message.id,
             avatar_url: message.icon_url,

@@ -52,7 +52,7 @@ export default class MatchupEditor extends Vue {
           player.ext_setPlayheadTime(time);
         },
 
-        onSubmit: async (_event) => {
+        onSubmit: (async) (_event) => {
           try {
             const sec = (this.minute * 60) + this.second;
             await VideoMatchupApi.newMatchup(this.videoID, sec, this.chara1, this.chara2);
@@ -74,7 +74,7 @@ export default class MatchupEditor extends Vue {
             confirmButtonText: '削除',
             cancelButtonText: 'キャンセル',
             closeOnConfirm: false,
-          }, async () => {
+          }, (async) () => {
             try {
               await VideoMatchupApi.deleteMatchup(matchup.id);
               salert('削除に成功しました');
