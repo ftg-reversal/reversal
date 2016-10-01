@@ -2,43 +2,43 @@
 require('./index.scss');
 
 // vendor-extension
-require('./vendor-extension/label');
+require('./vendor-extension/label.css');
 
 // foundation
-require("./foundation/base");
+require('./foundation/base.css');
 
 // layout
-require('./layout/top_carousel');
-require('./layout/about');
-require('./layout/mikado23on');
-require('./layout/event');
-require('./layout/header');
-require('./layout/navbar');
-require('./layout/footer');
-require('./layout/rlogs');
-require('./layout/slack_channel');
-require('./layout/videos');
+require('./layout/about.css');
+require('./layout/event.css');
+require('./layout/footer.css');
+require('./layout/header.css');
+require('./layout/mikado23on.css');
+require('./layout/navbar.css');
+require('./layout/rlogs.css');
+require('./layout/slack_channel.css');
+require('./layout/top_carousel.css');
+require('./layout/videos.css');
 
 // component
-require('./object/component/button');
+require('./object/component/button.css');
 
 // object
-require('./object/project/good_count');
-require('./object/project/good_users');
-require('./object/project/header');
-require('./object/project/item_header');
-require('./object/project/profile');
-require('./object/project/profile_nav');
-require('./object/project/short_item_list');
-require('./object/project/sidebar');
-require('./object/project/user_activity');
-require('./object/project/user_card');
+require('./object/project/good_count.css');
+require('./object/project/good_users.css');
+require('./object/project/header.css');
+require('./object/project/item_header.css');
+require('./object/project/profile.css');
+require('./object/project/profile_nav.css');
+require('./object/project/short_item_list.css');
+require('./object/project/sidebar.css');
+require('./object/project/user_activity.css');
+require('./object/project/user_card.css');
 
-require('./object/utility/clearfix');
-require('./object/utility/color');
-require('./object/utility/font');
-require('./object/utility/image');
-require('./object/utility/list');
-require('./object/utility/margin');
-require('./object/utility/position');
-require('./object/utility/text');
+require('./object/utility/clearfix.css');
+require('./object/utility/color.css');
+require('./object/utility/font.css');
+require('./object/utility/image.css');
+require('./object/utility/list.css');
+require('./object/utility/margin.css');
+require('./object/utility/position.css');
+require('./object/utility/text.css');
