@@ -19,9 +19,6 @@
 /node_modules
 /npm-debug.log
 
-# bower
-/bower_components
-
 # OSX
 .DS_Store
 .AppleDouble
