@@ -2,7 +2,6 @@
   "scripts": {
     "build:dev": "rm app/assets/stylesheets/webpack/* app/assets/javascripts/webpack/*; webpack-dev-server --inline --port 3500 --progress --profile --colors",
     "build:production": "env TARGET=production webpack --progress --profile --colors --bail",
-    "sync": "browser-sync start --config bs-config.js",
     "analyze": "env TARGET=production webpack --json | webpack-bundle-size-analyzer",
     "css:format": "gulp stylefmt",
     "css:lint": "gulp stylelint"
@@ -17,7 +16,6 @@
     "babel-preset-react": "^6.11.1",
     "babel-preset-stage-0": "^6.5.0",
     "babel-runtime": "^6.11.6",
-    "browser-sync": "^2.16.0",
     "css-loader": "^0.25.0",
     "csswring": "^5.1.0",
     "eslint": "^3.6.1",
