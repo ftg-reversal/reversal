@@ -1,0 +1,11 @@
+FROM ruby:2.3.1
+
+RUN apt-get update && apt-get install -y mysql-client nodejs --no-install-recommends && rm -rf /var/lib/apt/lists/*
+
+RUN mkdir -p /usr/local/app
+WORKDIR /usr/local/app
+
+ADD Gemfile /usr/local/app
+ADD Gemfile.lock /usr/local/app
+
+RUN bundle i
