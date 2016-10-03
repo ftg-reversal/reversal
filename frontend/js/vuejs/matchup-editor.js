@@ -89,10 +89,6 @@ export default class MatchupEditor extends Vue {
     };
     super(properties);
   }
-
-  static csrfToken() {
-    return document.querySelector('meta[name="csrf-token"]').content;
-  }
 }
 
 window.onNicoPlayerReady = (id) => {
