@@ -40,11 +40,11 @@ export default class MatchupEditor extends Vue {
       },
 
       methods: {
-        displayForm: (_e) => {
+        displayForm: () => {
           this.addFlag = true;
         },
 
-        hideForm: (_e) => {
+        hideForm: () => {
           this.addFlag = false;
         },
 
@@ -52,7 +52,7 @@ export default class MatchupEditor extends Vue {
           player.ext_setPlayheadTime(time);
         },
 
-        onSubmit: (async) (_event) => {
+        onSubmit: (async) () => {
           try {
             const sec = (this.minute * 60) + this.second;
             await VideoMatchupApi.newMatchup(this.videoID, sec, this.chara1, this.chara2);
