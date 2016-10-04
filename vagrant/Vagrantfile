@@ -13,11 +13,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     vb.customize ['modifyvm', :id, '--memory', '2048']
   end
 
-  config.vm.provision :ansible_local do |ansible|
+  config.vm.provision :ansible do |ansible|
     ansible.limit = 'all'
     ansible.playbook = 'provision/development.yml'
     ansible.inventory_path = 'provision/hosts'
-    ansible.install = true
   end
 
   config.vm.synced_folder '../', '/home/vagrant/rails'
