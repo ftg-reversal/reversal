@@ -354,13 +354,13 @@
 
       .card
         .card-header.u-vertical-align-center
-          img.u-m-r-05 src=asset_path("chara_icon/el-sm.png") シン
+          img.u-m-r-05 src=asset_path("chara_icon/si-sm.png") シン
         .card-block
           .row
             .col-sm-6
               h5 東チーム
               hr
-              - entry = Mikado23onEntry.find_by(name: 'ふも')
+              - entry = Mikado23onEntry.find_by(name: 'ヒロキ')
               p.player.chosen = entry.name
               p.player
                 a href="https://twitter.com/#{entry.twitter}" target="_blank" rel="noopener" = entry.twitter
