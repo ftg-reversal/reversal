@@ -23,6 +23,9 @@
 /docker_mount/db/*
 !/docker_mount/db/.keep
 
+# Ansible
+*.retry
+
 # OSX
 .DS_Store
 .AppleDouble
