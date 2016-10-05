@@ -167,7 +167,7 @@
             .col-sm-6
               h5 東チーム
               hr
-              - entry = Mikado23onEntry.find_by(name: 'FAB')
+              - entry = Mikado23onEntry.find_by(name: '遠藤')
               p.player.chosen = entry.name
               p.player
                 a href="https://twitter.com/#{entry.twitter}" target="_blank" rel="noopener" = entry.twitter
@@ -211,12 +211,7 @@
             .col-sm-6
               h5 東チーム
               hr
-              - entry = Mikado23onEntry.find_by(name: 'よーすけ')
-              p.player.chosen = entry.name
-              p.player
-                a href="https://twitter.com/#{entry.twitter}" target="_blank" rel="noopener" = entry.twitter
-                = "　#{entry.rank.rank}"
-              p.chosen-comment = "コメント：#{entry.comment}"
+              p.player 該当者無し
             .col-sm-6
               h5 西チーム
               hr
@@ -349,13 +344,13 @@
 
       .card
         .card-header.u-vertical-align-center
-          img.u-m-r-05 src=asset_path("chara_icon/el-sm.png") シン
+          img.u-m-r-05 src=asset_path("chara_icon/si-sm.png") シン
         .card-block
           .row
             .col-sm-6
               h5 東チーム
               hr
-              - entry = Mikado23onEntry.find_by(name: 'ふも')
+              - entry = Mikado23onEntry.find_by(name: 'ヒロキ')
               p.player.chosen = entry.name
               p.player
                 a href="https://twitter.com/#{entry.twitter}" target="_blank" rel="noopener" = entry.twitter
