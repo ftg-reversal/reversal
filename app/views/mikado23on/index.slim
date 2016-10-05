@@ -24,6 +24,545 @@
             p.u-text-center.u-m-b-03 西への投票はこちら
             img.center-block.img-fluid src=asset_path('23on-west.png')
 
+      h4 中間発表
+      .card
+        .card-header.u-vertical-align-center
+          img.u-m-r-05 src=asset_path("chara_icon/so-sm.png") ソル
+        .card-block
+          .row
+            .col-sm-6
+              h5 東チーム
+              hr
+              - entry = Mikado23onEntry.find_by(name: 'ロイ')
+              p.player.chosen = entry.name
+              p.player
+                a href="https://twitter.com/#{entry.twitter}" target="_blank" rel="noopener" = entry.twitter
+                = "　#{entry.rank.rank}"
+              p.chosen-comment = "コメント：#{entry.comment}"
+            .col-sm-6
+              h5 西チーム
+              hr
+              p.player 該当者なし
+
+      .card
+        .card-header.u-vertical-align-center
+          img.u-m-r-05 src=asset_path("chara_icon/ky-sm.png") カイ
+        .card-block
+          .row
+            .col-sm-6
+              h5 東チーム
+              hr
+              - entry = Mikado23onEntry.find_by(name: 'りおん')
+              p.player.chosen = entry.name
+              p.player
+                a href="https://twitter.com/#{entry.twitter}" target="_blank" rel="noopener" = entry.twitter
+                = "　#{entry.rank.rank}"
+              p.chosen-comment = "コメント：#{entry.comment}"
+            .col-sm-6
+              h5 西チーム
+              hr
+              p.player 該当者なし
+
+      .card
+        .card-header.u-vertical-align-center
+          img.u-m-r-05 src=asset_path("chara_icon/ma-sm.png") メイ
+        .card-block
+          .row
+            .col-sm-6
+              h5 東チーム
+              hr
+              - entry = Mikado23onEntry.find_by(name: 'SHO')
+              p.player.chosen = entry.name
+              p.player
+                a href="https://twitter.com/#{entry.twitter}" target="_blank" rel="noopener" = entry.twitter
+                = "　#{entry.rank.rank}"
+              p.chosen-comment = "コメント：#{entry.comment}"
+            .col-sm-6
+              h5 西チーム
+              hr
+              - entry = Mikado23onEntry.find_by(name: 'けだこ')
+              p.player.chosen = entry.name
+              p.player
+                a href="https://twitter.com/#{entry.twitter}" target="_blank" rel="noopener" = entry.twitter
+                = "　#{entry.rank.rank}"
+              p.chosen-comment = "コメント：#{entry.comment}"
+
+      .card
+        .card-header.u-vertical-align-center
+          img.u-m-r-05 src=asset_path("chara_icon/mi-sm.png") ミリア
+        .card-block
+          .row
+            .col-sm-6
+              h5 東チーム
+              hr
+              - entry = Mikado23onEntry.find_by(name: '中村')
+              p.player.chosen = entry.name
+              p.player
+                a href="https://twitter.com/#{entry.twitter}" target="_blank" rel="noopener" = entry.twitter
+                = "　#{entry.rank.rank}"
+              p.chosen-comment = "コメント：#{entry.comment}"
+            .col-sm-6
+              h5 西チーム
+              hr
+              - entry = Mikado23onEntry.find_by(name: 'いな')
+              p.player.chosen = entry.name
+              p.player
+                a href="https://twitter.com/#{entry.twitter}" target="_blank" rel="noopener" = entry.twitter
+                = "　#{entry.rank.rank}"
+              p.chosen-comment = "コメント：#{entry.comment}"
+
+      .card
+        .card-header.u-vertical-align-center
+          img.u-m-r-05 src=asset_path("chara_icon/za-sm.png") ザトー
+        .card-block
+          .row
+            .col-sm-6
+              h5 東チーム
+              hr
+              - entry = Mikado23onEntry.find_by(name: '小川')
+              p.player.chosen = entry.name
+              p.player
+                a href="https://twitter.com/#{entry.twitter}" target="_blank" rel="noopener" = entry.twitter
+                = "　#{entry.rank.rank}"
+              p.chosen-comment = "コメント：#{entry.comment}"
+            .col-sm-6
+              h5 西チーム
+              hr
+              - entry = Mikado23onEntry.find_by(name: 'タイツ')
+              p.player.chosen = entry.name
+              p.player
+                a href="https://twitter.com/#{entry.twitter}" target="_blank" rel="noopener" = entry.twitter
+                = "　#{entry.rank.rank}"
+              p.chosen-comment = "コメント：#{entry.comment}"
+
+      .card
+        .card-header.u-vertical-align-center
+          img.u-m-r-05 src=asset_path("chara_icon/po-sm.png") ポチョムキン
+        .card-block
+          .row
+            .col-sm-6
+              h5 東チーム
+              hr
+              - entry = Mikado23onEntry.find_by(name: 'FAB')
+              p.player.chosen = entry.name
+              p.player
+                a href="https://twitter.com/#{entry.twitter}" target="_blank" rel="noopener" = entry.twitter
+                = "　#{entry.rank.rank}"
+              p.chosen-comment = "コメント：#{entry.comment}"
+            .col-sm-6
+              h5 西チーム
+              hr
+              - entry = Mikado23onEntry.find_by(name: '夏蜜柑')
+              p.player.chosen = entry.name
+              p.player
+                a href="https://twitter.com/#{entry.twitter}" target="_blank" rel="noopener" = entry.twitter
+                = "　#{entry.rank.rank}"
+              p.chosen-comment = "コメント：#{entry.comment}"
+
+      .card
+        .card-header.u-vertical-align-center
+          img.u-m-r-05 src=asset_path("chara_icon/ch-sm.png") チップ
+        .card-block
+          .row
+            .col-sm-6
+              h5 東チーム
+              hr
+              - entry = Mikado23onEntry.find_by(name: 'FAB')
+              p.player.chosen = entry.name
+              p.player
+                a href="https://twitter.com/#{entry.twitter}" target="_blank" rel="noopener" = entry.twitter
+                = "　#{entry.rank.rank}"
+              p.chosen-comment = "コメント：#{entry.comment}"
+            .col-sm-6
+              h5 西チーム
+              hr
+              - entry = Mikado23onEntry.find_by(name: 'E.T')
+              p.player.chosen = entry.name
+              p.player
+                a href="https://twitter.com/#{entry.twitter}" target="_blank" rel="noopener" = entry.twitter
+                = "　#{entry.rank.rank}"
+              p.chosen-comment = "コメント：#{entry.comment}"
+
+      .card
+        .card-header.u-vertical-align-center
+          img.u-m-r-05 src=asset_path("chara_icon/fa-sm.png") ファウスト
+        .card-block
+          .row
+            .col-sm-6
+              h5 東チーム
+              hr
+              - entry = Mikado23onEntry.find_by(name: 'ナゲ')
+              p.player.chosen = entry.name
+              p.player
+                a href="https://twitter.com/#{entry.twitter}" target="_blank" rel="noopener" = entry.twitter
+                = "　#{entry.rank.rank}"
+              p.chosen-comment = "コメント：#{entry.comment}"
+            .col-sm-6
+              h5 西チーム
+              hr
+              - entry = Mikado23onEntry.find_by(name: 'けだこ')
+              p.player 該当者無し
+
+      .card
+        .card-header.u-vertical-align-center
+          img.u-m-r-05 src=asset_path("chara_icon/ax-sm.png") アクセル
+        .card-block
+          .row
+            .col-sm-6
+              h5 東チーム
+              hr
+              - entry = Mikado23onEntry.find_by(name: 'よーすけ')
+              p.player.chosen = entry.name
+              p.player
+                a href="https://twitter.com/#{entry.twitter}" target="_blank" rel="noopener" = entry.twitter
+                = "　#{entry.rank.rank}"
+              p.chosen-comment = "コメント：#{entry.comment}"
+            .col-sm-6
+              h5 西チーム
+              hr
+              - entry = Mikado23onEntry.find_by(name: 'イデさん（ネコミミ）')
+              p.player.chosen = entry.name
+              p.player
+                a href="https://twitter.com/#{entry.twitter}" target="_blank" rel="noopener" = entry.twitter
+                = "　#{entry.rank.rank}"
+              p.chosen-comment = "コメント：#{entry.comment}"
+
+      .card
+        .card-header.u-vertical-align-center
+          img.u-m-r-05 src=asset_path("chara_icon/sl-sm.png") スレイヤー
+        .card-block
+          .row
+            .col-sm-6
+              h5 東チーム
+              hr
+              - entry = Mikado23onEntry.find_by(name: 'はせ')
+              p.player.chosen = entry.name
+              p.player
+                a href="https://twitter.com/#{entry.twitter}" target="_blank" rel="noopener" = entry.twitter
+                = "　#{entry.rank.rank}"
+              p.chosen-comment = "コメント：#{entry.comment}"
+            .col-sm-6
+              h5 西チーム
+              hr
+              - entry = Mikado23onEntry.find_by(name: '手品師')
+              p.player.chosen = entry.name
+              p.player
+                a href="https://twitter.com/#{entry.twitter}" target="_blank" rel="noopener" = entry.twitter
+                = "　#{entry.rank.rank}"
+              p.chosen-comment = "コメント：#{entry.comment}"
+
+      .card
+        .card-header.u-vertical-align-center
+          img.u-m-r-05 src=asset_path("chara_icon/ve-sm.png") ヴェノム
+        .card-block
+          .row
+            .col-sm-6
+              h5 東チーム
+              hr
+              - entry = Mikado23onEntry.find_by(name: 'カメご')
+              p.player.chosen = entry.name
+              p.player
+                a href="https://twitter.com/#{entry.twitter}" target="_blank" rel="noopener" = entry.twitter
+                = "　#{entry.rank.rank}"
+              p.chosen-comment = "コメント：#{entry.comment}"
+            .col-sm-6
+              h5 西チーム
+              hr
+              - entry = Mikado23onEntry.find_by(name: '勇')
+              p.player.chosen = entry.name
+              p.player
+                a href="https://twitter.com/#{entry.twitter}" target="_blank" rel="noopener" = entry.twitter
+                = "　#{entry.rank.rank}"
+              p.chosen-comment = "コメント：#{entry.comment}"
+
+      .card
+        .card-header.u-vertical-align-center
+          img.u-m-r-05 src=asset_path("chara_icon/in-sm.png") イノ
+        .card-block
+          .row
+            .col-sm-6
+              h5 東チーム
+              hr
+              - entry = Mikado23onEntry.find_by(name: 'トゥーリオ')
+              p.player.chosen = entry.name
+              p.player
+                a href="https://twitter.com/#{entry.twitter}" target="_blank" rel="noopener" = entry.twitter
+                = "　#{entry.rank.rank}"
+              p.chosen-comment = "コメント：#{entry.comment}"
+            .col-sm-6
+              h5 西チーム
+              hr
+              - entry = Mikado23onEntry.find_by(name: 'ウーゼン')
+              p.player.chosen = entry.name
+              p.player
+                a href="https://twitter.com/#{entry.twitter}" target="_blank" rel="noopener" = entry.twitter
+                = "　#{entry.rank.rank}"
+              p.chosen-comment = "コメント：#{entry.comment}"
+
+      .card
+        .card-header.u-vertical-align-center
+          img.u-m-r-05 src=asset_path("chara_icon/be-sm.png") ベッドマン
+        .card-block
+          .row
+            .col-sm-6
+              h5 東チーム
+              hr
+              - entry = Mikado23onEntry.find_by(name: '中洲ベッドマン(日の出～ラスト)')
+              p.player.chosen = entry.name
+              p.player
+                a href="https://twitter.com/#{entry.twitter}" target="_blank" rel="noopener" = entry.twitter
+                = "　#{entry.rank.rank}"
+              p.chosen-comment = "コメント：#{entry.comment}"
+            .col-sm-6
+              h5 西チーム
+              hr
+              - entry = Mikado23onEntry.find_by(name: 'さばみそ')
+              p.player.chosen = entry.name
+              p.player
+                a href="https://twitter.com/#{entry.twitter}" target="_blank" rel="noopener" = entry.twitter
+                = "　#{entry.rank.rank}"
+              p.chosen-comment = "コメント：#{entry.comment}"
+
+      .card
+        .card-header.u-vertical-align-center
+          img.u-m-r-05 src=asset_path("chara_icon/ra-sm.png") ラムレザル
+        .card-block
+          .row
+            .col-sm-6
+              h5 東チーム
+              hr
+              - entry = Mikado23onEntry.find_by(name: 'かっこう')
+              p.player.chosen = entry.name
+              p.player
+                a href="https://twitter.com/#{entry.twitter}" target="_blank" rel="noopener" = entry.twitter
+                = "　#{entry.rank.rank}"
+              p.chosen-comment = "コメント：#{entry.comment}"
+            .col-sm-6
+              h5 西チーム
+              hr
+              - entry = Mikado23onEntry.find_by(name: 'saryu')
+              p.player.chosen = entry.name
+              p.player
+                a href="https://twitter.com/#{entry.twitter}" target="_blank" rel="noopener" = entry.twitter
+                = "　#{entry.rank.rank}"
+              p.chosen-comment = "コメント：#{entry.comment}"
+
+      .card
+        .card-header.u-vertical-align-center
+          img.u-m-r-05 src=asset_path("chara_icon/el-sm.png") シン
+        .card-block
+          .row
+            .col-sm-6
+              h5 東チーム
+              hr
+              - entry = Mikado23onEntry.find_by(name: 'ふも')
+              p.player.chosen = entry.name
+              p.player
+                a href="https://twitter.com/#{entry.twitter}" target="_blank" rel="noopener" = entry.twitter
+                = "　#{entry.rank.rank}"
+              p.chosen-comment = "コメント：#{entry.comment}"
+            .col-sm-6
+              h5 西チーム
+              hr
+              - entry = Mikado23onEntry.find_by(name: 'DC')
+              p.player.chosen = entry.name
+              p.player
+                a href="https://twitter.com/#{entry.twitter}" target="_blank" rel="noopener" = entry.twitter
+                = "　#{entry.rank.rank}"
+              p.chosen-comment = "コメント：#{entry.comment}"
+
+      .card
+        .card-header.u-vertical-align-center
+          img.u-m-r-05 src=asset_path("chara_icon/el-sm.png") エルフェルト
+        .card-block
+          .row
+            .col-sm-6
+              h5 東チーム
+              hr
+              - entry = Mikado23onEntry.find_by(name: 'ふも')
+              p.player.chosen = entry.name
+              p.player
+                a href="https://twitter.com/#{entry.twitter}" target="_blank" rel="noopener" = entry.twitter
+                = "　#{entry.rank.rank}"
+              p.chosen-comment = "コメント：#{entry.comment}"
+            .col-sm-6
+              h5 西チーム
+              hr
+              - entry = Mikado23onEntry.find_by(name: 'きくた')
+              p.player.chosen = entry.name
+              p.player
+                a href="https://twitter.com/#{entry.twitter}" target="_blank" rel="noopener" = entry.twitter
+                = "　#{entry.rank.rank}"
+              p.chosen-comment = "コメント：#{entry.comment}"
+
+      .card
+        .card-header.u-vertical-align-center
+          img.u-m-r-05 src=asset_path("chara_icon/le-sm.png") レオ
+        .card-block
+          .row
+            .col-sm-6
+              h5 東チーム
+              hr
+              - entry = Mikado23onEntry.find_by(name: 'ほっさ')
+              p.player.chosen = entry.name
+              p.player
+                a href="https://twitter.com/#{entry.twitter}" target="_blank" rel="noopener" = entry.twitter
+                = "　#{entry.rank.rank}"
+              p.chosen-comment = "コメント：#{entry.comment}"
+            .col-sm-6
+              h5 西チーム
+              hr
+              - entry = Mikado23onEntry.find_by(name: 'T5M7')
+              p.player.chosen = entry.name
+              p.player
+                a href="https://twitter.com/#{entry.twitter}" target="_blank" rel="noopener" = entry.twitter
+                = "　#{entry.rank.rank}"
+              p.chosen-comment = "コメント：#{entry.comment}"
+
+      .card
+        .card-header.u-vertical-align-center
+          img.u-m-r-05 src=asset_path("chara_icon/jo-sm.png") ジョニー
+        .card-block
+          .row
+            .col-sm-6
+              h5 東チーム
+              hr
+              - entry = Mikado23onEntry.find_by(name: 'じょにお')
+              p.player.chosen = entry.name
+              p.player
+                a href="https://twitter.com/#{entry.twitter}" target="_blank" rel="noopener" = entry.twitter
+                = "　#{entry.rank.rank}"
+              p.chosen-comment = "コメント：#{entry.comment}"
+            .col-sm-6
+              h5 西チーム
+              hr
+              - entry = Mikado23onEntry.find_by(name: 'けだこ')
+              p.player 該当者無し
+
+      .card
+        .card-header.u-vertical-align-center
+          img.u-m-r-05 src=asset_path("chara_icon/jc-sm.png") ジャックオー
+        .card-block
+          .row
+            .col-sm-6
+              h5 東チーム
+              hr
+              p.player 該当者無し
+            .col-sm-6
+              h5 西チーム
+              hr
+              - entry = Mikado23onEntry.find_by(name: 'ぷれぷれ')
+              p.player.chosen = entry.name
+              p.player
+                a href="https://twitter.com/#{entry.twitter}" target="_blank" rel="noopener" = entry.twitter
+                = "　#{entry.rank.rank}"
+              p.chosen-comment = "コメント：#{entry.comment}"
+
+      .card
+        .card-header.u-vertical-align-center
+          img.u-m-r-05 src=asset_path("chara_icon/ja-sm.png") ジャム
+        .card-block
+          .row
+            .col-sm-6
+              h5 東チーム
+              hr
+              - entry = Mikado23onEntry.find_by(name: 'かるかる')
+              p.player.chosen = entry.name
+              p.player
+                a href="https://twitter.com/#{entry.twitter}" target="_blank" rel="noopener" = entry.twitter
+                = "　#{entry.rank.rank}"
+              p.chosen-comment = "コメント：#{entry.comment}"
+            .col-sm-6
+              h5 西チーム
+              hr
+              - entry = Mikado23onEntry.find_by(name: 'じゃじゃ丸')
+              p.player.chosen = entry.name
+              p.player
+                a href="https://twitter.com/#{entry.twitter}" target="_blank" rel="noopener" = entry.twitter
+                = "　#{entry.rank.rank}"
+              p.chosen-comment = "コメント：#{entry.comment}"
+
+      .card
+        .card-header.u-vertical-align-center
+          img.u-m-r-05 src=asset_path("chara_icon/ku-sm.png") クム
+        .card-block
+          .row
+            .col-sm-6
+              h5 東チーム
+              hr
+              - entry = Mikado23onEntry.find_by(name: 'まろし')
+              p.player.chosen = entry.name
+              p.player
+                a href="https://twitter.com/#{entry.twitter}" target="_blank" rel="noopener" = entry.twitter
+                = "　#{entry.rank.rank}"
+              p.chosen-comment = "コメント：#{entry.comment}"
+            .col-sm-6
+              h5 西チーム
+              hr
+              p.player 該当者無し
+
+      .card
+        .card-header.u-vertical-align-center
+          img.u-m-r-05 src=asset_path("chara_icon/rv-sm.png") レイヴン
+        .card-block
+          .row
+            .col-sm-6
+              h5 東チーム
+              hr
+              - entry = Mikado23onEntry.find_by(name: 'ザディ')
+              p.player.chosen = entry.name
+              p.player
+                a href="https://twitter.com/#{entry.twitter}" target="_blank" rel="noopener" = entry.twitter
+                = "　#{entry.rank.rank}"
+              p.chosen-comment = "コメント：#{entry.comment}"
+            .col-sm-6
+              h5 西チーム
+              hr
+              p.player 該当者無し
+
+      .card
+        .card-header.u-vertical-align-center
+          img.u-m-r-05 src=asset_path("chara_icon/di-sm.png") ディズィー
+        .card-block
+          .row
+            .col-sm-6
+              h5 東チーム
+              hr
+              - entry = Mikado23onEntry.find_by(name: '押田撲滅委員会会長カズキ')
+              p.player.chosen = entry.name
+              p.player
+                a href="https://twitter.com/#{entry.twitter}" target="_blank" rel="noopener" = entry.twitter
+                = "　#{entry.rank.rank}"
+              p.chosen-comment = "コメント：#{entry.comment}"
+            .col-sm-6
+              h5 西チーム
+              hr
+              - entry = Mikado23onEntry.find_by(name: 'まっきぃ')
+              p.player.chosen = entry.name
+              p.player
+                a href="https://twitter.com/#{entry.twitter}" target="_blank" rel="noopener" = entry.twitter
+                = "　#{entry.rank.rank}"
+              p.chosen-comment = "コメント：#{entry.comment}"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       .widget-center
         a.twitter-hashtag-button href="https://twitter.com/intent/tweet?button_hashtag=GGXrd_23on&text=%e9%ab%98%e7%94%b0%e9%a6%ac%e5%a0%b4%e3%83%9f%e3%82%ab%e3%83%89%20GGXrdR%20%e6%9d%b1%e8%a5%bf23on%20%e6%8a%95%e7%a5%a8%e3%83%9a%e3%83%bc%e3%82%b8" data-size="large" data-related="ftg_reversal" data-url="http://ftg-reversal.net/mikado23on" Tweet #GGXrd_23on
         a.twitter-timeline href="https://twitter.com/hashtag/GGXrd_23on" data-widget-id="778647620524711936" #GGXrd_23on のツイート
