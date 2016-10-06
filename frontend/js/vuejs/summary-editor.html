@@ -46,11 +46,10 @@
                           <div class="media-heading">
                             <h4 class="pull-left">{{ message.username }}
                             </h4><small class="m-l-1">{{ message.date }}</small>
-                            <p>{{{ message.format_text }}}
-                            </p>
+                            <p>{{ message.format_text }}</p>
                           </div>
                           <div v-for="attachment in message.attachments">
-                            <template v-if="attachment.service_name === &quot;twitter&quot;">
+                            <template v-if="attachment.service_name === 'twitter'">
                               <blockquote class="twitter-tweet">
                                 <p>{{ attachment.text }}
                                 </p>&mdash; " {{ attachment.author_name }} ({{ attachment.author_subname }}) " <a :href="attachment.from_url"></a>
@@ -80,7 +79,7 @@
               <div class="card-block">
                 <div class="selected-messages room editor-main-list">
                   <ul>
-                    <li v-for="message in messages" @click="onClickMessage(this)" id="{{ $index }}" v-drag-and-drop drop="handleDrop" class="message media u-no-marker">
+                    <li v-for="message in messages" @click="onClickMessage(this)" :id="index" v-drag-and-drop drop="handleDrop" class="message media u-no-marker">
                       <div class="slack-icon media-object pull-left">
                         <div class="media-left"><img :src="message.avatar_url"/>
                         </div>
@@ -89,11 +88,11 @@
                         <div class="media-heading">
                           <h4 class="pull-left">{{ message.username }}
                           </h4><small class="m-l-1">{{ message.date }}</small>
-                          <p>{{{ message.format_text }}}
+                          <p>{{ message.format_text }}
                           </p>
                         </div>
                         <div v-for="attachment in message.attachments">
-                          <template v-if="attachment.service_name === &quot;twitter&quot;">
+                          <template v-if="attachment.service_name === 'twitter'">
                             <blockquote class="twitter-tweet">
                               <p>{{ attachment.text }}
                               </p>&mdash; " {{ attachment.author_name }} ({{ attachment.author_subname }}) " <a :href="attachment.from_url"></a>

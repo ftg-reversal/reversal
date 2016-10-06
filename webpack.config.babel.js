@@ -72,6 +72,9 @@ export default {
       path.resolve('./frontend/js'),
       path.resolve('./frontend/css'),
     ],
+    alias: {
+      vue: 'vue/dist/vue.js',
+    },
   },
 
   sassLoader: {

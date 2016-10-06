@@ -12,7 +12,7 @@
             {{ Math.floor(matchup.sec / 60) + "：" + ("0" + (matchup.sec % 60)).slice(-2) }}  {{ charas[matchup.chara1_id - 1].name }} vs {{ charas[matchup.chara2_id - 1].name }}
           </a>
           （
-          <a href="{{ videoUrl }}?from={{ matchup.sec - 10 }}" target="_blank">
+          <a @href="videoUrlFromTime(matchup)" target="_blank">
             ニコニコ動画で見る
           </a>
           ）
@@ -55,7 +55,7 @@
       <template v-if="authority === 'disable'">
         <div class="clearfix">
           <nav class="nav nav-inline pull-right">
-            <a href="/login?redirect_to=/videos/{{ videoID }}" class="nav-link">
+            <a :href="loginUrl(videoID)" class="nav-link">
               <i class="fa fa-pencil">編集</i>
             </a>
           </nav>

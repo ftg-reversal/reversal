@@ -26,20 +26,15 @@ export default class MatchupEditor extends Vue {
         chara2: null,
       },
 
-      ready: async function ready() {
-        this.videoID = this.$el.dataset.videoId;
-        this.videoUrl = this.$el.dataset.videoUrl;
-        this.authority = this.$el.dataset.authority;
-        this.charas = JSON.parse(this.$el.dataset.charas);
-
-        this.chara1 = this.charas[0].id;
-        this.chara2 = this.charas[0].id;
-
-        const response = await VideoMatchupApi.fetchMatchups(this.videoID);
-        this.matchups = await response.json();
-      },
-
       methods: {
+        loginUrl: function loginUrl(videoID) {
+          return `/login?redirect_to=/videos/${videoID}`;
+        },
+
+        videoUrlFromTime: function videoUrlFromTime(matchup) {
+          return `${this.videoUrl}?from=${matchup.sec - 10}`;
+        },
+
         displayForm: () => {
           this.addFlag = true;
         },
@@ -52,7 +47,7 @@ export default class MatchupEditor extends Vue {
           player.ext_setPlayheadTime(time);
         },
 
-        onSubmit: (async) () => {
+        onSubmit: async () => {
           try {
             const sec = (this.minute * 60) + this.second;
             await VideoMatchupApi.newMatchup(this.videoID, sec, this.chara1, this.chara2);
@@ -74,7 +69,7 @@ export default class MatchupEditor extends Vue {
             confirmButtonText: '削除',
             cancelButtonText: 'キャンセル',
             closeOnConfirm: false,
-          }, (async) () => {
+          }, async () => {
             try {
               await VideoMatchupApi.deleteMatchup(matchup.id);
               salert('削除に成功しました');
@@ -88,6 +83,21 @@ export default class MatchupEditor extends Vue {
       },
     };
     super(properties);
+    this.ready();
+  }
+
+  async ready() {
+    const paramEl = document.querySelector('#editor-param');
+    this.videoID = paramEl.dataset.videoId;
+    this.videoUrl = paramEl.dataset.videoUrl;
+    this.authority = paramEl.dataset.authority;
+    this.charas = JSON.parse(paramEl.dataset.charas);
+
+    this.chara1 = this.charas[0].id;
+    this.chara2 = this.charas[0].id;
+
+    const response = await VideoMatchupApi.fetchMatchups(this.videoID);
+    this.matchups = await response.json();
   }
 }
 

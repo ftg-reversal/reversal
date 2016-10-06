@@ -28,40 +28,6 @@ export default class SummaryEditor extends Vue {
         nowSubmitting: false,
       },
 
-      ready: async function ready() {
-        this.summaryID = this.$el.dataset.summaryId;
-        this.title = this.$el.dataset.summaryTitle;
-
-        const description = this.$el.dataset.summaryDescription;
-        this.description = description ? description : ''; // eslint-disable-line no-unneeded-ternary, max-len
-
-        JSON.parse(this.$el.dataset.messages).forEach((message) => {
-          this.messages.push({
-            id: message.id,
-            avatar_url: message.icon_url,
-            username: message.username,
-            date: message.date,
-            ts: message.ts,
-            channel: message.channel,
-            format_text: message.format_text,
-            attachments: message.attachments,
-          });
-        });
-
-        const response = await ChannelApi.fetchChannelList();
-        const json = await response.json();
-        json.forEach((channel) => {
-          this.channels.push({ text: channel.name, value: channel.id });
-        });
-
-        const channelID = this.$el.dataset.channelId;
-        if (channelID) {
-          this.channelID = channelID;
-          await this.loadChannelMessage(channelID, this.loadedMessages);
-          twttr.widgets.load(); // eslint-disable-line no-undef
-        }
-      },
-
       methods: {
         loadTweet: (_e) => {
           twttr.widgets.load(); // eslint-disable-line no-undef
@@ -133,6 +99,42 @@ export default class SummaryEditor extends Vue {
       },
     };
     super(properties);
+    this.ready();
+  }
+
+  async ready() {
+    this.summaryID = this.$el.dataset.summaryId;
+    this.title = this.$el.dataset.summaryTitle;
+
+    const description = this.$el.dataset.summaryDescription;
+    this.description = description ? description : ''; // eslint-disable-line no-unneeded-ternary, max-len
+
+    const paramEl = document.querySelector('#editor-param');
+    JSON.parse(paramEl.dataset.messages).forEach((message) => {
+      this.messages.push({
+        id: message.id,
+        avatar_url: message.icon_url,
+        username: message.username,
+        date: message.date,
+        ts: message.ts,
+        channel: message.channel,
+        format_text: message.format_text,
+        attachments: message.attachments,
+      });
+    });
+
+    const response = await ChannelApi.fetchChannelList();
+    const json = await response.json();
+    json.forEach((channel) => {
+      this.channels.push({ text: channel.name, value: channel.id });
+    });
+
+    const channelID = this.$el.dataset.channelId;
+    if (channelID) {
+      this.channelID = channelID;
+      await this.loadChannelMessage(channelID, this.loadedMessages);
+      twttr.widgets.load(); // eslint-disable-line no-undef
+    }
   }
 
   async loadChannelMessage(channelID) {
