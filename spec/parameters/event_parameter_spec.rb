@@ -13,7 +13,7 @@ describe EventParameter do
 
   let(:reversal_user) { build :reversal_user }
 
-  shared_examples 'イベントの共通部分テスト' do
+  shared_examples 'パラメータの共通部分テスト' do
     it 'タイトルが正しい' do
       expect(param[:title]).to eq attributes['title']
     end
@@ -33,11 +33,11 @@ describe EventParameter do
 
   context 'エントリー締め切りが設定されていないとき' do
     let(:entry_deadline) { '' }
-    context '生成されたイベントの' do
+    context '生成されたパラメータの' do
       let(:parameter) { EventParameter.new(attributes, reversal_user) }
       let(:param) { parameter.to_h }
 
-      it_behaves_like 'イベントの共通部分テスト'
+      it_behaves_like 'パラメータの共通部分テスト'
 
       it 'エントリー締め切りが存在しない' do
         expect(param[:entry_deadline]).to eq ''
@@ -47,11 +47,11 @@ describe EventParameter do
 
   context 'エントリー締め切りが設定されていないとき' do
     let(:entry_deadline) { '2015-01-01 00:00:00' }
-    context '生成されたイベントの' do
+    context '生成されたパラメータの' do
       let(:parameter) { EventParameter.new(attributes, reversal_user) }
       let(:param) { parameter.to_h }
 
-      it_behaves_like 'イベントの共通部分テスト'
+      it_behaves_like 'パラメータの共通部分テスト'
 
       it 'エントリー締め切りが正しい' do
         expect(param[:entry_deadline]).to eq Time.zone.parse(entry_deadline)
