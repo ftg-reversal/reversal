@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import salert from 'sweetalert';
 import '../vendor/jquery.validationEngine-ja';
 import '../vendor/jquery.validationEngine';

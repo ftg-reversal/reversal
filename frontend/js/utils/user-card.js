@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import 'jquery-match-height';
 
 function onLoad() {

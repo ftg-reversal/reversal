@@ -3,6 +3,8 @@
     "build:dev": "rm app/assets/stylesheets/webpack/* app/assets/javascripts/webpack/*; webpack-dev-server --inline --port 3500 --progress --profile --colors",
     "build:production": "env TARGET=production webpack --progress --profile --colors --bail",
     "analyze": "env TARGET=production webpack --json | webpack-bundle-size-analyzer",
+    "lint": "gulp lint",
+    "fix": "gulp fix",
     "css:format": "gulp stylefmt",
     "css:lint": "gulp stylelint"
   },
@@ -28,6 +30,7 @@
     "file-loader": "^0.9.0",
     "gulp": "^3.9.1",
     "gulp-eslint": "^3.0.1",
+    "gulp-if": "^2.0.1",
     "gulp-postcss": "^6.2.0",
     "gulp-stylefmt": "^1.0.0",
     "html-loader": "^0.4.4",

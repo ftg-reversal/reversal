@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import salert from 'sweetalert';
 
 function onLoad() {

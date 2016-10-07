@@ -1,4 +1,5 @@
 import gulp from 'gulp';
+import gulpIf from 'gulp-if';
 import eslint from 'gulp-eslint';
 import postcss from 'gulp-postcss';
 import postcssReporter from 'postcss-reporter';
@@ -11,6 +12,13 @@ gulp.task('lint', () => (
     .pipe(eslint())
     .pipe(eslint.format())
     .pipe(eslint.failAfterError())
+));
+
+gulp.task('fix', () => (
+  gulp.src(['frontend/js/**/*.js', 'frontend/js/**/*.jsx', '!frontend/js/vendor/**'])
+    .pipe(eslint({ fix: true }))
+    .pipe(eslint.format())
+    .pipe(gulpIf(file => file.eslint != null && file.eslint.fixed, gulp.dest('./frontend/js')))
 ));
 
 gulp.task('stylefmt', () => (

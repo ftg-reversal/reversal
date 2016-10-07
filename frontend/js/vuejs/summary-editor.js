@@ -67,7 +67,7 @@ export default class SummaryEditor extends Vue {
           twttr.widgets.load(); // eslint-disable-line no-undef
         },
 
-        onSelectChannel: (async) (e, channel, loadedMessages) => {
+        onSelectChannel: ((async)) (e, channel, loadedMessages) => {
           if (channel.toString() === '') return;
           this.nowLoading = true;
           loadedMessages.splice(0, loadedMessages.length);
@@ -101,7 +101,7 @@ export default class SummaryEditor extends Vue {
           this.loadedMessages.sort((a, b) => b.ts - a.ts);
         },
 
-        onSubmit: (async) (e, title, description, messages) => {
+        onSubmit: ((async)) (e, title, description, messages) => {
           e.preventDefault();
 
           if (!SummaryEditor.validate(title, description, messages)) {
