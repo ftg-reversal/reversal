@@ -15,19 +15,19 @@ describe EventParameter do
 
   shared_examples 'イベントの共通部分テスト' do
     it 'タイトルが正しい' do
-      expect(event.title).to eq attributes['title']
+      expect(param[:title]).to eq attributes['title']
     end
     it '概要が正しい' do
-      expect(event.description).to eq attributes['description']
+      expect(param[:description]).to eq attributes['description']
     end
     it '日時が正しい' do
-      expect(event.datetime).to eq Time.zone.parse(attributes['datetime'])
+      expect(param[:datetime]).to eq Time.zone.parse(attributes['datetime'])
     end
     it 'チーム人数が正しい' do
-      expect(event.number).to eq attributes['number']
+      expect(param[:number]).to eq attributes['number']
     end
     it 'イベント管理者が正しい' do
-      expect(event.reversal_user).to eq reversal_user
+      expect(param[:reversal_user]).to eq reversal_user
     end
   end
 
@@ -35,12 +35,12 @@ describe EventParameter do
     let(:entry_deadline) { '' }
     context '生成されたイベントの' do
       let(:parameter) { EventParameter.new(attributes, reversal_user) }
-      let(:event) { Event.new(parameter.to_h) }
+      let(:param) { parameter.to_h }
 
       it_behaves_like 'イベントの共通部分テスト'
 
       it 'エントリー締め切りが存在しない' do
-        expect(event.entry_deadline).to eq nil
+        expect(param[:entry_deadline]).to eq ''
       end
     end
   end
@@ -49,12 +49,12 @@ describe EventParameter do
     let(:entry_deadline) { '2015-01-01 00:00:00' }
     context '生成されたイベントの' do
       let(:parameter) { EventParameter.new(attributes, reversal_user) }
-      let(:event) { Event.new(parameter.to_h) }
+      let(:param) { parameter.to_h }
 
       it_behaves_like 'イベントの共通部分テスト'
 
       it 'エントリー締め切りが正しい' do
-        expect(event.entry_deadline).to eq Time.zone.parse(entry_deadline)
+        expect(param[:entry_deadline]).to eq Time.zone.parse(entry_deadline)
       end
     end
   end
