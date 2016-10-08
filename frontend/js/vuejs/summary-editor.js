@@ -109,6 +109,7 @@ export default class SummaryEditor extends Vue {
         attachments: message.attachments,
       });
     });
+    console.log(this.messages[0].format_text);
 
     const response = await ChannelApi.fetchChannelList();
     const json = await response.json();

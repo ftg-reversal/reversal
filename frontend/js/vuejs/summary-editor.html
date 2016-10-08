@@ -36,7 +36,7 @@
             <div class="card">
               <div class="card-block">
                 <div class="load-messages room">
-                  <ul>
+                  <ul v-sortable>
                     <li v-for="message in loadedMessages" @click="onClickLoadMessage(this)" class="message">
                       <div class="media">
                         <div class="slack-icon media-object pull-left">
@@ -47,13 +47,13 @@
                           <div class="media-heading">
                             <h4 class="pull-left">{{ message.username }}
                             </h4><small class="m-l-1">{{ message.date }}</small>
-                            <p>{{ message.format_text }}</p>
+                            <p>{{{ message.format_text }}}</p>
                           </div>
                           <div v-for="attachment in message.attachments">
                             <template v-if="attachment.service_name === 'twitter'">
                               <blockquote class="twitter-tweet">
-                                <p>{{ attachment.text }}
-                                </p>&mdash; " {{ attachment.author_name }} ({{ attachment.author_subname }}) " <a :href="attachment.from_url"></a>
+                                <p>{{{ attachment.text }}}</p>
+                                &mdash; " {{ attachment.author_name }} ({{ attachment.author_subname }}) " <a :href="attachment.from_url"></a>
                               </blockquote>
                             </template>
                           </div>
@@ -63,8 +63,7 @@
                   </ul>
                 </div>
               </div>
-              <div class="card-footer text-muted">左パネルからクリックで発言を選択<br>ドラッグで並び替え
-              </div>
+              <div class="card-footer text-muted">左パネルからクリックで発言を選択<br>ドラッグで並び替え</div>
             </div>
           </div>
         </div>
@@ -87,16 +86,15 @@
                       </div>
                       <div class="media-body">
                         <div class="media-heading">
-                          <h4 class="pull-left">{{ message.username }}
-                          </h4><small class="m-l-1">{{ message.date }}</small>
-                          <p>{{ message.format_text }}
-                          </p>
+                          <h4 class="pull-left">{{ message.username }}</h4>
+                          <small class="m-l-1">{{ message.date }}</small>
+                          <p>{{{ message.format_text }}}</p>
                         </div>
                         <div v-for="attachment in message.attachments">
                           <template v-if="attachment.service_name === 'twitter'">
                             <blockquote class="twitter-tweet">
-                              <p>{{ attachment.text }}
-                              </p>&mdash; " {{ attachment.author_name }} ({{ attachment.author_subname }}) " <a :href="attachment.from_url"></a>
+                              <p>{{{ attachment.text }}}</p>
+                              &mdash; " {{ attachment.author_name }} ({{ attachment.author_subname }}) " <a :href="attachment.from_url"></a>
                             </blockquote>
                           </template>
                         </div>
