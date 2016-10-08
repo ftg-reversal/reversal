@@ -1,5 +1,29 @@
 # Reversal
 
+## Install
+
+### Vagrant
+```
+$ cd vagrant
+$ vagrant plugin install vagrant-hostsupdater
+$ vagrant up
+$ cd ../
+```
+
+### Rails
+```
+$ bundle i --path=vendor/bundle
+$ bin/rails db:migrate
+$ bin/rails db:seed
+$ bin/rails s
+```
+
+### Webpack
+```
+$ npm i
+$ npm run build:dev
+```
+
 ## Environment Variables
 ### Develop Requirement
 - SLACK_API_TOKEN
