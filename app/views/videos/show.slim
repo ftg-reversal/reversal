@@ -13,7 +13,8 @@
           p ※外部プレイヤー再生中に組み合わせを押すとその時間から再生されます。
         .col-md1-2.hidden-lg-up
           p 外部プレイヤーはご利用の端末からはご利用頂けません
-        #matchup-editor data-video-id=@video.id data-video-url=@video.url data-authority=(@current_user ? 'enable' : 'disable') data-charas=Chara.all.to_json
+        #editor-param data-video-id=@video.id data-video-url=@video.url data-authority=(@current_user ? 'enable' : 'disable') data-charas=Chara.all.to_json
+        #matchup-editor
 hr
 
 - content_for :title do
