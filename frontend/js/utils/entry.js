@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import salert from 'sweetalert';
 import '../vendor/jquery.validationEngine-ja';
 import '../vendor/jquery.validationEngine';
@@ -41,7 +40,7 @@ function onLoad() {
         type: 'success',
         html: true,
       }, () => { location.reload(); });
-      twttr.widgets.load(); // eslint-disable-line no-undef
+      twttr.widgets.load();
     }).fail((_data) => {
       salert({
         title: 'エントリー失敗',
