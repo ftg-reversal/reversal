@@ -14,21 +14,12 @@
   },
   "rules": {
     "strict": 0,
-<<<<<<< HEAD
-    "no-unused-vars": [
-      "error",
-      {
-        "argsIgnorePattern": "^_"
-      }
-    ],
-=======
     "class-methods-use-this": 0,
     "no-unused-vars": [ "error", { "argsIgnorePattern": "^_" } ],
     "no-else-return": 0,
     "arrow-body-style": 0,
     "react/jsx-filename-extension": 0,
     "react/prefer-stateless-function": 0,
->>>>>>> feature/vue2_and_react
     "react/require-extension": 0,
     "import/extensions": 2,
     "import/no-extraneous-dependencies": [
@@ -43,11 +34,7 @@
     "import"
   ],
   "globals": {
-<<<<<<< HEAD
-    "$": true
-=======
     "$": true,
     "twttr": true
->>>>>>> feature/vue2_and_react
   }
 }

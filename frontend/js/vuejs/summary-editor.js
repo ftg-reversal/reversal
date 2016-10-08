@@ -152,7 +152,6 @@ export default class SummaryEditor extends Vue {
           }
         });
       });
-
     } catch (error) {
       this.nowLoading = false;
       salert('取得できませんでした');
