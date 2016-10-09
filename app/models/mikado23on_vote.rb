@@ -28,6 +28,8 @@
 #  Kum              :integer          default(0), not null
 #  Raven            :integer          default(0), not null
 #  Dizzy            :integer          default(0), not null
+#  created_at       :datetime
+#  updated_at       :datetime
 #
 
 class Mikado23onVote < ApplicationRecord

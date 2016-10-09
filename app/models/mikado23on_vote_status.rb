@@ -6,6 +6,8 @@
 #  reversal_user_id :integer          not null
 #  can_east         :boolean          default(TRUE), not null
 #  can_west         :boolean          default(TRUE), not null
+#  created_at       :datetime
+#  updated_at       :datetime
 #
 
 class Mikado23onVoteStatus < ApplicationRecord
