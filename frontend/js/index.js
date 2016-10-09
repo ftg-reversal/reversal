@@ -11,6 +11,6 @@ import './utils/sweetalert';
 import './utils/twitter';
 import './utils/user-card';
 
-import './vuejs/summary-editor';
+import './vuejs/summary-editor/summary-editor';
 // import './react/summary-editor';
 import './vuejs/matchup-editor';

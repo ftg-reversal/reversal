@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Sortable from 'vue-sortable';
 import salert from 'sweetalert';
 
-import ChannelApi from '../api/channel-api';
+import ChannelApi from '../../api/channel-api';
 import './summary-editor.css';
 import template from './summary-editor.html';
 
