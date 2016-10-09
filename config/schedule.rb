@@ -21,9 +21,9 @@ every 6.hours, roles: [:batch] do
 end
 
 # mikado23on
-every 1.day, at: '00:00 am', roles: [:batch] do
-  runner 'Mikado23onResetBatch.exec'
-end
+# every 1.day, at: '00:00 am', roles: [:batch] do
+#   runner 'Mikado23onResetBatch.exec'
+# end
 
 # sitemap
 every 1.day, at: '10:00 am', roles: [:batch] do
