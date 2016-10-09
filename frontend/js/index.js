@@ -1,4 +1,4 @@
-import './vendor/bootstrap/npm';
+import './vendor/bootstrap';
 import './vendor/jquery.lazyload';
 import './vendor/twitter-widgets';
 
