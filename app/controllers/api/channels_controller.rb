@@ -1,6 +1,6 @@
 class Api::ChannelsController < ApplicationController
   def index
-    channels = SlackChannel.all
+    channels = SlackChannel.where(is_archived: false).order(:name)
     render json: channels, each_serializer: ChannelSerializer
   end
 
