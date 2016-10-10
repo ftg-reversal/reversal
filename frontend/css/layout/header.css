@@ -46,6 +46,7 @@
 
   .dropdown-item {
     color: white;
+    line-height: 1.5rem;
 
     &:hover {
       background: #333;
