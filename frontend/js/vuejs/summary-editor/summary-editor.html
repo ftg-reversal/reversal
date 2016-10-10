@@ -46,12 +46,12 @@
                           <div class="media-heading">
                             <h4 class="pull-left">{{ message.username }}
                             </h4><small class="m-l-1">{{ message.date }}</small>
-                            <p v-html"message.format_text" />
+                            <p>{{{ message.format_text }}}</p>
                           </div>
                           <div v-for="attachment in message.attachments">
                             <template v-if="attachment.service_name === 'twitter'">
                               <blockquote class="twitter-tweet">
-                                <p v-html="attachment.text" />
+                                <p>{{{ attachment.text }}}</p>
                                 &mdash; " {{ attachment.author_name }} ({{ attachment.author_subname }}) " <a :href="attachment.from_url"></a>
                               </blockquote>
                             </template>
@@ -87,12 +87,12 @@
                         <div class="media-heading">
                           <h4 class="pull-left">{{ message.username }}</h4>
                           <small class="m-l-1">{{ message.date }}</small>
-                          <p v-html="message.format_text" />
+                          <p>{{{ message.format_text }}}</p>
                         </div>
                         <div v-for="attachment in message.attachments">
                           <template v-if="attachment.service_name === 'twitter'">
                             <blockquote class="twitter-tweet">
-                              <p v-html="attachment.text" />
+                              <p>{{{ attachment.text }}}</p>
                               &mdash; " {{ attachment.author_name }} ({{ attachment.author_subname }}) " <a :href="attachment.from_url"></a>
                             </blockquote>
                           </template>
