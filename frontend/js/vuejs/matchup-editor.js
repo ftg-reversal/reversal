@@ -44,7 +44,9 @@ export default class MatchupEditor extends Vue {
         },
 
         setPlayheadTime: (_e, time) => {
-          player.ext_setPlayheadTime(time);
+          if (player) {
+            player.ext_setPlayheadTime(time);
+          }
         },
 
         onSubmit: async () => {
