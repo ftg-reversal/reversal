@@ -5,7 +5,7 @@
       .p-short-item-list
         - @rlogs.each do |rlog|
           = render 'shared/rlog', rlog: rlog
-      = paginate @rlogs
+        = paginate @rlogs
 
 - content_for :title do
   = 'Rlogs'
