@@ -8,11 +8,11 @@
             <i class="fa fa-times"></i>
           </a>
           &nbsp;&nbsp;
-          <a @click.prevent="setPlayheadTime($event, matchup.sec - 10)">
+          <a v-bind:click.prevent="setPlayheadTime($event, matchup.sec - 10)">
             {{ Math.floor(matchup.sec / 60) + "：" + ("0" + (matchup.sec % 60)).slice(-2) }}  {{ charas[matchup.chara1_id - 1].name }} vs {{ charas[matchup.chara2_id - 1].name }}
           </a>
           （
-          <a @href="videoUrlFromTime(matchup)" target="_blank">
+          <a v-bind:href="videoUrlFromTime(matchup)" target="_blank">
             ニコニコ動画で見る
           </a>
           ）
