@@ -1,7 +1,7 @@
 function onLoad() {
   $('.ckeditor-text a').playTube({
-    width: 480,
-    height: 370,
+    width: 240,
+    height: 180,
   });
 }
 
