@@ -39,10 +39,8 @@ const output = production ? {
   publicPath: 'http://localhost:3500/',
 };
 
-/* eslint-disable max-len */
 const cssLoader = production ? ExtractTextPlugin.extract('style', 'css!postcss') : 'style!css?sourceMap!postcss';
 const sassLoader = production ? ExtractTextPlugin.extract('style', 'css!postcss!sass') : 'style!css?sourceMap!postcss!sass?sourceMap';
-/* eslint-enable max-len */
 
 export default {
   entry: {
@@ -81,7 +79,6 @@ export default {
     indentedSyntax: 'sass',
   },
 
-  /* eslint-disable global-require, max-len */
   postcss: [
     require('autoprefixer')({ browsers: 'last 2 versions' }),
     require('postcss-import')(),
@@ -94,7 +91,6 @@ export default {
     require('postcss-short')(),
     require('csswring')(),
   ],
-  /* eslint-enable global-require, max-len */
 
   plugins,
   devtool,
