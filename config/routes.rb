@@ -100,6 +100,7 @@ Rails.application.routes.draw do
   get '/about', to: 'home#about'
 
   get '/mikado23on', to: 'mikado23on#index'
+  get '/mikado23on_result', to: 'mikado23on#result'
   get '/mikado23on/east', to: 'mikado23on#east'
   get '/mikado23on/west', to: 'mikado23on#west'
   get '/mikado23on/vote', to: 'mikado23on#vote'

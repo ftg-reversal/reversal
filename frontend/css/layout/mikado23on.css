@@ -40,6 +40,10 @@
     margin-bottom: 1rem;
   }
 
+  p.match {
+    text-align: center;
+  }
+
   .radio {
     margin-bottom: 0;
   }

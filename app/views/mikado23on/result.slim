@@ -2,37 +2,67 @@
   .card
     .card-block
       img.img-fluid.m-b-2 src=asset_path('23on-banner.png') style="margin: 0 auto;"
-      h3 高田馬場ミカド GGXrd R あーくれぼ 後夜祭 東西23ON 投票ページ
+      h3
+        | 高田馬場ミカド GGXrd R あーくれぼ 後夜祭
+        br
+          | 東西23ON 結果ページ
       hr
-      p 10月16日に行う高田馬場ミカド GGXrdR 闘神祭後夜祭23ONの投票ページです。
-      p 一日一回Twitterアカウントから各地方・各キャラにつき一票の投票が出来ます。（東・西それぞれ1日1回の投票をまとめて行います。）
-      p 関東とそれ以外で投票ページを分けています
-      p 海外勢は23onの枠とは別に参加して貰います！
-      ul
-        li 投票開始：9月28日 0:00～
-        li 中間発表：10月5日
-        li 投票締切：10月9日 ～23:59
-        li 結果発表：10月10日
 
-      p The voting for 23v23. East vs West has started. Vote for the players you want to see at ftg-reversal.net/mikado23on
-      p Vote for the player you wanna see on each side by click the banner below. Red=East Team. Blue=West Team.
-      p You get to vote once a day for each side. The exhibition will happend at 10/16. The vote ends at 10/10. Let's Go!
-      p Oversea participants such as MarlinPie does not appear in the voting. But they will be add to the exhibition afterward.
+      p 高田馬場ミカド東西23on、無事終了することができました。多くの方の応援と投票、本当にありがとうございました。
 
-      .row.m-b-2
-        .col-sm-6.m-b-1
-          a href=mikado23on_east_path
-            p.u-text-center.u-m-b-03 東への投票はこちら
-            img.center-block.img-fluid src=asset_path('23on-east.png')
-        .col-sm-6
-          a href=mikado23on_west_path
-            p.u-text-center.u-m-b-03 西への投票はこちら
-            img.center-block.img-fluid src=asset_path('23on-west.png')
+      p.text-xs-center
+        a href=mikado23on_path 投票ページはこちら
 
-      h4 結果発表
+      h4 大会結果
+
+      h5 ニコニコ
+
+      h5 Youtube
+      iframe width="560" height="315" src="https://www.youtube.com/embed/pnyO2i2F6n8" frameborder="0" allowfullscreen=""
+
+      p.match 西チーム vs 東チーム
+      p.match ×まっきぃ（DI） vs J.T（KU）○
+      p.match ×ウーゼン（IN） vs J.T（KU）○
+      p.match ○ロルディー（BE） vs J.T（KU）×
+      p.match ○ロルディー（BE） vs かめゴ（VE）○
+      p.match ×夏蜜柑（PO） vs かめゴ（VE）○
+      p.match ○くに（RV） vs かめゴ（VE）×
+      p.match ○くに（RV） vs SHO（MA）×
+      p.match ×くに（RV） vs DARU（IN）○
+      p.match ×大坂Ｂ（FA） vs DARU（IN）○
+      p.match ○イデミミ（AX） vs DARU（IN）×
+      p.match ○イデミミ（AX） vs かるかる（JA）×
+      p.match ×みつる（BE） vs じょにお（JO）○
+      p.match ○きくた（EL） vs じょにお（JO）×
+      p.match ×きくた（EL） vs Top Garen（ZA）○
+      p.match ×ぷれぷれ（JC） vs Top Garen（ZA）○
+      p.match ○ウーゼン（IN） vs しもんきん（AX）×
+      p.match ×ウーゼン（IN） vs 遠藤（CH）○
+      p.match ×初代（SO） vs 遠藤（CH）○
+      p.match ○じゃじゃ丸（JA） vs 遠藤（CH）×
+      p.match ×じゃじゃ丸（JA） vs ちょなり（JC）○
+      p.match ×いな（MI） vs ちょなり（JC）○
+      p.match ○勇（VE） vs ちょなり（JC）×
+      p.match ○勇（VE） vs ヒロキ（SI）×
+      p.match ×勇（VE） vs LOX（BE）○
+      p.match ×タイツ（ZA） vs LOX（BE）○
+      p.match ○E.T（CH） vs LOX（BE）×
+      p.match ○E.T（CH） vs はせ（SL）×
+      p.match ×E.T（CH） vs FAB（PO）○
+      p.match ×りおん（KY） vs FAB（PO）○
+      p.match ○おぎちゃん（JO） vs FAB（PO）×
+      p.match ×おぎちゃん（JO） vs ふも（EL）○
+      p.match ○DC（SI） vs ふも（EL）×
+      p.match ○DC（SI） vs 中村（MI）×
+      p.match ×DC（SI） vs あいん（KY）○
+      p.match ○saryu（RA） vs あいん（KY）×
+      p.match ×saryu（RA） vs NOB（SO）○
+      p.match ×Marlin Pie（ZA） vs NOB（SO）○
+
+      h4 東西チームメンバー
       .card
         .card-header.u-vertical-align-center
-          img.u-m-r-05 src=asset_path("chara_icon/so-sm.png") ソル
+          span 大将枠
         .card-block
           .row
             .col-sm-6
@@ -47,7 +77,30 @@
             .col-sm-6
               h5 西チーム
               hr
-              p.player 該当者なし
+              - entry = Mikado23onEntry.find_by(name: 'けだこ')
+              p.player.chosen = entry.name
+              p.player
+                a href="https://twitter.com/#{entry.twitter}" target="_blank" rel="noopener" = entry.twitter
+                = "　#{entry.rank.rank}"
+              p.chosen-comment = "コメント：#{entry.comment}"
+      .card
+        .card-header.u-vertical-align-center
+          img.u-m-r-05 src=asset_path("chara_icon/so-sm.png") ソル
+        .card-block
+          .row
+            .col-sm-6
+              h5 東チーム
+              hr
+              - entry = Mikado23onEntry.find_by(name: 'NOB')
+              p.player.chosen = entry.name
+              p.player
+                a href="https://twitter.com/#{entry.twitter}" target="_blank" rel="noopener" = entry.twitter
+                = "　#{entry.rank.rank}"
+              p.chosen-comment = "コメント：#{entry.comment}"
+            .col-sm-6
+              h5 西チーム
+              hr
+              // 初代
 
       .card
         .card-header.u-vertical-align-center
@@ -66,7 +119,12 @@
             .col-sm-6
               h5 西チーム
               hr
-              p.player 該当者なし
+              - entry = Mikado23onEntry.find_by(name: 'りおん')
+              p.player.chosen = entry.name
+              p.player
+                a href="https://twitter.com/#{entry.twitter}" target="_blank" rel="noopener" = entry.twitter
+                = "　#{entry.rank.rank}"
+              p.chosen-comment = "コメント：#{entry.comment}"
 
       .card
         .card-header.u-vertical-align-center
@@ -85,12 +143,7 @@
             .col-sm-6
               h5 西チーム
               hr
-              - entry = Mikado23onEntry.find_by(name: 'けだこ')
-              p.player.chosen = entry.name
-              p.player
-                a href="https://twitter.com/#{entry.twitter}" target="_blank" rel="noopener" = entry.twitter
-                = "　#{entry.rank.rank}"
-              p.chosen-comment = "コメント：#{entry.comment}"
+              p.player 該当者なし
 
       .card
         .card-header.u-vertical-align-center
@@ -205,7 +258,12 @@
             .col-sm-6
               h5 西チーム
               hr
-              p.player 該当者なし
+              - entry = Mikado23onEntry.find_by(name: '大坂Ｂ')
+              p.player.chosen = entry.name
+              p.player
+                a href="https://twitter.com/#{entry.twitter}" target="_blank" rel="noopener" = entry.twitter
+                = "　#{entry.rank.rank}"
+              p.chosen-comment = "コメント：#{entry.comment}"
 
       .card
         .card-header.u-vertical-align-center
@@ -215,7 +273,7 @@
             .col-sm-6
               h5 東チーム
               hr
-              p.player 該当者なし
+              // しもんきん
             .col-sm-6
               h5 西チーム
               hr
@@ -435,8 +493,7 @@
             .col-sm-6
               h5 西チーム
               hr
-              - entry = Mikado23onEntry.find_by(name: 'けだこ')
-              p.player 該当者なし
+              // おぎちゃん
 
       .card
         .card-header.u-vertical-align-center
@@ -446,7 +503,7 @@
             .col-sm-6
               h5 東チーム
               hr
-              p.player 該当者なし
+              // ちょなり
             .col-sm-6
               h5 西チーム
               hr
@@ -498,7 +555,12 @@
             .col-sm-6
               h5 西チーム
               hr
-              p.player 該当者なし
+              - entry = Mikado23onEntry.find_by(name: 'まろし')
+              p.player.chosen = entry.name
+              p.player
+                a href="https://twitter.com/#{entry.twitter}" target="_blank" rel="noopener" = entry.twitter
+                = "　#{entry.rank.rank}"
+              p.chosen-comment = "コメント：#{entry.comment}"
 
       .card
         .card-header.u-vertical-align-center
@@ -517,7 +579,7 @@
             .col-sm-6
               h5 西チーム
               hr
-              p.player 該当者なし
+              // くに
 
       .card
         .card-header.u-vertical-align-center
