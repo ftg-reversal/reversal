@@ -72,7 +72,7 @@ Rails.application.configure do
     }
   }
 
-  config.action_controller.asset_host = '//d3jcocuug8ctae.cloudfront.net'
+  config.action_controller.asset_host = '//cdn.ftg-reversal.net'
 
   GA.tracker = ENV['GOOGLE_ANALYTICS']
 
