@@ -72,13 +72,15 @@ Rails.application.configure do
     }
   }
 
+  config.action_controller.asset_host = '//d3jcocuug8ctae.cloudfront.net'
+
   GA.tracker = ENV['GOOGLE_ANALYTICS']
 
   # Redis
   config.cache_store   = :redis_store, 'redis://store:6379/0/cache',   { expires_in: 90.minutes }
   config.session_store = :redis_store, 'redis://store:6379/0/session', { expires_in: 1.month }
 
-  if ENV["RAILS_LOG_TO_STDOUT"].present?
+  if ENV['RAILS_LOG_TO_STDOUT'].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter
     config.logger = ActiveSupport::TaggedLogging.new(logger)
