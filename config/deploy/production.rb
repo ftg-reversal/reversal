@@ -20,7 +20,7 @@ set :unicorn_rack_env, 'production'
 # set :puma_worker_timeout, nil
 # set :puma_init_active_record, true
 
-server 'ftg-reversal.net',
+server 'web.ftg-reversal.net',
   roles: [:web, :app, :db],
   port: fetch(:port),
   user: fetch(:user),
