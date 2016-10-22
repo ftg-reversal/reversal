@@ -40,7 +40,7 @@ class ReversalUser < ApplicationRecord
     if slack_user
       slack_user.icon_url
     elsif twitter_user
-      "http://furyu.nazo.cc/twicon/#{screen_name}/original"
+      twitter_user.icon_url
     end
   end
 
