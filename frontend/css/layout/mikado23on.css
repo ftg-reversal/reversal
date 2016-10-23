@@ -64,4 +64,8 @@
     display: block;
     margin: 0 auto;
   }
+
+  img.video-link {
+    width: 1.6rem;
+  }
 }
