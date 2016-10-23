@@ -40,6 +40,10 @@
     margin-bottom: 1rem;
   }
 
+  p.match {
+    text-align: center;
+  }
+
   .radio {
     margin-bottom: 0;
   }
@@ -59,5 +63,9 @@
   iframe {
     display: block;
     margin: 0 auto;
+  }
+
+  img.video-link {
+    width: 1.6rem;
   }
 }

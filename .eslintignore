@@ -1,5 +1,7 @@
 **/*{.,-}min.js
-app/assets/javascripts/ckeditor/
-app/assets/javascripts/webpack/
-app/assets/stylesheets/ckeditor
-frontend/js/vendor/
+app/assets/javascripts/ckeditor/**/*
+app/assets/javascripts/webpack/**/*
+app/assets/stylesheets/ckeditor/**/*
+frontend/js/vendor/**/*
+gulpfile.babel.js
+webpack.config.babel.js
