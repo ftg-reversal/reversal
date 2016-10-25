@@ -14,7 +14,7 @@ div
       = " #{attachment['author_name']} (#{attachment['author_subname']}) "
       a href=attachment['from_url']
   - when 'ニコニコ動画'
-    iframe width="300" height="220" src="//ext.nicovideo.jp/thumb/#{attachment['from_url'].split('/').pop}" scrolling="no"
+    iframe width="300" height="220" src="http://ext.nicovideo.jp/thumb/#{attachment['from_url'].split('/').pop}" scrolling="no"
       a href="http://www.nicovideo.jp/watch/#{attachment['from_url'].split('/').pop}" = attachment['title']
     h5
       a href=attachment['from_url'] = attachment['title']
