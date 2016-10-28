@@ -21,7 +21,7 @@ $ bin/rails s
 ### Webpack
 ```
 $ npm i
-$ npm run build:dev
+$ npm run dev
 ```
 
 ## Environment Variables
