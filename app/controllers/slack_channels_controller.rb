@@ -6,7 +6,7 @@ class SlackChannelsController < ApplicationController
 
   def show
     @channel = SlackChannel.including_channel_user.find(params[:id])
-    @history = SlackMessagesDecorator.decorate(@channel.slack_message.page(params[:page]))
+    @history = SlackMessagesDecorator.decorate(@channel.slack_message.page(params[:page]).per(12))
   end
 
   def search
