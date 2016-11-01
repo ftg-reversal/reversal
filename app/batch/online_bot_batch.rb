@@ -15,7 +15,7 @@ class OnlineBotBatch
 
     private
 
-    def unsent_tweet?
+    def unsent_tweet?(tweet)
       tweet[:id] > last_tweet_id && tweet[:screen_name] != TWITTER_ID
     end
 
