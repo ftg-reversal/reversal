@@ -1,0 +1,59 @@
+#mikado-tenkaichi
+  .card
+    .card-block
+      img.center-block.img-fluid.m-b-2 src=asset_path('tenkaichi-banner.png') style="margin: 0 auto;"
+      h3 第二回 高田馬場ミカド GGXrdR ミカド天下一武道会
+      h4 参加プレイヤー投票ページ
+      hr
+
+      - unless @current_user
+        .alert.alert-warning role="alert" 投票するにはログインしてください
+
+      - if flash[:alert]
+        .alert.alert-warning role="alert" = flash[:alert]
+
+      p
+        br
+        | 1日1回Twitterアカウントから1-4票の投票が出来ます。
+        br
+        | 投票開始：11月18日 0:00～
+        br
+        | 中間発表：11月26日
+        br
+        | 投票締切：12月2日 ～23:59
+        br
+        | 結果発表：12月3日 12月3日 土曜大会後発表予定
+      p
+        a href="https://ftg-reversal.net/events/32" イベント詳細
+
+      h3.m-b-2 エントリーメンバー
+      hr
+      = bootstrap_form_tag url: '/mikado_tenkaichi/vote' do |form|
+        - @entries.each do |entry|
+          .row.u-vertical-align-center
+            .col-xs-2.col-md-1.p-r-0
+              = check_box_tag 'entry_id[]', entry.id
+            .col-xs-10.col-md-11.p-l-0
+              p.player
+                b = "#{entry.name} (#{entry.chara.abbrev})"
+              p.player
+                a href="https://twitter.com/#{entry.twitter}" target="_blank" rel="noopener" = entry.twitter
+                = "　#{entry.rank.rank}"
+              p.comment.m-b-0 = "コメント：#{entry.comment}"
+          - if @entries.last != entry
+            .row
+              .col-xs-12
+                hr
+
+        - if @current_user
+          .row.m-t-2.m-b-1
+            .col-md-4.offset-md-4
+              - if @status.can_vote
+                = form.submit '投票', class: 'btn btn-primary btn-lg btn-block'
+              - else
+                button.btn.btn-primary.btn-lg.btn-block disabled='disabled'
+                  | 投票済みです
+
+      a.twitter-hashtag-button href="https://twitter.com/intent/tweet?button_hashtag=%e3%83%9f%e3%82%ab%e5%a4%a9XrdR&text=%e7%ac%ac%e4%ba%8c%e5%9b%9e%20%e9%ab%98%e7%94%b0%e9%a6%ac%e5%a0%b4%e3%83%9f%e3%82%ab%e3%83%89%20GGXrdR%20%e3%83%9f%e3%82%ab%e3%83%89%e5%a4%a9%e4%b8%8b%e4%b8%80%e6%ad%a6%e9%81%93%e4%bc%9a" data-size="large" data-related="ftg_reversal" data-url="https://ftg-reversal.net/mikado_tenkaichi" Tweet #GGXrdR_天下一武道会
+      .widget-center
+        a.twitter-timeline href="https://twitter.com/hashtag/GGXrd_23on" data-widget-id="798769969378967552" #ミカ天XrdR のツイート

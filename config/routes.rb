@@ -99,12 +99,18 @@ Rails.application.routes.draw do
   root to: 'home#index'
   get '/about', to: 'home#about'
 
+  # 23on
   get '/mikado23on', to: 'mikado23on#index'
   get '/mikado23on_result', to: 'mikado23on#result'
   get '/mikado23on/east', to: 'mikado23on#east'
   get '/mikado23on/west', to: 'mikado23on#west'
   get '/mikado23on/vote', to: 'mikado23on#vote'
   # post '/mikado23on/vote', to: 'mikado23on#vote'
+
+  # ミカド天下一武道会
+  get 'mikado_tenkaichi', to: 'mikado_tenkaichi#index'
+  get 'mikado_tenkaichi/vote', to: 'mikado_tenkaichi#vote'
+  post 'mikado_tenkaichi/vote', to: 'mikado_tenkaichi#vote'
 
   # Login
   get '/login', to: 'login#index'

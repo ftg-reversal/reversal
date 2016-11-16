@@ -13,6 +13,7 @@ require('./layout/event.css');
 require('./layout/footer.css');
 require('./layout/header.css');
 require('./layout/mikado23on.css');
+require('./layout/mikado_tenkaichi.css');
 require('./layout/navbar.css');
 require('./layout/rlogs.css');
 require('./layout/slack_channel.css');

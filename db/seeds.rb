@@ -216,3 +216,23 @@ Mikado23onEntry.create!([
   {area: 'west', chara: Chara.find_by(en_name: 'Jam'),       entry_num: 1, name: 'じゃじゃ丸', twitter: '@jajamarujam', rank: Rank.find_by(rank: '暴君'), comment: '福岡'},
   {area: 'west', chara: Chara.find_by(en_name: 'Dizzy'),     entry_num: 1, name: 'まっきぃ', twitter: '@makkimen', rank: Rank.find_by(rank: '賞金首'), comment: '徳島　23on楽しみです！'}
 ])
+
+MikadoTenkaichiEntry.create!([
+  {chara: Chara.find_by(en_name: 'Zato'), name: '小川', twitter: '@ogawazato', rank: Rank.find_by(rank: '闘神'), comment: '自分のペースでザトーやってます。応援お願いいたします。'},
+  {chara: Chara.find_by(en_name: 'Chipp'), name: 'サミット', twitter: '@summit812', rank: Rank.find_by(rank: '闘神'), comment: '舞い忍びます！！'},
+  {chara: Chara.find_by(en_name: 'Venom'), name: '310', twitter: '@310_progressive', rank: Rank.find_by(rank: '暴君'), comment: 'ヴェノム使いの310です。'},
+  {chara: Chara.find_by(en_name: 'Faust'), name: 'ナゲ', twitter: '@nage_pink', rank: Rank.find_by(rank: '暴君'), comment: '暴れたい。'},
+  {chara: Chara.find_by(en_name: 'Ino'), name: 'トゥーリオ', twitter: '@ino_tsukai', rank: Rank.find_by(rank: '暴君'), comment: 'やるよ！！'},
+  {chara: Chara.find_by(en_name: 'Raven'), name: 'ザディ', twitter: '@SOorXTC', rank: Rank.find_by(rank: '暴君'), comment: '熱くなれそうなイベントなので全力で楽しみます！'},
+  {chara: Chara.find_by(en_name: 'Potemkin'), name: 'FAB', twitter: '@gou4th_fab', rank: Rank.find_by(rank: '暴君'), comment: '天一リベンジしたい！応援お願いします！'},
+  {chara: Chara.find_by(en_name: 'Ky'), name: 'りおん', twitter: '@lionhiro', rank: Rank.find_by(rank: '暴君'), comment: '天一楽しみだ'},
+  {chara: Chara.find_by(en_name: 'Ky'), name: 'あいん', twitter: '@ainman0107', rank: Rank.find_by(rank: '暴君'), comment: 'マルケンさんのエントリーはまだか。'},
+  {chara: Chara.find_by(en_name: 'Millia'), name: '中村', twitter: '@nakamura_mi', rank: Rank.find_by(rank: '王者'), comment: '仕事で疲れたらギルティするしかないじゃん'},
+  {chara: Chara.find_by(en_name: 'Jack-O'), name: 'mike', twitter: '@_suineko', rank: Rank.find_by(rank: '王者'), comment: 'エンさんマルちゃん登録まだ？'},
+  {chara: Chara.find_by(en_name: 'Ramlethal'), name: 'かっこう', twitter: '@kakkou_K', rank: Rank.find_by(rank: '王者'), comment: 'せっかくなので楽しみたいです！'},
+  {chara: Chara.find_by(en_name: 'Elphelt'), name: 'ふも', twitter: '@humo_ah', rank: Rank.find_by(rank: '王者'), comment: 'ミカ天に是非エルフェルトを！'},
+  {chara: Chara.find_by(en_name: 'Dizzy'), name: '押田撲滅委員会会長', twitter: '@cucumbergod', rank: Rank.find_by(rank: '聖人'), comment: '押田撲滅したい！'},
+  {chara: Chara.find_by(en_name: 'Slayer'), name: 'エン', twitter: '@en_turuou', rank: Rank.find_by(rank: '聖人'), comment: 'マルちゃん登録まだ？'},
+  {chara: Chara.find_by(en_name: 'May'), name: 'あぜすけ', twitter: '@tukupin', rank: Rank.find_by(rank: '聖人'), comment: 'エントリーマン参上！'},
+  {chara: Chara.find_by(en_name: 'Sol'), name: 'ロイ', twitter: '@Ume_MK2', rank: Rank.find_by(rank: '賞金首'), comment: '本気で勝ちに行く…！'}
+])

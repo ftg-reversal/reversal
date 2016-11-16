@@ -154,6 +154,31 @@ create_table "mikado23on_votes", force: :cascade, options: "ENGINE=InnoDB DEFAUL
   t.datetime "updated_at"
 end
 
+create_table "mikado_tenkaichi_entries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  t.integer  "chara_id",               null: false
+  t.string   "name",                   null: false
+  t.string   "twitter",                null: false
+  t.integer  "rank_id",                null: false
+  t.string   "comment",                null: false
+  t.integer  "count",      default: 0, null: false
+  t.datetime "created_at"
+  t.datetime "updated_at"
+end
+
+create_table "mikado_tenkaichi_vote_statuses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  t.integer  "reversal_user_id",                null: false
+  t.boolean  "can_vote",         default: true, null: false
+  t.datetime "created_at"
+  t.datetime "updated_at"
+end
+
+create_table "mikado_tenkaichi_votes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  t.integer  "reversal_user_id",          null: false
+  t.integer  "mikado_tenkaichi_entry_id"
+  t.datetime "created_at"
+  t.datetime "updated_at"
+end
+
 create_table "ranks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
   t.string   "rank"
   t.datetime "created_at", null: false
