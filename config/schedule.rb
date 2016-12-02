@@ -21,9 +21,9 @@ every 6.hours, roles: [:batch] do
 end
 
 # ミカド天下一武道会
-every 1.day, at: '00:00 am', roles: [:batch] do
-  runner 'MikadoTenkaichiResetBatch.exec'
-end
+# every 1.day, at: '00:00 am', roles: [:batch] do
+#   runner 'MikadoTenkaichiResetBatch.exec'
+# end
 
 # sitemap
 every 1.day, at: '10:00 am', roles: [:batch] do
