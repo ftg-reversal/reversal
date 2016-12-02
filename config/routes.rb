@@ -110,7 +110,7 @@ Rails.application.routes.draw do
   # ミカド天下一武道会
   get 'mikado_tenkaichi', to: 'mikado_tenkaichi#index'
   get 'mikado_tenkaichi/vote', to: 'mikado_tenkaichi#vote'
-  post 'mikado_tenkaichi/vote', to: 'mikado_tenkaichi#vote'
+  # post 'mikado_tenkaichi/vote', to: 'mikado_tenkaichi#vote'
 
   # Login
   get '/login', to: 'login#index'

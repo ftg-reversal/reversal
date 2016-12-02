@@ -6,11 +6,11 @@
       h4 参加プレイヤー投票ページ
       hr
 
-      - unless @current_user
-        .alert.alert-warning role="alert" 投票するにはログインしてください
+      / - unless @current_user
+      /   .alert.alert-warning role="alert" 投票するにはログインしてください
 
-      - if flash[:alert]
-        .alert.alert-warning role="alert" = flash[:alert]
+      / - if flash[:alert]
+      /   .alert.alert-warning role="alert" = flash[:alert]
 
       p
         br
@@ -45,14 +45,19 @@
               .col-xs-12
                 hr
 
-        - if @current_user
-          .row.m-t-2.m-b-1
-            .col-md-4.offset-md-4
-              - if @status.can_vote
-                = form.submit '投票', class: 'btn btn-primary btn-lg btn-block'
-              - else
-                button.btn.btn-primary.btn-lg.btn-block disabled='disabled'
-                  | 投票済みです
+        .row.m-t-2.m-b-1
+          .col-md-4.offset-md-4
+            button.btn.btn-primary.btn-lg.btn-block disabled='disabled'
+              | 投票終了
+
+        / - if @current_user
+        /   .row.m-t-2.m-b-1
+        /     .col-md-4.offset-md-4
+        /       - if @status.can_vote
+        /         = form.submit '投票', class: 'btn btn-primary btn-lg btn-block'
+        /       - else
+        /         button.btn.btn-primary.btn-lg.btn-block disabled='disabled'
+        /           | 投票済みです
 
       a.twitter-hashtag-button href="https://twitter.com/intent/tweet?button_hashtag=%e3%83%9f%e3%82%ab%e5%a4%a9XrdR&text=%e7%ac%ac%e4%ba%8c%e5%9b%9e%20%e9%ab%98%e7%94%b0%e9%a6%ac%e5%a0%b4%e3%83%9f%e3%82%ab%e3%83%89%20GGXrdR%20%e3%83%9f%e3%82%ab%e3%83%89%e5%a4%a9%e4%b8%8b%e4%b8%80%e6%ad%a6%e9%81%93%e4%bc%9a" data-size="large" data-related="ftg_reversal" data-url="https://ftg-reversal.net/mikado_tenkaichi" Tweet #GGXrdR_天下一武道会
       .widget-center
