@@ -1,5 +1,7 @@
 #event-index {
-  text-align: center;
+  nav {
+    text-align: center;
+  }
 }
 
 #event-show {
