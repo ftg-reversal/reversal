@@ -1,6 +1,6 @@
 import salert from 'sweetalert';
 import Vue from 'vue';
-import VideoMatchupApi from '../api/video-matchup-api';
+import VideoMatchupApi from '../../api/video-matchup-api';
 import './matchup-editor.css';
 import template from './matchup-editor.html';
 
