@@ -76,7 +76,7 @@ export default class SummaryEditor extends Vue {
                 title,
                 description,
                 this.channelId,
-                messageIds
+                messageIds,
               );
               location.href = `/summaries/${this.summaryId}`;
             }

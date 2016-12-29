@@ -8,7 +8,7 @@ function onLoad() {
     twttr.widgets.createTimeline(
       '753550279807672320',
       document.getElementById('online-bot-widget'),
-      { screenName: 'ggxrd_online' }
+      { screenName: 'ggxrd_online' },
     );
   }
   /* eslint-disable no-undef */
