@@ -4,7 +4,7 @@
       = render 'rlogs/nav'
       .p-short-item-list
         - @pages.each do |page|
-          = render 'rlogs/item_short', rlog: page, description: page.description.split.first , path: page_path(page), user: page.reversal_user.decorate
+          = render 'shared/rlog', rlog: page
       = paginate @pages
 
 - content_for :title do
