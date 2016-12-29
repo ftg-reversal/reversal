@@ -35,7 +35,10 @@ export default class SummaryEditor extends Vue {
         },
 
         onSelectChannel: ((async)) (e, channel, loadedMessages) => {
-          if (channel.toString() === '') return;
+          if (channel.toString() === '') {
+            return;
+          }
+
           this.nowLoading = true;
           loadedMessages.splice(0, loadedMessages.length);
           this.messages.splice(0, this.messages.length);
