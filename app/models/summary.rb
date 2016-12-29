@@ -28,10 +28,10 @@ class Summary < Rlog
 
   include PublicActivity::Model
 
-  scope :including_good,     -> () { includes(goods: [:reversal_user]) }
-  scope :including_user,     -> () { includes(reversal_user: [:twitter_user, :slack_user]) }
+  scope :including_good,    -> () { includes(goods: [:reversal_user]) }
+  scope :including_user,    -> () { includes(reversal_user: [:twitter_user, :slack_user]) }
   scope :including_message, -> () { includes(slack_messages: [:slack_user, :slack_channel]) }
-  scope :including_all, -> () { including_good.including_user.including_message }
+  scope :including_all,     -> () { including_good.including_user.including_message }
 
   after_save :save_order
 
