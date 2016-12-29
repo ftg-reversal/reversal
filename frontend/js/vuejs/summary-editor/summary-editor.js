@@ -59,7 +59,7 @@ export default class SummaryEditor extends Vue {
         onSubmit: async (e, title, description, messages) => {
           e.preventDefault();
 
-          if (!this.valIdate(title, description, messages)) {
+          if (!this.validate(title, description, messages)) {
             return;
           }
 
@@ -161,7 +161,7 @@ export default class SummaryEditor extends Vue {
     }
   }
 
-  valIdate(title, description, messages) {
+  validate(title, description, messages) {
     if (messages.length === 0) {
       salert('まとめるメッセージを選択してください。');
       return false;
