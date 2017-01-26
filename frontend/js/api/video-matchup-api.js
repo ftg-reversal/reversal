@@ -1,10 +1,10 @@
 export default class VideoMatchupApi {
   static async fetchMatchups(videoID) {
-    return await fetch(`/api/videos/${videoID}/matchups`);
+    return fetch(`/api/videos/${videoID}/matchups`);
   }
 
   static async newMatchup(videoID, sec, chara1ID, chara2ID) {
-    return await $.ajax({
+    return $.ajax({
       type: 'post',
       url: `/api/videos/${videoID}/matchups`,
       data: {
@@ -17,7 +17,7 @@ export default class VideoMatchupApi {
   }
 
   static async deleteMatchup(matchupID) {
-    return await $.ajax({
+    return $.ajax({
       type: 'delete',
       url: `/api/video_matchups/${matchupID}`,
       data: {

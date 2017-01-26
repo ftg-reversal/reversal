@@ -1,14 +1,14 @@
 export default class ChannelApi {
   static async fetchChannelList() {
-    return await fetch('/api/channels');
+    return fetch('/api/channels');
   }
 
   static async fetchLatestMessages(channelID) {
-    return await fetch(`/api/channels/${channelID}/messages`);
+    return fetch(`/api/channels/${channelID}/messages`);
   }
 
   static async newSummary(title, description, channelID, messageIDs) {
-    return await $.ajax({
+    return $.ajax({
       type: 'post',
       url: '/summaries.json',
       data: {
@@ -22,7 +22,7 @@ export default class ChannelApi {
   }
 
   static async editSummary(summaryID, title, description, channelID, messageIDs) {
-    return await $.ajax({
+    return $.ajax({
       type: 'put',
       url: `/summaries/${summaryID}.json`,
       data: {
