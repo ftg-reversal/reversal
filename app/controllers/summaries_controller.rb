@@ -7,8 +7,7 @@ class SummariesController < RlogsController
     @summaries = Summary.includes(:reversal_user).order('updated_at DESC').page(params[:page])
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @summary = SummaryDecorator.decorate(Summary.new)
@@ -30,8 +29,7 @@ class SummariesController < RlogsController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @summary.update(summary_params)

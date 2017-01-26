@@ -46,8 +46,8 @@ class Video < ApplicationRecord
   scope :recently, -> () { order('posted_at DESC') }
 
   # video_matchups
-  scope :chara1, -> (chara) { where(video_matchups: { chara1: chara }) }
-  scope :chara2, -> (chara) { where(video_matchups: { chara2: chara }) }
+  scope :chara1, ->(chara) { where(video_matchups: { chara1: chara }) }
+  scope :chara2, ->(chara) { where(video_matchups: { chara2: chara }) }
 
   include PublicActivity::Model
   after_create :create_video_activity

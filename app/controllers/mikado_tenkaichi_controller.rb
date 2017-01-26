@@ -2,8 +2,7 @@ class MikadoTenkaichiController < ApplicationController
   before_action :set_entries, only: [:index]
   before_action :set_status, only: [:index, :vote]
 
-  def index
-  end
+  def index; end
 
   def vote
     if request.post?

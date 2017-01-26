@@ -2,8 +2,7 @@ class SlackMessageDecorator < Draper::Decorator
   delegate :current_page, :total_pages, :limit_value, to: :source
   delegate_all
 
-  def permalink
-  end
+  def permalink; end
 
   def username
     object.slack_user&.name || object.username || object.attachments.first['author_name']

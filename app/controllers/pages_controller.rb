@@ -7,8 +7,7 @@ class PagesController < RlogsController
     @pages = Page.includes(:reversal_user).order('updated_at DESC').page(params[:page])
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @page = Page.new
@@ -25,8 +24,7 @@ class PagesController < RlogsController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @page.update(page_params)

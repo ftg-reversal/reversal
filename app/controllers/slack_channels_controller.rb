@@ -1,8 +1,7 @@
 class SlackChannelsController < ApplicationController
   before_action :set_channels
 
-  def index
-  end
+  def index; end
 
   def show
     @channel = SlackChannel.including_channel_user.find(params[:id])

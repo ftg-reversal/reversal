@@ -1,20 +1,25 @@
 AllCops:
   TargetRubyVersion: 2.3
   Exclude:
+    - 'Gemfile'
+    - 'Guardfile'
     - 'app/models/ckeditor/*'
+    - 'app/script/*'
     - 'bin/**/*'
+    - 'config.ru'
     - 'config/**/*'
     - 'db/**/*'
-    - 'vendor/**/*'
     - 'lib/tasks/*'
-    - 'spec/**/*'
-    - 'Guardfile'
-    - 'vagrant/**/*'
     - 'node_modules/**/*'
-    - 'config.ru'
+    - 'spec/**/*'
+    - 'vagrant/**/*'
+    - 'vendor/**/*'
 
 Rails:
   Enabled: true
+
+Rails/DynamicFindBy:
+  Enabled: false
 
 # ファイル冒頭にコメント不要
 Style/Documentation:

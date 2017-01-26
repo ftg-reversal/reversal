@@ -15,8 +15,7 @@ class ReversalUsersController < ApplicationController
     ).page(params[:page])
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @user.update(user_params)
@@ -43,8 +42,7 @@ class ReversalUsersController < ApplicationController
     @rlogs = @rlogs.page(params[:page])
   end
 
-  def event
-  end
+  def event; end
 
   private
 

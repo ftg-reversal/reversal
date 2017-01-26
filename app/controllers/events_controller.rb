@@ -35,8 +35,7 @@ class EventsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     parameter = EventParameter.new(params[:event], @current_user)

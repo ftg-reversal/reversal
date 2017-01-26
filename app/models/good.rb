@@ -27,9 +27,9 @@ class Good < ApplicationRecord
   validates :reversal_user, uniqueness: { scope: [:goodable_id, :goodable_type] }
   validates :link, presence: true
 
-  scope :user, -> (user) { where(reversal_user: user) }
-  scope :type, -> (type) { where(goodable_type: type) }
-  scope :id,   -> (id)   { where(goodable_id: id) }
+  scope :user, ->(user) { where(reversal_user: user) }
+  scope :type, ->(type) { where(goodable_type: type) }
+  scope :id,   ->(id)   { where(goodable_id: id) }
 
   before_create  :increment_counter
   before_destroy :decrement_counter

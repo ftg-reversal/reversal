@@ -28,7 +28,7 @@ class Activity < PublicActivity::Activity
   scope :including_trackable, -> () { includes(:trackable) }
   scope :including_recipient, -> () { includes(:recipient) }
   scope :including_all, -> () { including_owner.including_trackable.including_recipient }
-  scope :select_user, -> (user) { where(owner: user) }
+  scope :select_user, ->(user) { where(owner: user) }
   scope :not_matchup, -> () { where.not(trackable_type: 'VideoMatchup') }
   scope :recently, -> () { order('updated_at DESC') }
 end

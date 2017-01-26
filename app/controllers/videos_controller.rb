@@ -7,8 +7,7 @@ class VideosController < ApplicationController
     @videos = Video.order('posted_at DESC').including_matchup.page(params[:page])
   end
 
-  def show
-  end
+  def show; end
 
   def search
     @q = params[:text]

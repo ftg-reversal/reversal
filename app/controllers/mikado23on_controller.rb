@@ -5,14 +5,11 @@ class Mikado23onController < ApplicationController
   before_action :set_status, only: [:east, :west, :vote]
   before_action :set_area, only: [:vote]
 
-  def index
-  end
+  def index; end
 
-  def east
-  end
+  def east; end
 
-  def west
-  end
+  def west; end
 
   def vote
     if request.post?
