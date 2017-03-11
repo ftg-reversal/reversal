@@ -1,6 +1,6 @@
 # Ruby
 /.bundle/
-/vendor/bundle
+/vendor
 
 # Rails
 /app/assets/javascripts/webpack
