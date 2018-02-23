@@ -14,7 +14,7 @@ Rails.application.configure do
   config.assets.digest = true
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
-  config.logger = Logger.new('log/production.log', 10, 10 * 1024 * 1024)
+  # config.logger = Logger.new('log/production.log', 10, 10 * 1024 * 1024)
   config.log_level = :info
 
   # Mount Action Cable outside main process or domain
@@ -77,14 +77,14 @@ Rails.application.configure do
   GA.tracker = ENV['GOOGLE_ANALYTICS']
 
   # Redis
-  config.cache_store   = :redis_store, 'redis://redis:6379/0/cache',   { expires_in: 90.minutes }
-  config.session_store = :redis_store, 'redis://redis:6379/0/session', { expires_in: 1.month }
-
-  if ENV['RAILS_LOG_TO_STDOUT'].present?
-    logger           = ActiveSupport::Logger.new(STDOUT)
-    logger.formatter = config.log_formatter
-    config.logger = ActiveSupport::TaggedLogging.new(logger)
-  end
+  # config.cache_store   = :redis_store, 'redis://redis:6379/0/cache',   { expires_in: 90.minutes }
+  # config.session_store = :redis_store, 'redis://redis:6379/0/session', { expires_in: 1.month }
+  #
+  # if ENV['RAILS_LOG_TO_STDOUT'].present?
+  #   logger           = ActiveSupport::Logger.new(STDOUT)
+  #   logger.formatter = config.log_formatter
+  #   config.logger = ActiveSupport::TaggedLogging.new(logger)
+  # end
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
